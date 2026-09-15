@@ -5,6 +5,7 @@
 
 import { adaptGeologyFeature } from "../data/adapters/geologyAdapter.js";
 import { adaptHazardFeature } from "../data/adapters/hazardAdapter.js";
+import { EVIDENCE_EDUCATIONAL_GUIDE } from "../data/evidenceGuideData.js";
 
 /**
  * Initializes the detail panel drawer.
@@ -68,6 +69,15 @@ export function initDetailPanel(panelId = "detail-panel", closeBtnId = "detail-c
 function renderDetailContent(data) {
   const domainClass = data.domain === "geology" ? "domain-geology" : "domain-hazard";
   const statusBadgeClass = `badge-status badge-${data.dataStatus}`;
+  const isIllustrative = data.sourceType === "illustrative" || data.dataStatus === "illustrative";
+
+  // Determine Source Claim Label
+  let sourceClaimLabel = "Source-Supported Claim";
+  if (data.sourceType === "educational_interpretation") {
+    sourceClaimLabel = "Educational Interpretation Based on Source";
+  } else if (isIllustrative) {
+    sourceClaimLabel = "Illustrative Interpretation";
+  }
 
   // 1. Quick Facts Section (Conditional)
   let quickFactsBlock = "";
@@ -127,7 +137,42 @@ function renderDetailContent(data) {
     `;
   }
 
-  // 5. Why It Matters Section (Conditional)
+  // 5. Geological Evidence Section (Phase 4 — Conditional)
+  let evidenceBlock = "";
+  const hasEvidence = data.evidenceType && data.evidenceDescription && data.evidenceSignificance;
+
+  if (hasEvidence) {
+    const guideEntry = EVIDENCE_EDUCATIONAL_GUIDE[data.evidenceType];
+    const generalClaimText = guideEntry ? guideEntry.generalClaim : null;
+    const generalClaimHtml = generalClaimText ? `
+      <div class="evidence-subclaim general-claim">
+        <strong>1. General Educational Claim (${escapeHtml(data.evidenceType)} Evidence):</strong>
+        <p>${escapeHtml(generalClaimText)}</p>
+      </div>
+    ` : "";
+
+    evidenceBlock = `
+      <section class="detail-section section-evidence">
+        <h3 class="section-title">Geological Evidence & Data Credibility</h3>
+        <div class="evidence-card">
+          ${generalClaimHtml}
+          <div class="evidence-subclaim location-claim">
+            <strong>2. Location-Specific Empirical Evidence:</strong>
+            <div class="evidence-badge-row">
+              <span class="evidence-type-badge">${escapeHtml(data.evidenceType)}</span>
+            </div>
+            <p>${escapeHtml(data.evidenceDescription)}</p>
+          </div>
+          <div class="evidence-subclaim source-claim">
+            <strong>3. ${escapeHtml(sourceClaimLabel)}:</strong>
+            <p>${escapeHtml(data.evidenceSignificance)}</p>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  // 6. Why It Matters Section (Conditional)
   let whyItMattersBlock = "";
   if (data.whyItMatters) {
     whyItMattersBlock = `
@@ -141,8 +186,9 @@ function renderDetailContent(data) {
     `;
   }
 
-  // 6. Source & Data Status Section
-  const sourceUrlHtml = data.sourceUrl ? `
+  // 7. Source & Data Status Section
+  const isValidUrl = data.sourceUrl && (data.sourceUrl.startsWith("http://") || data.sourceUrl.startsWith("https://"));
+  const sourceUrlHtml = isValidUrl ? `
     <div class="field-item field-full">
       <dt>Primary Source Link</dt>
       <dd>
@@ -151,6 +197,17 @@ function renderDetailContent(data) {
         </a>
       </dd>
     </div>
+  ` : "";
+
+  const sourceTypeBadge = data.sourceType ? `
+    <div class="field-item">
+      <dt>Source Category</dt>
+      <dd><span class="badge-source-type">${escapeHtml(formatSourceTypeLabel(data.sourceType))}</span></dd>
+    </div>
+  ` : "";
+
+  const illustrativeBadgeHtml = isIllustrative ? `
+    <span class="badge-status badge-illustrative">ILLUSTRATIVE / DEMO DATA</span>
   ` : "";
 
   const geometryNoteHtml = data.geometryNote ? `
@@ -165,6 +222,7 @@ function renderDetailContent(data) {
       <div class="header-badges">
         <span class="badge-domain">${escapeHtml(data.domainLabel)}</span>
         <span class="${statusBadgeClass}">${escapeHtml(data.dataStatus.toUpperCase())}</span>
+        ${illustrativeBadgeHtml}
       </div>
       <h2 class="detail-title">${escapeHtml(data.name)}</h2>
       <p class="detail-description">${escapeHtml(data.description)}</p>
@@ -176,6 +234,7 @@ function renderDetailContent(data) {
       ${geologicalContextBlock}
       ${paleontologyBlock}
       ${geohazardContextBlock}
+      ${evidenceBlock}
       ${whyItMattersBlock}
 
       <section class="detail-section section-metadata">
@@ -183,8 +242,9 @@ function renderDetailContent(data) {
         <dl class="field-list">
           <div class="field-item">
             <dt>Attribution Source</dt>
-            <dd>${escapeHtml(data.source)}</dd>
+            <dd>${escapeHtml(data.source || "Unspecified Source")}</dd>
           </div>
+          ${sourceTypeBadge}
           <div class="field-item">
             <dt>Data Status</dt>
             <dd><span class="${statusBadgeClass}">${escapeHtml(data.dataStatus.toUpperCase())}</span></dd>
@@ -198,6 +258,17 @@ function renderDetailContent(data) {
       </section>
     </div>
   `;
+}
+
+function formatSourceTypeLabel(type) {
+  switch (type) {
+    case "peer-reviewed_publication": return "Peer-Reviewed Publication";
+    case "government_survey": return "Government Survey";
+    case "institutional_record": return "Institutional Record";
+    case "educational_interpretation": return "Educational Interpretation";
+    case "illustrative": return "Illustrative / Demo Data";
+    default: return type;
+  }
 }
 
 function escapeHtml(str) {

@@ -42,8 +42,14 @@ export function adaptGeologyFeature(feature) {
     dataStatus: p.data_status,
     source: p.source,
     sourceUrl: p.source_url || null,
+    sourceType: p.source_type || null,
     lastUpdated: p.last_updated,
     geometryNote: p.geometry_note || null,
+
+    // Phase 4 Evidence Properties
+    evidenceType: p.evidence_type || null,
+    evidenceDescription: p.evidence_description || null,
+    evidenceSignificance: p.evidence_significance || null,
 
     // Phase 1 Structured Sections
     quickFacts,

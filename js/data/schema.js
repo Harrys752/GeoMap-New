@@ -25,6 +25,22 @@ export const ALLOWED_HAZARD_TYPES = [
   "tsunami"
 ];
 
+export const ALLOWED_EVIDENCE_TYPES = [
+  "Rock",
+  "Fossil",
+  "Landform",
+  "Geological Structure",
+  "Historical Record"
+];
+
+export const ALLOWED_SOURCE_TYPES = [
+  "peer-reviewed_publication",
+  "government_survey",
+  "institutional_record",
+  "educational_interpretation",
+  "illustrative"
+];
+
 export const REQUIRED_BASE_PROPERTIES = [
   "id",
   "name",

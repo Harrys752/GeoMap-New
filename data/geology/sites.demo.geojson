@@ -17,10 +17,14 @@
         "geological_age": "Late Pleistocene (~74,000 BP)",
         "geological_period": "Quaternary",
         "rock_type": "Ignimbrite, Rhyolite",
+        "evidence_type": "Rock",
+        "evidence_description": "Widespread pumiceous ignimbrite sheets and rhyolitic tephra layers deposited across Northern Sumatra during the ~74,000 BP supereruption.",
+        "evidence_significance": "Thick ignimbrite field deposits provide direct geological evidence supporting explosive Quaternary supereruptions and high-volume pyroclastic transport.",
         "why_it_matters": "Toba represents one of Earth's largest Quaternary supereruptions. Studying its ignimbrite deposits helps scientists understand how catastrophic volcanic events impact global climate and human evolutionary history.",
         "data_status": "historical",
         "source": "UNESCO Global Geopark Documentation & USGS",
         "source_url": "https://en.unesco.org/global-geoparks/toba-caldera",
+        "source_type": "peer-reviewed_publication",
         "last_updated": "2026-09-15",
         "geometry_note": "Point-based representation of caldera center"
       }
@@ -44,10 +48,14 @@
         "discovery_locality": "Sangiran Dome, Central Java",
         "fossil_material": "Cranial fragments, mandibular fossils, Stegodon remains",
         "paleoenvironment": "Open woodland floodplain & river basin",
+        "evidence_type": "Fossil",
+        "evidence_description": "Fossilized cranial fragments and jawbones of Homo erectus discovered within stratified fluvial clay and gravel terraces of the Sangiran Dome.",
+        "evidence_significance": "Stratified hominid skeletal fossils support the interpretation of early Pleistocene hominin dispersal and floodplain habitat occupation in Southeast Asia.",
         "why_it_matters": "Sangiran provides a continuous 1.5-million-year sedimentary record containing over half of all known Homo erectus fossils worldwide, essential for understanding early human migration across Southeast Asia.",
         "data_status": "historical",
         "source": "UNESCO World Heritage List (Entry #593)",
         "source_url": "https://whc.unesco.org/en/list/593/",
+        "source_type": "institutional_record",
         "last_updated": "2026-09-15"
       }
     },
@@ -67,10 +75,14 @@
         "geological_age": "Holocene (~10,000 BP - Present)",
         "geological_period": "Quaternary",
         "rock_type": "Andesite, Basaltic Andesite",
+        "evidence_type": "Rock",
+        "evidence_description": "Andesitic and basaltic-andesite lava dome fragments, pyroclastic density current deposits, and block-and-ash flow fans on the volcano slopes.",
+        "evidence_significance": "Slope block-and-ash deposits provide physical evidence consistent with recurring explosive dome-collapse volcanism along active subduction arcs.",
         "why_it_matters": "Merapi is one of the world's most active subduction volcanoes. Monitoring its dome-collapse pyroclastic flows provides critical scientific insights into volcanic hazard mitigation in densely populated volcanic arc settings.",
         "data_status": "historical",
         "source": "Smithsonian Institution Global Volcanism Program (Volcano #263250)",
         "source_url": "https://volcano.si.edu/volcano.cfm?vn=263250",
+        "source_type": "institutional_record",
         "last_updated": "2026-09-15"
       }
     },
@@ -90,10 +102,14 @@
         "geological_age": "Early Triassic (~213 Ma)",
         "geological_period": "Triassic",
         "rock_type": "Granite (Tanjung Pandan Granite)",
+        "evidence_type": "Rock",
+        "evidence_description": "Early Triassic Tanjung Pandan granitic tor boulders exposed along coastal shorelines, featuring coarse quartz and feldspar mineral grains.",
+        "evidence_significance": "Exposed plutonic granites provide evidence consistent with Mesozoic magmatic cooling beneath ancient continental Sundaland crust.",
         "why_it_matters": "The Tanjung Pandan granites reveal the Mesozoic magmatic assembly of Sundaland. Tropical tor weathering of these Triassic plutons illustrates how deep geochemical weathering shapes island landscapes over geological time.",
         "data_status": "historical",
         "source": "UNESCO Belitong Global Geopark Documentation",
         "source_url": "https://en.unesco.org/global-geoparks/belitong",
+        "source_type": "institutional_record",
         "last_updated": "2026-09-15"
       }
     },
@@ -116,10 +132,14 @@
         "discovery_locality": "Solo River banks at Trinil, Ngawi",
         "fossil_material": "Skullcap (calotte), femur, fossilized shell artifacts",
         "paleoenvironment": "Riverine forest & savanna floodplain",
+        "evidence_type": "Fossil",
+        "evidence_description": "Original Pithecanthropus erectus (Homo erectus) skullcap (calotte) and femur recovered from Middle Pleistocene Solo River terrace gravels.",
+        "evidence_significance": "Fossilized skullcap and limb bones provide empirical evidence supporting bipedal Pleistocene hominin presence along ancient Javanese river valleys.",
         "why_it_matters": "Trinil is the historic site of Eugène Dubois's 1891 discovery of 'Java Man' (Homo erectus), pivotal in establishing paleoanthropology as a rigorous scientific discipline.",
         "data_status": "historical",
         "source": "Dubois (1894) / Museum Geologi Bandung Reference Catalog",
         "source_url": "https://whc.unesco.org/en/tentativelists/5983/",
+        "source_type": "peer-reviewed_publication",
         "last_updated": "2026-09-15"
       }
     },
@@ -139,10 +159,14 @@
         "geological_age": "Cretaceous (~135 - 65 Ma)",
         "geological_period": "Cretaceous",
         "rock_type": "Schist, Peridotite, Serpentinite, Gabbro",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Accretionary subduction melange containing sheared serpentinized peridotite, gabbro, ophiolite fragments, and high-pressure quartz-mica schist.",
+        "evidence_significance": "Tectonic melange and metamorphic schist provide physical evidence consistent with ocean floor accretion and deep subduction trench thrusting.",
         "why_it_matters": "Ciletuh exposes West Java's oldest rock basement, containing Cretaceous ophiolites and metamorphic schists uplifted from an ancient subduction trench, preserving evidence of early Indonesian arc-trench convergence.",
         "data_status": "historical",
         "source": "UNESCO Ciletuh-Palabuhanratu Global Geopark Documentation",
         "source_url": "https://en.unesco.org/global-geoparks/ciletuh-palabuhanratu",
+        "source_type": "institutional_record",
         "last_updated": "2026-09-15"
       }
     },
@@ -162,10 +186,14 @@
         "geological_age": "Holocene (1257 CE eruption)",
         "geological_period": "Quaternary",
         "rock_type": "Rhyodacite, Andesite, Pumice Tuff",
+        "evidence_type": "Landform",
+        "evidence_description": "The 6 x 8.5 km Segara Anak caldera depression and extensive pumice tuff beds deposited during the 1257 CE Samalas volcanic collapse.",
+        "evidence_significance": "Caldera geometry and pumice blankets support the interpretation of major paroxysmal caldera-forming eruptions during historic times.",
         "why_it_matters": "The 1257 Samalas (Rinjani) eruption was one of the largest explosive volcanic events of the last millennium, depositing widespread pumice across Lombok and driving a major global sulfur aerosol cooling event.",
         "data_status": "historical",
         "source": "Lavigne et al. (2013) PNAS / Smithsonian GVP (#264040)",
         "source_url": "https://volcano.si.edu/volcano.cfm?vn=264040",
+        "source_type": "peer-reviewed_publication",
         "last_updated": "2026-09-15"
       }
     },
@@ -185,10 +213,14 @@
         "geological_age": "Eocene - Miocene (~40 - 15 Ma)",
         "geological_period": "Neogene",
         "rock_type": "Tonasa Limestone",
+        "evidence_type": "Landform",
+        "evidence_description": "Tower-shaped limestone karst cliffs and cave systems dissolved into Eocene-Miocene Tonasa Limestone formations.",
+        "evidence_significance": "Vertical cliff towers and solution caves provide physical evidence of extensive carbonate uplift followed by tropical meteoric dissolution.",
         "why_it_matters": "Maros-Pangkep is one of the world's most spectacular tower karst landscapes, featuring tower-shaped limestone hills and ancient caves containing some of humanity's oldest documented rock art (~45,500 BP).",
         "data_status": "historical",
         "source": "UNESCO World Heritage Tentative List (#5981) / Aubert et al. (2014) Nature",
         "source_url": "https://whc.unesco.org/en/tentativelists/5981/",
+        "source_type": "peer-reviewed_publication",
         "last_updated": "2026-09-15"
       }
     },
@@ -208,10 +240,14 @@
         "geological_age": "Late Pleistocene - Holocene (~45,000 BP)",
         "geological_period": "Quaternary",
         "rock_type": "Basaltic Andesite, Ash Tuff",
+        "evidence_type": "Landform",
+        "evidence_description": "Active volcanic cinder cones situated inside the 10 km wide Tengger Sand Sea caldera basin, surrounded by fine ash deposits.",
+        "evidence_significance": "Nested caldera basin structure provides evidence for multi-stage eruptive collapse followed by post-caldera cone building.",
         "why_it_matters": "The Tengger Caldera complex showcases nested caldera collapse within a vast Sand Sea, demonstrating continuous post-caldera cone building and active ash venting.",
         "data_status": "historical",
         "source": "Smithsonian Global Volcanism Program (#263280)",
         "source_url": "https://volcano.si.edu/volcano.cfm?vn=263280",
+        "source_type": "institutional_record",
         "last_updated": "2026-09-15"
       }
     },
@@ -231,10 +267,14 @@
         "geological_age": "Quaternary",
         "geological_period": "Quaternary",
         "rock_type": "Pumice Tuff, Alluvium",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "A 100 m deep vertical canyon carved into volcanic ash tuff along the dextral strike-slip Great Sumatran Fault zone.",
+        "evidence_significance": "Displaced terrace deposits and linear gorge geometry provide physical evidence consistent with active strike-slip fault offset and river incision.",
         "why_it_matters": "Ngarai Sianok is a dramatic canyon cut into volcanic tuff along the active Great Sumatran strike-slip fault system, illustrating dextral fault motion and rapid fluvial incision.",
         "data_status": "historical",
         "source": "Sieh & Natawidjaja (2000) JGR / Geological Survey of Indonesia",
         "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2000JB900120",
+        "source_type": "peer-reviewed_publication",
         "last_updated": "2026-09-15"
       }
     },
@@ -257,10 +297,14 @@
         "discovery_locality": "Liang Bua Cave, Manggarai, Flores",
         "fossil_material": "LB1 partial skeleton, cranial elements, Stegodon florensis insularis fossils",
         "paleoenvironment": "Subtropical karst cave deposit & woodland valley",
+        "evidence_type": "Fossil",
+        "evidence_description": "Type specimen LB1 partial skeleton and cranial remains of Homo floresiensis found in stratified cave sedimentary layers.",
+        "evidence_significance": "Endemic hominid skeletal fossils provide direct evidence supporting insular evolutionary dwarfing on Late Pleistocene oceanic islands.",
         "why_it_matters": "Liang Bua is the type locality of Homo floresiensis ('the Hobbit'), revealing unique island dwarfing in hominins and expanding our understanding of Late Pleistocene human diversity.",
         "data_status": "historical",
         "source": "Brown et al. (2004) Nature / Sutikna et al. (2016) Nature",
         "source_url": "https://www.nature.com/articles/nature02999",
+        "source_type": "peer-reviewed_publication",
         "last_updated": "2026-09-15"
       }
     },
@@ -280,10 +324,14 @@
         "geological_age": "Neogene - Present (~15 Ma)",
         "geological_period": "Neogene",
         "rock_type": "Oceanic Crust, Serpentinized Peridotite",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "A ~7.2 km deep oceanic depression bound by low-angle extensional detachment faults behind the Banda subduction arc.",
+        "evidence_significance": "Bathyal detachment fault scarps and seabed topography support the interpretation of severe lithospheric extension in subduction back-arcs.",
         "why_it_matters": "The Weber Deep is Earth's deepest non-trench oceanic basin (~7.2 km deep), formed by extreme detachment faulting behind the 180-degree curving Banda Arc subduction zone.",
         "data_status": "historical",
         "source": "Pownall et al. (2016) Geology / Geoscience Australia",
         "source_url": "https://pubs.geoscienceworld.org/gsa/geology/article/44/11/947/194850/Extensional-detachment-faulting-in-the-Banda",
+        "source_type": "peer-reviewed_publication",
         "last_updated": "2026-09-15"
       }
     },
@@ -303,9 +351,13 @@
         "geological_age": "Quaternary",
         "geological_period": "Quaternary",
         "rock_type": "Limestone, Tuff",
+        "evidence_type": "Landform",
+        "evidence_description": "Illustrative coastal karst platforms and volcanic ash terraces used as an educational dataset reference.",
+        "evidence_significance": "Illustrative educational record demonstrating how coastal karst landforms are represented in geological mapping.",
         "why_it_matters": "Illustrative educational record demonstrating how carbonate reef uplift and volcanic ash deposition interact to form coastal terranes.",
         "data_status": "illustrative",
         "source": "Illustrative educational example, not official data",
+        "source_type": "illustrative",
         "last_updated": "2026-09-15"
       }
     }

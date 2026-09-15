@@ -18,11 +18,15 @@
         "geological_period": "Quaternary",
         "hazard_type": "volcanic",
         "event_date": "1883-08-27",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Documented 1883 eruption logs, tide gauge sea-level records, barometric shockwave traces, and coastal tsunami inundation surveys.",
+        "evidence_significance": "Tide gauge and barometric instrument logs provide historical record evidence supporting catastrophic caldera collapse and tsunami generation.",
         "geological_explanation": "Paroxysmal eruption and collapse of the Krakatau volcanic island structure displaced huge ocean water masses, creating tsunamis over 30 meters high along Sunda Strait coastal shores.",
         "why_it_matters": "The 1883 Krakatau eruption was one of the first globally recorded natural disasters. It demonstrated how volcanic caldera collapse can trigger ocean-wide tsunamis and global atmospheric cooling.",
         "data_status": "historical",
         "source": "Self (1884) / NOAA NCEI Historical Tsunami Database",
         "source_url": "https://www.ngdc.noaa.gov/hazard/tsunami/",
+        "source_type": "institutional_record",
         "last_updated": "2026-09-15",
         "geometry_note": "Point-based representation of Krakatau island epicenter"
       }
@@ -44,11 +48,15 @@
         "geological_period": "Quaternary",
         "hazard_type": "seismic",
         "event_date": "2004-12-26",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Global seismic network broadband seismograms, satellite altimetry seafloor displacement measurements, and coastal tsunami inundation field logs.",
+        "evidence_significance": "Instrumental seismograms and GPS displacement measurements provide quantitative evidence supporting massive megathrust subduction fault rupture.",
         "geological_explanation": "A 1,300 km long seafloor fault rupture along the Sunda Megathrust subduction zone rapidly uplifted ocean floor sediment by several meters, transferring immense energy into ocean waves.",
         "why_it_matters": "The 2004 Sumatra-Andaman earthquake reshaped modern seismology and tsunami science, demonstrating the devastating energy release of subduction megathrust ruptures and driving the creation of global tsunami warning networks.",
         "data_status": "historical",
         "source": "USGS Earthquake Hazards Program (Event ID official20041226005853450_30)",
         "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/official20041226005853450_30",
+        "source_type": "government_survey",
         "last_updated": "2026-09-15"
       }
     },
@@ -69,11 +77,15 @@
         "geological_period": "Quaternary",
         "hazard_type": "seismic",
         "event_date": "2006-05-27",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Strong-motion accelerograph records, shallow Opak fault lineament mapping, and structural damage surveys across Bantul sediment basins.",
+        "evidence_significance": "Instrumental ground motion records and fault mapping provide evidence consistent with shallow intraplate strike-slip faulting in sediment basins.",
         "geological_explanation": "Tectonic stress release along a shallow strike-slip fault system produced severe high-frequency ground motion across soft volcanic sediment and alluvial soils of the Opak River basin.",
         "why_it_matters": "The 2006 Yogyakarta earthquake highlighted the vulnerability of volcanic sediment basins to shallow intraplate fault rupture, emphasizing the importance of microzonation and earthquake-resistant engineering.",
         "data_status": "historical",
         "source": "USGS Earthquake Hazards Program (Event ID usp000ekfv)",
         "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ekfv",
+        "source_type": "government_survey",
         "last_updated": "2026-09-15"
       }
     },
@@ -94,11 +106,15 @@
         "geological_period": "Quaternary",
         "hazard_type": "seismic",
         "event_date": "1992-12-12",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Teleseismic fault-plane solutions, field tsunami runup elevation measurements (up to 26 m), and coastal damage field logs.",
+        "evidence_significance": "Seismograms and coastal runup surveys provide physical evidence supporting back-arc thrust faulting and localized tsunami displacement.",
         "geological_explanation": "A shallow back-arc thrust fault rupture along the Flores Thrust zone displaced sea floor water, producing catastrophic localized tsunami runup along the Maumere coastline.",
         "why_it_matters": "The 1992 Flores event demonstrated that back-arc thrust faulting north of the Sunda Arc can generate localized megathrust-scale earthquakes and severe coastal tsunamis.",
         "data_status": "historical",
         "source": "USGS Earthquake Hazards Program / Tsuji et al. (1995)",
         "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0005j81",
+        "source_type": "peer-reviewed_publication",
         "last_updated": "2026-09-15"
       }
     },
@@ -119,11 +135,15 @@
         "geological_period": "Quaternary",
         "hazard_type": "seismic",
         "event_date": "2018-09-28",
+        "evidence_type": "Historical Record",
+        "evidence_description": "InSAR satellite surface deformation maps, flow liquefaction landslide field surveys in Petobo/Balaroa, and Palu Bay tsunami tide logs.",
+        "evidence_significance": "Satellite radar deformation and field damage surveys provide direct evidence for complex strike-slip liquefaction and bay tsunami interactions.",
         "geological_explanation": "Strike-slip faulting caused extreme shaking in saturated alluvial sediments leading to flow liquefaction, while coastal submarine slope failures displaced Palu Bay waters.",
         "why_it_matters": "The 2018 Palu event highlighted complex multi-hazard interactions, where strike-slip faulting caused severe urban liquefaction and bay-confined submarine landslide tsunamis.",
         "data_status": "historical",
         "source": "USGS Earthquake Hazards Program / BNPB",
         "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000h4p4",
+        "source_type": "government_survey",
         "last_updated": "2026-09-15"
       }
     }

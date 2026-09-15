@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let currentMarkerGroup = null;
   let currentMarkerMap = new Map();
   let searchSearchQuery = "";
-  let currentFilterState = { domain: "all", featureTypes: new Set(), process: "all", period: "all" };
+  let currentFilterState = { domain: "all", featureTypes: new Set(), process: "all", period: "all", evidenceType: "all" };
   let timelineInstance = null;
 
   // 1. Initialize Map

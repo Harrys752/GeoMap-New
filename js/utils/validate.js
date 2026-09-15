@@ -7,6 +7,8 @@ import {
   ALLOWED_DOMAINS,
   ALLOWED_FEATURE_TYPES,
   ALLOWED_DATA_STATUSES,
+  ALLOWED_EVIDENCE_TYPES,
+  ALLOWED_SOURCE_TYPES,
   REQUIRED_BASE_PROPERTIES
 } from "../data/schema.js";
 
@@ -86,6 +88,55 @@ export function validateFeature(feature, seenIds = new Set()) {
   // 8. Data Status Check
   if (props.data_status && !ALLOWED_DATA_STATUSES.includes(props.data_status)) {
     errors.push(`Invalid data_status '${props.data_status}'. Must be one of: ${ALLOWED_DATA_STATUSES.join(", ")}`);
+  }
+
+  // 9. Phase 4 Evidence & Source Validation Checks
+  const evType = props.evidence_type;
+  const evDesc = props.evidence_description;
+  const evSig = props.evidence_significance;
+  const srcType = props.source_type;
+  const srcUrl = props.source_url;
+
+  // Check whitespace-only strings for all properties
+  for (const [key, val] of Object.entries(props)) {
+    if (typeof val === "string" && val.length > 0 && val.trim() === "") {
+      errors.push(`Property '${key}' cannot be a whitespace-only string`);
+    }
+  }
+
+  // Inter-field completeness requirement for core evidence fields
+  const hasEvType = evType !== undefined && evType !== null && String(evType).trim() !== "";
+  const hasEvDesc = evDesc !== undefined && evDesc !== null && String(evDesc).trim() !== "";
+  const hasEvSig = evSig !== undefined && evSig !== null && String(evSig).trim() !== "";
+
+  if (hasEvType || hasEvDesc || hasEvSig) {
+    if (!hasEvType) errors.push("Incomplete evidence fields: 'evidence_type' is required when other evidence fields are present");
+    if (!hasEvDesc) errors.push("Incomplete evidence fields: 'evidence_description' is required when other evidence fields are present");
+    if (!hasEvSig) errors.push("Incomplete evidence fields: 'evidence_significance' is required when other evidence fields are present");
+  }
+
+  if (hasEvType) {
+    if (!ALLOWED_EVIDENCE_TYPES.includes(evType)) {
+      errors.push(`Invalid evidence_type '${evType}'. Must be one of: ${ALLOWED_EVIDENCE_TYPES.join(", ")}`);
+    }
+  }
+
+  if (srcType !== undefined && srcType !== null && String(srcType).trim() !== "") {
+    if (!ALLOWED_SOURCE_TYPES.includes(srcType)) {
+      errors.push(`Invalid source_type '${srcType}'. Must be one of: ${ALLOWED_SOURCE_TYPES.join(", ")}`);
+    }
+
+    if (srcType !== "illustrative") {
+      if (!props.source || typeof props.source !== "string" || props.source.trim() === "") {
+        errors.push(`Property 'source' is required for non-illustrative source_type '${srcType}'`);
+      }
+    }
+  }
+
+  if (srcUrl !== undefined && srcUrl !== null && String(srcUrl).trim() !== "") {
+    if (typeof srcUrl !== "string" || (!srcUrl.startsWith("http://") && !srcUrl.startsWith("https://"))) {
+      errors.push(`Invalid source_url '${srcUrl}'. Must be a valid HTTP or HTTPS URL.`);
+    }
   }
 
   return {

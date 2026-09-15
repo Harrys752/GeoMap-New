@@ -23,6 +23,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
   const featureTypeContainer = document.getElementById("feature-type-filter-group");
   const processSelectContainer = document.getElementById("process-filter-select");
   const periodSelectContainer = document.getElementById("period-filter-select");
+  const evidenceSelectContainer = document.getElementById("evidence-filter-select");
   const activeCountBadge = document.getElementById("active-count-badge");
   const processCardContainer = document.getElementById("process-card-display");
 
@@ -30,14 +31,16 @@ export function initFilterPanel(allFeatures, onFilterChange) {
   const selectedFeatureTypes = new Set();
   let selectedProcess = "all";
   let selectedPeriod = "all";
+  let selectedEvidenceType = "all";
 
-  // Compute available feature types, processes, and periods present in loaded dataset
+  // Compute available feature types, processes, periods, and evidence types present in loaded dataset
   function computeDatasetCounts() {
     const counts = {
       domain: { all: allFeatures.length, geology: 0, hazard: 0 },
       featureType: {},
       process: {},
-      period: {}
+      period: {},
+      evidenceType: {}
     };
 
     for (const f of allFeatures) {
@@ -46,12 +49,14 @@ export function initFilterPanel(allFeatures, onFilterChange) {
       const t = props.feature_type;
       const proc = props.geological_process;
       const per = props.geological_period;
+      const ev = props.evidence_type;
 
       if (counts.domain[d] !== undefined) counts.domain[d]++;
       if (t) counts.featureType[t] = (counts.featureType[t] || 0) + 1;
       if (proc) counts.process[proc] = (counts.process[proc] || 0) + 1;
+      if (ev) counts.evidenceType[ev] = (counts.evidenceType[ev] || 0) + 1;
 
-      if (d === "hazard" || t === "historical_event") {
+      if (t === "historical_event") {
         counts.period["Historical"] = (counts.period["Historical"] || 0) + 1;
       } else if (per) {
         counts.period[per] = (counts.period[per] || 0) + 1;
@@ -189,7 +194,26 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     });
   }
 
-  // 5. Render Educational Process Card when a Process is Selected
+  // 5. Render Geological Evidence Type Explorer Dropdown (Phase 4 — only evidence types present in dataset)
+  if (evidenceSelectContainer) {
+    const presentEvidenceTypes = Object.keys(datasetCounts.evidenceType)
+      .filter(ev => datasetCounts.evidenceType[ev] > 0)
+      .sort();
+
+    evidenceSelectContainer.innerHTML = `
+      <option value="all">All Evidence Categories (${presentEvidenceTypes.length})</option>
+      ${presentEvidenceTypes.map(ev => `
+        <option value="${escapeHtml(ev)}">${escapeHtml(ev)} (${datasetCounts.evidenceType[ev]})</option>
+      `).join("")}
+    `;
+
+    evidenceSelectContainer.addEventListener("change", (e) => {
+      selectedEvidenceType = e.target.value;
+      triggerChange();
+    });
+  }
+
+  // 6. Render Educational Process Card when a Process is Selected
   function renderProcessCard(processName) {
     if (!processCardContainer) return;
 
@@ -235,7 +259,8 @@ export function initFilterPanel(allFeatures, onFilterChange) {
         domain: activeDomain,
         featureTypes: new Set(selectedFeatureTypes),
         process: selectedProcess,
-        period: selectedPeriod
+        period: selectedPeriod,
+        evidenceType: selectedEvidenceType
       });
     }
   }
@@ -250,6 +275,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     activeDomain = "all";
     selectedProcess = "all";
     selectedPeriod = "all";
+    selectedEvidenceType = "all";
 
     if (domainButtonsContainer) {
       domainButtonsContainer.querySelectorAll(".filter-btn").forEach(b => {
@@ -259,6 +285,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
 
     if (processSelectContainer) processSelectContainer.value = "all";
     if (periodSelectContainer) periodSelectContainer.value = "all";
+    if (evidenceSelectContainer) evidenceSelectContainer.value = "all";
 
     renderProcessCard("all");
     renderFeatureTypeCheckboxes();
@@ -273,48 +300,64 @@ export function initFilterPanel(allFeatures, onFilterChange) {
   };
 }
 
+/** Helper: Check if feature matches requested Evidence Type */
+export function matchesEvidenceType(feature, evidenceType) {
+  if (!evidenceType || evidenceType === "all") return true;
+  return feature.properties?.evidence_type === evidenceType;
+}
+
+/** Helper: Check if feature matches requested Period / Historical Track */
+export function matchesHistoricalTrack(feature, period) {
+  if (!period || period === "all") return true;
+  if (period === "Historical") {
+    return feature.properties?.feature_type === "historical_event";
+  }
+  return feature.properties?.geological_period === period;
+}
+
+/** Helper: Unified evaluation ensuring feature satisfies ALL active filters */
+export function matchesAllFilters(feature, filterState) {
+  if (!filterState) return true;
+  const props = feature.properties || {};
+  const { domain, featureTypes, process, period, evidenceType } = filterState;
+
+  // Domain check
+  if (domain && domain !== "all" && props.domain !== domain) {
+    return false;
+  }
+
+  // Feature type check
+  if (featureTypes && featureTypes.size > 0 && !featureTypes.has(props.feature_type)) {
+    return false;
+  }
+
+  // Geological Process check
+  if (process && process !== "all" && props.geological_process !== process) {
+    return false;
+  }
+
+  // Geological Period / Historical Track check
+  if (!matchesHistoricalTrack(feature, period)) {
+    return false;
+  }
+
+  // Geological Evidence Type check
+  if (!matchesEvidenceType(feature, evidenceType)) {
+    return false;
+  }
+
+  return true;
+}
+
 /**
- * Filters dataset features by domain, feature types, process, and period.
+ * Filters dataset features by domain, feature types, process, period, and evidence type.
  * @param {object[]} features - Validated dataset features
- * @param {object} filterState - Current filter state { domain, featureTypes, process, period }
+ * @param {object} filterState - Current filter state { domain, featureTypes, process, period, evidenceType }
  * @returns {object[]} Filtered features
  */
 export function filterByDomainAndType(features, filterState) {
   if (!filterState) return features;
-
-  const { domain, featureTypes, process, period } = filterState;
-
-  return features.filter(f => {
-    const props = f.properties || {};
-
-    // Domain check
-    if (domain && domain !== "all" && props.domain !== domain) {
-      return false;
-    }
-
-    // Feature type check
-    if (featureTypes && featureTypes.size > 0 && !featureTypes.has(props.feature_type)) {
-      return false;
-    }
-
-    // Geological Process check
-    if (process && process !== "all" && props.geological_process !== process) {
-      return false;
-    }
-
-    // Geological Period / Historical Track check
-    if (period && period !== "all") {
-      if (period === "Historical") {
-        if (props.domain !== "hazard" && props.feature_type !== "historical_event") {
-          return false;
-        }
-      } else if (props.geological_period !== period) {
-        return false;
-      }
-    }
-
-    return true;
-  });
+  return features.filter(f => matchesAllFilters(f, filterState));
 }
 
 function escapeHtml(str) {
