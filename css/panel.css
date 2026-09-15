@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GeoMap Indonesia 2.0 — Sidebar, Detail Panel & Modal Stylesheet
+   GeoMap Indonesia 2.0 — Sidebar, Detail Panel, Modal & Timeline Stylesheet
    ========================================================================== */
 
 /* Sidebar Panel */
@@ -321,6 +321,213 @@
   font-size: 0.7rem;
   color: var(--text-muted);
   line-height: 1.4;
+}
+
+/* ==========================================================================
+   Phase 3 — Geological Time & Earth History Timeline Component
+   ========================================================================== */
+
+.timeline-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+.timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timeline-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.timeline-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.timeline-icon {
+  font-size: 0.9rem;
+}
+
+.timeline-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.timeline-disclaimer {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* Relative Sequence Bar */
+.timeline-sequence-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.timeline-node {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.timeline-node.node-geo {
+  border-left: 3px solid var(--color-geology);
+}
+
+.timeline-node.node-hazard {
+  border-left: 3px solid var(--color-hazard);
+}
+
+.timeline-node:hover {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.timeline-node.active {
+  background-color: var(--bg-primary);
+  border-color: var(--border-focus);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 2px var(--border-focus);
+}
+
+.node-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.node-sub {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+.timeline-connector {
+  width: 8px;
+  height: 2px;
+  background-color: var(--border-color);
+  flex-shrink: 0;
+}
+
+/* Period Card Details */
+.timeline-period-card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.period-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.period-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.4rem;
+}
+
+.period-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.68rem;
+}
+
+.period-era-tag {
+  font-weight: 700;
+  color: #64b5f6;
+  text-transform: uppercase;
+}
+
+.period-time-range {
+  color: var(--text-muted);
+}
+
+.period-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.period-card-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.period-card-section strong {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.period-card-section p {
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.evidence-chip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+.evidence-chip {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.35rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.evidence-chip:hover {
+  border-color: var(--border-focus);
+  background-color: var(--bg-panel);
+}
+
+.chip-name {
+  font-weight: 600;
+}
+
+.chip-detail {
+  font-size: 0.68rem;
+  color: #64b5f6;
 }
 
 /* ==========================================================================

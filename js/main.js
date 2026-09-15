@@ -8,6 +8,7 @@ import { loadAllDatasets } from "./data/loadData.js";
 import { initSearchBar, filterBySearchQuery } from "./ui/searchBar.js";
 import { initFilterPanel, filterByDomainAndType } from "./ui/filterPanel.js";
 import { initDetailPanel } from "./ui/detailPanel.js";
+import { initTimeline } from "./ui/timeline.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const loadingOverlay = document.getElementById("loading-overlay");
@@ -19,8 +20,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   let mapInstance = null;
   let allFeatures = [];
   let currentMarkerGroup = null;
+  let currentMarkerMap = new Map();
   let searchSearchQuery = "";
   let currentFilterState = { domain: "all", featureTypes: new Set(), process: "all", period: "all" };
+  let timelineInstance = null;
 
   // 1. Initialize Map
   try {
@@ -107,47 +110,89 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // 5. Initialize Filter Panel & Explorers
+  // 5. Initialize Geological Time & Earth History Timeline (Phase 3)
+  timelineInstance = initTimeline(
+    allFeatures,
+    // Callback 1: Timeline -> Map Selection
+    (featureId) => {
+      const targetFeature = allFeatures.find(f => f.properties && f.properties.id === featureId);
+      if (!targetFeature) return;
+
+      const marker = currentMarkerMap.get(featureId);
+      detailPanel.openDetailPanel(targetFeature);
+
+      if (marker) {
+        setMarkerHighlight(marker);
+      }
+
+      if (targetFeature.geometry && targetFeature.geometry.coordinates) {
+        const [lng, lat] = targetFeature.geometry.coordinates;
+        mapInstance.flyTo([lat, lng], 9, {
+          animate: true,
+          duration: 0.8
+        });
+      }
+    },
+    // Callback 2: Timeline Period Filter -> Period Explorer Sync
+    (periodKey) => {
+      const periodSelect = document.getElementById("period-filter-select");
+      if (periodSelect) {
+        periodSelect.value = periodKey;
+      }
+      currentFilterState.period = periodKey;
+      applyFiltersAndRender();
+    }
+  );
+
+  // 6. Initialize Filter Panel & Explorers
   const filterPanel = initFilterPanel(allFeatures, (newFilterState) => {
     currentFilterState = newFilterState;
+
+    // Sync timeline active period selection if user updated Period select box
+    if (timelineInstance && newFilterState.period) {
+      if (newFilterState.period === "all") {
+        timelineInstance.deselectPeriod();
+      } else {
+        timelineInstance.selectPeriod(newFilterState.period);
+      }
+    }
+
     applyFiltersAndRender();
   });
 
-  // 6. Initialize Search Bar
+  // 7. Initialize Search Bar
   initSearchBar("search-input", "search-clear", (newQuery) => {
     searchSearchQuery = newQuery;
     applyFiltersAndRender();
   });
 
-  // 7. Filter Application & Marker Rendering Pipeline
+  // 8. Filter Application & Marker Rendering Pipeline
   function applyFiltersAndRender() {
-    // Filter by domain, feature type, process, and period
     let filtered = filterByDomainAndType(allFeatures, currentFilterState);
-
-    // Filter by text search query
     filtered = filterBySearchQuery(filtered, searchSearchQuery);
 
-    // Update Result Count Badge
     if (filterPanel) {
       filterPanel.updateResultBadgeCount(filtered.length);
     }
 
-    // Toggle Empty State UI
     if (filtered.length === 0) {
       showEmptyState("No geological sites or hazard events match your active search and filter criteria.");
     } else {
       hideEmptyState();
     }
 
-    // Remove existing markers
     if (currentMarkerGroup) {
       mapInstance.removeLayer(currentMarkerGroup);
     }
 
-    // Render new marker layer
     const result = renderMarkers(mapInstance, filtered, (feature, marker) => {
       detailPanel.openDetailPanel(feature);
       setMarkerHighlight(marker);
+
+      // Reverse Sync: Sync timeline period node when marker is clicked on map
+      if (timelineInstance) {
+        timelineInstance.syncTimelineWithFeature(feature);
+      }
 
       if (feature && feature.geometry && feature.geometry.coordinates) {
         const [lng, lat] = feature.geometry.coordinates;
@@ -159,6 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     currentMarkerGroup = result.markerGroup;
+    currentMarkerMap = result.markerMap;
   }
 
   // Initial render call
@@ -196,6 +242,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (searchInput) {
             searchInput.value = "";
             searchSearchQuery = "";
+          }
+
+          if (timelineInstance && typeof timelineInstance.deselectPeriod === "function") {
+            timelineInstance.deselectPeriod();
           }
 
           if (filterPanel && typeof filterPanel.resetAllFiltersUI === "function") {
