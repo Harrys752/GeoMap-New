@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoMap Indonesia 2.0 — Geological & Geohazard Exploration Platform</title>
+
+  <meta name="description" content="An independent educational platform connecting Indonesian geological locations, geological time, paleontology, and historical geohazards.">
+
+  <!-- Leaflet.js CSS (CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/map.css">
+  <link rel="stylesheet" href="css/panel.css">
+</head>
+<body>
+
+  <!-- Application Header & Scope Statement -->
+  <header class="app-header" id="app-header">
+    <div class="header-main">
+      <div class="header-brand">
+        <h1 class="app-title">GeoMap Indonesia 2.0</h1>
+        <span class="app-tagline">Educational Geological & Geohazard Explorer</span>
+      </div>
+      
+      <!-- Prominent Scope & Disclaimer Banner -->
+      <div class="scope-statement-banner" role="alert">
+        <span class="scope-icon">&#9888;</span>
+        <div class="scope-content">
+          <strong>EDUCATIONAL SCOPE DISCLOSURE:</strong>
+          This platform is an independent educational tool. It does <strong>NOT</strong> provide live monitoring, emergency alerts, or official warnings. Refer to official government channels (PVMBG / BMKG / BNPB) for disaster response.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Workspace Grid -->
+  <div class="app-workspace">
+
+    <!-- Sidebar Controls -->
+    <aside class="sidebar-panel" id="sidebar-panel">
+      
+      <!-- Search Component -->
+      <section class="control-section search-section">
+        <label for="search-input" class="section-label">Search Locations & Categories</label>
+        <div class="search-input-wrapper">
+          <input type="text" id="search-input" class="search-input" placeholder="Search by name, category, or rock type..." aria-label="Search dataset by name or category">
+          <button type="button" id="search-clear" class="search-clear-btn" aria-label="Clear search query" style="display: none;">&times;</button>
+        </div>
+      </section>
+
+      <!-- Domain Toggle Filter Group -->
+      <section class="control-section domain-filter-section">
+        <div class="section-header-row">
+          <span class="section-label">Domain Explorer</span>
+        </div>
+        <div class="domain-filter-group" id="domain-filter-group">
+          <!-- Dynamically populated buttons -->
+        </div>
+      </section>
+
+      <!-- Dynamic Feature-Type Filter Checkboxes -->
+      <section class="control-section feature-filter-section">
+        <div class="section-header-row">
+          <span class="section-label">Feature Type Filters</span>
+          <span class="active-count-badge" id="active-count-badge">Calculating...</span>
+        </div>
+        <div class="feature-type-filter-group" id="feature-type-filter-group">
+          <!-- Dynamically generated based on available valid records -->
+        </div>
+      </section>
+
+      <!-- Phase 2: Geological Process Explorer -->
+      <section class="control-section process-filter-section">
+        <label for="process-filter-select" class="section-label">Geological Process Explorer</label>
+        <select id="process-filter-select" class="explorer-select" aria-label="Filter dataset by geological process">
+          <!-- Dynamically populated -->
+        </select>
+
+        <!-- Educational Process Card Container -->
+        <div id="process-card-display" class="process-card-wrapper" style="display: none;">
+          <!-- Dynamically rendered process card -->
+        </div>
+      </section>
+
+      <!-- Phase 2: Geological Time / Period Explorer -->
+      <section class="control-section period-filter-section">
+        <label for="period-filter-select" class="section-label">Geological Time Period</label>
+        <select id="period-filter-select" class="explorer-select" aria-label="Filter dataset by geological period">
+          <!-- Dynamically populated -->
+        </select>
+      </section>
+
+      <!-- Map Symbol Legend Component -->
+      <section class="control-section legend-section">
+        <span class="section-label">Map Symbol Legend</span>
+        <div class="legend-grid">
+          <div class="legend-item">
+            <div class="legend-symbol symbol-geology symbol-volcano">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
+            </div>
+            <span class="legend-text">Volcano / Volcanic Complex</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-symbol symbol-geology symbol-paleo">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.5 2.5 0 0 1 2.5 2.5c0 .9-.5 1.7-1.2 2.1l-10 10A2.5 2.5 0 1 1 5 14l10-10c.4-.7 1.2-1 2-1z"/></svg>
+            </div>
+            <span class="legend-text">Paleontology Locality</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-symbol symbol-geology symbol-site">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 10-9 10-9-10 9-10z"/></svg>
+            </div>
+            <span class="legend-text">Geological Site / Formation</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-symbol symbol-hazard symbol-event">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <span class="legend-text">Historical Geohazard Event</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sidebar Footer with About & Mission Trigger -->
+      <footer class="sidebar-footer">
+        <button type="button" id="btn-open-about" class="btn-about-trigger">
+          <span>&#9432;</span> About & Educational Mission
+        </button>
+        <p class="footer-disclaimer">
+          Independent Educational Platform. Not affiliated with MAGMA Indonesia, PVMBG, ESDM, BMKG, or BNPB.
+        </p>
+      </footer>
+    </aside>
+
+    <!-- Map Canvas Container -->
+    <main class="map-container-wrapper">
+      <div id="map" class="map-canvas" aria-label="Interactive geological map of Indonesia"></div>
+
+      <!-- Empty State View Overlay -->
+      <div id="empty-state" class="empty-state-overlay" style="display: none;"></div>
+    </main>
+
+    <!-- Shared Domain-Aware Detail Panel Drawer -->
+    <aside id="detail-panel" class="detail-panel-drawer" aria-hidden="true" role="dialog" aria-labelledby="detail-title">
+      <button type="button" id="detail-close-btn" class="detail-close-btn" aria-label="Close details panel">&times;</button>
+      <div id="detail-panel-content" class="detail-panel-content">
+        <!-- Dynamically rendered content -->
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- About / Mission Section Modal Dialog -->
+  <div id="about-modal" class="about-modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="about-modal-title">
+    <div class="about-modal-dialog">
+      <header class="about-modal-header">
+        <h3 id="about-modal-title" class="about-modal-title">About GeoMap Indonesia 2.0</h3>
+        <button type="button" id="about-modal-close" class="about-modal-close" aria-label="Close modal">&times;</button>
+      </header>
+      <div class="about-modal-body">
+        <section class="about-section">
+          <h4>Mission</h4>
+          <p>GeoMap Indonesia 2.0 is an educational platform for exploring Indonesia's geological history, geological processes, paleontological heritage, and historical geohazards through an interactive map.</p>
+        </section>
+
+        <section class="about-section">
+          <h4>Vision</h4>
+          <p>Making Indonesia's geological and paleontological heritage more accessible, understandable, and connected to spatial and environmental context.</p>
+        </section>
+
+        <section class="about-section">
+          <h4>Educational Goals</h4>
+          <ul class="about-list">
+            <li>Introduce the diversity of Indonesia's geology.</li>
+            <li>Connect locations to the processes that formed them.</li>
+            <li>Introduce Indonesia's paleontological heritage.</li>
+            <li>Build basic understanding of geohazards.</li>
+            <li>Encourage map- and data-based geoscience literacy.</li>
+          </ul>
+        </section>
+
+        <section class="about-section">
+          <h4>Project Scope & Methodological Limitations</h4>
+          <ul class="about-list">
+            <li><strong>No Live Feeds:</strong> Not a live seismic or volcanic monitoring system.</li>
+            <li><strong>No Warning Alerts:</strong> Not a disaster warning system or emergency dispatch tool.</li>
+            <li><strong>Non-Official:</strong> Not a replacement for official government channels (PVMBG / BMKG / BNPB).</li>
+            <li><strong>Data Status:</strong> Data entries are historical, illustrative, or demo compilations.</li>
+            <li><strong>Coverage:</strong> Data coverage is actively growing under structured scientific audit.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-card">
+      <div class="spinner"></div>
+      <p class="loading-text">Loading Geological & Hazard Datasets...</p>
+    </div>
+  </div>
+
+  <!-- Leaflet.js Library (CDN) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- ES Module Entry Script -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

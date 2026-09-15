@@ -1,0 +1,313 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [98.87, 2.65]
+      },
+      "properties": {
+        "id": "geo_toba_caldera",
+        "name": "Toba Caldera",
+        "domain": "geology",
+        "feature_type": "volcano",
+        "description": "Lake Toba is the site of a massive supereruption (~74,000 BP) that created a 100 x 30 km caldera depression and reshaped global climate.",
+        "geological_process": "Caldera Volcanism",
+        "geological_age": "Late Pleistocene (~74,000 BP)",
+        "geological_period": "Quaternary",
+        "rock_type": "Ignimbrite, Rhyolite",
+        "why_it_matters": "Toba represents one of Earth's largest Quaternary supereruptions. Studying its ignimbrite deposits helps scientists understand how catastrophic volcanic events impact global climate and human evolutionary history.",
+        "data_status": "historical",
+        "source": "UNESCO Global Geopark Documentation & USGS",
+        "source_url": "https://en.unesco.org/global-geoparks/toba-caldera",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Point-based representation of caldera center"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.833, -7.45]
+      },
+      "properties": {
+        "id": "geo_sangiran",
+        "name": "Sangiran Early Man Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "One of the world's most important hominid fossil localities, yielding numerous Homo erectus fossil remains and Pleistocene vertebrate fossils.",
+        "geological_process": "Fluvial & Terrace Sedimentation",
+        "geological_age": "Pleistocene (~1.5 - 0.9 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo erectus",
+        "discovery_locality": "Sangiran Dome, Central Java",
+        "fossil_material": "Cranial fragments, mandibular fossils, Stegodon remains",
+        "paleoenvironment": "Open woodland floodplain & river basin",
+        "why_it_matters": "Sangiran provides a continuous 1.5-million-year sedimentary record containing over half of all known Homo erectus fossils worldwide, essential for understanding early human migration across Southeast Asia.",
+        "data_status": "historical",
+        "source": "UNESCO World Heritage List (Entry #593)",
+        "source_url": "https://whc.unesco.org/en/list/593/",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.446, -7.541]
+      },
+      "properties": {
+        "id": "geo_merapi",
+        "name": "Mount Merapi",
+        "domain": "geology",
+        "feature_type": "volcano",
+        "description": "An active stratovolcano situated on the Sunda Arc subduction zone, famous for dome-collapse pyroclastic density currents (nuées ardentes — fast-moving hot gas and volcanic debris flows).",
+        "geological_process": "Subduction Arc Volcanism",
+        "geological_age": "Holocene (~10,000 BP - Present)",
+        "geological_period": "Quaternary",
+        "rock_type": "Andesite, Basaltic Andesite",
+        "why_it_matters": "Merapi is one of the world's most active subduction volcanoes. Monitoring its dome-collapse pyroclastic flows provides critical scientific insights into volcanic hazard mitigation in densely populated volcanic arc settings.",
+        "data_status": "historical",
+        "source": "Smithsonian Institution Global Volcanism Program (Volcano #263250)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=263250",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107.65, -2.6]
+      },
+      "properties": {
+        "id": "geo_belitung_granite",
+        "name": "Belitung Granitic Boulders",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "Striking coastal granite tor formations formed by Early Triassic plutonic intrusion (underground magma cooling) followed by deep tropical weathering and coastal erosion.",
+        "geological_process": "Plutonic Magmatism & Weathering",
+        "geological_age": "Early Triassic (~213 Ma)",
+        "geological_period": "Triassic",
+        "rock_type": "Granite (Tanjung Pandan Granite)",
+        "why_it_matters": "The Tanjung Pandan granites reveal the Mesozoic magmatic assembly of Sundaland. Tropical tor weathering of these Triassic plutons illustrates how deep geochemical weathering shapes island landscapes over geological time.",
+        "data_status": "historical",
+        "source": "UNESCO Belitong Global Geopark Documentation",
+        "source_url": "https://en.unesco.org/global-geoparks/belitong",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [111.357, -7.371]
+      },
+      "properties": {
+        "id": "geo_trinil",
+        "name": "Trinil Paleontology Locality",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Historic fossil site along the Solo River where Eugène Dubois discovered the first Pithecanthropus erectus ('Java Man') fossils in 1891.",
+        "geological_process": "Fluvial & Terrace Sedimentation",
+        "geological_age": "Middle Pleistocene (~0.9 - 0.7 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Pithecanthropus erectus (Homo erectus)",
+        "discovery_locality": "Solo River banks at Trinil, Ngawi",
+        "fossil_material": "Skullcap (calotte), femur, fossilized shell artifacts",
+        "paleoenvironment": "Riverine forest & savanna floodplain",
+        "why_it_matters": "Trinil is the historic site of Eugène Dubois's 1891 discovery of 'Java Man' (Homo erectus), pivotal in establishing paleoanthropology as a rigorous scientific discipline.",
+        "data_status": "historical",
+        "source": "Dubois (1894) / Museum Geologi Bandung Reference Catalog",
+        "source_url": "https://whc.unesco.org/en/tentativelists/5983/",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [106.45, -7.18]
+      },
+      "properties": {
+        "id": "geo_ciletuh",
+        "name": "Ciletuh Geopark Metamorphic Complex",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "The oldest exposed rock formation in West Java, showcasing Cretaceous subduction melange (sheared tectonic mixture), ophiolites (ancient oceanic crust), and ultra-high-pressure metamorphic schist.",
+        "geological_process": "Subduction Accretion & Metamorphism",
+        "geological_age": "Cretaceous (~135 - 65 Ma)",
+        "geological_period": "Cretaceous",
+        "rock_type": "Schist, Peridotite, Serpentinite, Gabbro",
+        "why_it_matters": "Ciletuh exposes West Java's oldest rock basement, containing Cretaceous ophiolites and metamorphic schists uplifted from an ancient subduction trench, preserving evidence of early Indonesian arc-trench convergence.",
+        "data_status": "historical",
+        "source": "UNESCO Ciletuh-Palabuhanratu Global Geopark Documentation",
+        "source_url": "https://en.unesco.org/global-geoparks/ciletuh-palabuhanratu",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.457, -8.411]
+      },
+      "properties": {
+        "id": "geo_rinjani",
+        "name": "Mount Rinjani & Segara Anak Caldera",
+        "domain": "geology",
+        "feature_type": "volcano",
+        "description": "A active stratovolcano complex on Lombok featuring the 6 x 8.5 km Segara Anak caldera created by the catastrophic 1257 CE Samalas eruption.",
+        "geological_process": "Caldera Volcanism",
+        "geological_age": "Holocene (1257 CE eruption)",
+        "geological_period": "Quaternary",
+        "rock_type": "Rhyodacite, Andesite, Pumice Tuff",
+        "why_it_matters": "The 1257 Samalas (Rinjani) eruption was one of the largest explosive volcanic events of the last millennium, depositing widespread pumice across Lombok and driving a major global sulfur aerosol cooling event.",
+        "data_status": "historical",
+        "source": "Lavigne et al. (2013) PNAS / Smithsonian GVP (#264040)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=264040",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.68, -4.98]
+      },
+      "properties": {
+        "id": "geo_maros_karst",
+        "name": "Maros-Pangkep Tower Karst Complex",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "Spectacular tower karst landscape formed by Eocene-Miocene limestone uplift, underground drainage dissolution, and steep cliff erosion.",
+        "geological_process": "Carbonate Karst & Uplift",
+        "geological_age": "Eocene - Miocene (~40 - 15 Ma)",
+        "geological_period": "Neogene",
+        "rock_type": "Tonasa Limestone",
+        "why_it_matters": "Maros-Pangkep is one of the world's most spectacular tower karst landscapes, featuring tower-shaped limestone hills and ancient caves containing some of humanity's oldest documented rock art (~45,500 BP).",
+        "data_status": "historical",
+        "source": "UNESCO World Heritage Tentative List (#5981) / Aubert et al. (2014) Nature",
+        "source_url": "https://whc.unesco.org/en/tentativelists/5981/",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [112.953, -7.942]
+      },
+      "properties": {
+        "id": "geo_bromo",
+        "name": "Mount Bromo & Tengger Caldera",
+        "domain": "geology",
+        "feature_type": "volcano",
+        "description": "A active volcanic cone situated inside the 10 km wide Tengger Sand Sea caldera in East Java.",
+        "geological_process": "Caldera Volcanism",
+        "geological_age": "Late Pleistocene - Holocene (~45,000 BP)",
+        "geological_period": "Quaternary",
+        "rock_type": "Basaltic Andesite, Ash Tuff",
+        "why_it_matters": "The Tengger Caldera complex showcases nested caldera collapse within a vast Sand Sea, demonstrating continuous post-caldera cone building and active ash venting.",
+        "data_status": "historical",
+        "source": "Smithsonian Global Volcanism Program (#263280)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=263280",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [100.36, -0.3]
+      },
+      "properties": {
+        "id": "geo_semangko_sianok",
+        "name": "Great Sumatran Fault at Ngarai Sianok",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "A dramatic 100 m deep canyon cut into volcanic tuff along the active dextral strike-slip Great Sumatran Fault line near Bukittinggi.",
+        "geological_process": "Intraplate Fault Seismicity",
+        "geological_age": "Quaternary",
+        "geological_period": "Quaternary",
+        "rock_type": "Pumice Tuff, Alluvium",
+        "why_it_matters": "Ngarai Sianok is a dramatic canyon cut into volcanic tuff along the active Great Sumatran strike-slip fault system, illustrating dextral fault motion and rapid fluvial incision.",
+        "data_status": "historical",
+        "source": "Sieh & Natawidjaja (2000) JGR / Geological Survey of Indonesia",
+        "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2000JB900120",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [120.444, -8.533]
+      },
+      "properties": {
+        "id": "geo_liang_bua",
+        "name": "Flores Liang Bua Paleontology Cave",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Limestone karst cave on Flores where the type specimen LB1 of Homo floresiensis ('the Hobbit') was discovered in 2003.",
+        "geological_process": "Paleontological Fossilization",
+        "geological_age": "Late Pleistocene (~190,000 - 50,000 BP)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo floresiensis",
+        "discovery_locality": "Liang Bua Cave, Manggarai, Flores",
+        "fossil_material": "LB1 partial skeleton, cranial elements, Stegodon florensis insularis fossils",
+        "paleoenvironment": "Subtropical karst cave deposit & woodland valley",
+        "why_it_matters": "Liang Bua is the type locality of Homo floresiensis ('the Hobbit'), revealing unique island dwarfing in hominins and expanding our understanding of Late Pleistocene human diversity.",
+        "data_status": "historical",
+        "source": "Brown et al. (2004) Nature / Sutikna et al. (2016) Nature",
+        "source_url": "https://www.nature.com/articles/nature02999",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [130.0, -6.0]
+      },
+      "properties": {
+        "id": "geo_weber_deep",
+        "name": "Banda Arc & Weber Deep Basin",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "Earth's deepest non-trench oceanic depression (~7.2 km deep), formed by detachment faulting behind the 180-degree curving Banda subduction arc.",
+        "geological_process": "Subduction Accretion & Metamorphism",
+        "geological_age": "Neogene - Present (~15 Ma)",
+        "geological_period": "Neogene",
+        "rock_type": "Oceanic Crust, Serpentinized Peridotite",
+        "why_it_matters": "The Weber Deep is Earth's deepest non-trench oceanic basin (~7.2 km deep), formed by extreme detachment faulting behind the 180-degree curving Banda Arc subduction zone.",
+        "data_status": "historical",
+        "source": "Pownall et al. (2016) Geology / Geoscience Australia",
+        "source_url": "https://pubs.geoscienceworld.org/gsa/geology/article/44/11/947/194850/Extensional-detachment-faulting-in-the-Banda",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [115.2, -8.65]
+      },
+      "properties": {
+        "id": "geo_illustrative_example",
+        "name": "Bali Coastal Karst & Volcanic Terranes",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "Illustrative candidate site demonstrating geological terrain features and data validation for educational entries.",
+        "geological_process": "Carbonate Karst & Uplift",
+        "geological_age": "Quaternary",
+        "geological_period": "Quaternary",
+        "rock_type": "Limestone, Tuff",
+        "why_it_matters": "Illustrative educational record demonstrating how carbonate reef uplift and volcanic ash deposition interact to form coastal terranes.",
+        "data_status": "illustrative",
+        "source": "Illustrative educational example, not official data",
+        "last_updated": "2026-09-15"
+      }
+    }
+  ]
+}

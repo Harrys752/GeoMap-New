@@ -1,0 +1,131 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [105.423, -6.102]
+      },
+      "properties": {
+        "id": "haz_krakatau_1883",
+        "name": "1883 Krakatau Volcanic Eruption & Tsunami",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "Cataclysmic volcanic eruption of Krakatau culminating in caldera collapse, atmospheric shockwaves, global temperature reduction, and destructive tsunamis.",
+        "geological_process": "Caldera Volcanism",
+        "geological_age": "Historical (1883)",
+        "geological_period": "Quaternary",
+        "hazard_type": "volcanic",
+        "event_date": "1883-08-27",
+        "geological_explanation": "Paroxysmal eruption and collapse of the Krakatau volcanic island structure displaced huge ocean water masses, creating tsunamis over 30 meters high along Sunda Strait coastal shores.",
+        "why_it_matters": "The 1883 Krakatau eruption was one of the first globally recorded natural disasters. It demonstrated how volcanic caldera collapse can trigger ocean-wide tsunamis and global atmospheric cooling.",
+        "data_status": "historical",
+        "source": "Self (1884) / NOAA NCEI Historical Tsunami Database",
+        "source_url": "https://www.ngdc.noaa.gov/hazard/tsunami/",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Point-based representation of Krakatau island epicenter"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [95.98, 3.3]
+      },
+      "properties": {
+        "id": "haz_banda_aceh_2004",
+        "name": "2004 Indian Ocean Earthquake & Tsunami",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "A massive Mw 9.1 megathrust earthquake off northern Sumatra that generated catastrophic ocean-wide tsunamis affecting coastal Indian Ocean communities.",
+        "geological_process": "Megathrust Seismicity & Tsunami",
+        "geological_age": "Historical (2004)",
+        "geological_period": "Quaternary",
+        "hazard_type": "seismic",
+        "event_date": "2004-12-26",
+        "geological_explanation": "A 1,300 km long seafloor fault rupture along the Sunda Megathrust subduction zone rapidly uplifted ocean floor sediment by several meters, transferring immense energy into ocean waves.",
+        "why_it_matters": "The 2004 Sumatra-Andaman earthquake reshaped modern seismology and tsunami science, demonstrating the devastating energy release of subduction megathrust ruptures and driving the creation of global tsunami warning networks.",
+        "data_status": "historical",
+        "source": "USGS Earthquake Hazards Program (Event ID official20041226005853450_30)",
+        "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/official20041226005853450_30",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.44, -7.96]
+      },
+      "properties": {
+        "id": "haz_jogja_2006",
+        "name": "2006 Yogyakarta Earthquake",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "A shallow Mw 6.3 intraplate strike-slip earthquake centered south of Yogyakarta near the Opak Fault zone, causing major structural damage in Bantul.",
+        "geological_process": "Intraplate Fault Seismicity",
+        "geological_age": "Historical (2006)",
+        "geological_period": "Quaternary",
+        "hazard_type": "seismic",
+        "event_date": "2006-05-27",
+        "geological_explanation": "Tectonic stress release along a shallow strike-slip fault system produced severe high-frequency ground motion across soft volcanic sediment and alluvial soils of the Opak River basin.",
+        "why_it_matters": "The 2006 Yogyakarta earthquake highlighted the vulnerability of volcanic sediment basins to shallow intraplate fault rupture, emphasizing the importance of microzonation and earthquake-resistant engineering.",
+        "data_status": "historical",
+        "source": "USGS Earthquake Hazards Program (Event ID usp000ekfv)",
+        "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ekfv",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [121.93, -8.48]
+      },
+      "properties": {
+        "id": "haz_flores_1992",
+        "name": "1992 Flores Earthquake & Tsunami",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "A major Mw 7.8 back-arc subduction thrust earthquake off northern Flores that triggered destructive coastal tsunamis up to 26 meters high.",
+        "geological_process": "Megathrust Seismicity & Tsunami",
+        "geological_age": "Historical (1992)",
+        "geological_period": "Quaternary",
+        "hazard_type": "seismic",
+        "event_date": "1992-12-12",
+        "geological_explanation": "A shallow back-arc thrust fault rupture along the Flores Thrust zone displaced sea floor water, producing catastrophic localized tsunami runup along the Maumere coastline.",
+        "why_it_matters": "The 1992 Flores event demonstrated that back-arc thrust faulting north of the Sunda Arc can generate localized megathrust-scale earthquakes and severe coastal tsunamis.",
+        "data_status": "historical",
+        "source": "USGS Earthquake Hazards Program / Tsuji et al. (1995)",
+        "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0005j81",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.84, -0.89]
+      },
+      "properties": {
+        "id": "haz_palu_2018",
+        "name": "2018 Palu Earthquake, Liquefaction & Tsunami",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "A Mw 7.5 strike-slip earthquake along the Palu-Koro Fault that triggered severe soil liquefaction and bay-confined submarine landslide tsunamis.",
+        "geological_process": "Intraplate Fault Seismicity",
+        "geological_age": "Historical (2018)",
+        "geological_period": "Quaternary",
+        "hazard_type": "seismic",
+        "event_date": "2018-09-28",
+        "geological_explanation": "Strike-slip faulting caused extreme shaking in saturated alluvial sediments leading to flow liquefaction, while coastal submarine slope failures displaced Palu Bay waters.",
+        "why_it_matters": "The 2018 Palu event highlighted complex multi-hazard interactions, where strike-slip faulting caused severe urban liquefaction and bay-confined submarine landslide tsunamis.",
+        "data_status": "historical",
+        "source": "USGS Earthquake Hazards Program / BNPB",
+        "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000h4p4",
+        "last_updated": "2026-09-15"
+      }
+    }
+  ]
+}
