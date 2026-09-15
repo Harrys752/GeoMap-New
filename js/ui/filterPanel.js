@@ -50,7 +50,12 @@ export function initFilterPanel(allFeatures, onFilterChange) {
       if (counts.domain[d] !== undefined) counts.domain[d]++;
       if (t) counts.featureType[t] = (counts.featureType[t] || 0) + 1;
       if (proc) counts.process[proc] = (counts.process[proc] || 0) + 1;
-      if (per) counts.period[per] = (counts.period[per] || 0) + 1;
+
+      if (d === "hazard" || t === "historical_event") {
+        counts.period["Historical"] = (counts.period["Historical"] || 0) + 1;
+      } else if (per) {
+        counts.period[per] = (counts.period[per] || 0) + 1;
+      }
     }
 
     return counts;
@@ -155,12 +160,26 @@ export function initFilterPanel(allFeatures, onFilterChange) {
 
   // 4. Render Geological Age / Period Explorer Dropdown (only periods with > 0 dataset entries)
   if (periodSelectContainer) {
-    const periods = Object.keys(datasetCounts.period).sort();
+    const periodOrder = ["Triassic", "Cretaceous", "Neogene", "Quaternary", "Historical"];
+    const periodLabels = {
+      Triassic: "Triassic",
+      Cretaceous: "Cretaceous",
+      Neogene: "Neogene",
+      Quaternary: "Quaternary",
+      Historical: "Historical Hazards"
+    };
+
+    const presentPeriods = periodOrder.filter(per => (datasetCounts.period[per] || 0) > 0);
+    Object.keys(datasetCounts.period).forEach(per => {
+      if (!presentPeriods.includes(per) && datasetCounts.period[per] > 0) {
+        presentPeriods.push(per);
+      }
+    });
 
     periodSelectContainer.innerHTML = `
-      <option value="all">All Geological Periods (${periods.length})</option>
-      ${periods.map(per => `
-        <option value="${escapeHtml(per)}">${escapeHtml(per)} (${datasetCounts.period[per]})</option>
+      <option value="all">All Geological Periods (${presentPeriods.length})</option>
+      ${presentPeriods.map(per => `
+        <option value="${escapeHtml(per)}">${escapeHtml(periodLabels[per] || per)} (${datasetCounts.period[per]})</option>
       `).join("")}
     `;
 
@@ -283,9 +302,15 @@ export function filterByDomainAndType(features, filterState) {
       return false;
     }
 
-    // Geological Period check
-    if (period && period !== "all" && props.geological_period !== period) {
-      return false;
+    // Geological Period / Historical Track check
+    if (period && period !== "all") {
+      if (period === "Historical") {
+        if (props.domain !== "hazard" && props.feature_type !== "historical_event") {
+          return false;
+        }
+      } else if (props.geological_period !== period) {
+        return false;
+      }
     }
 
     return true;

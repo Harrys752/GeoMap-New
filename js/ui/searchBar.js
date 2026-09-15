@@ -50,13 +50,15 @@ export function initSearchBar(inputId = "search-input", clearBtnId = "search-cle
  */
 export function filterBySearchQuery(features, query) {
   if (!query) return features;
+  const q = String(query).trim().toLowerCase();
+  if (!q) return features;
 
   return features.filter(f => {
     const props = f.properties || {};
     const nameStr = (props.name || "").toLowerCase();
-    const typeStr = (props.feature_type || "").replace("_", " ").toLowerCase();
+    const typeStr = (props.feature_type || "").replace(/_/g, " ").toLowerCase();
     const descStr = (props.description || "").toLowerCase();
 
-    return nameStr.includes(query) || typeStr.includes(query) || descStr.includes(query);
+    return nameStr.includes(q) || typeStr.includes(q) || descStr.includes(q);
   });
 }

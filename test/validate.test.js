@@ -5,6 +5,7 @@
 
 import assert from "node:assert";
 import { validateFeature, validateDataset } from "../js/utils/validate.js";
+import { filterByDomainAndType } from "../js/ui/filterPanel.js";
 
 console.log("=================================================");
 console.log("Running GeoMap Indonesia 2.0 Validation Test Suite");
@@ -136,6 +137,39 @@ runTest("Invalid Domain / Feature Type / Data Status Rejection", () => {
   assert.strictEqual(res.errors.length, 3, "Should report 3 separate enum errors");
 });
 
+// 7. Historical Hazards Timeline Selection Filter Test
+runTest("Historical Hazards Timeline Selection Filter Test", () => {
+  const sampleFeatures = [
+    {
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [105.42, -6.1] },
+      properties: { id: "haz_1883", domain: "hazard", feature_type: "historical_event", geological_period: "Quaternary" }
+    },
+    {
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [95.98, 3.3] },
+      properties: { id: "haz_2004", domain: "hazard", feature_type: "historical_event", geological_period: "Quaternary" }
+    },
+    {
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [106.45, -7.18] },
+      properties: { id: "geo_ciletuh", domain: "geology", feature_type: "site", geological_period: "Cretaceous" }
+    }
+  ];
+
+  const filterState = {
+    domain: "all",
+    featureTypes: new Set(["volcano", "paleontology_site", "site", "historical_event"]),
+    process: "all",
+    period: "Historical"
+  };
+
+  const filtered = filterByDomainAndType(sampleFeatures, filterState);
+  assert.strictEqual(filtered.length, 2, "Should return the 2 historical hazard features");
+  assert.strictEqual(filtered.every(f => f.properties.domain === "hazard"), true, "All filtered features must be hazard domain");
+  assert.strictEqual(sampleFeatures[0].properties.geological_period, "Quaternary", "geological_period schema must remain Quaternary");
+});
+
 console.log("\n-------------------------------------------------");
 console.log(`Test Suite Finished: ${passedTests}/${totalTests} Tests Passed.`);
 console.log("-------------------------------------------------");
@@ -143,3 +177,4 @@ console.log("-------------------------------------------------");
 if (passedTests !== totalTests) {
   process.exit(1);
 }
+
