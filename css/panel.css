@@ -901,3 +901,157 @@
     padding: 0.3rem 0.5rem;
   }
 }
+
+/* ==========================================================================
+   Phase 7 — Data Confidence & Transparency Layer Styles
+   ========================================================================== */
+
+/* Confidence Badges */
+.badge-confidence {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.badge-confidence-verified {
+  background-color: rgba(46, 125, 50, 0.2);
+  color: #81c784;
+  border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.badge-confidence-partially-verified {
+  background-color: rgba(230, 81, 0, 0.2);
+  color: #ffb74d;
+  border: 1px solid rgba(255, 152, 0, 0.4);
+}
+
+.badge-confidence-needs-review {
+  background-color: rgba(245, 124, 0, 0.2);
+  color: #ffe082;
+  border: 1px solid rgba(255, 193, 7, 0.4);
+}
+
+.badge-confidence-invalid {
+  background-color: rgba(198, 40, 40, 0.2);
+  color: #ef9a9a;
+  border: 1px solid rgba(244, 67, 54, 0.4);
+}
+
+.badge-confidence-missing {
+  background-color: rgba(117, 117, 117, 0.2);
+  color: #e0e0e0;
+  border: 1px solid rgba(158, 158, 158, 0.4);
+}
+
+.badge-confidence-unknown {
+  background-color: rgba(97, 97, 97, 0.2);
+  color: #bdbdbd;
+  border: 1px solid rgba(117, 117, 117, 0.4);
+}
+
+/* Detail Panel Data Confidence Card */
+.detail-confidence-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.confidence-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confidence-card-explanation {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.confidence-card-disclaimer {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
+  background-color: var(--bg-tertiary);
+  padding: 0.45rem 0.6rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--border-color);
+}
+
+.confidence-audit-link {
+  font-size: 0.75rem;
+  color: #64b5f6;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  align-self: flex-start;
+}
+
+.confidence-audit-link:hover {
+  text-decoration: underline;
+  color: #90caf9;
+}
+
+/* Transparency Section in About Modal */
+.section-transparency {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.transparency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.transparency-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.65rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.transparency-card-count {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.transparency-card-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.transparency-disclaimer-banner {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid #ffb74d;
+  padding: 0.6rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+

@@ -106,6 +106,14 @@
         </select>
       </section>
 
+      <!-- Phase 7: Data Confidence & Verification Filter -->
+      <section class="control-section confidence-filter-section">
+        <label for="confidence-filter-select" class="section-label">Data Confidence Level</label>
+        <select id="confidence-filter-select" class="explorer-select" aria-label="Filter dataset by source verification confidence status">
+          <!-- Dynamically populated -->
+        </select>
+      </section>
+
       <!-- Map Symbol Legend Component -->
       <section class="control-section legend-section">
         <span class="section-label">Map Symbol Legend</span>
@@ -193,6 +201,14 @@
             <li>Build basic understanding of geohazards.</li>
             <li>Encourage map- and data-based geoscience literacy.</li>
           </ul>
+        </section>
+
+        <section class="about-section section-transparency">
+          <h4>Data Confidence & Transparency Summary</h4>
+          <p class="about-transparency-lead">Scientific source verification for GeoMap dataset entries is an active, transparent process. Statuses reflect internal audit verification stages rather than third-party agency certifications.</p>
+          <div id="transparency-summary-container" class="transparency-summary-container">
+            <!-- Dynamically populated at render time -->
+          </div>
         </section>
 
         <section class="about-section">

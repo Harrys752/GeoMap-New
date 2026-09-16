@@ -11,9 +11,11 @@ import {
   matchesCanonicalFilter,
   sanitizeFilterStateForDomain,
   matchesEvidenceCategory,
+  matchesConfidenceStatus,
   isGeologicalPeriod,
   isHistoricalHazard
 } from "../data/queryHelper.js";
+import { getConfidenceMetadata } from "./confidenceLabels.js";
 
 const FEATURE_TYPE_LABELS = {
   volcano: "Volcanoes",
@@ -33,6 +35,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
   const processSelectContainer = document.getElementById("process-filter-select");
   const periodSelectContainer = document.getElementById("period-filter-select");
   const evidenceSelectContainer = document.getElementById("evidence-filter-select");
+  const confidenceSelectContainer = document.getElementById("confidence-filter-select");
   const activeCountBadge = document.getElementById("active-count-badge");
   const processCardContainer = document.getElementById("process-card-display");
 
@@ -41,6 +44,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
   let selectedProcess = "all";
   let selectedPeriod = "all";
   let selectedEvidenceType = "all";
+  let selectedConfidenceStatus = "all";
 
   // Compute canonical dataset counts using centralized helper module
   const datasetCounts = computeCanonicalDatasetCounts(allFeatures);
@@ -214,7 +218,26 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     });
   }
 
-  // 6. Render Educational Process Card when a Process is Selected
+  // 6. Render Data Confidence Status Explorer Dropdown (only statuses present in dataset)
+  if (confidenceSelectContainer) {
+    const presentStatuses = Object.keys(datasetCounts.confidenceStatus)
+      .filter(st => datasetCounts.confidenceStatus[st] > 0);
+
+    confidenceSelectContainer.innerHTML = `
+      <option value="all">All Confidence Levels (${presentStatuses.length})</option>
+      ${presentStatuses.map(st => {
+        const meta = getConfidenceMetadata(st);
+        return `<option value="${escapeHtml(st)}">${escapeHtml(meta.label)} (${datasetCounts.confidenceStatus[st]})</option>`;
+      }).join("")}
+    `;
+
+    confidenceSelectContainer.addEventListener("change", (e) => {
+      selectedConfidenceStatus = e.target.value;
+      triggerChange();
+    });
+  }
+
+  // 7. Render Educational Process Card when a Process is Selected
   function renderProcessCard(processName) {
     if (!processCardContainer) return;
 
@@ -261,7 +284,8 @@ export function initFilterPanel(allFeatures, onFilterChange) {
         featureTypes: new Set(selectedFeatureTypes),
         process: selectedProcess,
         period: selectedPeriod,
-        evidenceType: selectedEvidenceType
+        evidenceType: selectedEvidenceType,
+        confidenceStatus: selectedConfidenceStatus
       });
     }
   }
@@ -277,6 +301,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     selectedProcess = "all";
     selectedPeriod = "all";
     selectedEvidenceType = "all";
+    selectedConfidenceStatus = "all";
 
     if (domainButtonsContainer) {
       domainButtonsContainer.querySelectorAll(".filter-btn").forEach(b => {
@@ -287,6 +312,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     if (processSelectContainer) processSelectContainer.value = "all";
     if (periodSelectContainer) periodSelectContainer.value = "all";
     if (evidenceSelectContainer) evidenceSelectContainer.value = "all";
+    if (confidenceSelectContainer) confidenceSelectContainer.value = "all";
 
     renderProcessCard("all");
     renderFeatureTypeCheckboxes();

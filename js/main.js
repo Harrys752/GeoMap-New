@@ -9,6 +9,8 @@ import { initSearchBar, filterBySearchQuery } from "./ui/searchBar.js";
 import { initFilterPanel, filterByDomainAndType } from "./ui/filterPanel.js";
 import { initDetailPanel } from "./ui/detailPanel.js";
 import { initTimeline } from "./ui/timeline.js";
+import { computeCanonicalDatasetCounts } from "./data/queryHelper.js";
+import { getConfidenceMetadata } from "./ui/confidenceLabels.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const loadingOverlay = document.getElementById("loading-overlay");
@@ -22,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let currentMarkerGroup = null;
   let currentMarkerMap = new Map();
   let searchSearchQuery = "";
-  let currentFilterState = { domain: "all", featureTypes: new Set(), process: "all", period: "all", evidenceType: "all" };
+  let currentFilterState = { domain: "all", featureTypes: new Set(), process: "all", period: "all", evidenceType: "all", confidenceStatus: "all" };
   let timelineInstance = null;
 
   // 1. Initialize Map
@@ -71,8 +73,47 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  function renderTransparencySummary() {
+    const container = document.getElementById("transparency-summary-container");
+    if (!container || !allFeatures || allFeatures.length === 0) return;
+
+    const datasetCounts = computeCanonicalDatasetCounts(allFeatures);
+    const total = datasetCounts.total || allFeatures.length;
+    const statusCounts = datasetCounts.confidenceStatus || {};
+
+    const activeStatuses = Object.keys(statusCounts).filter(st => statusCounts[st] > 0);
+
+    container.innerHTML = `
+      <div class="transparency-summary-card">
+        <div class="transparency-summary-header">
+          <span class="transparency-total-badge">Canonical Dataset Total: ${total} records</span>
+        </div>
+        <div class="transparency-status-grid">
+          ${activeStatuses.map(st => {
+            const count = statusCounts[st];
+            const pct = Math.round((count / total) * 100);
+            const meta = getConfidenceMetadata(st);
+            return `
+              <div class="transparency-status-item">
+                <div class="transparency-status-badge-row">
+                  <span class="confidence-badge-box ${escapeHtml(meta.badgeClass)}">
+                    <span class="confidence-badge-icon" aria-hidden="true">${escapeHtml(meta.icon)}</span>
+                    <span class="confidence-badge-label">${escapeHtml(meta.label)}</span>
+                  </span>
+                  <span class="transparency-count">${count} (${pct}%)</span>
+                </div>
+                <p class="transparency-status-desc">${escapeHtml(meta.explanation)}</p>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </div>
+    `;
+  }
+
   function openAboutModal() {
     if (aboutModal) {
+      renderTransparencySummary();
       aboutModal.classList.add("open");
       aboutModal.setAttribute("aria-hidden", "false");
     }

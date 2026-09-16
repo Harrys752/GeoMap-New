@@ -101,7 +101,30 @@ export function matchesEvidenceCategory(feature, categoryKey) {
 }
 
 /**
- * Computes canonical dataset counts across domains, feature types, processes, periods, and evidence categories.
+ * Predicate: Checks if a feature matches a Data Confidence status filter.
+ * Fail-safe handling for missing, null, undefined, whitespace, or unknown status strings.
+ * @param {object} feature - GeoJSON feature
+ * @param {string} confidenceKey - "verified" | "partially_verified" | "needs_review" | "invalid" | "missing" | "all"
+ * @returns {boolean}
+ */
+export function matchesConfidenceStatus(feature, confidenceKey) {
+  if (!feature || !confidenceKey || confidenceKey === "all") return true;
+
+  const raw = feature?.properties?.source_verification_status;
+  const normalized = (typeof raw === "string" && raw.trim().length > 0) ? raw.trim().toLowerCase() : "needs_review";
+
+  const knownStatuses = ["verified", "partially_verified", "needs_review", "invalid", "missing"];
+  const safeStatus = knownStatuses.includes(normalized) ? normalized : "needs_review";
+
+  if (confidenceKey === "needs_review") {
+    return safeStatus === "needs_review" || !knownStatuses.includes(normalized);
+  }
+
+  return safeStatus === confidenceKey;
+}
+
+/**
+ * Computes canonical dataset counts across domains, feature types, processes, periods, evidence categories, and confidence statuses.
  * @param {object[]} features - Array of GeoJSON features
  * @returns {object} Canonical dataset counts object
  */
@@ -125,6 +148,13 @@ export function computeCanonicalDatasetCounts(features = []) {
       "Geological Structure": 0,
       "Historical Record": 0,
       Uncategorized: 0
+    },
+    confidenceStatus: {
+      verified: 0,
+      partially_verified: 0,
+      needs_review: 0,
+      invalid: 0,
+      missing: 0
     }
   };
 
@@ -165,6 +195,12 @@ export function computeCanonicalDatasetCounts(features = []) {
         counts.evidenceType[cat] = 1;
       }
     }
+
+    // Data Confidence status count (fail-safe handling for missing/unknown status)
+    const rawStatus = props.source_verification_status;
+    const normStatus = (typeof rawStatus === "string" && rawStatus.trim().length > 0) ? rawStatus.trim().toLowerCase() : "needs_review";
+    const safeStatus = (counts.confidenceStatus[normStatus] !== undefined) ? normStatus : "needs_review";
+    counts.confidenceStatus[safeStatus]++;
   }
 
   return counts;
@@ -173,13 +209,13 @@ export function computeCanonicalDatasetCounts(features = []) {
 /**
  * Evaluates whether a feature matches all active filter criteria.
  * @param {object} feature - GeoJSON feature
- * @param {object} filterState - { domain, featureTypes, process, period, evidenceType }
+ * @param {object} filterState - { domain, featureTypes, process, period, evidenceType, confidenceStatus }
  * @returns {boolean}
  */
 export function matchesCanonicalFilter(feature, filterState) {
   if (!filterState || !feature) return true;
   const props = feature.properties || {};
-  const { domain, featureTypes, process, period, evidenceType } = filterState;
+  const { domain, featureTypes, process, period, evidenceType, confidenceStatus } = filterState;
 
   // 1. Domain Check
   if (domain && domain !== "all") {
@@ -207,12 +243,17 @@ export function matchesCanonicalFilter(feature, filterState) {
     return false;
   }
 
+  // 6. Data Confidence Status Check (using shared predicate)
+  if (!matchesConfidenceStatus(feature, confidenceStatus)) {
+    return false;
+  }
+
   return true;
 }
 
 /**
  * Sanitizes filter state when switching domain (e.g. "geology" -> "hazard" or vice versa).
- * Automatically resets active process, period, or evidence filters to "all" if they have 0 matching records in the target domain.
+ * Automatically resets active process, period, evidence, or confidence filters to "all" if they have 0 matching records in the target domain.
  * 
  * @param {object} currentFilterState - Existing filter state
  * @param {string} targetDomain - New domain ("geology", "hazard", or "all")
@@ -277,6 +318,15 @@ export function sanitizeFilterStateForDomain(currentFilterState, targetDomain, a
     if (!hasMatch) {
       sanitizedState.evidenceType = "all";
       resetFields.push("Evidence Category");
+    }
+  }
+
+  // Check Data Confidence Status filter
+  if (sanitizedState.confidenceStatus && sanitizedState.confidenceStatus !== "all") {
+    const hasMatch = domainFeatures.some(f => matchesConfidenceStatus(f, sanitizedState.confidenceStatus));
+    if (!hasMatch) {
+      sanitizedState.confidenceStatus = "all";
+      resetFields.push("Data Confidence");
     }
   }
 

@@ -6,6 +6,7 @@
 import { adaptGeologyFeature } from "../data/adapters/geologyAdapter.js";
 import { adaptHazardFeature } from "../data/adapters/hazardAdapter.js";
 import { EVIDENCE_EDUCATIONAL_GUIDE } from "../data/evidenceGuideData.js";
+import { getConfidenceMetadata } from "./confidenceLabels.js";
 
 /**
  * Initializes the detail panel drawer.
@@ -66,7 +67,7 @@ export function initDetailPanel(panelId = "detail-panel", closeBtnId = "detail-c
  * @param {object} data - Normalized adapter data object
  * @returns {string} HTML markup
  */
-function renderDetailContent(data) {
+export function renderDetailContent(data) {
   const domainClass = data.domain === "geology" ? "domain-geology" : "domain-hazard";
   const statusBadgeClass = `badge-status badge-${data.dataStatus}`;
   const isIllustrative = data.sourceType === "illustrative" || data.dataStatus === "illustrative";
@@ -199,18 +200,31 @@ function renderDetailContent(data) {
     </div>
   ` : "";
 
-  const sourceTypeBadge = data.sourceType ? `
+  const sourceTypeLabel = formatSourceTypeLabel(data.sourceType);
+  const sourceTypeBadge = `
     <div class="field-item">
-      <dt>Source Category</dt>
-      <dd><span class="badge-source-type">${escapeHtml(formatSourceTypeLabel(data.sourceType))}</span></dd>
+      <dt>Source Classification</dt>
+      <dd>${escapeHtml(sourceTypeLabel)}</dd>
     </div>
-  ` : "";
+  `;
 
-  const verifStatusClass = `badge-status badge-${data.sourceVerificationStatus || 'needs_review'}`;
+  const confidenceMeta = getConfidenceMetadata(data.sourceVerificationStatus);
   const verifStatusBadge = `
-    <div class="field-item">
-      <dt>Verification Status</dt>
-      <dd><span class="${verifStatusClass}">${escapeHtml(formatVerificationStatusLabel(data.sourceVerificationStatus))}</span></dd>
+    <div class="field-item field-full confidence-card-wrap">
+      <dt>Data Confidence Status</dt>
+      <dd>
+        <div class="confidence-badge-box ${escapeHtml(confidenceMeta.badgeClass)}">
+          <span class="confidence-badge-icon" aria-hidden="true">${escapeHtml(confidenceMeta.icon)}</span>
+          <span class="confidence-badge-label">${escapeHtml(confidenceMeta.label)}</span>
+        </div>
+        <p class="confidence-explanation">${escapeHtml(confidenceMeta.explanation)}</p>
+        <p class="confidence-disclaimer">${escapeHtml(confidenceMeta.disclaimer)}</p>
+        <div class="confidence-audit-link-wrap">
+          <a href="docs/phase6-record-level-source-audit.md" target="_blank" rel="noopener noreferrer" class="confidence-audit-link">
+            View Record-Level Source Audit Document &rarr;
+          </a>
+        </div>
+      </dd>
     </div>
   `;
 
