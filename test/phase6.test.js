@@ -17,6 +17,7 @@ import {
 import { filterByDomainAndType } from "../js/ui/filterPanel.js";
 import { validateFeature } from "../js/utils/validate.js";
 import { ALLOWED_EVIDENCE_TYPES } from "../js/data/schema.js";
+import { detectSourceMismatchFlags, isVerificationValid } from "../js/utils/diagnostic.js";
 
 console.log("=================================================");
 console.log("Running GeoMap Indonesia 2.0 Phase 6 Verification Test Suite");
@@ -218,8 +219,8 @@ runTest("Gunung Ciremai Field-by-Field Audit Test", () => {
   assert.strictEqual(p.geological_period, "Quaternary");
   assert.strictEqual(p.geological_process, "Volcanism");
   assert.strictEqual(p.evidence_type, "Landform");
-  assert.strictEqual(p.source_verification_status, "partially_verified");
-  assert.strictEqual(p.source_url, "https://vsi.esdm.go.id/index.php/gunungapi/data-dasar-gunungapi/538-g-ciremai");
+  assert.strictEqual(p.source_verification_status, "needs_review");
+  assert.strictEqual(p.source_url, "https://vsi.esdm.go.id");
 
   // Coordinate check: [108.406, -6.892] is [longitude, latitude]
   const [lng, lat] = ciremai.geometry.coordinates;
@@ -228,6 +229,59 @@ runTest("Gunung Ciremai Field-by-Field Audit Test", () => {
 
   const valRes = validateFeature(ciremai, new Set());
   assert.strictEqual(valRes.valid, true, `Gunung Ciremai failed validation: ${valRes.errors.join("; ")}`);
+});
+
+// 11. Komodo Source Fixture & Borobudur Mismatch Rejection Test (Prompt Section 8)
+runTest("Komodo Source Fixture & Borobudur Mismatch Rejection Test", () => {
+  const komodoFixture = JSON.parse(readFileSync("./test/fixtures/komodo_source_fixture.json", "utf8"));
+  const borobudurFixture = JSON.parse(readFileSync("./test/fixtures/borobudur_source_fixture.json", "utf8"));
+  const komodoFeature = allFeatures.find(f => f.properties.id === "geo_komodo_volcanic");
+
+  assert.ok(komodoFeature, "Komodo feature must exist");
+  assert.strictEqual(komodoFeature.properties.source_url, "https://whc.unesco.org/en/list/609");
+  assert.strictEqual(komodoFeature.properties.source_verification_status, "verified");
+
+  // 1. Verify correct Komodo fixture (#609) passes identity check
+  assert.strictEqual(komodoFixture.page_title.includes("Komodo National Park"), true);
+  assert.strictEqual(komodoFixture.excerpt.includes("Komodo dragons"), true);
+  const komodoFlags = detectSourceMismatchFlags(komodoFeature, komodoFixture);
+  assert.strictEqual(komodoFlags.length, 0, "Correct Komodo fixture must yield zero mismatch flags");
+  assert.strictEqual(isVerificationValid(komodoFeature, komodoFixture), true);
+
+  // 2. Verify wrong Borobudur fixture (#592) FAILS loudly when checked against Komodo
+  assert.strictEqual(borobudurFixture.page_title.includes("Borobudur"), true);
+  const borobudurFlags = detectSourceMismatchFlags(komodoFeature, borobudurFixture);
+  assert.ok(borobudurFlags.includes("wrong_site_borobudur"), "Borobudur response must trigger wrong_site_borobudur flag");
+  assert.strictEqual(isVerificationValid(komodoFeature, borobudurFixture), false, "Borobudur fixture must fail verification for Komodo");
+});
+
+// 12. Wrong-Location Historical Mismatch Regression Suite
+runTest("Wrong-Location Historical Mismatch Regression Suite", () => {
+  // Flores 1992 (Must be Maumere, NOT Nanning China usp0005j81)
+  const flores = allFeatures.find(f => f.properties.id === "haz_flores_1992");
+  assert.strictEqual(flores.properties.source_url.includes("usp0005j81"), false, "Flores 1992 must NOT contain China event ID usp0005j81");
+  assert.strictEqual(flores.properties.source_url.includes("usp0005j5a"), true, "Flores 1992 must contain Maumere event ID usp0005j5a");
+
+  // Yogyakarta 2006 (Must be Bantul, NOT Baculin Philippines usp000ekfv)
+  const jogja = allFeatures.find(f => f.properties.id === "haz_jogja_2006");
+  assert.strictEqual(jogja.properties.source_url.includes("usp000ekfv"), false, "Jogja 2006 must NOT contain Philippines event ID usp000ekfv");
+  assert.strictEqual(jogja.properties.source_url.includes("usp000ej1c"), true, "Jogja 2006 must contain Bantul event ID usp000ej1c");
+
+  // Bromo (Must be Tengger Caldera VN 263270, NOT Kelud VN 263280)
+  const bromo = allFeatures.find(f => f.properties.id === "geo_bromo");
+  assert.strictEqual(bromo.properties.source_url.includes("263280"), false, "Bromo must NOT point to Kelud VN 263280");
+  assert.strictEqual(bromo.properties.source_url.includes("263270"), true, "Bromo must point to Tengger Caldera VN 263270");
+
+  // Rinjani (Must be Rinjani VN 264030, NOT Tambora VN 264040)
+  const rinjani = allFeatures.find(f => f.properties.id === "geo_rinjani");
+  assert.strictEqual(rinjani.properties.source_url.includes("264040"), false, "Rinjani must NOT point to Tambora VN 264040");
+  assert.strictEqual(rinjani.properties.source_url.includes("264030"), true, "Rinjani must point to Rinjani VN 264030");
+
+  // Komodo (Must be Komodo National Park #609, NOT Kaziranga #337 or Borobudur #592)
+  const komodo = allFeatures.find(f => f.properties.id === "geo_komodo_volcanic");
+  assert.strictEqual(komodo.properties.source_url.includes("/list/337"), false, "Komodo must NOT point to Kaziranga India #337");
+  assert.strictEqual(komodo.properties.source_url.includes("/list/592"), false, "Komodo must NOT point to Borobudur #592");
+  assert.strictEqual(komodo.properties.source_url.includes("/list/609"), true, "Komodo must point to Komodo National Park #609");
 });
 
 console.log("\n-------------------------------------------------");

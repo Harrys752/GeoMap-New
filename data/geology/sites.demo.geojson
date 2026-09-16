@@ -553,10 +553,10 @@
         "evidence_significance": "Volcanic breccia layers interbedded with marine limestone terraces support the interpretation of island arc volcanism accompanied by regional tectonic uplift.",
         "why_it_matters": "Komodo exposes ancient volcanic arc basement rocks underlying unique island ecosystems in the Flores Sea arc-trench gap.",
         "data_status": "historical",
-        "source": "UNESCO Komodo National Park Documentation (#592)",
-        "source_url": "https://whc.unesco.org/en/list/592/",
-        "source_type": "educational_interpretation",
-        "source_verification_status": "partially_verified",
+        "source": "UNESCO Komodo National Park Documentation (#609)",
+        "source_url": "https://whc.unesco.org/en/list/609",
+        "source_type": "institutional_record",
+        "source_verification_status": "verified",
         "record_compilation_date": "2026-09-16",
         "last_updated": "2026-09-16"
       }
@@ -582,10 +582,10 @@
         "evidence_significance": "Cone geometry, summit crater, and volcanic deposits provide geomorphological and volcanic landform evidence.",
         "why_it_matters": "Gunung Ciremai is the highest volcanic peak in West Java, providing an active Quaternary stratovolcano site for studying Sunda Arc magmatism and hazard monitoring.",
         "data_status": "historical",
-        "source": "Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) - Laporan Kebencanaan Gunung Ciremai",
-        "source_url": "https://vsi.esdm.go.id/index.php/gunungapi/data-dasar-gunungapi/538-g-ciremai",
+        "source": "Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG) - ESDM Portal",
+        "source_url": "https://vsi.esdm.go.id",
         "source_type": "government_survey",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "needs_review",
         "record_compilation_date": "2026-09-16",
         "last_updated": "2026-09-16",
         "geometry_note": "Point representation of Mount Ciremai volcano summit (108.406 E, 6.892 S)"

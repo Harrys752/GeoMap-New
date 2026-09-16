@@ -28,7 +28,7 @@
         "source": "Self (1884) / NOAA NCEI Historical Tsunami Database",
         "source_url": "https://www.ngdc.noaa.gov/hazard/tsunami/",
         "source_type": "institutional_record",
-        "source_verification_status": "verified",
+        "source_verification_status": "needs_review",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Point-based representation of Krakatau island epicenter"
