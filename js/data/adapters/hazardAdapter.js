@@ -14,7 +14,8 @@ export function adaptHazardFeature(feature) {
 
   const quickFacts = filterPresentFields({
     "Feature Type": "Historical Geohazard Event",
-    "Event Date": p.event_date,
+    "Event Start Date": p.event_date,
+    "Event End Date": p.event_end_date,
     "Hazard Category": formatHazardTypeLabel(p.hazard_type),
     "Location": `${lat.toFixed(4)}° N/S, ${lng.toFixed(4)}° E`
   });
@@ -35,6 +36,11 @@ export function adaptHazardFeature(feature) {
     source: p.source,
     sourceUrl: p.source_url || null,
     sourceType: p.source_type || null,
+    sourceVerificationStatus: p.source_verification_status || "needs_review",
+    recordCompilationDate: p.record_compilation_date || p.last_updated || null,
+    eventDate: p.event_date || null,
+    eventEndDate: p.event_end_date || null,
+    eventDatePrecision: p.event_date_precision || null,
     lastUpdated: p.last_updated,
     geometryNote: p.geometry_note || null,
 

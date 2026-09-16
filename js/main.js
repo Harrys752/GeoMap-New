@@ -166,6 +166,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     applyFiltersAndRender();
   });
 
+  function triggerMapInvalidateSize() {
+    if (mapInstance && typeof mapInstance.invalidateSize === "function") {
+      mapInstance.invalidateSize();
+    }
+  }
+
   // 8. Filter Application & Marker Rendering Pipeline
   function applyFiltersAndRender() {
     let filtered = filterByDomainAndType(allFeatures, currentFilterState);
@@ -188,6 +194,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const result = renderMarkers(mapInstance, filtered, (feature, marker) => {
       detailPanel.openDetailPanel(feature);
       setMarkerHighlight(marker);
+      triggerMapInvalidateSize();
 
       // Reverse Sync: Sync timeline period node when marker is clicked on map
       if (timelineInstance) {

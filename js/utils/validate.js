@@ -9,8 +9,30 @@ import {
   ALLOWED_DATA_STATUSES,
   ALLOWED_EVIDENCE_TYPES,
   ALLOWED_SOURCE_TYPES,
+  ALLOWED_VERIFICATION_STATUSES,
+  ALLOWED_DATE_PRECISION_VALUES,
   REQUIRED_BASE_PROPERTIES
 } from "../data/schema.js";
+
+/** Helper: Validates true calendar dates in YYYY-MM-DD format */
+export function isValidCalendarDate(dateStr) {
+  if (typeof dateStr !== "string") return false;
+  const match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return false;
+
+  const year = parseInt(match[1], 10);
+  const month = parseInt(match[2], 10);
+  const day = parseInt(match[3], 10);
+
+  if (month < 1 || month > 12) return false;
+  if (day < 1 || day > 31) return false;
+
+  // Check days in month
+  const daysInMonth = new Date(year, month, 0).getDate();
+  if (day > daysInMonth) return false;
+
+  return true;
+}
 
 /**
  * Validates a single GeoJSON Feature record.
@@ -20,6 +42,7 @@ import {
  */
 export function validateFeature(feature, seenIds = new Set()) {
   const errors = [];
+  const systemDateStr = "2026-09-16";
 
   // 1. Basic Feature Structure Validation
   if (!feature || typeof feature !== "object" || Array.isArray(feature)) {
@@ -90,12 +113,17 @@ export function validateFeature(feature, seenIds = new Set()) {
     errors.push(`Invalid data_status '${props.data_status}'. Must be one of: ${ALLOWED_DATA_STATUSES.join(", ")}`);
   }
 
-  // 9. Phase 4 Evidence & Source Validation Checks
+  // 9. Phase 4 & Phase 5 Evidence, Source, and Date Validation Checks
   const evType = props.evidence_type;
   const evDesc = props.evidence_description;
   const evSig = props.evidence_significance;
   const srcType = props.source_type;
   const srcUrl = props.source_url;
+  const verifStatus = props.source_verification_status;
+  const compDate = props.record_compilation_date || props.last_updated;
+  const evtDate = props.event_date;
+  const evtEndDate = props.event_end_date;
+  const datePrec = props.event_date_precision;
 
   // Check whitespace-only strings for all properties
   for (const [key, val] of Object.entries(props)) {
@@ -133,9 +161,52 @@ export function validateFeature(feature, seenIds = new Set()) {
     }
   }
 
+  if (verifStatus !== undefined && verifStatus !== null && String(verifStatus).trim() !== "") {
+    if (!ALLOWED_VERIFICATION_STATUSES.includes(verifStatus)) {
+      errors.push(`Invalid source_verification_status '${verifStatus}'. Must be one of: ${ALLOWED_VERIFICATION_STATUSES.join(", ")}`);
+    }
+
+    if (verifStatus === "verified") {
+      if (!props.source || typeof props.source !== "string" || props.source.trim() === "") {
+        errors.push("Property 'source' is required for verified records");
+      }
+    }
+  }
+
   if (srcUrl !== undefined && srcUrl !== null && String(srcUrl).trim() !== "") {
     if (typeof srcUrl !== "string" || (!srcUrl.startsWith("http://") && !srcUrl.startsWith("https://"))) {
       errors.push(`Invalid source_url '${srcUrl}'. Must be a valid HTTP or HTTPS URL.`);
+    }
+  }
+
+  // Calendar Date Validations
+  if (compDate) {
+    if (!isValidCalendarDate(compDate)) {
+      errors.push(`Invalid record_compilation_date/last_updated '${compDate}'. Must be a valid YYYY-MM-DD calendar date.`);
+    } else if (compDate > systemDateStr) {
+      errors.push(`record_compilation_date '${compDate}' cannot exceed current system date '${systemDateStr}'`);
+    }
+  }
+
+  if (props.feature_type === "historical_event") {
+    if (!evtDate || typeof evtDate !== "string" || evtDate.trim() === "") {
+      errors.push("Property 'event_date' is required for historical hazard events");
+    } else {
+      if (!isValidCalendarDate(evtDate) && !/^\d{4}$/.test(evtDate)) {
+        errors.push(`Invalid event_date '${evtDate}'. Must be a valid YYYY-MM-DD calendar date or YYYY year.`);
+      } else if (evtDate > systemDateStr) {
+        errors.push(`Historical event_date '${evtDate}' cannot be in the future (exceeding system date '${systemDateStr}')`);
+      }
+    }
+
+    if (evtEndDate) {
+      if (!isValidCalendarDate(evtEndDate) && !/^\d{4}$/.test(evtEndDate)) {
+        errors.push(`Invalid event_end_date '${evtEndDate}'. Must be a valid YYYY-MM-DD calendar date or YYYY year.`);
+      }
+    }
+
+    if (datePrec && !ALLOWED_DATE_PRECISION_VALUES.includes(datePrec)) {
+      errors.push(`Invalid event_date_precision '${datePrec}'. Must be one of: ${ALLOWED_DATE_PRECISION_VALUES.join(", ")}`);
     }
   }
 

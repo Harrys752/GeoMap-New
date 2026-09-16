@@ -18,6 +18,7 @@
         "geological_period": "Quaternary",
         "hazard_type": "volcanic",
         "event_date": "1883-08-27",
+        "event_date_precision": "exact_day",
         "evidence_type": "Historical Record",
         "evidence_description": "Documented 1883 eruption logs, tide gauge sea-level records, barometric shockwave traces, and coastal tsunami inundation surveys.",
         "evidence_significance": "Tide gauge and barometric instrument logs provide historical record evidence supporting catastrophic caldera collapse and tsunami generation.",
@@ -27,6 +28,8 @@
         "source": "Self (1884) / NOAA NCEI Historical Tsunami Database",
         "source_url": "https://www.ngdc.noaa.gov/hazard/tsunami/",
         "source_type": "institutional_record",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Point-based representation of Krakatau island epicenter"
       }
@@ -48,6 +51,7 @@
         "geological_period": "Quaternary",
         "hazard_type": "seismic",
         "event_date": "2004-12-26",
+        "event_date_precision": "exact_day",
         "evidence_type": "Historical Record",
         "evidence_description": "Global seismic network broadband seismograms, satellite altimetry seafloor displacement measurements, and coastal tsunami inundation field logs.",
         "evidence_significance": "Instrumental seismograms and GPS displacement measurements provide quantitative evidence supporting massive megathrust subduction fault rupture.",
@@ -57,6 +61,8 @@
         "source": "USGS Earthquake Hazards Program (Event ID official20041226005853450_30)",
         "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/official20041226005853450_30",
         "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -77,6 +83,7 @@
         "geological_period": "Quaternary",
         "hazard_type": "seismic",
         "event_date": "2006-05-27",
+        "event_date_precision": "exact_day",
         "evidence_type": "Historical Record",
         "evidence_description": "Strong-motion accelerograph records, shallow Opak fault lineament mapping, and structural damage surveys across Bantul sediment basins.",
         "evidence_significance": "Instrumental ground motion records and fault mapping provide evidence consistent with shallow intraplate strike-slip faulting in sediment basins.",
@@ -86,6 +93,8 @@
         "source": "USGS Earthquake Hazards Program (Event ID usp000ekfv)",
         "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000ekfv",
         "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -106,16 +115,19 @@
         "geological_period": "Quaternary",
         "hazard_type": "seismic",
         "event_date": "1992-12-12",
+        "event_date_precision": "exact_day",
         "evidence_type": "Historical Record",
         "evidence_description": "Teleseismic fault-plane solutions, field tsunami runup elevation measurements (up to 26 m), and coastal damage field logs.",
         "evidence_significance": "Seismograms and coastal runup surveys provide physical evidence supporting back-arc thrust faulting and localized tsunami displacement.",
         "geological_explanation": "A shallow back-arc thrust fault rupture along the Flores Thrust zone displaced sea floor water, producing catastrophic localized tsunami runup along the Maumere coastline.",
         "why_it_matters": "The 1992 Flores event demonstrated that back-arc thrust faulting north of the Sunda Arc can generate localized megathrust-scale earthquakes and severe coastal tsunamis.",
         "data_status": "historical",
-        "source": "USGS Earthquake Hazards Program / Tsuji et al. (1995)",
+        "source": "USGS Earthquake Hazards Program (Event ID usp0005j81) / Tsuji et al. (1995)",
         "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp0005j81",
         "source_type": "peer-reviewed_publication",
-        "last_updated": "2026-09-15"
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
       }
     },
     {
@@ -135,6 +147,7 @@
         "geological_period": "Quaternary",
         "hazard_type": "seismic",
         "event_date": "2018-09-28",
+        "event_date_precision": "exact_day",
         "evidence_type": "Historical Record",
         "evidence_description": "InSAR satellite surface deformation maps, flow liquefaction landslide field surveys in Petobo/Balaroa, and Palu Bay tsunami tide logs.",
         "evidence_significance": "Satellite radar deformation and field damage surveys provide direct evidence for complex strike-slip liquefaction and bay tsunami interactions.",
@@ -144,7 +157,202 @@
         "source": "USGS Earthquake Hazards Program / BNPB",
         "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us1000h4p4",
         "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [118.0, -8.25]
+      },
+      "properties": {
+        "id": "haz_tambora_1815",
+        "name": "1815 Tambora Paroxysmal Eruption",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "Explosive VEI-7 super-eruption of Mount Tambora on Sumbawa, releasing 100 cubic km of tephra and causing global climate cooling.",
+        "geological_process": "Caldera Volcanism",
+        "geological_age": "Historical (1815)",
+        "geological_period": "Quaternary",
+        "hazard_type": "volcanic",
+        "event_date": "1815-04-10",
+        "event_date_precision": "exact_day",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Historical colonial logbooks, atmospheric sulfate ice core records from Greenland/Antarctica, and worldwide 'Year Without a Summer' climate logs.",
+        "evidence_significance": "Global stratospheric aerosol ice-core signals and historical harvest failure logs provide empirical evidence supporting extreme climate forcing by explosive volcanic sulfur release.",
+        "geological_explanation": "Paroxysmal explosive eruption ejected high-altitude aerosol clouds into the stratosphere, scattering sunlight globally.",
+        "why_it_matters": "Tambora 1815 demonstrates the extreme global atmospheric climate impacts of high-index explosive volcanism.",
+        "data_status": "historical",
+        "source": "Stothers (1984) Science / NOAA Paleoclimatology",
+        "source_url": "https://www.science.org/doi/10.1126/science.224.4654.1191",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [115.508, -8.343]
+      },
+      "properties": {
+        "id": "haz_bali_1963",
+        "name": "1963 Mount Agung Volcanic Eruption",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "Explosive basaltic-andesite eruption of Mount Agung in Bali, producing devastating pyroclastic flows and secondary rain lahars.",
+        "geological_process": "Subduction Arc Volcanism",
+        "geological_age": "Historical (1963)",
+        "geological_period": "Quaternary",
+        "hazard_type": "volcanic",
+        "event_date": "1963-03-17",
+        "event_date_precision": "exact_day",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Documented pyroclastic density current deposit mapping along Northern Bali river channels and global stratospheric aerosol optical depth measurements.",
+        "evidence_significance": "Field mapping of valley-confined pyroclastic flows provides evidence supporting explosive basaltic-andesite eruptions and associated lahars.",
+        "geological_explanation": "Explosive column collapse generated fast pyroclastic density currents down northern and eastern flanks of Mount Agung.",
+        "why_it_matters": "Agung 1963 is a landmark event in Indonesian volcanology, highlighting the severity of pyroclastic flows and secondary volcanic lahars.",
+        "data_status": "historical",
+        "source": "PVMBG / Smithsonian GVP (#264020) / Rampino & Self (1984)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=264020",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [97.11, 2.07]
+      },
+      "properties": {
+        "id": "haz_sumatra_2005",
+        "name": "2005 Nias-Simeulue Megathrust Earthquake",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "Major Mw 8.6 subduction megathrust earthquake along the Sunda Megathrust off Nias and Simeulue islands.",
+        "geological_process": "Megathrust Seismicity & Tsunami",
+        "geological_age": "Historical (2005)",
+        "geological_period": "Quaternary",
+        "hazard_type": "seismic",
+        "event_date": "2005-03-28",
+        "event_date_precision": "exact_day",
+        "evidence_type": "Historical Record",
+        "evidence_description": "GPS micro-atoll coral uplift measurements (showing up to 3 m coastal tilt) and USGS global broadband seismograms.",
+        "evidence_significance": "Uplifted coral micro-atoll rings provide direct geodetic evidence supporting contiguous subduction megathrust slip south of the 2004 rupture zone.",
+        "geological_explanation": "Interplate subduction stress release caused vertical seafloor uplift along Nias and Simeulue micro-atolls.",
+        "why_it_matters": "Nias 2005 demonstrated contiguous megathrust segment unzipping following major subduction ruptures.",
+        "data_status": "historical",
+        "source": "Briggs et al. (2006) Science / USGS (Event ID us2005slav)",
+        "source_url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2005slav",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [98.392, 3.17]
+      },
+      "properties": {
+        "id": "haz_sinabung_2010",
+        "name": "2010-2021 Mount Sinabung Eruptive Phase",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "Multi-year lava dome collapse and explosive pyroclastic flow phase of Mount Sinabung following 400 years of dormancy.",
+        "geological_process": "Subduction Arc Volcanism",
+        "geological_age": "Historical (2010-2021)",
+        "geological_period": "Quaternary",
+        "hazard_type": "volcanic",
+        "event_date": "2010-08-29",
+        "event_end_date": "2021-07-28",
+        "event_date_precision": "multi_year_range",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Time-series satellite thermal imagery, lava dome growth radar surveys, and continuous pyroclastic flow deposit mapping along the Lau Kawawar valley.",
+        "evidence_significance": "Satellite radar imagery and pyroclastic deposit surveys provide direct evidence for long-duration lava dome collapse volcanism following 400 years of dormancy.",
+        "geological_explanation": "Persistent dome extrusion and gravitational collapse generated recurring pyroclastic flows down river valleys.",
+        "why_it_matters": "Sinabung 2010-2021 illustrates long-duration volcano reactivation and multi-year displacement hazards.",
+        "data_status": "historical",
+        "source": "PVMBG / USGS GVP (#261080)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=261080",
+        "source_type": "government_survey",
+        "source_verification_status": "partially_verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [105.423, -6.102]
+      },
+      "properties": {
+        "id": "haz_anak_krakatau_2018",
+        "name": "2018 Anak Krakatau Flank Collapse & Tsunami",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "Catastrophic southwest flank collapse of Anak Krakatau volcano triggering non-seismic tsunamis across Sunda Strait coastal zones.",
+        "geological_process": "Caldera Volcanism",
+        "geological_age": "Historical (2018)",
+        "geological_period": "Quaternary",
+        "hazard_type": "volcanic",
+        "event_date": "2018-12-22",
+        "event_date_precision": "exact_day",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Sentinel-1 SAR satellite radar imagery showing 50% volcano volume collapse into the sea, tide gauge tsunami records, and bathymetric sonar surveys.",
+        "evidence_significance": "Synthetic aperture radar satellite deformation and tide gauge records provide physical evidence supporting submarine landslide tsunamigenesis without antecedent seismic warning.",
+        "geological_explanation": "Subaerial and submarine slope failure displaced ocean water masses in Sunda Strait.",
+        "why_it_matters": "Anak Krakatau 2018 demonstrated non-seismic volcanic landslide tsunami hazards in island arc settings.",
+        "data_status": "historical",
+        "source": "PVMBG / Walter et al. (2019) Nature Communications",
+        "source_url": "https://www.nature.com/articles/s41467-019-12032-5",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [112.92, -8.108]
+      },
+      "properties": {
+        "id": "haz_semeru_2021",
+        "name": "2021 Mount Semeru Pyroclastic Density Current & Lahar",
+        "domain": "hazard",
+        "feature_type": "historical_event",
+        "description": "Dome collapse pyroclastic flow and rain-triggered lahar disaster at Mount Semeru in Lumajang, East Java.",
+        "geological_process": "Subduction Arc Volcanism",
+        "geological_age": "Historical (2021)",
+        "geological_period": "Quaternary",
+        "hazard_type": "volcanic",
+        "event_date": "2021-12-04",
+        "event_date_precision": "exact_day",
+        "evidence_type": "Historical Record",
+        "evidence_description": "Documented Curah Kobokan river valley block-and-ash flow mapping, rain-triggered secondary lahar deposits, and satellite thermal anomaly logs.",
+        "evidence_significance": "Valley debris mapping and rainfall gauge records provide evidence supporting heavy rain destabilization of active lava domes generating destructive lahars.",
+        "geological_explanation": "Heavy monsoonal rainfall eroded active lava dome material at Jonggring Saloko crater, precipitating valley pyroclastic flows and lahars.",
+        "why_it_matters": "Semeru 2021 highlights how monsoon precipitation interacts with active lava domes to generate rapid multi-hazard volcanic disasters.",
+        "data_status": "historical",
+        "source": "PVMBG / BNPB / Smithsonian GVP (#263300)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=263300",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
       }
     }
   ]

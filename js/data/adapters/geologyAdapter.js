@@ -43,6 +43,8 @@ export function adaptGeologyFeature(feature) {
     source: p.source,
     sourceUrl: p.source_url || null,
     sourceType: p.source_type || null,
+    sourceVerificationStatus: p.source_verification_status || "needs_review",
+    recordCompilationDate: p.record_compilation_date || p.last_updated || null,
     lastUpdated: p.last_updated,
     geometryNote: p.geometry_note || null,
 

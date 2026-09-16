@@ -25,6 +25,8 @@
         "source": "UNESCO Global Geopark Documentation & USGS",
         "source_url": "https://en.unesco.org/global-geoparks/toba-caldera",
         "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Point-based representation of caldera center"
       }
@@ -56,6 +58,8 @@
         "source": "UNESCO World Heritage List (Entry #593)",
         "source_url": "https://whc.unesco.org/en/list/593/",
         "source_type": "institutional_record",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -83,6 +87,8 @@
         "source": "Smithsonian Institution Global Volcanism Program (Volcano #263250)",
         "source_url": "https://volcano.si.edu/volcano.cfm?vn=263250",
         "source_type": "institutional_record",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -110,6 +116,8 @@
         "source": "UNESCO Belitong Global Geopark Documentation",
         "source_url": "https://en.unesco.org/global-geoparks/belitong",
         "source_type": "institutional_record",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -140,6 +148,8 @@
         "source": "Dubois (1894) / Museum Geologi Bandung Reference Catalog",
         "source_url": "https://whc.unesco.org/en/tentativelists/5983/",
         "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -167,6 +177,8 @@
         "source": "UNESCO Ciletuh-Palabuhanratu Global Geopark Documentation",
         "source_url": "https://en.unesco.org/global-geoparks/ciletuh-palabuhanratu",
         "source_type": "institutional_record",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -194,6 +206,8 @@
         "source": "Lavigne et al. (2013) PNAS / Smithsonian GVP (#264040)",
         "source_url": "https://volcano.si.edu/volcano.cfm?vn=264040",
         "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -221,6 +235,8 @@
         "source": "UNESCO World Heritage Tentative List (#5981) / Aubert et al. (2014) Nature",
         "source_url": "https://whc.unesco.org/en/tentativelists/5981/",
         "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -248,6 +264,8 @@
         "source": "Smithsonian Global Volcanism Program (#263280)",
         "source_url": "https://volcano.si.edu/volcano.cfm?vn=263280",
         "source_type": "institutional_record",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -275,6 +293,8 @@
         "source": "Sieh & Natawidjaja (2000) JGR / Geological Survey of Indonesia",
         "source_url": "https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2000JB900120",
         "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -305,6 +325,8 @@
         "source": "Brown et al. (2004) Nature / Sutikna et al. (2016) Nature",
         "source_url": "https://www.nature.com/articles/nature02999",
         "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -332,6 +354,8 @@
         "source": "Pownall et al. (2016) Geology / Geoscience Australia",
         "source_url": "https://pubs.geoscienceworld.org/gsa/geology/article/44/11/947/194850/Extensional-detachment-faulting-in-the-Banda",
         "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
       }
     },
@@ -358,7 +382,183 @@
         "data_status": "illustrative",
         "source": "Illustrative educational example, not official data",
         "source_type": "illustrative",
+        "source_verification_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [109.66, -7.54]
+      },
+      "properties": {
+        "id": "geo_karangsambung",
+        "name": "Karangsambung Geological Melange Complex",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "Tectonic melange complex exposing Central Java's subduction accretion basement, glaucophane schist, and deep-sea chert.",
+        "geological_process": "Subduction Accretion & Metamorphism",
+        "geological_age": "Cretaceous (~120 - 65 Ma)",
+        "geological_period": "Cretaceous",
+        "rock_type": "Pillow Basalt, Glaucophane Schist, Chert",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Tectonic melange matrix containing sheared deep-sea radiolarian chert and high-pressure glaucophane schist.",
+        "evidence_significance": "High-pressure metamorphic schists and pillow basalts provide direct physical evidence supporting Cretaceous oceanic crust subduction and continental accretion.",
+        "why_it_matters": "Karangsambung is Indonesia's premier field geology training site, providing physical proof of Cretaceous subduction and accretionary wedge deformation in Central Java.",
+        "data_status": "historical",
+        "source": "BRIN / Geological Engineering ITB (Asakin 1974)",
+        "source_url": "https://geopark.kebumenkab.go.id/karangsambung",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [118.0, -8.25]
+      },
+      "properties": {
+        "id": "geo_tambora",
+        "name": "Mount Tambora & 1815 Caldera",
+        "domain": "geology",
+        "feature_type": "volcano",
+        "description": "A massive stratovolcano on Sumbawa featuring a 7 km wide, 1.1 km deep summit caldera formed during the 1815 super-eruption.",
+        "geological_process": "Caldera Volcanism",
+        "geological_age": "Late Pleistocene - Holocene (1815 CE eruption)",
+        "geological_period": "Quaternary",
+        "rock_type": "Trachyandesite, Ash Tuff",
+        "evidence_type": "Landform",
+        "evidence_description": "A 7 km wide, 1.1 km deep summit caldera bowl surrounded by extensive 1815 CE pyroclastic surge and tephra beds.",
+        "evidence_significance": "Massive caldera wall geometry and widespread ash fall deposits support the interpretation of the largest explosive volcanic eruption in recorded human history.",
+        "why_it_matters": "Tambora's 1815 caldera creation demonstrated how explosive volcanic eruptions alter regional island topography and global atmospheric chemistry.",
+        "data_status": "historical",
+        "source": "Smithsonian Global Volcanism Program (#264040) / Oppenheimer (2003)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=264040",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [105.43, -6.1]
+      },
+      "properties": {
+        "id": "geo_anak_krakatau",
+        "name": "Anak Krakatau Post-Caldera Cone",
+        "domain": "geology",
+        "feature_type": "volcano",
+        "description": "Active volcanic island cone emerging within the 1883 Krakatau caldera waters, illustrating continuous post-caldera volcanism.",
+        "geological_process": "Subduction Arc Volcanism",
+        "geological_age": "Holocene (1927 CE - Present)",
+        "geological_period": "Quaternary",
+        "rock_type": "Andesite, Basaltic Andesite",
+        "evidence_type": "Rock",
+        "evidence_description": "Subaerial basaltic-andesite lava flows and active scoria cone building within the 1883 Krakatau caldera waters.",
+        "evidence_significance": "Rapid post-caldera cone growth and pyroclastic venting provide evidence consistent with ongoing magma replenishment beneath Sunda Arc calderas.",
+        "why_it_matters": "Anak Krakatau provides a real-time natural laboratory for observing volcanic island growth, lava dome building, and lateral collapse hazards.",
+        "data_status": "historical",
+        "source": "PVMBG / Smithsonian GVP (#262000)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=262000",
+        "source_type": "institutional_record",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.04, -8.12]
+      },
+      "properties": {
+        "id": "geo_raung",
+        "name": "Mount Raung & Sector Collapse Amphitheater",
+        "domain": "geology",
+        "feature_type": "volcano",
+        "description": "Active East Java stratovolcano featuring a 2 km wide, 500 m deep summit caldera created by prehistoric sector collapse.",
+        "geological_process": "Caldera Volcanism",
+        "geological_age": "Late Pleistocene - Holocene",
+        "geological_period": "Quaternary",
+        "rock_type": "Andesite, Debris Avalanche Deposit",
+        "evidence_type": "Landform",
+        "evidence_description": "A 2 km wide, 500 m deep caldera amphitheater formed by prehistoric flank collapse and hummocky debris avalanche deposits.",
+        "evidence_significance": "Hummocky debris deposits along the volcano flank provide physical evidence supporting major volcanic sector collapse and landslide hazards.",
+        "why_it_matters": "Raung demonstrates the dual hazards of open-vent strombolian ash venting and prehistoric giant flank collapse in volcanic arc settings.",
+        "data_status": "historical",
+        "source": "PVMBG / Smithsonian GVP (#263340)",
+        "source_url": "https://volcano.si.edu/volcano.cfm?vn=263340",
+        "source_type": "institutional_record",
+        "source_verification_status": "verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.85, -3.42]
+      },
+      "properties": {
+        "id": "geo_kalimantan_diamond",
+        "name": "Martapura Ultramafic Pipe & Diamond Alluvium",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "Alluvial diamond placer deposits derived from deeply weathered Meratus ophiolite ultramafic pipes in South Kalimantan.",
+        "geological_process": "Plutonic Magmatism & Weathering",
+        "geological_age": "Cretaceous (~110 - 70 Ma)",
+        "geological_period": "Cretaceous",
+        "rock_type": "Peridotite, Kimberlitic Lamproite, Alluvial Gravel",
+        "evidence_type": "Rock",
+        "evidence_description": "Diamond-bearing alluvial river gravels derived from Meratus ophiolite complexes and deeply weathered mantle ultramafic pipes.",
+        "evidence_significance": "Heavy mineral diamond assemblages in alluvial gravels provide evidence supporting deep subcrustal mantle melting and uplift along the Meratus Suture.",
+        "why_it_matters": "Martapura is Southeast Asia's historic alluvial diamond district, illustrating deep mantle xenolith sampling and tropical placer concentration.",
+        "data_status": "historical",
+        "source": "Geological Agency of Indonesia (Badan Geologi ESDM)",
+        "source_url": "https://vsi.esdm.go.id",
+        "source_type": "educational_interpretation",
+        "source_verification_status": "needs_review",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.49, -8.6]
+      },
+      "properties": {
+        "id": "geo_komodo_volcanic",
+        "name": "Komodo Island Volcanic Arc Basement",
+        "domain": "geology",
+        "feature_type": "site",
+        "description": "Neogene volcanic basement breccias and uplifted coral limestone terraces forming Komodo Island's rugged topography.",
+        "geological_process": "Subduction Arc Volcanism",
+        "geological_age": "Neogene (~15 - 5 Ma)",
+        "geological_period": "Neogene",
+        "rock_type": "Andesitic Lava, Lithic Tuff, Raised Coral Limestone",
+        "evidence_type": "Rock",
+        "evidence_description": "Interbedded Neogene volcanic breccias and uplifted Quaternary coral terraces exposed along rugged island sea cliffs.",
+        "evidence_significance": "Volcanic breccia layers interbedded with marine limestone terraces support the interpretation of island arc volcanism accompanied by regional tectonic uplift.",
+        "why_it_matters": "Komodo exposes ancient volcanic arc basement rocks underlying unique island ecosystems in the Flores Sea arc-trench gap.",
+        "data_status": "historical",
+        "source": "UNESCO Komodo National Park Documentation (#337)",
+        "source_url": "https://whc.unesco.org/en/list/337/",
+        "source_type": "educational_interpretation",
+        "source_verification_status": "partially_verified",
+        "record_compilation_date": "2026-09-16",
+        "last_updated": "2026-09-16"
       }
     }
   ]

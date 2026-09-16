@@ -35,8 +35,8 @@ const allFeatures = [...geoSites.features, ...hazEvents.features];
 
 // Test 1: Verify total features dataset count
 runTest("Dataset Total Feature Count Validation", () => {
-  assert.strictEqual(allFeatures.length, 18, "Dataset must contain 18 features (13 geology + 5 hazard)");
-  assert.strictEqual(hazEvents.features.length, 5, "Hazard dataset must contain 5 features");
+  assert.strictEqual(allFeatures.length, 30, "Dataset must contain 30 features (19 geology + 11 hazard)");
+  assert.strictEqual(hazEvents.features.length, 11, "Hazard dataset must contain 11 features");
 });
 
 // Test 2: Filter by 'Historical' period key (Timeline selection simulation)
@@ -49,7 +49,7 @@ runTest("Timeline Select 'Historical' Filter Result Validation", () => {
   };
 
   const filtered = filterByDomainAndType(allFeatures, filterState);
-  assert.strictEqual(filtered.length, 5, "Filtering by period='Historical' MUST return 5 features");
+  assert.strictEqual(filtered.length, 11, "Filtering by period='Historical' MUST return 11 features");
   assert.strictEqual(filtered.every(f => f.properties.domain === "hazard"), true, "All returned features must have domain='hazard'");
   assert.strictEqual(filtered.every(f => f.properties.feature_type === "historical_event"), true, "All returned features must be historical events");
 });
@@ -74,7 +74,7 @@ runTest("Empty State Trigger Condition Validation", () => {
 runTest("Period Context Data Evidence ID Alignment", () => {
   const historicalContext = PERIOD_CONTEXT_DATA["Historical"];
   assert.ok(historicalContext, "PERIOD_CONTEXT_DATA['Historical'] must exist");
-  assert.strictEqual(historicalContext.datasetEvidence.length, 5, "Context card must list 5 evidence entries");
+  assert.strictEqual(historicalContext.datasetEvidence.length, 11, "Context card must list 11 evidence entries");
 
   const evidenceIds = historicalContext.datasetEvidence.map(e => e.id);
   const hazIds = hazEvents.features.map(f => f.properties.id);
@@ -93,8 +93,8 @@ runTest("Search Query + Historical Hazards Filter Test", () => {
   let filtered = filterByDomainAndType(allFeatures, filterState);
   filtered = filterBySearchQuery(filtered, "krakatau");
 
-  assert.strictEqual(filtered.length, 1, "Searching 'krakatau' within Historical period should return 1 feature");
-  assert.strictEqual(filtered[0].properties.id, "haz_krakatau_1883", "Feature returned should be Krakatau 1883");
+  assert.strictEqual(filtered.length, 2, "Searching 'krakatau' within Historical period should return 2 features");
+  assert.strictEqual(filtered.some(f => f.properties.id === "haz_krakatau_1883"), true);
 });
 
 // Test 6: Verify scientific distinction preserved in GeoJSON properties

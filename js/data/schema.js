@@ -41,6 +41,22 @@ export const ALLOWED_SOURCE_TYPES = [
   "illustrative"
 ];
 
+export const ALLOWED_VERIFICATION_STATUSES = [
+  "verified",
+  "partially_verified",
+  "needs_review",
+  "invalid",
+  "missing"
+];
+
+export const ALLOWED_DATE_PRECISION_VALUES = [
+  "exact_day",
+  "month_year",
+  "year_only",
+  "multi_year_range",
+  "geological_approximate"
+];
+
 export const REQUIRED_BASE_PROPERTIES = [
   "id",
   "name",

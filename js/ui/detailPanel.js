@@ -206,6 +206,43 @@ function renderDetailContent(data) {
     </div>
   ` : "";
 
+  const verifStatusClass = `badge-status badge-${data.sourceVerificationStatus || 'needs_review'}`;
+  const verifStatusBadge = `
+    <div class="field-item">
+      <dt>Verification Status</dt>
+      <dd><span class="${verifStatusClass}">${escapeHtml(formatVerificationStatusLabel(data.sourceVerificationStatus))}</span></dd>
+    </div>
+  `;
+
+  // Distinct Date Display
+  let datesBlock = "";
+  if (data.featureType === "historical_event" || data.eventDate) {
+    let eventDateText = data.eventDate || "Unspecified Event Date";
+    if (data.eventEndDate) {
+      eventDateText += ` – ${data.eventEndDate}`;
+      if (data.eventDatePrecision === "multi_year_range") {
+        eventDateText += " (Multi-Year Eruptive Range)";
+      }
+    }
+    datesBlock = `
+      <div class="field-item">
+        <dt>Event Occurrence Date</dt>
+        <dd><strong>${escapeHtml(eventDateText)}</strong></dd>
+      </div>
+      <div class="field-item">
+        <dt>Record Compilation Date</dt>
+        <dd>${escapeHtml(data.recordCompilationDate || data.lastUpdated)}</dd>
+      </div>
+    `;
+  } else {
+    datesBlock = `
+      <div class="field-item">
+        <dt>Record Compilation Date</dt>
+        <dd>${escapeHtml(data.recordCompilationDate || data.lastUpdated)}</dd>
+      </div>
+    `;
+  }
+
   const illustrativeBadgeHtml = isIllustrative ? `
     <span class="badge-status badge-illustrative">ILLUSTRATIVE / DEMO DATA</span>
   ` : "";
@@ -245,14 +282,12 @@ function renderDetailContent(data) {
             <dd>${escapeHtml(data.source || "Unspecified Source")}</dd>
           </div>
           ${sourceTypeBadge}
+          ${verifStatusBadge}
           <div class="field-item">
             <dt>Data Status</dt>
             <dd><span class="${statusBadgeClass}">${escapeHtml(data.dataStatus.toUpperCase())}</span></dd>
           </div>
-          <div class="field-item">
-            <dt>Record Compilation Date</dt>
-            <dd>${escapeHtml(data.lastUpdated)}</dd>
-          </div>
+          ${datesBlock}
           ${sourceUrlHtml}
         </dl>
       </section>
@@ -267,7 +302,18 @@ function formatSourceTypeLabel(type) {
     case "institutional_record": return "Institutional Record";
     case "educational_interpretation": return "Educational Interpretation";
     case "illustrative": return "Illustrative / Demo Data";
-    default: return type;
+    default: return type || "Unspecified";
+  }
+}
+
+function formatVerificationStatusLabel(status) {
+  switch (status) {
+    case "verified": return "VERIFIED SOURCE";
+    case "partially_verified": return "PARTIALLY VERIFIED";
+    case "needs_review": return "NEEDS REVIEW";
+    case "invalid": return "INVALID SOURCE";
+    case "missing": return "MISSING SOURCE";
+    default: return (status || "NEEDS REVIEW").toUpperCase();
   }
 }
 

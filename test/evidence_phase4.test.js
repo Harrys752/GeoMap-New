@@ -42,9 +42,9 @@ const geoSites = JSON.parse(readFileSync("./data/geology/sites.demo.geojson", "u
 const hazEvents = JSON.parse(readFileSync("./data/hazard/historical-events.demo.geojson", "utf8"));
 const allFeatures = [...geoSites.features, ...hazEvents.features];
 
-// 1. Dataset Integrity (18 Records)
-runTest("All 18 Dataset Features Pass Schema & Evidence Validation", () => {
-  assert.strictEqual(allFeatures.length, 18, "Dataset must contain exactly 18 features (13 geology + 5 hazard)");
+// 1. Dataset Integrity (30 Records)
+runTest("All Dataset Features Pass Schema & Evidence Validation", () => {
+  assert.strictEqual(allFeatures.length, 30, "Dataset must contain exactly 30 features (19 geology + 11 hazard)");
   const seenIds = new Set();
   for (const f of allFeatures) {
     const res = validateFeature(f, seenIds);
@@ -127,21 +127,21 @@ runTest("Evidence Type Filter & Multi-Filter Combination Checks", () => {
   };
 
   const rockFeatures = filterByDomainAndType(allFeatures, baseFilter);
-  assert.strictEqual(rockFeatures.length, 3, "Filtering by evidenceType='Rock' should return 3 features");
+  assert.strictEqual(rockFeatures.length, 6, "Filtering by evidenceType='Rock' should return 6 features");
   assert.strictEqual(rockFeatures.every(f => f.properties.evidence_type === "Rock"), true);
 
   const landformFeatures = filterByDomainAndType(allFeatures, { ...baseFilter, evidenceType: "Landform" });
-  assert.strictEqual(landformFeatures.length, 4, "Filtering by evidenceType='Landform' should return 4 features");
+  assert.strictEqual(landformFeatures.length, 6, "Filtering by evidenceType='Landform' should return 6 features");
 
   // Evidence + Search ("Krakatau")
   let combo = filterByDomainAndType(allFeatures, { ...baseFilter, evidenceType: "Historical Record" });
   combo = filterBySearchQuery(combo, "krakatau");
-  assert.strictEqual(combo.length, 1);
-  assert.strictEqual(combo[0].properties.id, "haz_krakatau_1883");
+  assert.strictEqual(combo.length, 2);
+  assert.ok(combo.some(f => f.properties.id === "haz_krakatau_1883"));
 
   // Evidence + Historical Track ("Historical")
   const histCombo = filterByDomainAndType(allFeatures, { ...baseFilter, period: "Historical", evidenceType: "Historical Record" });
-  assert.strictEqual(histCombo.length, 5, "Historical track + Historical Record evidence should return 5 features");
+  assert.strictEqual(histCombo.length, 11, "Historical track + Historical Record evidence should return 11 features");
 
   // Zero-Result Combination (Rock evidence + Historical track)
   const zeroCombo = filterByDomainAndType(allFeatures, { ...baseFilter, period: "Historical", evidenceType: "Rock" });
