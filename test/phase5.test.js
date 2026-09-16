@@ -38,9 +38,9 @@ const hazEvents = JSON.parse(readFileSync("./data/hazard/historical-events.demo.
 const allFeatures = [...geoSites.features, ...hazEvents.features];
 
 // 1. Total Dataset Record Count
-runTest("Total Dataset Record Count is 30 (19 Geology + 11 Hazard)", () => {
-  assert.strictEqual(allFeatures.length, 30, "Dataset must contain exactly 30 records");
-  assert.strictEqual(geoSites.features.length, 19, "Geology dataset must contain 19 records");
+runTest("Total Dataset Record Count is 31 (20 Geology + 11 Hazard)", () => {
+  assert.strictEqual(allFeatures.length, 31, "Dataset must contain exactly 31 records");
+  assert.strictEqual(geoSites.features.length, 20, "Geology dataset must contain 20 records");
   assert.strictEqual(hazEvents.features.length, 11, "Hazard dataset must contain 11 records");
 });
 
@@ -82,8 +82,8 @@ runTest("Compilation Date Preservation & Verification Status Enums", () => {
 runTest("Flores 1992 Source Link Regression Check (Non-Nanning URL)", () => {
   const flores = hazEvents.features.find(f => f.properties.id === "haz_flores_1992");
   assert.ok(flores, "haz_flores_1992 record must exist");
-  assert.strictEqual(flores.properties.source_url, "https://earthquake.usgs.gov/earthquakes/eventpage/usp0005j81");
-  assert.strictEqual(flores.properties.source_url.includes("Nanning"), false, "URL must not contain Nanning");
+  assert.strictEqual(flores.properties.source_url, "https://earthquake.usgs.gov/earthquakes/eventpage/usp0005j5a");
+  assert.strictEqual(flores.properties.source_url.includes("usp0005j81"), false, "URL must not contain Nanning event ID usp0005j81");
   assert.strictEqual(flores.properties.source_url.includes("China"), false, "URL must not contain China");
   assert.strictEqual(flores.properties.event_date, "1992-12-12");
   assert.strictEqual(flores.properties.source_verification_status, "verified");

@@ -1,10 +1,19 @@
 /**
  * Filter Panel & Geological Process/Period Explorer UI Component
  * Phase 2 — Handles Domain Toggles, Feature Types, Process Explorer, Period Explorer, and Process Cards.
+ * Phase 6 — Synchronized via queryHelper.js canonical data model.
  */
 
 import { domains } from "../core/domainRegistry.js";
 import { PROCESS_CARDS } from "../data/processCardsData.js";
+import {
+  computeCanonicalDatasetCounts,
+  matchesCanonicalFilter,
+  sanitizeFilterStateForDomain,
+  matchesEvidenceCategory,
+  isGeologicalPeriod,
+  isHistoricalHazard
+} from "../data/queryHelper.js";
 
 const FEATURE_TYPE_LABELS = {
   volcano: "Volcanoes",
@@ -33,40 +42,8 @@ export function initFilterPanel(allFeatures, onFilterChange) {
   let selectedPeriod = "all";
   let selectedEvidenceType = "all";
 
-  // Compute available feature types, processes, periods, and evidence types present in loaded dataset
-  function computeDatasetCounts() {
-    const counts = {
-      domain: { all: allFeatures.length, geology: 0, hazard: 0 },
-      featureType: {},
-      process: {},
-      period: {},
-      evidenceType: {}
-    };
-
-    for (const f of allFeatures) {
-      const props = f.properties || {};
-      const d = props.domain;
-      const t = props.feature_type;
-      const proc = props.geological_process;
-      const per = props.geological_period;
-      const ev = props.evidence_type;
-
-      if (counts.domain[d] !== undefined) counts.domain[d]++;
-      if (t) counts.featureType[t] = (counts.featureType[t] || 0) + 1;
-      if (proc) counts.process[proc] = (counts.process[proc] || 0) + 1;
-      if (ev) counts.evidenceType[ev] = (counts.evidenceType[ev] || 0) + 1;
-
-      if (t === "historical_event") {
-        counts.period["Historical"] = (counts.period["Historical"] || 0) + 1;
-      } else if (per) {
-        counts.period[per] = (counts.period[per] || 0) + 1;
-      }
-    }
-
-    return counts;
-  }
-
-  const datasetCounts = computeDatasetCounts();
+  // Compute canonical dataset counts using centralized helper module
+  const datasetCounts = computeCanonicalDatasetCounts(allFeatures);
 
   // 1. Render Domain Filter Buttons
   if (domainButtonsContainer) {
@@ -88,8 +65,32 @@ export function initFilterPanel(allFeatures, onFilterChange) {
 
       domainButtonsContainer.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-      activeDomain = btn.getAttribute("data-domain");
+      const targetDomain = btn.getAttribute("data-domain");
 
+      // Sanitize filter state when switching domains to prevent stale incompatible filters
+      const { sanitizedState } = sanitizeFilterStateForDomain(
+        {
+          domain: targetDomain,
+          featureTypes: new Set(selectedFeatureTypes),
+          process: selectedProcess,
+          period: selectedPeriod,
+          evidenceType: selectedEvidenceType
+        },
+        targetDomain,
+        allFeatures
+      );
+
+      activeDomain = sanitizedState.domain;
+      selectedProcess = sanitizedState.process;
+      selectedPeriod = sanitizedState.period;
+      selectedEvidenceType = sanitizedState.evidenceType;
+
+      // Update UI dropdown values to reflect sanitized selections
+      if (processSelectContainer) processSelectContainer.value = selectedProcess;
+      if (periodSelectContainer) periodSelectContainer.value = selectedPeriod;
+      if (evidenceSelectContainer) evidenceSelectContainer.value = selectedEvidenceType;
+
+      renderProcessCard(selectedProcess);
       renderFeatureTypeCheckboxes();
       triggerChange();
     });
@@ -194,7 +195,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     });
   }
 
-  // 5. Render Geological Evidence Type Explorer Dropdown (Phase 4 — only evidence types present in dataset)
+  // 5. Render Geological Evidence Type Explorer Dropdown (only evidence types present in dataset)
   if (evidenceSelectContainer) {
     const presentEvidenceTypes = Object.keys(datasetCounts.evidenceType)
       .filter(ev => datasetCounts.evidenceType[ev] > 0)
@@ -302,51 +303,17 @@ export function initFilterPanel(allFeatures, onFilterChange) {
 
 /** Helper: Check if feature matches requested Evidence Type */
 export function matchesEvidenceType(feature, evidenceType) {
-  if (!evidenceType || evidenceType === "all") return true;
-  return feature.properties?.evidence_type === evidenceType;
+  return matchesEvidenceCategory(feature, evidenceType);
 }
 
 /** Helper: Check if feature matches requested Period / Historical Track */
 export function matchesHistoricalTrack(feature, period) {
-  if (!period || period === "all") return true;
-  if (period === "Historical") {
-    return feature.properties?.feature_type === "historical_event";
-  }
-  return feature.properties?.geological_period === period;
+  return isGeologicalPeriod(feature, period);
 }
 
 /** Helper: Unified evaluation ensuring feature satisfies ALL active filters */
 export function matchesAllFilters(feature, filterState) {
-  if (!filterState) return true;
-  const props = feature.properties || {};
-  const { domain, featureTypes, process, period, evidenceType } = filterState;
-
-  // Domain check
-  if (domain && domain !== "all" && props.domain !== domain) {
-    return false;
-  }
-
-  // Feature type check
-  if (featureTypes && featureTypes.size > 0 && !featureTypes.has(props.feature_type)) {
-    return false;
-  }
-
-  // Geological Process check
-  if (process && process !== "all" && props.geological_process !== process) {
-    return false;
-  }
-
-  // Geological Period / Historical Track check
-  if (!matchesHistoricalTrack(feature, period)) {
-    return false;
-  }
-
-  // Geological Evidence Type check
-  if (!matchesEvidenceType(feature, evidenceType)) {
-    return false;
-  }
-
-  return true;
+  return matchesCanonicalFilter(feature, filterState);
 }
 
 /**
@@ -357,7 +324,7 @@ export function matchesAllFilters(feature, filterState) {
  */
 export function filterByDomainAndType(features, filterState) {
   if (!filterState) return features;
-  return features.filter(f => matchesAllFilters(f, filterState));
+  return features.filter(f => matchesCanonicalFilter(f, filterState));
 }
 
 function escapeHtml(str) {
@@ -367,3 +334,4 @@ function escapeHtml(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 }
+

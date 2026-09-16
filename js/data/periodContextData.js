@@ -42,16 +42,17 @@ export const PERIOD_CONTEXT_DATA = {
     generalInfo: "The Quaternary Period encompasses glacial-interglacial climate cycles, major Sunda Arc super-eruptions, river terrace sedimentation, and the evolution and island dispersal of hominins across Indonesia.",
     datasetEvidence: [
       { id: "geo_toba_caldera", name: "Toba Caldera", age: "Late Pleistocene (~74,000 BP)", detail: "Ignimbrite Supereruption" },
-      { id: "geo_sangiran", name: "Sangiran Early Man Site", age: "Pleistocene (~1.5 - 0.9 Ma)", detail: "Homo erectus Fossils" },
-      { id: "geo_merapi", name: "Mount Merapi", age: "Holocene (~10,000 BP - Present)", detail: "Active Stratovolcano" },
-      { id: "geo_trinil", name: "Trinil Paleontology Locality", age: "Middle Pleistocene (~0.9 - 0.7 Ma)", detail: "Java Man Site" },
-      { id: "geo_rinjani", name: "Mount Rinjani & Segara Anak", age: "Holocene (1257 CE eruption)", detail: "Samalas Caldera Collapse" },
-      { id: "geo_bromo", name: "Mount Bromo & Tengger Caldera", age: "Late Pleistocene - Holocene (~45,000 BP)", detail: "Nested Sand Sea Caldera" },
+      { id: "geo_sangiran_paleo", name: "Sangiran Early Man Site", age: "Pleistocene (~1.5 - 0.9 Ma)", detail: "Homo erectus Fossils" },
+      { id: "geo_merapi_volcano", name: "Mount Merapi", age: "Holocene (~10,000 BP - Present)", detail: "Active Stratovolcano" },
+      { id: "geo_trinil_paleo", name: "Trinil Paleontology Locality", age: "Middle Pleistocene (~0.9 - 0.7 Ma)", detail: "Java Man Site" },
+      { id: "geo_rinjani_caldera", name: "Mount Rinjani & Segara Anak", age: "Holocene (1257 CE eruption)", detail: "Samalas Caldera Collapse" },
+      { id: "geo_bromo_caldera", name: "Mount Bromo & Tengger Caldera", age: "Late Pleistocene - Holocene (~45,000 BP)", detail: "Nested Sand Sea Caldera" },
       { id: "geo_semangko_sianok", name: "Great Sumatran Fault at Ngarai Sianok", age: "Quaternary", detail: "Strike-Slip Fault Canyon" },
       { id: "geo_liang_bua", name: "Flores Liang Bua Paleontology Cave", age: "Late Pleistocene (~190,000 - 50,000 BP)", detail: "Homo floresiensis" },
-      { id: "geo_tambora", name: "Mount Tambora & 1815 Caldera", age: "Holocene (1815 CE)", detail: "7km Summit Caldera Wall" },
+      { id: "geo_tambora_caldera", name: "Mount Tambora & 1815 Caldera", age: "Holocene (1815 CE)", detail: "7km Summit Caldera Wall" },
       { id: "geo_anak_krakatau", name: "Anak Krakatau Scoria Cone", age: "Holocene (1927 - Present)", detail: "Post-Caldera Scoria Cone" },
       { id: "geo_raung", name: "Mount Raung Flank Amphitheater", age: "Quaternary", detail: "Debris Avalanche Amphitheater" },
+      { id: "geo_mount_ciremai", name: "Gunung Ciremai Volcanic Complex", age: "Quaternary", detail: "Active Quaternary Stratovolcano" },
       { id: "geo_illustrative_example", name: "Bali Coastal Karst", age: "Quaternary", detail: "Illustrative Reef Uplift" }
     ]
   },

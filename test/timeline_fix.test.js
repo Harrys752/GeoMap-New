@@ -35,7 +35,7 @@ const allFeatures = [...geoSites.features, ...hazEvents.features];
 
 // Test 1: Verify total features dataset count
 runTest("Dataset Total Feature Count Validation", () => {
-  assert.strictEqual(allFeatures.length, 30, "Dataset must contain 30 features (19 geology + 11 hazard)");
+  assert.strictEqual(allFeatures.length, 31, "Dataset must contain 31 features (20 geology + 11 hazard)");
   assert.strictEqual(hazEvents.features.length, 11, "Hazard dataset must contain 11 features");
 });
 

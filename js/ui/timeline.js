@@ -4,6 +4,7 @@
  */
 
 import { PERIOD_CONTEXT_DATA } from "../data/periodContextData.js";
+import { isHistoricalHazard } from "../data/queryHelper.js";
 
 /**
  * Initializes the Geological Timeline component.
@@ -164,10 +165,9 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
   function syncTimelineWithFeature(feature) {
     if (!feature || !feature.properties) return;
     const period = feature.properties.geological_period;
-    const domain = feature.properties.domain;
 
     let targetKey = "Quaternary";
-    if (domain === "hazard") {
+    if (isHistoricalHazard(feature)) {
       targetKey = "Historical";
     } else if (period === "Triassic") {
       targetKey = "Triassic";

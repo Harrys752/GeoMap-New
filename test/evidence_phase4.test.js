@@ -42,9 +42,9 @@ const geoSites = JSON.parse(readFileSync("./data/geology/sites.demo.geojson", "u
 const hazEvents = JSON.parse(readFileSync("./data/hazard/historical-events.demo.geojson", "utf8"));
 const allFeatures = [...geoSites.features, ...hazEvents.features];
 
-// 1. Dataset Integrity (30 Records)
+// 1. Dataset Integrity (31 Records)
 runTest("All Dataset Features Pass Schema & Evidence Validation", () => {
-  assert.strictEqual(allFeatures.length, 30, "Dataset must contain exactly 30 features (19 geology + 11 hazard)");
+  assert.strictEqual(allFeatures.length, 31, "Dataset must contain exactly 31 features (20 geology + 11 hazard)");
   const seenIds = new Set();
   for (const f of allFeatures) {
     const res = validateFeature(f, seenIds);
@@ -131,7 +131,7 @@ runTest("Evidence Type Filter & Multi-Filter Combination Checks", () => {
   assert.strictEqual(rockFeatures.every(f => f.properties.evidence_type === "Rock"), true);
 
   const landformFeatures = filterByDomainAndType(allFeatures, { ...baseFilter, evidenceType: "Landform" });
-  assert.strictEqual(landformFeatures.length, 6, "Filtering by evidenceType='Landform' should return 6 features");
+  assert.strictEqual(landformFeatures.length, 7, "Filtering by evidenceType='Landform' should return 7 features");
 
   // Evidence + Search ("Krakatau")
   let combo = filterByDomainAndType(allFeatures, { ...baseFilter, evidenceType: "Historical Record" });

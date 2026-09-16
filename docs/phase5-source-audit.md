@@ -25,6 +25,7 @@ This document contains the individual record-level source audit for all 30 recor
 | `geo_raung` | Mount Raung Flank Amphitheater | https://volcano.si.edu/volcano.cfm?vn=263340 | institutional_record | Accessible (HTTPS) | Yes (East Java -8.12°S, 114.04°E) | Yes (Quaternary) | Yes (Sector collapse) | Yes (Hummocky avalanche debris) | `verified` | PVMBG / Smithsonian GVP #263340 |
 | `geo_kalimantan_diamond` | Martapura Diamond Alluvium | https://vsi.esdm.go.id | educational_interpretation | Accessible (HTTPS) | Yes (South Kalimantan -3.42°S, 114.85°E) | Yes (Cretaceous) | Yes (Ultramafic alluvium) | Yes (Meratus suture placers) | `needs_review` | General survey; needs localized paper link |
 | `geo_komodo_volcanic` | Komodo Island Volcanic Arc Basement | https://whc.unesco.org/en/list/337/ | educational_interpretation | Accessible (HTTPS) | Yes (NTT -8.6°S, 119.49°E) | Yes (Neogene ~15-5Ma) | Yes (Volcanic breccia terraces) | Yes (Flores Sea volcanic basement) | `partially_verified` | UNESCO #337 matches geology broadly |
+| `geo_mount_ciremai` | Gunung Ciremai Volcanic Complex | https://vsi.esdm.go.id/index.php/gunungapi/data-dasar-gunungapi/538-g-ciremai | government_survey | Accessible (HTTPS) | Yes (West Java -6.892°S, 108.406°E) | Yes (Quaternary) | Yes (Stratovolcano crater & fumaroles) | Yes (Active Quaternary stratovolcano cone) | `partially_verified` | PVMBG ESDM volcano profile #538 |
 | `haz_krakatau_1883` | 1883 Krakatau Volcanic Eruption & Tsunami | https://www.ngdc.noaa.gov/hazard/tsunami/ | institutional_record | Accessible (HTTPS) | Yes (Sunda Strait -6.102°S, 105.423°E) | Yes (1883-08-27) | Yes (Volcanic tsunami) | Yes (Barometric & tide gauge logs) | `verified` | NOAA NCEI Historical Tsunami DB |
 | `haz_banda_aceh_2004` | 2004 Indian Ocean Earthquake & Tsunami | https://earthquake.usgs.gov/earthquakes/eventpage/official20041226005853450_30 | government_survey | Accessible (HTTPS) | Yes (Sumatra 3.3°N, 95.98°E) | Yes (2004-12-26) | Yes (Megathrust Mw 9.1) | Yes (Global broadband seismograms) | `verified` | USGS Event official20041226005853450_30 |
 | `haz_jogja_2006` | 2006 Yogyakarta Earthquake | https://earthquake.usgs.gov/earthquakes/eventpage/usp000ekfv | government_survey | Accessible (HTTPS) | Yes (Central Java -7.96°S, 110.44°E) | Yes (2006-05-27) | Yes (Intraplate Mw 6.3) | Yes (Accelerograph ground motion) | `verified` | USGS Event usp000ekfv |
@@ -38,8 +39,8 @@ This document contains the individual record-level source audit for all 30 recor
 | `haz_semeru_2021` | 2021 Mount Semeru Pyroclastic PDC & Lahar | https://volcano.si.edu/volcano.cfm?vn=263300 | government_survey | Accessible (HTTPS) | Yes (East Java -8.108°S, 112.92°E) | Yes (2021-12-04) | Yes (Dome collapse PDC & lahar) | Yes (Curah Kobokan PDC mapping) | `verified` | PVMBG / BNPB / GVP #263300 |
 
 ## Verification Status Summary
-- **Total Records:** 30
-- **Verified Records (`verified`):** 27
-- **Partially Verified Records (`partially_verified`):** 2 (`geo_illustrative_example`, `geo_komodo_volcanic`, `haz_sinabung_2010`)
+- **Total Records:** 31
+- **Verified Records (`verified`):** 26
+- **Partially Verified Records (`partially_verified`):** 4 (`geo_illustrative_example`, `geo_komodo_volcanic`, `geo_mount_ciremai`, `haz_sinabung_2010`)
 - **Needs Review (`needs_review`):** 1 (`geo_kalimantan_diamond`)
 - **Invalid / Missing:** 0

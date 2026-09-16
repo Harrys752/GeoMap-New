@@ -25,6 +25,7 @@ Pre/post dataset change log tracking all dataset record modifications in Phase 5
 | `geo_raung` | `added` | All properties | New geology volcano record for Mount Raung sector collapse (`verified`, compilation date `2026-09-16`). |
 | `geo_kalimantan_diamond` | `added` | All properties | New geology record for Martapura diamond alluvium (`needs_review`, compilation date `2026-09-16`). |
 | `geo_komodo_volcanic` | `added` | All properties | New geology record for Komodo volcanic arc basement (`partially_verified`, compilation date `2026-09-16`). |
+| `geo_mount_ciremai` | `added` | All properties | New volcano record for Gunung Ciremai (`partially_verified`, compilation date `2026-09-16`). |
 | `haz_krakatau_1883` | `updated` | `record_compilation_date`, `source_verification_status` | Added explicit `source_verification_status: "verified"` and audited compilation date `2026-09-15`. |
 | `haz_banda_aceh_2004` | `updated` | `record_compilation_date`, `source_verification_status` | Added explicit `source_verification_status: "verified"` and audited compilation date `2026-09-15`. |
 | `haz_jogja_2006` | `updated` | `record_compilation_date`, `source_verification_status` | Added explicit `source_verification_status: "verified"` and audited compilation date `2026-09-15`. |
@@ -38,7 +39,7 @@ Pre/post dataset change log tracking all dataset record modifications in Phase 5
 | `haz_semeru_2021` | `added` | All properties | New historical hazard record for 2021 Semeru pyroclastic flow & lahar (`verified`, compilation date `2026-09-16`). |
 
 ## Summary of Changes
-- **Total Records:** 30
+- **Total Records:** 31
 - **Existing Records Preserved & Audited:** 18 (13 geology + 5 hazard)
-- **New Records Added:** 12 (6 geology + 6 hazard)
+- **New Records Added:** 13 (7 geology + 6 hazard)
 - **Records Removed:** 0
