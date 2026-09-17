@@ -14,7 +14,8 @@ import {
   computeCanonicalDatasetCounts,
   matchesConfidenceStatus,
   matchesCanonicalFilter,
-  sanitizeFilterStateForDomain
+  sanitizeFilterStateForDomain,
+  findFeatureById
 } from "../js/data/queryHelper.js";
 import { filterByDomainAndType } from "../js/ui/filterPanel.js";
 
@@ -214,6 +215,65 @@ runTest("Detail Panel Content Rendering Test across All 31 Records", () => {
 
     assert.ok(htmlOutput.includes("confidence-badge-box"), `Rendered HTML must contain Data Confidence badge for ${feature.properties.id}`);
     assert.ok(htmlOutput.includes("Source Classification"), `Rendered HTML must contain Source Classification for ${feature.properties.id}`);
+  }
+});
+
+// 8. Strict Canonical Feature ID & Explicit Alias Resolution Test (User Condition #6)
+runTest("Strict Canonical Feature ID & Explicit Alias Resolution Test", () => {
+  // Dataset Size & ID Uniqueness Hardening
+  assert.strictEqual(allFeatures.length, 31, "allFeatures dataset must contain exactly 31 features");
+  const featureIds = allFeatures.map(f => f?.properties?.id).filter(Boolean);
+  assert.strictEqual(featureIds.length, 31, "All 31 features must have non-empty IDs");
+  assert.strictEqual(new Set(featureIds).size, featureIds.length, "All 31 canonical feature IDs must be unique");
+
+  // A. Exact Canonical ID Resolution
+  const toba = findFeatureById(allFeatures, "geo_toba_caldera");
+  assert.ok(toba, "Exact ID 'geo_toba_caldera' must resolve to a feature");
+  assert.strictEqual(toba.properties.id, "geo_toba_caldera");
+
+  const krakatau1883 = findFeatureById(allFeatures, "haz_krakatau_1883");
+  assert.ok(krakatau1883, "Exact ID 'haz_krakatau_1883' must resolve to a feature");
+  assert.strictEqual(krakatau1883.properties.id, "haz_krakatau_1883");
+
+  // B. All 6 Explicit Aliases Resolution
+  const explicitAliases = {
+    geo_sangiran_paleo: "geo_sangiran",
+    geo_merapi_volcano: "geo_merapi",
+    geo_trinil_paleo: "geo_trinil",
+    geo_rinjani_caldera: "geo_rinjani",
+    geo_bromo_caldera: "geo_bromo",
+    geo_tambora_caldera: "geo_tambora"
+  };
+
+  for (const [alias, expectedId] of Object.entries(explicitAliases)) {
+    const resolved = findFeatureById(allFeatures, alias);
+    assert.ok(resolved, `Explicit alias '${alias}' must resolve to feature '${expectedId}'`);
+    assert.strictEqual(resolved.properties.id, expectedId, `Alias '${alias}' must resolve specifically to '${expectedId}'`);
+  }
+
+  // C. Missing ID returning null
+  const missingRes = findFeatureById(allFeatures, "non_existent_feature_id_123");
+  assert.strictEqual(missingRes, null, "Missing feature ID must return null");
+
+  // D. Empty / Null input returning null
+  assert.strictEqual(findFeatureById(allFeatures, ""), null, "Empty string input must return null");
+  assert.strictEqual(findFeatureById(allFeatures, null), null, "Null input must return null");
+  assert.strictEqual(findFeatureById(null, "geo_toba_caldera"), null, "Null features array must return null");
+
+  // E. Ambiguous Lookup Rejection
+  const duplicateArray = [
+    { properties: { id: "dup_id", name: "Dup 1" } },
+    { properties: { id: "dup_id", name: "Dup 2" } }
+  ];
+  assert.strictEqual(findFeatureById(duplicateArray, "dup_id"), null, "Ambiguous lookup with duplicate IDs must return null");
+
+  // F. Complete Dataset Enumeration: All 31 canonical IDs resolve uniquely
+  for (const f of allFeatures) {
+    const id = f.properties.id;
+    assert.ok(id, "Every feature must have an ID");
+    const found = findFeatureById(allFeatures, id);
+    assert.ok(found, `Canonical ID '${id}' must resolve via findFeatureById`);
+    assert.strictEqual(found.properties.id, id, `Canonical ID '${id}' must resolve uniquely to itself`);
   }
 });
 

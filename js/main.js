@@ -9,7 +9,7 @@ import { initSearchBar, filterBySearchQuery } from "./ui/searchBar.js";
 import { initFilterPanel, filterByDomainAndType } from "./ui/filterPanel.js";
 import { initDetailPanel } from "./ui/detailPanel.js";
 import { initTimeline } from "./ui/timeline.js";
-import { computeCanonicalDatasetCounts } from "./data/queryHelper.js";
+import { computeCanonicalDatasetCounts, findFeatureById } from "./data/queryHelper.js";
 import { getConfidenceMetadata } from "./ui/confidenceLabels.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -151,28 +151,66 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  /**
+   * Shared Canonical Feature Selection & Navigation Pipeline
+   * Converges both sidebar entry clicks and direct map marker clicks onto one consistent sequence:
+   * 1. Resolve target feature using findFeatureById
+   * 2. Open detail panel (renders detail data + Phase 7 Data Confidence Card)
+   * 3. Highlight marker if available on current map view
+   * 4. Sync timeline period node selection if available
+   * 5. Center & fly map to feature coordinates
+   * 
+   * @param {object|string} featureOrId - GeoJSON feature object or feature ID / alias string
+   */
+  function selectFeatureAndFocus(featureOrId) {
+    if (!featureOrId) return;
+
+    let targetFeature = null;
+    if (typeof featureOrId === "string") {
+      targetFeature = findFeatureById(allFeatures, featureOrId);
+    } else if (typeof featureOrId === "object" && featureOrId.properties) {
+      targetFeature = findFeatureById(allFeatures, featureOrId.properties.id) || featureOrId;
+    }
+
+    if (!targetFeature || !targetFeature.properties) {
+      console.warn("[GeoMap Selection] Target feature could not be resolved:", featureOrId);
+      return;
+    }
+
+    const canonicalId = targetFeature.properties.id;
+
+    // 1. Open Detail Panel (renders detail data + Phase 7 Data Confidence Card)
+    detailPanel.openDetailPanel(targetFeature);
+
+    // 2. Find and highlight marker if available on current map view
+    const marker = currentMarkerMap.get(canonicalId);
+    if (marker) {
+      setMarkerHighlight(marker);
+    }
+
+    triggerMapInvalidateSize();
+
+    // 3. Sync timeline period node selection if available
+    if (timelineInstance) {
+      timelineInstance.syncTimelineWithFeature(targetFeature);
+    }
+
+    // 4. Center & zoom map view to target feature coordinates
+    if (targetFeature.geometry && Array.isArray(targetFeature.geometry.coordinates)) {
+      const [lng, lat] = targetFeature.geometry.coordinates;
+      mapInstance.flyTo([lat, lng], 9, {
+        animate: true,
+        duration: 0.8
+      });
+    }
+  }
+
   // 5. Initialize Geological Time & Earth History Timeline (Phase 3)
   timelineInstance = initTimeline(
     allFeatures,
-    // Callback 1: Timeline -> Map Selection
+    // Callback 1: Timeline -> Map Selection (uses shared canonical selection pipeline)
     (featureId) => {
-      const targetFeature = allFeatures.find(f => f.properties && f.properties.id === featureId);
-      if (!targetFeature) return;
-
-      const marker = currentMarkerMap.get(featureId);
-      detailPanel.openDetailPanel(targetFeature);
-
-      if (marker) {
-        setMarkerHighlight(marker);
-      }
-
-      if (targetFeature.geometry && targetFeature.geometry.coordinates) {
-        const [lng, lat] = targetFeature.geometry.coordinates;
-        mapInstance.flyTo([lat, lng], 9, {
-          animate: true,
-          duration: 0.8
-        });
-      }
+      selectFeatureAndFocus(featureId);
     },
     // Callback 2: Timeline Period Filter -> Period Explorer Sync
     (periodKey) => {
@@ -233,22 +271,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const result = renderMarkers(mapInstance, filtered, (feature, marker) => {
-      detailPanel.openDetailPanel(feature);
-      setMarkerHighlight(marker);
-      triggerMapInvalidateSize();
-
-      // Reverse Sync: Sync timeline period node when marker is clicked on map
-      if (timelineInstance) {
-        timelineInstance.syncTimelineWithFeature(feature);
-      }
-
-      if (feature && feature.geometry && feature.geometry.coordinates) {
-        const [lng, lat] = feature.geometry.coordinates;
-        mapInstance.flyTo([lat, lng], 9, {
-          animate: true,
-          duration: 0.8
-        });
-      }
+      selectFeatureAndFocus(feature);
     });
 
     currentMarkerGroup = result.markerGroup;

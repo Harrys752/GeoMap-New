@@ -14,6 +14,63 @@ export const LABEL_MAPPINGS = {
   historical_event_alt: "Historical Hazard Events"
 };
 
+/** Explicit application-layer alias map for known timeline evidence IDs */
+const CANONICAL_ID_ALIASES = {
+  geo_sangiran_paleo: "geo_sangiran",
+  geo_merapi_volcano: "geo_merapi",
+  geo_trinil_paleo: "geo_trinil",
+  geo_rinjani_caldera: "geo_rinjani",
+  geo_bromo_caldera: "geo_bromo",
+  geo_tambora_caldera: "geo_tambora"
+};
+
+/**
+ * Resolves a feature ID or explicit application-layer alias to a canonical GeoJSON feature object.
+ * Strictly follows resolution order:
+ * 1. Exact match against f.properties.id === featureId
+ * 2. Explicit application-layer alias map check
+ * 3. Ambiguity / missing check -> returns null and logs a diagnostic warning
+ * 
+ * @param {object[]} allFeatures - Array of GeoJSON features
+ * @param {string} featureId - Feature ID or alias string to resolve
+ * @returns {object|null} Matching canonical feature object or null if unresolvable
+ */
+export function findFeatureById(allFeatures, featureId) {
+  if (!allFeatures || !Array.isArray(allFeatures) || !featureId || typeof featureId !== "string") {
+    return null;
+  }
+
+  const searchId = featureId.trim();
+  if (!searchId) return null;
+
+  // Step 1: Exact match against canonical feature ID
+  const exactMatches = allFeatures.filter(f => f?.properties?.id === searchId);
+  if (exactMatches.length === 1) {
+    return exactMatches[0];
+  }
+  if (exactMatches.length > 1) {
+    console.warn(`[queryHelper] Ambiguous feature ID: '${searchId}' matches ${exactMatches.length} features.`);
+    return null;
+  }
+
+  // Step 2: Explicit application-layer alias resolution ONLY
+  const mappedCanonicalId = CANONICAL_ID_ALIASES[searchId];
+  if (mappedCanonicalId) {
+    const aliasMatches = allFeatures.filter(f => f?.properties?.id === mappedCanonicalId);
+    if (aliasMatches.length === 1) {
+      return aliasMatches[0];
+    }
+    if (aliasMatches.length > 1) {
+      console.warn(`[queryHelper] Ambiguous alias target: '${mappedCanonicalId}' matches ${aliasMatches.length} features.`);
+      return null;
+    }
+  }
+
+  // Step 3: No unique match found
+  console.warn(`[queryHelper] Feature ID '${searchId}' could not be resolved to a canonical record.`);
+  return null;
+}
+
 /**
  * Normalizes evidence_type property for a feature.
  * Supports string, array, empty/whitespace, and unknown categories.
