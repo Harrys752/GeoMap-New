@@ -5,7 +5,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [105.423, -6.102]
+        "coordinates": [
+          105.4231,
+          -6.1022
+        ]
       },
       "properties": {
         "id": "haz_krakatau_1883",
@@ -38,7 +41,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [95.98, 3.3]
+        "coordinates": [
+          95.98,
+          3.298
+        ]
       },
       "properties": {
         "id": "haz_banda_aceh_2004",
@@ -70,7 +76,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [110.44, -7.96]
+        "coordinates": [
+          110.444,
+          -7.962
+        ]
       },
       "properties": {
         "id": "haz_jogja_2006",
@@ -102,7 +111,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [121.93, -8.48]
+        "coordinates": [
+          121.933,
+          -8.481
+        ]
       },
       "properties": {
         "id": "haz_flores_1992",
@@ -134,7 +146,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [119.84, -0.89]
+        "coordinates": [
+          119.8406,
+          -0.8917
+        ]
       },
       "properties": {
         "id": "haz_palu_2018",
@@ -166,7 +181,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [118.0, -8.25]
+        "coordinates": [
+          117.9942,
+          -8.2472
+        ]
       },
       "properties": {
         "id": "haz_tambora_1815",
@@ -198,7 +216,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [115.508, -8.343]
+        "coordinates": [
+          115.5081,
+          -8.3433
+        ]
       },
       "properties": {
         "id": "haz_bali_1963",
@@ -230,7 +251,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [97.11, 2.07]
+        "coordinates": [
+          97.114,
+          2.074
+        ]
       },
       "properties": {
         "id": "haz_sumatra_2005",
@@ -262,7 +286,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [98.392, 3.17]
+        "coordinates": [
+          98.3922,
+          3.17
+        ]
       },
       "properties": {
         "id": "haz_sinabung_2010",
@@ -295,7 +322,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [105.423, -6.102]
+        "coordinates": [
+          105.4231,
+          -6.1022
+        ]
       },
       "properties": {
         "id": "haz_anak_krakatau_2018",
@@ -327,7 +357,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [112.92, -8.108]
+        "coordinates": [
+          112.9224,
+          -8.1078
+        ]
       },
       "properties": {
         "id": "haz_semeru_2021",

@@ -5,7 +5,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [98.87, 2.65]
+        "coordinates": [
+          98.87,
+          2.65
+        ]
       },
       "properties": {
         "id": "geo_toba_caldera",
@@ -35,7 +38,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [110.833, -7.45]
+        "coordinates": [
+          110.8322,
+          -7.4614
+        ]
       },
       "properties": {
         "id": "geo_sangiran",
@@ -67,7 +73,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [110.446, -7.541]
+        "coordinates": [
+          110.446,
+          -7.541
+        ]
       },
       "properties": {
         "id": "geo_merapi",
@@ -96,7 +105,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [107.65, -2.6]
+        "coordinates": [
+          107.7088,
+          -2.5528
+        ]
       },
       "properties": {
         "id": "geo_belitung_granite",
@@ -125,7 +137,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [111.357, -7.371]
+        "coordinates": [
+          111.3567,
+          -7.3714
+        ]
       },
       "properties": {
         "id": "geo_trinil",
@@ -157,7 +172,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [106.45, -7.18]
+        "coordinates": [
+          106.4506,
+          -7.1842
+        ]
       },
       "properties": {
         "id": "geo_ciletuh",
@@ -186,7 +204,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [116.457, -8.411]
+        "coordinates": [
+          116.4572,
+          -8.4111
+        ]
       },
       "properties": {
         "id": "geo_rinjani",
@@ -215,7 +236,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [119.68, -4.98]
+        "coordinates": [
+          119.6133,
+          -4.9286
+        ]
       },
       "properties": {
         "id": "geo_maros_karst",
@@ -244,7 +268,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [112.953, -7.942]
+        "coordinates": [
+          112.9531,
+          -7.9425
+        ]
       },
       "properties": {
         "id": "geo_bromo",
@@ -273,7 +300,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [100.36, -0.3]
+        "coordinates": [
+          100.3606,
+          -0.3061
+        ]
       },
       "properties": {
         "id": "geo_semangko_sianok",
@@ -302,7 +332,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [120.444, -8.533]
+        "coordinates": [
+          120.4447,
+          -8.5328
+        ]
       },
       "properties": {
         "id": "geo_liang_bua",
@@ -334,7 +367,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [130.0, -6.0]
+        "coordinates": [
+          130.4,
+          -6.1
+        ]
       },
       "properties": {
         "id": "geo_weber_deep",
@@ -363,7 +399,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [115.2, -8.65]
+        "coordinates": [
+          115.0833,
+          -8.8292
+        ]
       },
       "properties": {
         "id": "geo_illustrative_example",
@@ -391,7 +430,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [109.66, -7.54]
+        "coordinates": [
+          109.6631,
+          -7.5564
+        ]
       },
       "properties": {
         "id": "geo_karangsambung",
@@ -420,7 +462,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [118.0, -8.25]
+        "coordinates": [
+          117.9942,
+          -8.2472
+        ]
       },
       "properties": {
         "id": "geo_tambora",
@@ -449,7 +494,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [105.43, -6.1]
+        "coordinates": [
+          105.4231,
+          -6.1022
+        ]
       },
       "properties": {
         "id": "geo_anak_krakatau",
@@ -478,7 +526,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [114.04, -8.12]
+        "coordinates": [
+          114.0456,
+          -8.125
+        ]
       },
       "properties": {
         "id": "geo_raung",
@@ -507,7 +558,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [114.85, -3.42]
+        "coordinates": [
+          114.8569,
+          -3.4689
+        ]
       },
       "properties": {
         "id": "geo_kalimantan_diamond",
@@ -536,7 +590,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [119.49, -8.6]
+        "coordinates": [
+          119.4925,
+          -8.6019
+        ]
       },
       "properties": {
         "id": "geo_komodo_volcanic",
@@ -565,7 +622,10 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [108.406, -6.892]
+        "coordinates": [
+          108.406,
+          -6.892
+        ]
       },
       "properties": {
         "id": "geo_mount_ciremai",
