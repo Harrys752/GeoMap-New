@@ -1,84 +1,123 @@
 /**
- * Leaflet Map Initialization & Basemap Management Module
+ * OpenLayers Map Initialization & Basemap Management Module
  * Configures Esri World Imagery (Satellite), Esri World Boundaries & Places (Place Labels overlay),
  * OpenStreetMap (Street Map), and OpenTopoMap (Terrain) with layer controls and robust fallback handling.
  */
 
 /**
- * Initializes the interactive Leaflet map with multi-basemap support.
- * @param {string} elementId - DOM ID of map container element
- * @returns {L.Map} Leaflet map instance
+ * Non-blocking Toast Notification Helper
+ * @param {string} message - Message to display
  */
-export function initMap(elementId = "map") {
-  // Center coordinates for Indonesia (-2.5 lat, 118.0 lng)
-  const defaultCenter = [-2.5, 118.0];
-  const defaultZoom = 5;
-
-  const map = L.map(elementId, {
-    center: defaultCenter,
-    zoom: defaultZoom,
-    minZoom: 4,
-    maxZoom: 18,
-    zoomControl: true
-  });
-
-  // Non-blocking Toast Notification Helper
-  function showToastNotification(message) {
-    let container = document.getElementById("toast-container");
-    if (!container) {
-      container = document.createElement("div");
-      container.id = "toast-container";
-      container.className = "toast-container";
-      document.body.appendChild(container);
-    }
-
-    const toast = document.createElement("div");
-    toast.className = "toast-message";
-    toast.textContent = message;
-    container.appendChild(toast);
-
-    setTimeout(() => {
-      toast.classList.add("fade-out");
-      setTimeout(() => toast.remove(), 400);
-    }, 4500);
+function showToastNotification(message) {
+  let container = document.getElementById("toast-container");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "toast-container";
+    container.className = "toast-container";
+    document.body.appendChild(container);
   }
 
+  const toast = document.createElement("div");
+  toast.className = "toast-message";
+  toast.textContent = message;
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add("fade-out");
+    setTimeout(() => toast.remove(), 400);
+  }, 4500);
+}
+
+/**
+ * Initializes the interactive OpenLayers map with multi-basemap support.
+ * @param {string} elementId - DOM ID of map container element
+ * @returns {ol.Map} OpenLayers map instance
+ */
+export function initMap(elementId = "map") {
+  const mapElement = document.getElementById(elementId);
+  if (!mapElement) {
+    throw new Error(`Map container element #${elementId} not found.`);
+  }
+
+  // Center coordinates for Indonesia ([118.0 lng, -2.5 lat] in EPSG:3857)
+  const defaultCenter = ol.proj.fromLonLat([118.0, -2.5]);
+  const defaultZoom = 5;
+
   // 1. Terminal Fallback Base Layer: OpenStreetMap Standard
-  const streetMapAttribution = "© OpenStreetMap contributors";
-  const streetMapLayer = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: streetMapAttribution,
-    maxZoom: 19
+  const streetMapSource = new ol.source.OSM({
+    attributions: "© OpenStreetMap contributors"
+  });
+  const streetMapLayer = new ol.layer.Tile({
+    source: streetMapSource,
+    visible: false
   });
 
   // 2. Default Base Layer: Esri World Imagery (Satellite)
-  const satelliteAttribution = "Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community";
-  const satelliteLayer = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-    attribution: satelliteAttribution,
+  const satelliteSource = new ol.source.XYZ({
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    attributions: "Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
     maxZoom: 18
+  });
+  const satelliteLayer = new ol.layer.Tile({
+    source: satelliteSource,
+    visible: true
   });
 
   // 3. Topographic Base Layer: OpenTopoMap (Terrain)
-  const terrainAttribution = "Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)";
-  const terrainLayer = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
-    attribution: terrainAttribution,
-    subdomains: ["a", "b", "c"],
+  const terrainSource = new ol.source.XYZ({
+    url: "https://a.tile.opentopomap.org/{z}/{x}/{y}.png",
+    attributions: "Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)",
     maxZoom: 17
+  });
+  const terrainLayer = new ol.layer.Tile({
+    source: terrainSource,
+    visible: false
   });
 
   // 4. Overlay Layer: Esri World Boundaries and Places (Place Labels)
-  const labelsAttribution = "Esri, HERE, Garmin, © OpenStreetMap contributors, and the GIS User Community";
-  const labelsLayer = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}", {
-    attribution: labelsAttribution,
+  const labelsSource = new ol.source.XYZ({
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+    attributions: "Esri, HERE, Garmin, © OpenStreetMap contributors, and the GIS User Community",
     maxZoom: 18
+  });
+  const labelsLayer = new ol.layer.Tile({
+    source: labelsSource,
+    visible: true
+  });
+
+  // Create OpenLayers Map View
+  const view = new ol.View({
+    center: defaultCenter,
+    zoom: defaultZoom,
+    minZoom: 4,
+    maxZoom: 18
+  });
+
+  const controls = (typeof ol.control.defaults === "function") 
+    ? ol.control.defaults({ zoom: true, attribution: true })
+    : (ol.control.defaults && typeof ol.control.defaults.defaults === "function" 
+        ? ol.control.defaults.defaults({ zoom: true, attribution: true }) 
+        : undefined);
+
+  const map = new ol.Map({
+    target: elementId,
+    layers: [
+      streetMapLayer,
+      terrainLayer,
+      satelliteLayer,
+      labelsLayer
+    ],
+    view: view,
+    controls: controls
   });
 
   // Fallback Tracking State (Session Scope)
   const failedProviders = new Set();
 
-  function setupBaseLayerFallback(layer, providerName) {
+  function setupBaseLayerFallback(source, layer, providerName) {
     let hasNotified = false;
 
-    layer.on("tileerror", () => {
+    source.on("tileloaderror", () => {
       if (failedProviders.has(providerName)) return;
 
       failedProviders.add(providerName);
@@ -88,23 +127,18 @@ export function initMap(elementId = "map") {
         console.warn(`[GeoMap Basemap] ${providerName} tile error. Falling back to OpenStreetMap standard.`);
       }
 
-      if (map.hasLayer(layer)) {
-        map.removeLayer(layer);
-        if (!map.hasLayer(streetMapLayer)) {
-          map.addLayer(streetMapLayer);
-        }
-      }
-    });
+      layer.setVisible(false);
+      streetMapLayer.setVisible(true);
 
-    layer.on("add", () => {
-      hasNotified = false;
+      const radio = document.querySelector('input[name="ol-base-layer"][value="Street Map"]');
+      if (radio) radio.checked = true;
     });
   }
 
-  function setupOverlayFallback(layer, overlayName) {
+  function setupOverlayFallback(source, layer, overlayName) {
     let hasNotified = false;
 
-    layer.on("tileerror", () => {
+    source.on("tileloaderror", () => {
       if (failedProviders.has(overlayName)) return;
 
       failedProviders.add(overlayName);
@@ -114,49 +148,158 @@ export function initMap(elementId = "map") {
         console.warn(`[GeoMap Basemap] Overlay ${overlayName} tile error.`);
       }
 
-      if (map.hasLayer(layer)) {
-        map.removeLayer(layer);
-      }
-    });
+      layer.setVisible(false);
 
-    layer.on("add", () => {
-      hasNotified = false;
+      const chk = document.querySelector('input[name="ol-labels-toggle"]');
+      if (chk) chk.checked = false;
     });
   }
 
-  // Attach Fallback Listeners (DO NOT attach to streetMapLayer)
-  setupBaseLayerFallback(satelliteLayer, "Satellite");
-  setupBaseLayerFallback(terrainLayer, "Terrain");
-  setupOverlayFallback(labelsLayer, "Place Labels");
+  setupBaseLayerFallback(satelliteSource, satelliteLayer, "Satellite");
+  setupBaseLayerFallback(terrainSource, terrainLayer, "Terrain");
+  setupOverlayFallback(labelsSource, labelsLayer, "Place Labels");
 
-  // Base Layers & Overlays Dictionary for Leaflet Control
-  const baseLayers = {
-    "Satellite": satelliteLayer,
-    "Street Map": streetMapLayer,
-    "Terrain": terrainLayer
-  };
+  // Custom Layer Switcher Control
+  const switcherContainer = document.createElement("div");
+  switcherContainer.className = "ol-control-layers";
 
-  const overlays = {
-    "Place Labels": labelsLayer
-  };
+  const toggleBtn = document.createElement("button");
+  toggleBtn.type = "button";
+  toggleBtn.className = "ol-layers-toggle-btn";
+  toggleBtn.setAttribute("aria-label", "Toggle basemap layer switcher");
+  toggleBtn.title = "Layers";
+  toggleBtn.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`;
 
-  // Add Default Base Layer & Place Labels Overlay on Load
-  satelliteLayer.addTo(map);
-  labelsLayer.addTo(map);
+  const panel = document.createElement("div");
+  panel.className = "ol-layers-panel hidden";
+  panel.innerHTML = `
+    <div class="ol-layers-title">Base Layers</div>
+    <label class="ol-layer-radio">
+      <input type="radio" name="ol-base-layer" value="Satellite" checked>
+      <span>Satellite</span>
+    </label>
+    <label class="ol-layer-radio">
+      <input type="radio" name="ol-base-layer" value="Street Map">
+      <span>Street Map</span>
+    </label>
+    <label class="ol-layer-radio">
+      <input type="radio" name="ol-base-layer" value="Terrain">
+      <span>Terrain</span>
+    </label>
+    <div class="ol-layers-separator"></div>
+    <div class="ol-layers-title">Overlays</div>
+    <label class="ol-layer-checkbox">
+      <input type="checkbox" name="ol-labels-toggle" checked>
+      <span>Place Labels</span>
+    </label>
+  `;
 
-  // Add Leaflet Layer Control to Top-Right
-  L.control.layers(baseLayers, overlays, {
-    position: "topright",
-    collapsed: true
-  }).addTo(map);
+  switcherContainer.appendChild(toggleBtn);
+  switcherContainer.appendChild(panel);
+  mapElement.appendChild(switcherContainer);
 
-  // Auto-enable Place Labels when user switches to Satellite base layer if not failed
-  map.on("baselayerchange", (e) => {
-    if (e.name === "Satellite") {
-      if (!failedProviders.has("Place Labels") && !map.hasLayer(labelsLayer)) {
-        labelsLayer.addTo(map);
-      }
+  toggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    panel.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!switcherContainer.contains(e.target)) {
+      panel.classList.add("hidden");
     }
+  });
+
+  // Handle Base Layer Switch
+  const baseRadios = panel.querySelectorAll('input[name="ol-base-layer"]');
+  baseRadios.forEach(radio => {
+    radio.addEventListener("change", (e) => {
+      const val = e.target.value;
+      satelliteLayer.setVisible(val === "Satellite");
+      streetMapLayer.setVisible(val === "Street Map");
+      terrainLayer.setVisible(val === "Terrain");
+
+      // Auto-enable Place Labels when user switches to Satellite if not failed
+      if (val === "Satellite") {
+        if (!failedProviders.has("Place Labels")) {
+          labelsLayer.setVisible(true);
+          const chk = panel.querySelector('input[name="ol-labels-toggle"]');
+          if (chk) chk.checked = true;
+        }
+      }
+    });
+  });
+
+  // Handle Place Labels Overlay Toggle
+  const labelsCheckbox = panel.querySelector('input[name="ol-labels-toggle"]');
+  if (labelsCheckbox) {
+    labelsCheckbox.addEventListener("change", (e) => {
+      labelsLayer.setVisible(e.target.checked);
+    });
+  }
+
+  // Provide Leaflet-compatible helper methods expected by application modules:
+  
+  // 1. flyTo(coords, zoom, options)
+  map.flyTo = function(coords, zoom = 9, options = {}) {
+    let lon, lat;
+    if (Math.abs(coords[0]) <= 90 && Math.abs(coords[1]) > 90) {
+      lat = coords[0];
+      lon = coords[1];
+    } else {
+      lon = coords[0];
+      lat = coords[1];
+    }
+
+    let duration = 1200;
+    if (typeof options.duration === "number") {
+      duration = options.duration <= 10 ? options.duration * 1000 : options.duration;
+    }
+
+    const easingFunc = (typeof ol.easing === "object" && typeof ol.easing.easeInOut === "function")
+      ? ol.easing.easeInOut
+      : (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+    view.animate({
+      center: ol.proj.fromLonLat([lon, lat]),
+      zoom: zoom,
+      duration: duration,
+      easing: easingFunc
+    });
+  };
+
+  // 2. setView(coords, zoom)
+  map.setView = function(coords, zoom = defaultZoom) {
+    let lon, lat;
+    if (Math.abs(coords[0]) <= 90 && Math.abs(coords[1]) > 90) {
+      lat = coords[0];
+      lon = coords[1];
+    } else {
+      lon = coords[0];
+      lat = coords[1];
+    }
+    view.setCenter(ol.proj.fromLonLat([lon, lat]));
+    view.setZoom(zoom);
+  };
+
+  // 3. invalidateSize()
+  map.invalidateSize = function() {
+    map.updateSize();
+  };
+
+  // 4. removeLayer(layer)
+  const originalRemoveLayer = map.removeLayer.bind(map);
+  map.removeLayer = function(layer) {
+    if (!layer) return;
+    if (typeof layer.remove === "function") {
+      layer.remove();
+      return;
+    }
+    originalRemoveLayer(layer);
+  };
+
+  // 5. Window resize listener to automatically update size
+  window.addEventListener("resize", () => {
+    map.updateSize();
   });
 
   return map;

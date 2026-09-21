@@ -29,6 +29,10 @@ export function initDetailPanel(panelId = "detail-panel", closeBtnId = "detail-c
       panelEl.classList.remove("open");
       panelEl.setAttribute("aria-hidden", "true");
     }
+    const layerSwitcher = document.querySelector(".ol-control-layers");
+    if (layerSwitcher) {
+      layerSwitcher.classList.remove("detail-panel-active-hide");
+    }
   }
 
   /**
@@ -37,6 +41,13 @@ export function initDetailPanel(panelId = "detail-panel", closeBtnId = "detail-c
    */
   function openDetailPanel(feature) {
     if (!panelEl || !contentEl || !feature) return;
+
+    const layerSwitcher = document.querySelector(".ol-control-layers");
+    if (layerSwitcher) {
+      layerSwitcher.classList.add("detail-panel-active-hide");
+      const switcherPanel = layerSwitcher.querySelector(".ol-layers-panel");
+      if (switcherPanel) switcherPanel.classList.add("hidden");
+    }
 
     const domain = feature.properties.domain;
     let data = null;

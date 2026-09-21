@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     mapInstance = initMap("map");
   } catch (err) {
-    console.error("[GeoMap] Failed to initialize Leaflet map:", err);
+    console.error("[GeoMap] Failed to initialize map:", err);
     showNotification("Failed to initialize interactive map.", "error");
     return;
   }
