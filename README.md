@@ -27,7 +27,7 @@ GeoMap Indonesia 2.0 is an independent educational project. **It does not claim 
 - **Hybrid Domain Structure**:
   - **Geological Explorer (`geology`)**: 6 point-based entries covering volcanoes, paleontological sites, and geological formations.
   - **Geohazard Information (`hazard`)**: 3 point-based historical geohazard event entries.
-- **Interactive Map**: Built with Leaflet.js and OpenStreetMap basemap tiles with explicit attribution.
+- **Interactive Map**: Built with OpenLayers (ol.js) featuring multi-basemap support (Esri Satellite, OpenTopoMap Terrain, OpenStreetMap Standard) with custom layer controls and place labels overlay.
 - **Domain-Aware Shared Detail Panel**: Displays rich conditional metadata (process, age, period, rock type, fossil material, hazard type, event date, data status, source citations) without empty fields.
 - **Search & Filter Controls**: Live text filter by location name and feature type category with dynamic result count indicators.
 - **Data Quality & Status Badges**: Explicit `data_status` badges (`historical`, `illustrative`, `demo`) and source attributions for every record.
@@ -48,14 +48,14 @@ c:\vscode\geomap2\
 │   └── roadmap.md              # Project phase roadmap
 ├── css/                        # Application styles
 │   ├── base.css                # Typography, layout, high-contrast system
-│   ├── map.css                 # Leaflet map & custom pin markers
+│   ├── map.css                 # OpenLayers map & custom pin markers
 │   └── panel.css               # Search, filters & detail panel drawer
 ├── js/                         # Application JavaScript (ES Modules)
 │   ├── main.js                 # App orchestrator & initialization
 │   ├── core/
 │   │   └── domainRegistry.js   # Plain domain config & getter
 │   ├── map/
-│   │   ├── initMap.js          # Leaflet map setup
+│   │   ├── initMap.js          # OpenLayers map setup & multi-basemap manager
 │   │   └── markerLayer.js      # Marker creation & event handling
 │   ├── data/
 │   │   ├── loadData.js         # GeoJSON loader & validator integration
@@ -108,5 +108,5 @@ node test/validate.test.js
 ## License & Attribution
 
 - Basemap tiles by [OpenStreetMap](https://www.openstreetmap.org/copyright) under ODbL.
-- Leaflet.js library licensed under BSD 2-Clause.
+- OpenLayers library licensed under BSD 2-Clause.
 - Educational geological content sourced from peer-reviewed publications, UNESCO World Heritage & Geopark catalogs, USGS, and NOAA NCEI databases.

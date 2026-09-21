@@ -6,7 +6,7 @@ This roadmap outlines the development phases for GeoMap Indonesia 2.0, distingui
 
 ## Phase 0 — Planning & Specification (Completed)
 - Define hybrid educational identity (Geological Explorer + Geohazard Information).
-- Establish technology stack constraints (HTML5, Vanilla CSS, Vanilla JS ES Modules, Leaflet.js, Static GeoJSON).
+- Establish technology stack constraints (HTML5, Vanilla CSS, Vanilla JS ES Modules, OpenLayers (migrated from Leaflet.js baseline), Static GeoJSON).
 - Define project folder architecture, schema specifications, and workspace safety guidelines.
 
 ---

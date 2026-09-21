@@ -237,66 +237,6 @@ export function initMap(elementId = "map") {
     });
   }
 
-  // Provide Leaflet-compatible helper methods expected by application modules:
-  
-  // 1. flyTo(coords, zoom, options)
-  map.flyTo = function(coords, zoom = 9, options = {}) {
-    let lon, lat;
-    if (Math.abs(coords[0]) <= 90 && Math.abs(coords[1]) > 90) {
-      lat = coords[0];
-      lon = coords[1];
-    } else {
-      lon = coords[0];
-      lat = coords[1];
-    }
-
-    let duration = 1200;
-    if (typeof options.duration === "number") {
-      duration = options.duration <= 10 ? options.duration * 1000 : options.duration;
-    }
-
-    const easingFunc = (typeof ol.easing === "object" && typeof ol.easing.easeInOut === "function")
-      ? ol.easing.easeInOut
-      : (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-    view.animate({
-      center: ol.proj.fromLonLat([lon, lat]),
-      zoom: zoom,
-      duration: duration,
-      easing: easingFunc
-    });
-  };
-
-  // 2. setView(coords, zoom)
-  map.setView = function(coords, zoom = defaultZoom) {
-    let lon, lat;
-    if (Math.abs(coords[0]) <= 90 && Math.abs(coords[1]) > 90) {
-      lat = coords[0];
-      lon = coords[1];
-    } else {
-      lon = coords[0];
-      lat = coords[1];
-    }
-    view.setCenter(ol.proj.fromLonLat([lon, lat]));
-    view.setZoom(zoom);
-  };
-
-  // 3. invalidateSize()
-  map.invalidateSize = function() {
-    map.updateSize();
-  };
-
-  // 4. removeLayer(layer)
-  const originalRemoveLayer = map.removeLayer.bind(map);
-  map.removeLayer = function(layer) {
-    if (!layer) return;
-    if (typeof layer.remove === "function") {
-      layer.remove();
-      return;
-    }
-    originalRemoveLayer(layer);
-  };
-
   // 5. Window resize listener to automatically update size
   window.addEventListener("resize", () => {
     map.updateSize();

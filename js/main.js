@@ -198,9 +198,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 4. Center & zoom map view to target feature coordinates
     if (targetFeature.geometry && Array.isArray(targetFeature.geometry.coordinates)) {
       const [lng, lat] = targetFeature.geometry.coordinates;
-      mapInstance.flyTo([lat, lng], 9, {
-        animate: true,
-        duration: 0.8
+      mapInstance.getView().animate({
+        center: ol.proj.fromLonLat([lng, lat]),
+        zoom: 9,
+        duration: 800,
+        easing: (typeof ol.easing === "object" && typeof ol.easing.easeInOut === "function")
+          ? ol.easing.easeInOut
+          : (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
       });
     }
   }
@@ -246,8 +250,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   function triggerMapInvalidateSize() {
-    if (mapInstance && typeof mapInstance.invalidateSize === "function") {
-      mapInstance.invalidateSize();
+    if (mapInstance && typeof mapInstance.updateSize === "function") {
+      mapInstance.updateSize();
     }
   }
 
@@ -266,8 +270,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       hideEmptyState();
     }
 
-    if (currentMarkerGroup) {
-      mapInstance.removeLayer(currentMarkerGroup);
+    if (currentMarkerGroup && typeof currentMarkerGroup.remove === "function") {
+      currentMarkerGroup.remove();
     }
 
     const result = renderMarkers(mapInstance, filtered, (feature, marker) => {
