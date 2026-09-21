@@ -103,12 +103,14 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     });
   }
 
+  // Track feature types that have been rendered to preserve user checkbox state
+  const previouslyKnownTypes = new Set();
+
   // 2. Render Dynamic Feature-Type Checkboxes (only types with > 0 valid records)
-  function renderFeatureTypeCheckboxes() {
+  function renderFeatureTypeCheckboxes(currentCounts = datasetCounts) {
     if (!featureTypeContainer) return;
 
     featureTypeContainer.innerHTML = "";
-    selectedFeatureTypes.clear();
 
     let allowedTypes = [];
     if (activeDomain === "geology") {
@@ -119,23 +121,35 @@ export function initFilterPanel(allFeatures, onFilterChange) {
       allowedTypes = [...domains.geology.featureTypes, ...domains.hazard.featureTypes];
     }
 
-    const validAvailableTypes = allowedTypes.filter(type => (datasetCounts.featureType[type] || 0) > 0);
+    const validAvailableTypes = allowedTypes.filter(type => (currentCounts.featureType[type] || 0) > 0);
 
     if (validAvailableTypes.length === 0) {
       featureTypeContainer.innerHTML = `<p class="filter-empty-text">No feature types available for selection.</p>`;
       return;
     }
 
-    validAvailableTypes.forEach(type => {
-      selectedFeatureTypes.add(type);
+    // Default newly discovered available types to checked while preserving user unchecks
+    if (selectedFeatureTypes.size === 0) {
+      validAvailableTypes.forEach(t => selectedFeatureTypes.add(t));
+    } else {
+      validAvailableTypes.forEach(t => {
+        if (!previouslyKnownTypes.has(t)) {
+          selectedFeatureTypes.add(t);
+        }
+      });
+    }
 
+    validAvailableTypes.forEach(t => previouslyKnownTypes.add(t));
+
+    validAvailableTypes.forEach(type => {
+      const isChecked = selectedFeatureTypes.has(type);
       const labelText = FEATURE_TYPE_LABELS[type] || type;
-      const count = datasetCounts.featureType[type] || 0;
+      const count = currentCounts.featureType[type] || 0;
 
       const wrapper = document.createElement("label");
       wrapper.className = "checkbox-item";
       wrapper.innerHTML = `
-        <input type="checkbox" value="${type}" checked />
+        <input type="checkbox" value="${type}" ${isChecked ? 'checked' : ''} autocomplete="off" />
         <span class="checkbox-label">${escapeHtml(labelText)}</span>
         <span class="type-count-badge">${count}</span>
       `;
@@ -326,7 +340,27 @@ export function initFilterPanel(allFeatures, onFilterChange) {
 
   return {
     updateResultBadgeCount,
-    resetAllFiltersUI
+    resetAllFiltersUI,
+    updateDataset: (newAllFeatures) => {
+      const newCounts = computeCanonicalDatasetCounts(newAllFeatures);
+      
+      // Update Domain Buttons text
+      if (domainButtonsContainer) {
+        const geologyBtn = domainButtonsContainer.querySelector('button[data-domain="geology"]');
+        const hazardBtn = domainButtonsContainer.querySelector('button[data-domain="hazard"]');
+        const allBtn = domainButtonsContainer.querySelector('button[data-domain="all"]');
+
+        if (allBtn) allBtn.textContent = `All Domains (${newCounts.domain.all})`;
+        if (geologyBtn) geologyBtn.textContent = `${domains.geology.label} (${newCounts.domain.geology})`;
+        if (hazardBtn) hazardBtn.textContent = `${domains.hazard.label} (${newCounts.domain.hazard})`;
+      }
+
+      // Re-render feature type checkboxes with updated counts
+      renderFeatureTypeCheckboxes(newCounts);
+
+      // Trigger change callback so currentFilterState gets updated fresh
+      triggerChange();
+    }
   };
 }
 

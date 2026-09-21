@@ -193,7 +193,7 @@ export function initMap(elementId = "map") {
       <span>Place Labels</span>
     </label>
     <label class="ol-layer-checkbox">
-      <input type="checkbox" name="ol-candidates-toggle">
+      <input type="checkbox" name="ol-candidates-toggle" autocomplete="off">
       <span>Candidate Structures</span>
     </label>
   `;

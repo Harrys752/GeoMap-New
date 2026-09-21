@@ -323,19 +323,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
 
-  // Candidate Structures Bi-Directional Toggle Handler
+  // Explicitly reset candidate checkboxes on application startup
+  const resetCandidateCheckboxes = () => {
+    const sideChk = document.getElementById("sidebar-candidates-toggle");
+    if (sideChk) sideChk.checked = false;
+    const mapChk = document.querySelector('input[name="ol-candidates-toggle"]');
+    if (mapChk) mapChk.checked = false;
+  };
+  resetCandidateCheckboxes();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", resetCandidateCheckboxes);
+  }
+
+  // Candidate Structures Synchronous Toggle Handler
   let candidateFeatures = [];
-  async function handleCandidateToggle(isChecked) {
+
+  // Pre-load candidate dataset in background so user toggle is 100% synchronous
+  loadAllDatasets(["data/geology/candidates.demo.geojson"]).then(res => {
+    candidateFeatures = res.features || [];
+    resetCandidateCheckboxes();
+  });
+
+  function handleCandidateToggle(isChecked) {
     const mapChk = document.querySelector('input[name="ol-candidates-toggle"]');
     const sideChk = document.getElementById("sidebar-candidates-toggle");
     if (mapChk) mapChk.checked = isChecked;
     if (sideChk) sideChk.checked = isChecked;
 
     if (isChecked) {
-      if (candidateFeatures.length === 0) {
-        const res = await loadAllDatasets(["data/geology/candidates.demo.geojson"]);
-        candidateFeatures = res.features || [];
-      }
       candidateFeatures.forEach(cf => {
         if (!allFeatures.some(f => f.properties && f.properties.id === cf.properties.id)) {
           allFeatures.push(cf);
@@ -346,13 +361,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       allFeatures = allFeatures.filter(f => !candidateIds.has(f.properties.id));
     }
 
-    // Re-initialize filter panel to update counts and checkboxes
-    filterPanel = initFilterPanel(allFeatures, (newFilterState) => {
-      currentFilterState = newFilterState;
+    // Update existing filterPanel dataset dynamically without re-initializing event listeners
+    if (filterPanel && typeof filterPanel.updateDataset === "function") {
+      filterPanel.updateDataset(allFeatures);
+    } else {
       applyFiltersAndRender();
-    });
-
-    applyFiltersAndRender();
+    }
   }
 
   document.addEventListener("change", (e) => {
