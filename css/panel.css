@@ -915,6 +915,11 @@
     height: 100%;
   }
 
+  /* Safe clearance for mobile bottom system navigation bars & gesture pills */
+  .detail-body {
+    padding-bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
   .quick-facts-grid {
     grid-template-columns: 1fr;
   }

@@ -178,34 +178,73 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const canonicalId = targetFeature.properties.id;
+    const isMobile = (typeof window !== "undefined" && typeof window.matchMedia === "function")
+      ? window.matchMedia("(max-width: 768px)").matches
+      : false;
 
-    // 1. Open Detail Panel (renders detail data + Phase 7 Data Confidence Card)
-    detailPanel.openDetailPanel(targetFeature);
-
-    // 2. Find and highlight marker if available on current map view
+    // 1. Find and highlight marker if available on current map view
     const marker = currentMarkerMap.get(canonicalId);
     if (marker) {
       setMarkerHighlight(marker);
     }
 
-    triggerMapInvalidateSize();
-
-    // 3. Sync timeline period node selection if available
+    // 2. Sync timeline period node selection if available
     if (timelineInstance) {
       timelineInstance.syncTimelineWithFeature(targetFeature);
     }
 
-    // 4. Center & zoom map view to target feature coordinates
+    // 3. Zoom & Detail Panel Sequencing based on Device Viewport
     if (targetFeature.geometry && Array.isArray(targetFeature.geometry.coordinates)) {
       const [lng, lat] = targetFeature.geometry.coordinates;
-      mapInstance.getView().animate({
-        center: ol.proj.fromLonLat([lng, lat]),
-        zoom: 9,
-        duration: 800,
-        easing: (typeof ol.easing === "object" && typeof ol.easing.easeInOut === "function")
+
+      if (isMobile) {
+        // MOBILE DEVICE SPECIFIC: Auto-zoom FIRST, then open detail panel after camera movement completes
+        let hasOpened = false;
+        const openPanel = () => {
+          if (hasOpened) return;
+          hasOpened = true;
+          detailPanel.openDetailPanel(targetFeature);
+          triggerMapInvalidateSize();
+        };
+
+        const easingFunc = (typeof ol.easing === "object" && typeof ol.easing.easeInOut === "function")
           ? ol.easing.easeInOut
-          : (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
-      });
+          : (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+        mapInstance.getView().animate(
+          {
+            center: ol.proj.fromLonLat([lng, lat]),
+            zoom: 9,
+            duration: 700,
+            easing: easingFunc
+          },
+          (completed) => {
+            openPanel();
+          }
+        );
+
+        // Fallback timer to ensure detail panel opens even if view animation callback is delayed
+        setTimeout(openPanel, 750);
+      } else {
+        // DESKTOP / LAPTOP LAYOUT: Open detail panel immediately & animate camera simultaneously
+        detailPanel.openDetailPanel(targetFeature);
+        triggerMapInvalidateSize();
+
+        const easingFunc = (typeof ol.easing === "object" && typeof ol.easing.easeInOut === "function")
+          ? ol.easing.easeInOut
+          : (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+        mapInstance.getView().animate({
+          center: ol.proj.fromLonLat([lng, lat]),
+          zoom: 9,
+          duration: 800,
+          easing: easingFunc
+        });
+      }
+    } else {
+      // Fallback for non-point features
+      detailPanel.openDetailPanel(targetFeature);
+      triggerMapInvalidateSize();
     }
   }
 
