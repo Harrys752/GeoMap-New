@@ -4,6 +4,8 @@
  */
 
 import {
+  ALLOWED_GEOMETRY_TYPES,
+  ALLOWED_GEOMETRY_STATUSES,
   ALLOWED_DOMAINS,
   ALLOWED_FEATURE_TYPES,
   ALLOWED_DATA_STATUSES,
@@ -53,24 +55,70 @@ export function validateFeature(feature, seenIds = new Set()) {
     errors.push(`Invalid feature type: expected 'Feature', got '${feature.type}'`);
   }
 
-  // 2. Geometry Validation (Point geometry only in V1)
+  // 2. Multi-Geometry Validation (Point, LineString, Polygon)
   const geom = feature.geometry;
   if (!geom || typeof geom !== "object") {
     errors.push("Missing or invalid geometry object");
   } else {
-    if (geom.type !== "Point") {
-      errors.push(`Unsupported geometry type '${geom.type}'. V1 only supports 'Point' geometry.`);
+    if (!ALLOWED_GEOMETRY_TYPES.includes(geom.type)) {
+      errors.push(`Unsupported geometry type '${geom.type}'. Must be one of: ${ALLOWED_GEOMETRY_TYPES.join(", ")}`);
     }
 
-    if (!Array.isArray(geom.coordinates) || geom.coordinates.length < 2) {
-      errors.push("Invalid geometry coordinates: expected [longitude, latitude] array");
-    } else {
-      const [lng, lat] = geom.coordinates;
-      if (typeof lng !== "number" || isNaN(lng) || lng < -180 || lng > 180) {
-        errors.push(`Invalid longitude coordinate '${lng}'. Must be a number between -180 and 180.`);
+    if (!Array.isArray(geom.coordinates)) {
+      errors.push("Invalid geometry coordinates: expected coordinate array");
+    } else if (geom.type === "Point") {
+      if (geom.coordinates.length < 2) {
+        errors.push("Invalid Point coordinates: expected [longitude, latitude] array");
+      } else {
+        const [lng, lat] = geom.coordinates;
+        if (typeof lng !== "number" || isNaN(lng) || lng < -180 || lng > 180) {
+          errors.push(`Invalid longitude coordinate '${lng}'. Must be a number between -180 and 180.`);
+        }
+        if (typeof lat !== "number" || isNaN(lat) || lat < -90 || lat > 90) {
+          errors.push(`Invalid latitude coordinate '${lat}'. Must be a number between -90 and 90.`);
+        }
       }
-      if (typeof lat !== "number" || isNaN(lat) || lat < -90 || lat > 90) {
-        errors.push(`Invalid latitude coordinate '${lat}'. Must be a number between -90 and 90.`);
+    } else if (geom.type === "LineString") {
+      if (geom.coordinates.length < 2) {
+        errors.push("LineString geometry must contain at least 2 coordinate pairs");
+      } else {
+        geom.coordinates.forEach((pt, idx) => {
+          if (!Array.isArray(pt) || pt.length < 2) {
+            errors.push(`LineString coordinate at index ${idx} must be a [longitude, latitude] array`);
+          } else {
+            const [lng, lat] = pt;
+            if (typeof lng !== "number" || isNaN(lng) || lng < -180 || lng > 180) {
+              errors.push(`Invalid LineString longitude coordinate '${lng}' at index ${idx}`);
+            }
+            if (typeof lat !== "number" || isNaN(lat) || lat < -90 || lat > 90) {
+              errors.push(`Invalid LineString latitude coordinate '${lat}' at index ${idx}`);
+            }
+          }
+        });
+      }
+    } else if (geom.type === "Polygon") {
+      if (geom.coordinates.length < 1) {
+        errors.push("Polygon geometry must contain at least 1 linear ring");
+      } else {
+        geom.coordinates.forEach((ring, rIdx) => {
+          if (!Array.isArray(ring) || ring.length < 4) {
+            errors.push(`Polygon linear ring at index ${rIdx} must contain at least 4 coordinate pairs`);
+          } else {
+            ring.forEach((pt, pIdx) => {
+              if (!Array.isArray(pt) || pt.length < 2) {
+                errors.push(`Polygon coordinate at ring ${rIdx}, index ${pIdx} must be a [longitude, latitude] array`);
+              } else {
+                const [lng, lat] = pt;
+                if (typeof lng !== "number" || isNaN(lng) || lng < -180 || lng > 180) {
+                  errors.push(`Invalid Polygon longitude coordinate '${lng}' at ring ${rIdx}, index ${pIdx}`);
+                }
+                if (typeof lat !== "number" || isNaN(lat) || lat < -90 || lat > 90) {
+                  errors.push(`Invalid Polygon latitude coordinate '${lat}' at ring ${rIdx}, index ${pIdx}`);
+                }
+              }
+            });
+          }
+        });
       }
     }
   }
@@ -158,6 +206,13 @@ export function validateFeature(feature, seenIds = new Set()) {
       if (!props.source || typeof props.source !== "string" || props.source.trim() === "") {
         errors.push(`Property 'source' is required for non-illustrative source_type '${srcType}'`);
       }
+    }
+  }
+
+  const geomStatus = props.geometry_status;
+  if (geomStatus !== undefined && geomStatus !== null && String(geomStatus).trim() !== "") {
+    if (!ALLOWED_GEOMETRY_STATUSES.includes(geomStatus)) {
+      errors.push(`Invalid geometry_status '${geomStatus}'. Must be one of: ${ALLOWED_GEOMETRY_STATUSES.join(", ")}`);
     }
   }
 

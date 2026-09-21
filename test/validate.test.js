@@ -78,11 +78,11 @@ runTest("Coordinate Range & Point Geometry Validation", () => {
   // Bad geometry type
   const lineFeature = {
     type: "Feature",
-    geometry: { type: "LineString", coordinates: [[0, 0], [1, 1]] },
+    geometry: { type: "MultiPoint", coordinates: [[0, 0], [1, 1]] },
     properties: { id: "test_line", name: "Line", domain: "geology", feature_type: "site", description: "desc", data_status: "demo", source: "src", last_updated: "2026-09-15" }
   };
   const lineRes = validateFeature(lineFeature, new Set());
-  assert.strictEqual(lineRes.valid, false, "LineString geometry should be rejected in V1");
+  assert.strictEqual(lineRes.valid, false, "Unsupported geometry type should be rejected");
 
   // Out of range coordinates
   const badCoordsFeature = {

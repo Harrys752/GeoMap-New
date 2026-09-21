@@ -1,3 +1,4 @@
+import { getFeatureCenter } from "../../map/markerLayer.js";
 /**
  * Geology Data Adapter
  * Formats geology feature properties into structured view models for the Phase 1 detail panel layout.
@@ -10,10 +11,13 @@
  */
 export function adaptGeologyFeature(feature) {
   const p = feature.properties || {};
-  const [lng, lat] = feature.geometry.coordinates;
+  const center = getFeatureCenter(feature) || [0, 0];
+  const lng = typeof center[0] === "number" ? center[0] : 0;
+  const lat = typeof center[1] === "number" ? center[1] : 0;
 
   const quickFacts = filterPresentFields({
     "Feature Type": formatFeatureTypeLabel(p.feature_type),
+    "Structure Type": formatStructureTypeLabel(p.structure_type),
     "Geological Age": p.geological_age || p.geological_period,
     "Rock Type / Lithology": p.rock_type,
     "Location": p.discovery_locality || `${lat.toFixed(4)}° N/S, ${lng.toFixed(4)}° E`
@@ -47,6 +51,8 @@ export function adaptGeologyFeature(feature) {
     recordCompilationDate: p.record_compilation_date || p.last_updated || null,
     lastUpdated: p.last_updated,
     geometryNote: p.geometry_note || null,
+    structureType: p.structure_type || null,
+    geometryStatus: p.geometry_status || null,
 
     // Phase 4 Evidence Properties
     evidenceType: p.evidence_type || null,
@@ -66,7 +72,20 @@ function formatFeatureTypeLabel(type) {
     case "volcano": return "Volcano / Volcanic Complex";
     case "paleontology_site": return "Paleontological Site";
     case "site": return "Geological Site / Formation";
+    case "tectonic_structure": return "Tectonic Structure";
+    case "geological_complex": return "Geological Complex";
+    case "volcanic_complex": return "Volcanic Complex";
     default: return type || "Geology Site";
+  }
+}
+
+function formatStructureTypeLabel(type) {
+  switch (type) {
+    case "active_fault": return "Active Fault Line";
+    case "subduction_trench": return "Subduction Trench Axis";
+    case "mélange": return "Subduction Mélange Complex";
+    case "fold_thrust_belt": return "Fold & Thrust Belt";
+    default: return type || null;
   }
 }
 

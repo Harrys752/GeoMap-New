@@ -1091,3 +1091,37 @@ body:has(.detail-panel-drawer.open) .ol-control-layers,
 .ol-control-layers.detail-panel-active-hide {
   display: none !important;
 }
+
+/* Candidate Structural Layer Sidebar Card */
+.candidate-layer-box {
+  margin-top: 0.65rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid #ff7043;
+  border-radius: 4px;
+  padding: 0.55rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.candidate-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.candidate-toggle-label input[type="checkbox"] {
+  accent-color: #ff7043;
+  cursor: pointer;
+}
+
+.candidate-toggle-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}

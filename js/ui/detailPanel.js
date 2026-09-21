@@ -272,6 +272,28 @@ export function renderDetailContent(data) {
     <span class="badge-status badge-illustrative">ILLUSTRATIVE / DEMO DATA</span>
   ` : "";
 
+  let geomStatusBadge = "";
+  if (data.geometryStatus) {
+    const geomLabel = data.geometryStatus === "verified"
+      ? "VERIFIED GEOMETRY TRACE"
+      : (data.geometryStatus === "partially_verified" ? "PARTIALLY VERIFIED GEOMETRY" : "GEOMETRY NEEDS REVIEW");
+    const geomBadgeClass = data.geometryStatus === "verified"
+      ? "badge-confidence-verified"
+      : (data.geometryStatus === "partially_verified" ? "badge-confidence-partially-verified" : "badge-confidence-needs-review");
+
+    geomStatusBadge = `
+      <div class="field-item">
+        <dt>Spatial Trace Status</dt>
+        <dd>
+          <span class="badge-confidence ${geomBadgeClass}">${escapeHtml(geomLabel)}</span>
+          <span style="display:block; font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Interface visual representation — not official cartographic trace.
+          </span>
+        </dd>
+      </div>
+    `;
+  }
+
   const geometryNoteHtml = data.geometryNote ? `
     <div class="geometry-note-banner">
       <span class="note-icon">&#9432;</span>
@@ -308,6 +330,7 @@ export function renderDetailContent(data) {
           </div>
           ${sourceTypeBadge}
           ${verifStatusBadge}
+          ${geomStatusBadge}
           <div class="field-item">
             <dt>Data Status</dt>
             <dd><span class="${statusBadgeClass}">${escapeHtml(data.dataStatus.toUpperCase())}</span></dd>

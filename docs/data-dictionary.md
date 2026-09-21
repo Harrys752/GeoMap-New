@@ -6,7 +6,7 @@ This document defines the properties, data types, validation rules, and schema e
 
 ## 1. GeoJSON Structure Requirements
 
-Every dataset file must be a valid GeoJSON `FeatureCollection`. All features in V1 must use `Point` geometry.
+Every dataset file must be a valid GeoJSON `FeatureCollection`. Features support `Point`, `LineString`, and `Polygon` geometries.
 
 ```json
 {
@@ -15,8 +15,8 @@ Every dataset file must be a valid GeoJSON `FeatureCollection`. All features in 
     {
       "type": "Feature",
       "geometry": {
-        "type": "Point",
-        "coordinates": [106.45, -7.18]
+        "type": "LineString",
+        "coordinates": [[107.45, -6.83], [107.75, -6.84]]
       },
       "properties": { ... }
     }
@@ -29,6 +29,16 @@ Every dataset file must be a valid GeoJSON `FeatureCollection`. All features in 
   - `latitude`: Floating point number in range `[-90.0, 90.0]`.
 
 ---
+
+
+---
+
+## 2.1 Multi-Geometry & Structural Extension Properties
+
+| Property Name | Type | Allowed Values / Constraints | Description |
+|---|---|---|---|
+| `structure_type` | `string` | `active_fault`, `subduction_trench`, `mélange`, `fold_thrust_belt` | Specific geological structure classification |
+| `geometry_status` | `string` | `verified`, `partially_verified`, `needs_review`, `missing` | Spatial geometry trace evidence confidence status |
 
 ## 2. Base Schema Properties (Required on Every Record)
 

@@ -21,7 +21,10 @@ const FEATURE_TYPE_LABELS = {
   volcano: "Volcanoes",
   paleontology_site: "Paleontology Sites",
   site: "Geological Sites",
-  historical_event: "Historical Hazard Events"
+  historical_event: "Historical Hazard Events",
+  tectonic_structure: "Tectonic Structures (Faults & Trenches)",
+  geological_complex: "Geological Complexes & Mélanges",
+  volcanic_complex: "Volcanic Complexes"
 };
 
 /**

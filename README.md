@@ -27,7 +27,7 @@ GeoMap Indonesia 2.0 is an independent educational project. **It does not claim 
 - **Hybrid Domain Structure**:
   - **Geological Explorer (`geology`)**: 6 point-based entries covering volcanoes, paleontological sites, and geological formations.
   - **Geohazard Information (`hazard`)**: 3 point-based historical geohazard event entries.
-- **Interactive Map**: Built with OpenLayers (ol.js) featuring multi-basemap support (Esri Satellite, OpenTopoMap Terrain, OpenStreetMap Standard) with custom layer controls and place labels overlay.
+- **Interactive Map & Vector Engine**: Built with OpenLayers (ol.js) featuring multi-geometry rendering (`Point` pin overlays, `LineString` active fault/trench traces, `Polygon` mélange complex boundaries), multi-basemap support (Esri Satellite, OpenTopoMap Terrain, OpenStreetMap Standard), custom layer switcher with Candidate Structural Features toggle, and place labels overlay.
 - **Domain-Aware Shared Detail Panel**: Displays rich conditional metadata (process, age, period, rock type, fossil material, hazard type, event date, data status, source citations) without empty fields.
 - **Search & Filter Controls**: Live text filter by location name and feature type category with dynamic result count indicators.
 - **Data Quality & Status Badges**: Explicit `data_status` badges (`historical`, `illustrative`, `demo`) and source attributions for every record.

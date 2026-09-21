@@ -9,7 +9,7 @@ export const domains = {
   geology: {
     label: "Geological Explorer",
     color: "#3b6e4c",
-    featureTypes: ["site", "volcano", "paleontology_site"],
+    featureTypes: ["site", "volcano", "paleontology_site", "tectonic_structure", "geological_complex", "volcanic_complex"],
     detailFields: [
       "geological_process",
       "geological_age",

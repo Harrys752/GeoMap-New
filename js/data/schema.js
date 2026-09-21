@@ -8,7 +8,10 @@ export const ALLOWED_FEATURE_TYPES = [
   "site",
   "volcano",
   "paleontology_site",
-  "historical_event"
+  "historical_event",
+  "tectonic_structure",
+  "geological_complex",
+  "volcanic_complex"
 ];
 
 export const ALLOWED_DATA_STATUSES = [
@@ -66,4 +69,17 @@ export const REQUIRED_BASE_PROPERTIES = [
   "data_status",
   "source",
   "last_updated"
+];
+
+export const ALLOWED_GEOMETRY_TYPES = [
+  "Point",
+  "LineString",
+  "Polygon"
+];
+
+export const ALLOWED_GEOMETRY_STATUSES = [
+  "verified",
+  "partially_verified",
+  "needs_review",
+  "missing"
 ];

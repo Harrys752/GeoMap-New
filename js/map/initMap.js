@@ -192,6 +192,10 @@ export function initMap(elementId = "map") {
       <input type="checkbox" name="ol-labels-toggle" checked>
       <span>Place Labels</span>
     </label>
+    <label class="ol-layer-checkbox">
+      <input type="checkbox" name="ol-candidates-toggle">
+      <span>Candidate Structures</span>
+    </label>
   `;
 
   switcherContainer.appendChild(toggleBtn);

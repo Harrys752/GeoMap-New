@@ -42,3 +42,10 @@ This roadmap outlines the development phases for GeoMap Indonesia 2.0, distingui
 - Student quiz / educational interactive challenges.
 - Geometry extensions (`LineString` fault lines, `Polygon` caldera boundaries) pending open vector datasets.
 - Offline PWA (Progressive Web App) support for classroom usage without internet connection.
+
+---
+
+## Phase 4 — OpenLayers Multi-Geometry & Structural Expansion (Completed Current Release)
+- **Multi-Geometry Engine**: Support for `Point` pin overlays, `LineString` active fault traces & subduction trenches, and `Polygon` mélange complex boundaries.
+- **Candidate Structural Layer Toggle**: Interactive layer switcher toggle (`Candidate Structures`) rendering staged authentic tectonic features on demand.
+- **Scientific Geometry Transparency**: Independent `geometry_status` metadata (`verified`, `partially_verified`, `needs_review`) with explicit cartographic visual symbology disclaimers.

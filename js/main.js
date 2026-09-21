@@ -3,7 +3,7 @@
  */
 
 import { initMap } from "./map/initMap.js";
-import { renderMarkers, setMarkerHighlight, clearMarkerHighlight } from "./map/markerLayer.js";
+import { renderMarkers, setMarkerHighlight, clearMarkerHighlight, getFeatureCenter } from "./map/markerLayer.js";
 import { loadAllDatasets } from "./data/loadData.js";
 import { initSearchBar, filterBySearchQuery } from "./ui/searchBar.js";
 import { initFilterPanel, filterByDomainAndType } from "./ui/filterPanel.js";
@@ -194,8 +194,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // 3. Zoom & Detail Panel Sequencing based on Device Viewport
-    if (targetFeature.geometry && Array.isArray(targetFeature.geometry.coordinates)) {
-      const [lng, lat] = targetFeature.geometry.coordinates;
+    const centerCoords = getFeatureCenter(targetFeature);
+    if (centerCoords && Array.isArray(centerCoords)) {
+      const [lng, lat] = centerCoords;
 
       if (isMobile) {
         // MOBILE DEVICE SPECIFIC: Auto-zoom FIRST, then open detail panel after camera movement completes
@@ -320,6 +321,45 @@ document.addEventListener("DOMContentLoaded", async () => {
     currentMarkerGroup = result.markerGroup;
     currentMarkerMap = result.markerMap;
   }
+
+
+  // Candidate Structures Bi-Directional Toggle Handler
+  let candidateFeatures = [];
+  async function handleCandidateToggle(isChecked) {
+    const mapChk = document.querySelector('input[name="ol-candidates-toggle"]');
+    const sideChk = document.getElementById("sidebar-candidates-toggle");
+    if (mapChk) mapChk.checked = isChecked;
+    if (sideChk) sideChk.checked = isChecked;
+
+    if (isChecked) {
+      if (candidateFeatures.length === 0) {
+        const res = await loadAllDatasets(["data/geology/candidates.demo.geojson"]);
+        candidateFeatures = res.features || [];
+      }
+      candidateFeatures.forEach(cf => {
+        if (!allFeatures.some(f => f.properties && f.properties.id === cf.properties.id)) {
+          allFeatures.push(cf);
+        }
+      });
+    } else {
+      const candidateIds = new Set(candidateFeatures.map(cf => cf.properties.id));
+      allFeatures = allFeatures.filter(f => !candidateIds.has(f.properties.id));
+    }
+
+    // Re-initialize filter panel to update counts and checkboxes
+    filterPanel = initFilterPanel(allFeatures, (newFilterState) => {
+      currentFilterState = newFilterState;
+      applyFiltersAndRender();
+    });
+
+    applyFiltersAndRender();
+  }
+
+  document.addEventListener("change", (e) => {
+    if (e.target && (e.target.name === "ol-candidates-toggle" || e.target.id === "sidebar-candidates-toggle")) {
+      handleCandidateToggle(e.target.checked);
+    }
+  });
 
   // Initial render call
   applyFiltersAndRender();
