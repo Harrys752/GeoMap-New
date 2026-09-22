@@ -397,6 +397,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
+  // Mobile Scope Statement Disclaimer Toggle Handler
+  const scopeToggleBtn = document.getElementById("scope-toggle-btn");
+  const scopeBanner = document.querySelector(".scope-statement-banner");
+  if (scopeToggleBtn && scopeBanner) {
+    scopeToggleBtn.addEventListener("click", () => {
+      const isExpanded = scopeBanner.classList.toggle("expanded");
+      scopeToggleBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+      scopeToggleBtn.innerHTML = isExpanded ? "Less &#9650;" : "Full Info &#9662;";
+    });
+  }
+
   // Initial render call
   applyFiltersAndRender();
 

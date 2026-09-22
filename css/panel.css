@@ -889,23 +889,94 @@
 @media (max-width: 768px) {
   .app-header {
     height: auto;
-    padding: 0.5rem 0.75rem;
+    padding: 0.35rem 0.6rem;
   }
 
   .header-main {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .app-title {
+    font-size: 1.05rem;
+  }
+
+  .app-tagline {
+    font-size: 0.68rem;
+  }
+
+  .scope-statement-banner {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem;
+    position: relative;
+    border-radius: 4px;
+    margin-top: 0.15rem;
+  }
+
+  .scope-statement-banner .scope-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.25;
+    flex: 1;
+    transition: all 0.2s ease;
+  }
+
+  .scope-statement-banner.expanded .scope-content {
+    display: block;
+    -webkit-line-clamp: initial;
+    overflow: visible;
+  }
+
+  .scope-toggle-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 28px;
+    touch-action: manipulation;
+  }
+
+  .scope-toggle-btn:hover,
+  .scope-toggle-btn:active {
+    background: rgba(255, 255, 255, 0.22);
   }
 
   .app-workspace {
     flex-direction: column-reverse;
-    height: calc(100vh - 110px);
+    height: calc(100vh - var(--mobile-header-height, 65px));
+    height: calc(100dvh - var(--mobile-header-height, 65px));
+  }
+
+  .map-container-wrapper {
+    height: 68%;
+    flex: none;
   }
 
   .sidebar-panel {
     width: 100%;
-    height: 40%;
+    height: 32%;
     border-right: none;
     border-top: 1px solid var(--border-color);
   }
@@ -922,11 +993,6 @@
 
   .quick-facts-grid {
     grid-template-columns: 1fr;
-  }
-
-  .scope-statement-banner {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.5rem;
   }
 }
 

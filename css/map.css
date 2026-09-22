@@ -262,3 +262,46 @@
 .btn-reset-filters:hover {
   background-color: #3b8ccf;
 }
+
+/* Mobile Responsive Control Touch Targets & Safe-Area Inset Handling */
+@media (max-width: 768px) {
+  .ol-zoom {
+    top: calc(0.65rem + env(safe-area-inset-top, 0px)) !important;
+    left: calc(0.65rem + env(safe-area-inset-left, 0px)) !important;
+  }
+
+  .ol-zoom button {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.25rem !important;
+  }
+
+  .ol-control-layers {
+    top: calc(0.65rem + env(safe-area-inset-top, 0px)) !important;
+    right: calc(0.65rem + env(safe-area-inset-right, 0px)) !important;
+  }
+
+  .ol-layers-toggle-btn {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.2rem !important;
+  }
+
+  .ol-layers-panel {
+    top: calc(48px + env(safe-area-inset-top, 0px));
+    right: 0;
+  }
+
+  .ol-attribution {
+    bottom: calc(0.25rem + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(0.25rem + env(safe-area-inset-right, 0px)) !important;
+  }
+
+  .search-clear-btn {
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
