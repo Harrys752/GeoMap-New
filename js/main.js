@@ -283,11 +283,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     applyFiltersAndRender();
   });
 
-  // 7. Initialize Search Bar
-  initSearchBar("search-input", "search-clear", (newQuery) => {
-    searchSearchQuery = newQuery;
-    applyFiltersAndRender();
-  });
+  // 7. Initialize Search Bar with Autocomplete Suggestions & Direct Marker Focus
+  initSearchBar(
+    "search-input",
+    "search-clear",
+    (newQuery) => {
+      searchSearchQuery = newQuery;
+      applyFiltersAndRender();
+    },
+    () => allFeatures,
+    (selectedFeature) => {
+      selectFeatureAndFocus(selectedFeature);
+    }
+  );
 
   function triggerMapInvalidateSize() {
     if (mapInstance && typeof mapInstance.updateSize === "function") {
@@ -333,6 +341,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   resetCandidateCheckboxes();
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", resetCandidateCheckboxes);
+  }
+
+  // Candidate Layer Card Full Click Target Handler
+  const candidateBox = document.querySelector(".candidate-layer-box");
+  if (candidateBox) {
+    candidateBox.addEventListener("click", (e) => {
+      // Don't double toggle if click hit input directly
+      if (e.target && e.target.tagName === "INPUT") return;
+      const sideChk = document.getElementById("sidebar-candidates-toggle");
+      if (sideChk) {
+        sideChk.checked = !sideChk.checked;
+        handleCandidateToggle(sideChk.checked);
+      }
+    });
   }
 
   // Candidate Structures Synchronous Toggle Handler
