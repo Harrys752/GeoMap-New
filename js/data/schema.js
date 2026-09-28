@@ -11,7 +11,11 @@ export const ALLOWED_FEATURE_TYPES = [
   "historical_event",
   "tectonic_structure",
   "geological_complex",
-  "volcanic_complex"
+  "volcanic_complex",
+  "mountain_system",
+  "basin",
+  "regional_karst",
+  "volcanic_arc"
 ];
 
 export const ALLOWED_DATA_STATUSES = [

@@ -11,7 +11,11 @@ const FEATURE_TYPE_LABELS = {
   historical_event: "Historical Hazard",
   tectonic_structure: "Tectonic Structure",
   geological_complex: "Geological Complex",
-  volcanic_complex: "Volcanic Complex"
+  volcanic_complex: "Volcanic Complex",
+  mountain_system: "Mountain System",
+  basin: "Basin",
+  regional_karst: "Regional Karst",
+  volcanic_arc: "Volcanic Arc"
 };
 
 /**

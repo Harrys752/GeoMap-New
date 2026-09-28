@@ -75,6 +75,10 @@ function formatFeatureTypeLabel(type) {
     case "tectonic_structure": return "Tectonic Structure";
     case "geological_complex": return "Geological Complex";
     case "volcanic_complex": return "Volcanic Complex";
+    case "mountain_system": return "Mountain System / Range";
+    case "basin": return "Sedimentary & Tectonic Basin";
+    case "regional_karst": return "Regional Karst System";
+    case "volcanic_arc": return "Volcanic Arc System";
     default: return type || "Geology Site";
   }
 }
@@ -83,8 +87,16 @@ function formatStructureTypeLabel(type) {
   switch (type) {
     case "active_fault": return "Active Fault Line";
     case "subduction_trench": return "Subduction Trench Axis";
-    case "mélange": return "Subduction Mélange Complex";
+    case "mélange":
+    case "melange":
+    case "mAclange": return "Subduction Mélange Complex";
     case "fold_thrust_belt": return "Fold & Thrust Belt";
+    case "mountain_range": return "Mountain Range";
+    case "physiographic_zone": return "Physiographic Zone";
+    case "intermontane_basin": return "Intermontane Volcano-Tectonic Basin";
+    case "sedimentary_basin": return "Sedimentary Basin";
+    case "tropical_kegelkarst": return "Tropical Kegelkarst System";
+    case "volcanic_arc_axis": return "Volcanic Front Axis (Representative)";
     default: return type || null;
   }
 }

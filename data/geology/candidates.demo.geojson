@@ -1,8 +1,719 @@
 {
   "type": "FeatureCollection",
-  "name": "GeoMap Indonesia Candidate Geological & Structural Features",
-  "description": "Candidate geological features, active fault traces, subduction trenches, and structural complex boundaries staged for review and verification.",
+  "name": "GeoMap_Indonesia_Candidate_Tectonic_and_Macro_Geomorphology",
   "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              95.2,
+              5.6
+            ],
+            [
+              96.8,
+              4.8
+            ],
+            [
+              98.5,
+              3.2
+            ],
+            [
+              100.2,
+              0.8
+            ],
+            [
+              101.8,
+              -1.5
+            ],
+            [
+              103.5,
+              -3.8
+            ],
+            [
+              105.2,
+              -5.8
+            ],
+            [
+              104.5,
+              -5.9
+            ],
+            [
+              103,
+              -4.2
+            ],
+            [
+              101.2,
+              -1.8
+            ],
+            [
+              99.5,
+              0.5
+            ],
+            [
+              97.8,
+              2.8
+            ],
+            [
+              95.8,
+              4.5
+            ],
+            [
+              95.2,
+              5.6
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_pegunungan_barisan",
+        "name": "Pegunungan Barisan (Bukit Barisan Mountain System)",
+        "domain": "geology",
+        "feature_type": "mountain_system",
+        "structure_type": "mountain_range",
+        "description": "~1,700 km long spine mountain system of Sumatra, formed by Cenozoic magmatic arc activity and oblique plate convergence along the Sunda-Java trench.",
+        "geological_process": "Orogeny & Crustal Uplift",
+        "geological_age": "Cenozoic (Paleogene to Quaternary)",
+        "geological_period": "Cenozoic",
+        "rock_type": "Granitoid batholiths, andesite-dacite volcanics, pre-Tertiary metamorphic basement",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Continuous high-relief fault-bounded mountain belt traversing Sumatra with dissected volcanic massifs and pull-apart basins along the Great Sumatran Fault.",
+        "evidence_significance": "Represents the primary morphotectonic backbone of Sumatra, illustrating magmatic arc evolution and strike-slip terrane deformation.",
+        "why_it_matters": "The Barisan Mountains host major active geothermal systems, mineralized plutonic complexes, and active tectonic fault grabens across Sumatra.",
+        "location_province": "Sumatra (Aceh to Lampung)",
+        "data_status": "demo",
+        "source": "Barber, Crow & Milsom (2005) 'Sumatra: Geology, Resources and Tectonic Evolution' (Geol. Soc. London Memoir 31) & Van Bemmelen (1949)",
+        "source_url": "https://www.geolsoc.org.uk",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "needs_review",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon envelope represents generalized macro-physiographic mountain province (interface visual convention, not official cadastral survey vector)."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              115.2,
+              -2.4
+            ],
+            [
+              115.8,
+              -2.5
+            ],
+            [
+              116.1,
+              -3.2
+            ],
+            [
+              115.9,
+              -4.1
+            ],
+            [
+              115.4,
+              -4
+            ],
+            [
+              115,
+              -3.2
+            ],
+            [
+              115.2,
+              -2.4
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_pegunungan_meratus",
+        "name": "Pegunungan Meratus (Meratus Suture & Ophiolite Complex)",
+        "domain": "geology",
+        "feature_type": "mountain_system",
+        "structure_type": "mountain_range",
+        "description": "Uplifted Cretaceous subduction-accretion complex and ophiolitic suture belt in South Kalimantan, separating the Barito and Asem-Asem basins.",
+        "geological_process": "Orogeny & Crustal Uplift",
+        "geological_age": "Cretaceous to Miocene",
+        "geological_period": "Cretaceous",
+        "rock_type": "Serpentinized peridotite, gabbro, pillow basalt, radiolarian chert, schist",
+        "evidence_type": "Rock",
+        "evidence_description": "Exposed Mesozoic ultramafic ophiolite sequence and high-pressure blueschist metamorphic blocks thrust over continental basement.",
+        "evidence_significance": "Crucial suture zone marking Cretaceous collision between the Schwaner/Sundaland block and East Java-Paternoster microcontinent.",
+        "why_it_matters": "Exposes Earth mantle rocks and paleo-subduction mélange in Kalimantan, fundamental for SE Asian paleogeographic reconstructions.",
+        "location_province": "Kalimantan Selatan",
+        "data_status": "demo",
+        "source": "Sikumbang (1986) 'Geology and Tectonic History of the Meratus Complex' & Wakita et al. (1998)",
+        "source_url": "https://geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "geometry_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon boundary derived from regional geological sheet mapping of Meratus ultramafic outcrop footprint."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              106.5,
+              -7
+            ],
+            [
+              108.5,
+              -7.5
+            ],
+            [
+              110.5,
+              -7.9
+            ],
+            [
+              112.5,
+              -8.2
+            ],
+            [
+              114.5,
+              -8.6
+            ],
+            [
+              114.5,
+              -8.8
+            ],
+            [
+              112.5,
+              -8.5
+            ],
+            [
+              110.5,
+              -8.2
+            ],
+            [
+              108.5,
+              -7.8
+            ],
+            [
+              106.5,
+              -7.4
+            ],
+            [
+              106.5,
+              -7
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_pegunungan_selatan_jawa",
+        "name": "Pegunungan Selatan Jawa (Southern Mountains Zone)",
+        "domain": "geology",
+        "feature_type": "mountain_system",
+        "structure_type": "physiographic_zone",
+        "description": "Classic physiographic zone of Java established by Van Bemmelen (1949), comprising Oligo-Miocene volcanic arc formations (OAF) overlain by Miocene limestones.",
+        "geological_process": "Plate Tectonics & Subduction",
+        "geological_age": "Oligocene to Miocene (~30-10 Ma)",
+        "geological_period": "Neogene",
+        "rock_type": "Old Andesite Formation (OAF) breccia, dacitic tuff, Wonosari limestone",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Continuous uplifted plateau and rugged coastal ranges forming the southern structural flank of Java.",
+        "evidence_significance": "Preserves the ancient Paleogene volcanic arc before the subduction zone migrated to its modern Quaternary volcanic axis.",
+        "why_it_matters": "Provides key stratigraphical record of the transition from ancient volcanic arc activity to extensive carbonate platform deposition.",
+        "location_province": "Jawa (Jawa Barat, DIY, Jawa Tengah, Jawa Timur)",
+        "data_status": "demo",
+        "source": "Van Bemmelen (1949) 'The Geology of Indonesia' & Smyth et al. (2008) Geol. Soc. London Spec. Publ. 311",
+        "source_url": "https://doi.org/10.1144/SP311.6",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon boundary represents Van Bemmelen (1949) Southern Mountains Zone regional physiographic envelope."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              110.4,
+              -7.1
+            ],
+            [
+              111.4,
+              -7.2
+            ],
+            [
+              112.4,
+              -7.3
+            ],
+            [
+              112.6,
+              -7.5
+            ],
+            [
+              111.4,
+              -7.4
+            ],
+            [
+              110.4,
+              -7.3
+            ],
+            [
+              110.4,
+              -7.1
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_pegunungan_kendeng",
+        "name": "Pegunungan Kendeng (Kendeng Fold-Thrust Belt)",
+        "domain": "geology",
+        "feature_type": "mountain_system",
+        "structure_type": "fold_thrust_belt",
+        "description": "East-west trending fold-and-thrust belt in Central-East Java, formed by intense Plio-Pleistocene compression of a deep marine volcaniclastic trough.",
+        "geological_process": "Orogeny & Crustal Uplift",
+        "geological_age": "Neogene to Pleistocene",
+        "geological_period": "Quaternary",
+        "rock_type": "Turbiditic sandstone, marl, volcaniclastic flysch (Kerek, Kalibeng, Pucangan formations)",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Series of asymmetric anticlines, synclines, and south-verging blind thrust faults (Kendeng Thrust).",
+        "evidence_significance": "Demonstrates active crustal shortening and sedimentary basin inversion within the back-arc realm of Java.",
+        "why_it_matters": "The Kendeng Zone hosts significant onshore petroleum potential and active blind thrust seismic hazard sources in Java.",
+        "location_province": "Jawa Tengah & Jawa Timur",
+        "data_status": "demo",
+        "source": "Van Bemmelen (1949) & de Genevraye and Samuel (1972) Indonesian Petroleum Association",
+        "source_url": "https://www.ipa.or.id",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon boundary reflects the structural anticlinorium footprint between the Randublatung depression and Central volcanic depression."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              135.5,
+              -3.8
+            ],
+            [
+              137.5,
+              -3.9
+            ],
+            [
+              139.5,
+              -4.2
+            ],
+            [
+              141,
+              -4.5
+            ],
+            [
+              141,
+              -5.2
+            ],
+            [
+              139.5,
+              -4.9
+            ],
+            [
+              137.5,
+              -4.6
+            ],
+            [
+              135.5,
+              -4.4
+            ],
+            [
+              135.5,
+              -3.8
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_pegunungan_maoke",
+        "name": "Pegunungan Maoke (Central Range of Papua)",
+        "domain": "geology",
+        "feature_type": "mountain_system",
+        "structure_type": "mountain_range",
+        "description": "Parent Central Cordillera of Papua spanning ~1,300 km, formed by Neogene collision between the Indo-Australian passive margin and Pacific-Caroline oceanic arcs.",
+        "geological_process": "Orogeny & Crustal Uplift",
+        "geological_age": "Miocene to Quaternary (~15-0 Ma)",
+        "geological_period": "Cenozoic",
+        "rock_type": "Mesozoic-Cenozoic limestone, metamorphic phyllite, porphyry intrusive complexes",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Massive alpine fold-thrust mountain belt exceeding 4,800 m elevation with remnant tropical glaciers on Puncak Jaya.",
+        "evidence_significance": "Prime example of active continent-arc collision orogeny producing highest topography in Australasia and giant porphyry Cu-Au deposits.",
+        "why_it_matters": "Contains Puncak Jaya (Carstensz Pyramid, 4,884 m) and preserves crucial tectonic records of Australian northern margin collision.",
+        "location_province": "Papua (Papua Tengah & Papua Pegunungan)",
+        "sub_ranges": [
+          "Barisan Sudirman (Sudirman Range)",
+          "Pegunungan Jayawijaya (Jayawijaya Range)"
+        ],
+        "data_status": "demo",
+        "source": "Dow et al. (1988) 'Geology of the Irian Jaya Region' (Pusat Penelitian dan Pengembangan Geologi) & Cloos et al. (2005)",
+        "source_url": "https://geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "geometry_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon boundary represents parent Central Cordillera mountain belt; Barisan Sudirman (west) and Jayawijaya (east) are documented constituent sub-ranges."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              107.45,
+              -6.82
+            ],
+            [
+              107.75,
+              -6.82
+            ],
+            [
+              107.85,
+              -6.95
+            ],
+            [
+              107.8,
+              -7.08
+            ],
+            [
+              107.5,
+              -7.05
+            ],
+            [
+              107.4,
+              -6.95
+            ],
+            [
+              107.45,
+              -6.82
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_cekungan_bandung",
+        "name": "Cekungan Bandung (Bandung Volcano-Tectonic Basin)",
+        "domain": "geology",
+        "feature_type": "basin",
+        "structure_type": "intermontane_basin",
+        "description": "Quaternary volcano-tectonic intermontane depression surrounded by volcanic edifices and bounded north by Sesar Lembang, site of ancient Lake Bandung.",
+        "geological_process": "Sedimentary Basin Subsidence",
+        "geological_age": "Late Pleistocene to Holocene",
+        "geological_period": "Quaternary",
+        "rock_type": "Lacustrine clay, tuffaceous sand, volcanic breccia, peat",
+        "evidence_type": "Landform",
+        "evidence_description": "Flat basin floor (~650-700 m ASL) surrounded by steep volcanic massifs with well-documented lacustrine terrace deposits.",
+        "evidence_significance": "Demonstrates volcano-tectonic basin subsidence, ancient lake damming (Danau Purba Bandung), and ongoing intra-arc tectonic deformation.",
+        "why_it_matters": "Provides paleoenvironmental archive of prehistoric Java and critical geological context for seismic and hydrogeological risk in Bandung Raya.",
+        "location_province": "Jawa Barat",
+        "data_status": "demo",
+        "source": "Dam et al. (1996) 'The Late Quaternary Evolution of the Bandung Basin' & Silitonga (1973/2003) Badan Geologi",
+        "source_url": "https://geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "geometry_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon boundary strictly delineates the Quaternary lacustrine and volcano-tectonic depression fill, distinct from administrative groundwater (CAT) boundaries."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              114.6,
+              -1.2
+            ],
+            [
+              115.3,
+              -1.5
+            ],
+            [
+              115.6,
+              -2.8
+            ],
+            [
+              115.3,
+              -3.8
+            ],
+            [
+              114.5,
+              -3.5
+            ],
+            [
+              114.2,
+              -2.2
+            ],
+            [
+              114.6,
+              -1.2
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_cekungan_barito",
+        "name": "Cekungan Barito (Barito Sedimentary Basin)",
+        "domain": "geology",
+        "feature_type": "basin",
+        "structure_type": "sedimentary_basin",
+        "description": "Asymmetric Tertiary sedimentary basin in South Kalimantan bounded east by the Meratus thrust front and west by the stable Sunda Shield.",
+        "geological_process": "Sedimentary Basin Subsidence",
+        "geological_age": "Eocene to Recent (~45-0 Ma)",
+        "geological_period": "Cenozoic",
+        "rock_type": "Tanjung Formation sandstone/shale, Berai limestone, Warukin coal-bearing sandstone",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Thick transgressive-regressive sedimentary sequence (up to 6,000 m) with foreland flexural geometry adjacent to Meratus.",
+        "evidence_significance": "Classic Indonesian hydrocarbon and coal-bearing sedimentary basin illustrating back-arc rift to foreland basin transition.",
+        "why_it_matters": "One of Indonesia's most thoroughly studied sedimentary basins, hosting significant energy resources and thick coal seams.",
+        "location_province": "Kalimantan Selatan & Kalimantan Tengah",
+        "data_status": "demo",
+        "source": "Witts et al. (2012) 'The Barito Basin, SE Kalimantan' & Satyana et al. (1999) IPA",
+        "source_url": "https://www.ipa.or.id",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon boundary is based on geological stratigraphic pinch-out and basement structural hinge lines, not commercial oil concession blocks."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              110.55,
+              -7.95
+            ],
+            [
+              111.1,
+              -7.98
+            ],
+            [
+              111.25,
+              -8.15
+            ],
+            [
+              111.2,
+              -8.28
+            ],
+            [
+              110.55,
+              -8.2
+            ],
+            [
+              110.55,
+              -7.95
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_karst_gunung_sewu",
+        "name": "Karst Gunung Sewu (Gunung Sewu UNESCO Global Geopark)",
+        "domain": "geology",
+        "feature_type": "regional_karst",
+        "structure_type": "tropical_kegelkarst",
+        "description": "World-benchmark tropical cone karst (kegelkarst) and cockpit karst developed in Middle-Late Miocene Wonosari Formation limestones.",
+        "geological_process": "Karstification & Chemical Dissolution",
+        "geological_age": "Middle Miocene to Holocene (~15-0 Ma)",
+        "geological_period": "Neogene",
+        "rock_type": "Wonosari Formation coral limestone, calcarenite, speleothems",
+        "evidence_type": "Landform",
+        "evidence_description": "Over 40,000 conical limestone hills, thousands of sinkholes (doline/uvala), and extensive subterranean river networks and caves (Luweng Ombo, Luweng Jaran).",
+        "evidence_significance": "International type-locality for tropical conical karst geomorphology and Quaternary hominin habitation caves (Song Terus).",
+        "why_it_matters": "Designated a UNESCO Global Geopark in 2015, Gunung Sewu is a global benchmark for tropical speleology, hydrogeology, and geoheritage.",
+        "location_province": "DIY (Gunungkidul), Jawa Tengah (Wonogiri), Jawa Timur (Pacitan)",
+        "data_status": "demo",
+        "source": "Haryono & Day (2004) 'Landform differentiation within Gunung Sewu kegelkarst' & UNESCO Global Geopark Dossier (2015)",
+        "source_url": "https://www.unesco.org/en/iggp/gunung-sewu-unesco-global-geopark",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "geometry_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon boundary matches the contiguous Wonosari Formation limestone plateau and UNESCO Global Geopark boundary."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            94,
+            5.5
+          ],
+          [
+            96,
+            3
+          ],
+          [
+            98.5,
+            0.5
+          ],
+          [
+            101.5,
+            -2.5
+          ],
+          [
+            104.5,
+            -5.5
+          ],
+          [
+            108,
+            -8.5
+          ],
+          [
+            112,
+            -10.2
+          ],
+          [
+            116,
+            -11.5
+          ],
+          [
+            120,
+            -11.8
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_trench_sunda_java",
+        "name": "Palung Sunda-Jawa (Sunda-Java Subduction Trench)",
+        "domain": "geology",
+        "feature_type": "tectonic_structure",
+        "structure_type": "subduction_trench",
+        "description": "~3,000 km oceanic subduction trench (depth 6,000-7,450 m) where the Indo-Australian oceanic plate subducts beneath the Sundaland continental plate.",
+        "geological_process": "Plate Tectonics & Subduction",
+        "geological_age": "Cenozoic (Active Megathrust Boundary)",
+        "geological_period": "Quaternary",
+        "rock_type": "Oceanic basalt, pelagic sediment, accretionary prism wedge",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Deep bathymetric V-shaped trough (>7,000 m), dipping Wadati-Benioff seismic zone, and accretionary forearc ridges (Mentawai, Enggano).",
+        "evidence_significance": "Primary convergent megathrust generating Indonesia's active volcanism, island arc uplift, and megathrust earthquakes/tsunamis.",
+        "why_it_matters": "The Sunda-Java Trench is one of Earth's most active convergent margins, driving regional plate tectonics and geohazards.",
+        "location_province": "Offshore Indian Ocean (Sumatra, Java, Bali, Nusa Tenggara)",
+        "data_status": "demo",
+        "source": "Bird (2003) 'An updated digital model of plate boundaries' & USGS Slab2 (Hayes et al., 2018)",
+        "source_url": "https://earthquake.usgs.gov/data/slab/",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "partially_verified",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "LineString trace digitized from authoritative global bathymetric trench axis data (Bird 2003 PB2002 dataset)."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            95.5,
+            5.5
+          ],
+          [
+            97.5,
+            3.5
+          ],
+          [
+            99.5,
+            1
+          ],
+          [
+            102,
+            -2
+          ],
+          [
+            104.5,
+            -4.8
+          ],
+          [
+            107,
+            -6.8
+          ],
+          [
+            110.5,
+            -7.5
+          ],
+          [
+            113,
+            -8
+          ],
+          [
+            116,
+            -8.3
+          ],
+          [
+            119,
+            -8.5
+          ],
+          [
+            122.5,
+            -8.6
+          ]
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_sunda_arc",
+        "name": "Busur Vulkanik Sunda (Sunda Volcanic Arc Front Axis)",
+        "domain": "geology",
+        "feature_type": "volcanic_arc",
+        "structure_type": "volcanic_arc_axis",
+        "description": "Curvilinear chain of active Quaternary stratovolcanoes and magmatic arc complexes spanning Sumatra, Java, Bali, Lombok, Sumbawa, and Flores.",
+        "geological_process": "Plate Tectonics & Subduction",
+        "geological_age": "Neogene to Quaternary",
+        "geological_period": "Quaternary",
+        "rock_type": "Calc-alkaline andesite, basaltic andesite, dacite, pyroclastic deposits",
+        "evidence_type": "Geological Structure",
+        "evidence_description": "Chain of over 100 active Quaternary volcanic centers positioned ~100-200 km above the subducting Indo-Australian slab.",
+        "evidence_significance": "Illustrates active subduction-induced mantle melting, crustal magma differentiation, and stratovolcano construction along Sundaland.",
+        "why_it_matters": "Forms the volcanic backbone of Western Indonesia, generating fertile soils, geothermal energy, and active volcanic hazards.",
+        "location_province": "Sumatra, Java, Bali, NTB, NTT",
+        "data_status": "demo",
+        "source": "Hamilton (1979) 'Tectonics of the Indonesian Region' (USGS Prof. Paper 1078) & Hall (2002)",
+        "source_url": "https://pubs.usgs.gov/pp/1078/",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "needs_review",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Representative volcanic front axis (interpretive cartographic convention connecting active volcanic centers, not an individual physical fault line)."
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
@@ -32,24 +743,25 @@
         "domain": "geology",
         "feature_type": "tectonic_structure",
         "structure_type": "active_fault",
-        "description": "Active sinistral strike-slip fault stretching ~29 km north of the Bandung Basin, representing active intraplate tectonic deformation.",
-        "geological_process": "Tectonic Faulting",
+        "description": "Active sinistral strike-slip fault with normal component extending ~29 km north of Bandung.",
+        "geological_process": "Plate Tectonics & Subduction",
         "geological_age": "Quaternary",
         "geological_period": "Quaternary",
-        "rock_type": "Andesitic volcanic deposits, fault breccia",
+        "rock_type": "Breccia, tuff, volcanic debris",
         "evidence_type": "Geological Structure",
-        "evidence_description": "Morphotectonic fault scarps, offset stream channels, and shallow seismic activity along the Lembang escarpment.",
-        "evidence_significance": "Demonstrates active intraplate crustal deformation and seismic hazard risk in West Java.",
-        "why_it_matters": "Sesar Lembang provides critical scientific evidence of active faulting near major population centers, driving earthquake microzonation and disaster risk reduction.",
+        "evidence_description": "Prominent north-facing fault scarp, stream offsets, and paleoseismic trenching evidence.",
+        "evidence_significance": "Slip rate ~3-6 mm/yr capable of generating M6.5-7.0 seismic events near Bandung metropolitan area.",
+        "why_it_matters": "Key active onshore fault in West Java with well-documented morphotectonic fault scarps.",
+        "location_province": "Jawa Barat",
         "data_status": "demo",
-        "source": "Badan Geologi ESDM (Media Center & Technical Report)",
+        "source": "Badan Geologi ESDM & Daryono et al. (2019)",
         "source_url": "https://geologi.esdm.go.id",
         "source_type": "government_survey",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "LineString representation of fault trace (interface visual convention, not official cartographic trace)"
+        "last_updated": "2026-09-15",
+        "geometry_note": "LineString representation of fault trace (interface visual convention)."
       }
     },
     {
@@ -77,24 +789,25 @@
         "domain": "geology",
         "feature_type": "tectonic_structure",
         "structure_type": "active_fault",
-        "description": "Active strike-slip fault zone extending SW-NE from Pelabuhanratu Bay through Sukabumi and Cianjur.",
-        "geological_process": "Tectonic Faulting",
-        "geological_age": "Quaternary",
+        "description": "Major active oblique strike-slip fault zone extending from Pelabuhanratu Bay through Sukabumi to Padalarang.",
+        "geological_process": "Plate Tectonics & Subduction",
+        "geological_age": "Neogene to Quaternary",
         "geological_period": "Quaternary",
-        "rock_type": "Sedimentary volcanic rocks, fault gouge",
+        "rock_type": "Mélange, sheared sedimentary formations",
         "evidence_type": "Geological Structure",
-        "evidence_description": "Linear river valley morphology, triangular facets, and historical earthquake ruptures.",
-        "evidence_significance": "Key structural boundary separating northern volcanic belt from southern accretionary complex.",
-        "why_it_matters": "Cimandiri faulting accounts for major destructive earthquakes in West Java, highlighting regional intraplate tectonic stress.",
+        "evidence_description": "Morphotectonic valley linear, offset river terraces, and shallow crustal seismicity.",
+        "evidence_significance": "Major morphotectonic boundary separating northern Java fold belt from southern volcanic arc terrane.",
+        "why_it_matters": "Active fault zone responsible for periodic destructive shallow earthquakes in West Java.",
+        "location_province": "Jawa Barat",
         "data_status": "demo",
         "source": "Badan Geologi ESDM",
         "source_url": "https://geologi.esdm.go.id",
         "source_type": "government_survey",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "LineString representation of fault zone (interface visual convention)"
+        "last_updated": "2026-09-15",
+        "geometry_note": "LineString representation of fault zone (interface visual convention)."
       }
     },
     {
@@ -122,24 +835,25 @@
         "domain": "geology",
         "feature_type": "tectonic_structure",
         "structure_type": "active_fault",
-        "description": "Major back-arc thrust fault belt extending east-west across northern West Java.",
-        "geological_process": "Tectonic Faulting",
+        "description": "Major back-arc thrust fault system in West-Central Java accommodating crustal shortening.",
+        "geological_process": "Plate Tectonics & Subduction",
         "geological_age": "Quaternary",
         "geological_period": "Quaternary",
-        "rock_type": "Folded sedimentary strata, thrust breccia",
+        "rock_type": "Folded sedimentary and volcaniclastic strata",
         "evidence_type": "Geological Structure",
-        "evidence_description": "Compressional thrusting structures, geodetic strain rate anomalies, and focal mechanisms.",
-        "evidence_significance": "Represents back-arc compression driven by Indo-Australian subduction dynamics.",
-        "why_it_matters": "Understanding Baribis thrusting is critical for evaluating seismic risk across the densely populated northern Java corridor.",
+        "evidence_description": "North-verging thrust ramps, asymmetric folding, and GPS geodetic strain accumulation.",
+        "evidence_significance": "Accommodates back-arc shortening across Java with geodetic locking along southern Jakarta-Bogor corridor.",
+        "why_it_matters": "Critical active tectonic structure representing back-arc seismic hazard in northern Java.",
+        "location_province": "Jawa Barat",
         "data_status": "demo",
-        "source": "Badan Geologi ESDM",
+        "source": "Badan Geologi ESDM & Koulali et al. (2017)",
         "source_url": "https://geologi.esdm.go.id",
         "source_type": "government_survey",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "LineString representation of thrust zone (interface visual convention)"
+        "last_updated": "2026-09-15",
+        "geometry_note": "LineString representation of thrust zone (interface visual convention)."
       }
     },
     {
@@ -167,15 +881,16 @@
         "domain": "geology",
         "feature_type": "tectonic_structure",
         "structure_type": "active_fault",
-        "description": "Active strike-slip fault traversing the Opak River valley in Bantul, Yogyakarta.",
-        "geological_process": "Tectonic Faulting",
+        "description": "Active strike-slip fault zone along Opak river graben, source zone of 2006 Yogyakarta earthquake.",
+        "geological_process": "Plate Tectonics & Subduction",
         "geological_age": "Quaternary",
         "geological_period": "Quaternary",
-        "rock_type": "Alluvial sediments, volcaniclahar deposits",
+        "rock_type": "Alluvium, Merapi volcanic ash, Tertiary limestone basement",
         "evidence_type": "Geological Structure",
-        "evidence_description": "Ground rupture zones, accelerograph microzonation data, and 2006 earthquake hypocenters.",
-        "evidence_significance": "Illustrates how shallow intraplate faulting in sediment basins amplifies ground motion.",
-        "why_it_matters": "Directly linked to the 2006 Yogyakarta earthquake, serving as a benchmark site for sediment basin microzonation.",
+        "evidence_description": "Linear morphotectonic graben boundary and persistent shallow micro-seismicity.",
+        "evidence_significance": "Active crustal fault controlling intra-arc basin development and seismic hazard in Yogyakarta.",
+        "why_it_matters": "Site of the devastating 2006 Mw 6.3 Yogyakarta earthquake.",
+        "location_province": "DIY (Yogyakarta)",
         "data_status": "demo",
         "source": "PVMBG ESDM & USGS",
         "source_url": "https://vsi.esdm.go.id",
@@ -183,8 +898,8 @@
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "LineString representation of fault trace (interface visual convention)"
+        "last_updated": "2026-09-15",
+        "geometry_note": "LineString representation of fault trace (interface visual convention)."
       }
     },
     {
@@ -212,15 +927,16 @@
         "domain": "geology",
         "feature_type": "tectonic_structure",
         "structure_type": "active_fault",
-        "description": "Southern segment of the ~1,900 km Great Sumatran dextral strike-slip fault system.",
-        "geological_process": "Tectonic Faulting",
-        "geological_age": "Quaternary",
+        "description": "Southernmost segment of Great Sumatran Fault entering Semangko Bay, accommodating oblique convergence.",
+        "geological_process": "Plate Tectonics & Subduction",
+        "geological_age": "Neogene to Quaternary",
         "geological_period": "Quaternary",
-        "rock_type": "Mylonite, sheared volcaniclastic rocks",
+        "rock_type": "Volcanics, sheared metamorphic rocks, alluvium",
         "evidence_type": "Geological Structure",
-        "evidence_description": "Right-lateral stream offsets, linear pull-apart graben basins, and thermal springs.",
-        "evidence_significance": "Accommodates oblique subduction strain partitioning along the Sumatra margin.",
-        "why_it_matters": "Classic world example of strain partitioning along an oblique subduction zone.",
+        "evidence_description": "Prominent graben valley, strike-slip fault scarps, and geothermal spring alignments.",
+        "evidence_significance": "Key dextral strike-slip transform accommodating partitioned oblique subduction shear along Sumatra.",
+        "why_it_matters": "Demonstrates trench-parallel slip partitioning in oblique convergent margins.",
+        "location_province": "Lampung",
         "data_status": "demo",
         "source": "Badan Geologi ESDM & Sieh and Natawidjaja (2000)",
         "source_url": "https://geologi.esdm.go.id",
@@ -228,8 +944,8 @@
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "LineString representation of fault segment (interface visual convention)"
+        "last_updated": "2026-09-15",
+        "geometry_note": "LineString representation of fault segment (interface visual convention)."
       }
     },
     {
@@ -258,7 +974,7 @@
         "feature_type": "tectonic_structure",
         "structure_type": "active_fault",
         "description": "Major left-lateral transform fault zone in Eastern Indonesia, accommodating Pacific-Australian plate motion.",
-        "geological_process": "Tectonic Faulting",
+        "geological_process": "Plate Tectonics & Subduction",
         "geological_age": "Neogene",
         "geological_period": "Neogene",
         "rock_type": "Mélange, sheared metamorphic terranes",
@@ -266,6 +982,7 @@
         "evidence_description": "Transpressional ridges, pull-apart basins, and displaced continental fragments.",
         "evidence_significance": "Key strike-slip structure transporting continental fragments from Australia/PNG westward into the Banda arc region.",
         "why_it_matters": "Demonstrates rapid strike-slip terrane transport shaping Eastern Indonesia's complex tectonic mosaic.",
+        "location_province": "Papua Barat Daya & Maluku",
         "data_status": "demo",
         "source": "Badan Geologi ESDM & USGS",
         "source_url": "https://geologi.esdm.go.id",
@@ -273,65 +990,8 @@
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "LineString representation of fault system (interface visual convention)"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            94,
-            5
-          ],
-          [
-            98,
-            2
-          ],
-          [
-            102,
-            -3
-          ],
-          [
-            106,
-            -7
-          ],
-          [
-            110,
-            -10
-          ],
-          [
-            115,
-            -11.5
-          ]
-        ]
-      },
-      "properties": {
-        "id": "geo_trench_sunda_java",
-        "name": "Palung Subduksi Sunda-Jawa (Sunda-Java Trench)",
-        "domain": "geology",
-        "feature_type": "tectonic_structure",
-        "structure_type": "subduction_trench",
-        "description": "~3,000 km oceanic trench where oceanic Indo-Australian Plate subducts beneath Sundaland continental plate.",
-        "geological_process": "Subduction Accretion",
-        "geological_age": "Quaternary",
-        "geological_period": "Quaternary",
-        "rock_type": "Oceanic basalt, pelagic sediments, accretionary wedge",
-        "evidence_type": "Geological Structure",
-        "evidence_description": "Deep bathymetric depression (>7,000 m), Wadati-Benioff seismic zone, and forearc basin deformation.",
-        "evidence_significance": "Primary convergent megathrust driving regional volcanism, trench accretion, and megathrust earthquakes.",
-        "why_it_matters": "The Sunda-Java Trench is Earth's premier convergent margin driving the Sunda Volcanic Arc and megathrust tsunamigenic hazards.",
-        "data_status": "demo",
-        "source": "USGS Earthquake Hazards Program & Nature Comms",
-        "source_url": "https://www.nature.com/articles/ncomms14096",
-        "source_type": "peer-reviewed_publication",
-        "source_verification_status": "verified",
-        "geometry_status": "partially_verified",
-        "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "LineString representation of subduction trench axis (interface visual convention)"
+        "last_updated": "2026-09-15",
+        "geometry_note": "LineString representation of fault system (interface visual convention)."
       }
     },
     {
@@ -370,23 +1030,24 @@
         "feature_type": "geological_complex",
         "structure_type": "mélange",
         "description": "Pre-Tertiary subduction mélange complex exposed at Ciletuh, West Java, featuring chaotic blocks of ophiolite, metamorphic schists, and deep-marine sediments.",
-        "geological_process": "Subduction Mélange Accretion",
+        "geological_process": "Plate Tectonics & Subduction",
         "geological_age": "Cretaceous (~110-135 Ma)",
         "geological_period": "Cretaceous",
         "rock_type": "Ophiolite, Peridotite, Serpentinite, Glaucophane Schist",
         "evidence_type": "Rock",
-        "evidence_description": "Exposed tectonic mélange blocks comprising oceanic crustal rocks (serpentinized peridotites) embedded in a sheared argillaceous matrix.",
-        "evidence_significance": "Provides direct petrological evidence of ancient Cretaceous subduction accretion along the southern margin of Sundaland.",
+        "evidence_description": "Exposed tectonic mélange blocks comprising oceanic crustal rocks embedded in sheared matrix.",
+        "evidence_significance": "Provides direct petrological evidence of ancient Cretaceous subduction accretion along Sundaland.",
         "why_it_matters": "Ciletuh exposes Java's oldest basement rocks, allowing geoscientists to reconstruct Cretaceous plate subduction history.",
+        "location_province": "Jawa Barat",
         "data_status": "demo",
         "source": "UNESCO Ciletuh-Palabuhanratu Geopark & Badan Geologi ESDM",
-        "source_url": "https://www.unesco.org/en/iggp/ciletuh-palabuhanratu-unesco-global-geopark?hub=67817",
+        "source_url": "https://www.unesco.org/en/iggp/ciletuh-palabuhanratu-unesco-global-geopark",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "Polygon representation of complex boundary (interface visual convention)"
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon representation of complex boundary (interface visual convention)."
       }
     },
     {
@@ -425,7 +1086,7 @@
         "feature_type": "geological_complex",
         "structure_type": "mélange",
         "description": "Cretaceous subduction accretionary complex exposing ophiolite sequence, pillow basalts, red chert, and tectonic mélange in Kebumen, Central Java.",
-        "geological_process": "Subduction Mélange Accretion",
+        "geological_process": "Plate Tectonics & Subduction",
         "geological_age": "Cretaceous to Eocene",
         "geological_period": "Cretaceous",
         "rock_type": "Pillow Basalt, Red Chert, Serpentinite, Mica Schist",
@@ -433,6 +1094,7 @@
         "evidence_description": "Deep marine pillow basalts and radiolarian chert blocks structurally chaotic in scaly clay matrix.",
         "evidence_significance": "Classic Indonesian tectonic benchmark site illustrating ancient subduction zone lithologies.",
         "why_it_matters": "Karangsambung serves as Indonesia's open-air geological laboratory for studying subduction zone dynamics and ophiolite emplacement.",
+        "location_province": "Jawa Tengah",
         "data_status": "demo",
         "source": "Balai Informasi Geologi Karangsambung & Badan Geologi ESDM",
         "source_url": "https://geologi.esdm.go.id",
@@ -440,8 +1102,8 @@
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-21",
-        "geometry_note": "Polygon representation of complex boundary (interface visual convention)"
+        "last_updated": "2026-09-15",
+        "geometry_note": "Polygon representation of complex boundary (interface visual convention)."
       }
     }
   ]
