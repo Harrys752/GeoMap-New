@@ -23,17 +23,17 @@ export function initSearchBar(inputId = "search-input", clearBtnId = "search-cle
 
   // Create suggestions dropdown container
   const wrapper = input.parentElement;
-  let suggestionsBox = wrapper.querySelector(".search-suggestions-box");
+  let suggestionsBox = wrapper.querySelector(".search-suggestions-dropdown, .search-suggestions-box");
   if (!suggestionsBox) {
     suggestionsBox = document.createElement("div");
-    suggestionsBox.className = "search-suggestions-box";
+    suggestionsBox.className = "search-suggestions-dropdown search-suggestions-box";
     suggestionsBox.style.display = "none";
     wrapper.appendChild(suggestionsBox);
   }
 
   function updateClearButtonVisibility() {
     if (clearBtn) {
-      clearBtn.style.display = input.value.trim().length > 0 ? "block" : "none";
+      clearBtn.style.display = input.value.trim().length > 0 ? "flex" : "none";
     }
   }
 
@@ -45,7 +45,7 @@ export function initSearchBar(inputId = "search-input", clearBtnId = "search-cle
   function renderSuggestions(matches) {
     if (!matches || matches.length === 0) {
       suggestionsBox.innerHTML = `<div class="suggestion-item no-match">${escapeHtml(t("search_no_suggestions", {}, currentLang))}</div>`;
-      suggestionsBox.style.display = "block";
+      suggestionsBox.style.display = "flex";
       return;
     }
 
@@ -55,17 +55,26 @@ export function initSearchBar(inputId = "search-input", clearBtnId = "search-cle
       const name = props.name || "Unnamed";
       const type = formatFeatureTypeLabel(props.feature_type, currentLang);
       const province = props.location_province ? ` • ${props.location_province}` : "";
-      const domainClass = props.domain === "hazard" ? "suggestion-domain-hazard" : "suggestion-domain-geology";
+      const isCandidate = props.data_status === "candidate";
+      const domainClass = isCandidate ? "suggestion-candidate" : (props.domain === "hazard" ? "suggestion-domain-hazard" : "suggestion-domain-geology");
+
+      let badgeLabel = props.domain === "hazard" ? t("domain_label_hazard", {}, currentLang) : t("domain_label_geology", {}, currentLang);
+      if (isCandidate) {
+        badgeLabel = currentLang === "id" ? "Kandidat" : "Candidate";
+      }
 
       return `
         <div class="suggestion-item" data-feature-id="${escapeHtml(props.id)}">
-          <div class="suggestion-title">${escapeHtml(name)}</div>
-          <div class="suggestion-meta ${domainClass}">${escapeHtml(type)}${escapeHtml(province)}</div>
+          <div class="suggestion-info">
+            <div class="suggestion-name">${escapeHtml(name)}</div>
+            <div class="suggestion-sub ${domainClass}">${escapeHtml(type)}${escapeHtml(province)}</div>
+          </div>
+          <span class="suggestion-badge ${domainClass}">${escapeHtml(badgeLabel)}</span>
         </div>
       `;
     }).join("");
 
-    suggestionsBox.style.display = "block";
+    suggestionsBox.style.display = "flex";
 
     // Attach click listeners to suggestions
     const items = suggestionsBox.querySelectorAll(".suggestion-item[data-feature-id]");
@@ -116,7 +125,7 @@ export function initSearchBar(inputId = "search-input", clearBtnId = "search-cle
       const provStr = (props.location_province || "").toLowerCase();
 
       return nameStr.includes(q) || typeStr.includes(q) || descStr.includes(q) || provStr.includes(q);
-    }).slice(0, 7);
+    }).slice(0, 8);
 
     renderSuggestions(matches);
   }

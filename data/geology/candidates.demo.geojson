@@ -91,7 +91,8 @@
         "geometry_status": "needs_review",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon envelope represents generalized macro-physiographic mountain province (interface visual convention, not official cadastral survey vector)."
+        "geometry_note": "Polygon envelope represents generalized macro-physiographic mountain province (interface visual convention, not official cadastral survey vector).",
+        "geometry_notes": "Polygon envelope represents generalized macro-physiographic mountain province (interface visual convention, not official cadastral survey vector)."
       }
     },
     {
@@ -155,7 +156,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon boundary derived from regional geological sheet mapping of Meratus ultramafic outcrop footprint."
+        "geometry_note": "Polygon boundary derived from regional geological sheet mapping of Meratus ultramafic outcrop footprint.",
+        "geometry_notes": "Polygon boundary derived from regional geological sheet mapping of Meratus ultramafic outcrop footprint."
       }
     },
     {
@@ -235,7 +237,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon boundary represents Van Bemmelen (1949) Southern Mountains Zone regional physiographic envelope."
+        "geometry_note": "Polygon boundary represents Van Bemmelen (1949) Southern Mountains Zone regional physiographic envelope.",
+        "geometry_notes": "Polygon boundary represents Van Bemmelen (1949) Southern Mountains Zone regional physiographic envelope."
       }
     },
     {
@@ -299,7 +302,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon boundary reflects the structural anticlinorium footprint between the Randublatung depression and Central volcanic depression."
+        "geometry_note": "Polygon boundary reflects the structural anticlinorium footprint between the Randublatung depression and Central volcanic depression.",
+        "geometry_notes": "Polygon boundary reflects the structural anticlinorium footprint between the Randublatung depression and Central volcanic depression."
       }
     },
     {
@@ -375,7 +379,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon boundary represents parent Central Cordillera mountain belt; Barisan Sudirman (west) and Jayawijaya (east) are documented constituent sub-ranges."
+        "geometry_note": "Polygon boundary represents parent Central Cordillera mountain belt; Barisan Sudirman (west) and Jayawijaya (east) are documented constituent sub-ranges.",
+        "geometry_notes": "Polygon boundary represents parent Central Cordillera mountain belt; Barisan Sudirman (west) and Jayawijaya (east) are documented constituent sub-ranges."
       }
     },
     {
@@ -439,7 +444,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon boundary strictly delineates the Quaternary lacustrine and volcano-tectonic depression fill, distinct from administrative groundwater (CAT) boundaries."
+        "geometry_note": "Polygon boundary strictly delineates the Quaternary lacustrine and volcano-tectonic depression fill, distinct from administrative groundwater (CAT) boundaries.",
+        "geometry_notes": "Polygon boundary strictly delineates the Quaternary lacustrine and volcano-tectonic depression fill, distinct from administrative groundwater (CAT) boundaries."
       }
     },
     {
@@ -503,7 +509,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon boundary is based on geological stratigraphic pinch-out and basement structural hinge lines, not commercial oil concession blocks."
+        "geometry_note": "Polygon boundary is based on geological stratigraphic pinch-out and basement structural hinge lines, not commercial oil concession blocks.",
+        "geometry_notes": "Polygon boundary is based on geological stratigraphic pinch-out and basement structural hinge lines, not commercial oil concession blocks."
       }
     },
     {
@@ -563,7 +570,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon boundary matches the contiguous Wonosari Formation limestone plateau and UNESCO Global Geopark boundary."
+        "geometry_note": "Polygon boundary matches the contiguous Wonosari Formation limestone plateau and UNESCO Global Geopark boundary.",
+        "geometry_notes": "Polygon boundary matches the contiguous Wonosari Formation limestone plateau and UNESCO Global Geopark boundary."
       }
     },
     {
@@ -633,7 +641,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "LineString trace digitized from authoritative global bathymetric trench axis data (Bird 2003 PB2002 dataset)."
+        "geometry_note": "LineString trace digitized from authoritative global bathymetric trench axis data (Bird 2003 PB2002 dataset).",
+        "geometry_notes": "LineString trace digitized from authoritative global bathymetric trench axis data (Bird 2003 PB2002 dataset)."
       }
     },
     {
@@ -711,7 +720,8 @@
         "geometry_status": "needs_review",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Representative volcanic front axis (interpretive cartographic convention connecting active volcanic centers, not an individual physical fault line)."
+        "geometry_note": "Representative volcanic front axis (interpretive cartographic convention connecting active volcanic centers, not an individual physical fault line).",
+        "geometry_notes": "Representative volcanic front axis (interpretive cartographic convention connecting active volcanic centers, not an individual physical fault line)."
       }
     },
     {
@@ -761,7 +771,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "LineString representation of fault trace (interface visual convention)."
+        "geometry_note": "LineString representation of fault trace (interface visual convention).",
+        "geometry_notes": "LineString representation of fault trace (interface visual convention)."
       }
     },
     {
@@ -807,7 +818,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "LineString representation of fault zone (interface visual convention)."
+        "geometry_note": "LineString representation of fault zone (interface visual convention).",
+        "geometry_notes": "LineString representation of fault zone (interface visual convention)."
       }
     },
     {
@@ -853,7 +865,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "LineString representation of thrust zone (interface visual convention)."
+        "geometry_note": "LineString representation of thrust zone (interface visual convention).",
+        "geometry_notes": "LineString representation of thrust zone (interface visual convention)."
       }
     },
     {
@@ -899,7 +912,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "LineString representation of fault trace (interface visual convention)."
+        "geometry_note": "LineString representation of fault trace (interface visual convention).",
+        "geometry_notes": "LineString representation of fault trace (interface visual convention)."
       }
     },
     {
@@ -945,7 +959,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "LineString representation of fault segment (interface visual convention)."
+        "geometry_note": "LineString representation of fault segment (interface visual convention).",
+        "geometry_notes": "LineString representation of fault segment (interface visual convention)."
       }
     },
     {
@@ -991,7 +1006,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "LineString representation of fault system (interface visual convention)."
+        "geometry_note": "LineString representation of fault system (interface visual convention).",
+        "geometry_notes": "LineString representation of fault system (interface visual convention)."
       }
     },
     {
@@ -1047,7 +1063,8 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon representation of complex boundary (interface visual convention)."
+        "geometry_note": "Polygon representation of complex boundary (interface visual convention).",
+        "geometry_notes": "Polygon representation of complex boundary (interface visual convention)."
       }
     },
     {
@@ -1103,7 +1120,593 @@
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Polygon representation of complex boundary (interface visual convention)."
+        "geometry_note": "Polygon representation of complex boundary (interface visual convention).",
+        "geometry_notes": "Polygon representation of complex boundary (interface visual convention)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_ngandong",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.4319,
+          -7.2185
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_ngandong",
+        "name": "Ngandong Soloensis Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Late Pleistocene alluvial terrace locality along the Bengawan Solo River where 14 Homo erectus (Solo Man) calvaria and tibia were discovered between 1931 and 1933.",
+        "geological_process": "Fluvial & Terrace Sedimentation",
+        "geological_age": "Late Pleistocene (~117,000 - 108,000 BP)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo erectus (Solo Man)",
+        "discovery_locality": "Bengawan Solo High Terrace, Ngandong, Blora",
+        "fossil_material": "14 cranial calvaria, tibia fragments, Stegodon & Bubalus fossils",
+        "paleoenvironment": "Open-woodland riverine terrace and seasonal floodplain",
+        "evidence_type": "Fossil",
+        "evidence_description": "Fossilized cranial and tibial remains of Homo erectus discovered within stratified terrace sand and gravel beds of the High Terrace of Bengawan Solo.",
+        "evidence_significance": "Stratified cranial elements confirm the survival of late Homo erectus in Java until the late Middle-to-Late Pleistocene transition.",
+        "why_it_matters": "Ngandong represents the youngest globally documented population of Homo erectus, providing critical chronological constraints on hominin survival in Southeast Asia.",
+        "data_status": "demo",
+        "source": "Tier 3: Widianto (2006, 2024), Berkala Arkeologi / BRIN / Rizal et al. (2020) Nature 577:381",
+        "source_url": "https://doi.org/10.1038/s41586-019-1863-2",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Coordinates verified from BRIN archaeological benchmark maps for the Ngandong Bengawan Solo high terrace excavation pit (7.2185° S, 111.4319° E).",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates verified from BRIN archaeological benchmark maps for the Ngandong Bengawan Solo high terrace excavation pit (7.2185° S, 111.4319° E)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_perning_mojokerto",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.4938,
+          -7.3739
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_perning_mojokerto",
+        "name": "Perning (Mojokerto) Hominin Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Early Pleistocene volcanic-alluvial site in Jetis, Mojokerto, famous for the 1936 discovery of the juvenile Pithecanthropus mojokertensis (Mojokerto child) skull.",
+        "geological_process": "Fluvial & Deltaic Sedimentation",
+        "geological_age": "Early Pleistocene (~1.81 - 1.49 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Pithecanthropus mojokertensis (Homo erectus)",
+        "discovery_locality": "Sumberrame / Perning, Jetis, Mojokerto",
+        "fossil_material": "Mojokerto 1 (Perning 1) juvenile calvaria (~3-5 years old)",
+        "paleoenvironment": "Volcanic deltaic mudflat & river channel floodplain",
+        "evidence_type": "Fossil",
+        "evidence_description": "Calvaria of a young hominin child recovered from tuffaceous sandstone beds of the lower Pucangan (Mojokerto) Formation.",
+        "evidence_significance": "Provides direct fossil evidence for the earliest hominin colonization of Sundaland during the Early Pleistocene.",
+        "why_it_matters": "One of the oldest hominin specimens in Southeast Asia (~1.8 Ma), demonstrating early hominin adaptability across tropical volcanic delta environments.",
+        "data_status": "demo",
+        "source": "Tier 3: Huffman et al. (2006) Journal of Human Evolution / Swisher et al. (1994) Science",
+        "source_url": "https://doi.org/10.1016/j.jhevol.2005.11.002",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Discovery locality verified via historical Geological Survey of Indonesia benchmarks and published stratigraphy in Sumberrame/Perning.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Discovery locality verified via historical Geological Survey of Indonesia benchmarks and published stratigraphy in Sumberrame/Perning."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_sambungmacan",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.0847,
+          -7.3622
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_sambungmacan",
+        "name": "Sambungmacan Hominin Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Bengawan Solo river canal shortcut locality in Sragen where morphologically progressive Homo erectus crania (Sm 1, Sm 3, Sm 4) were recovered.",
+        "geological_process": "Fluvial Channel Sedimentation",
+        "geological_age": "Middle to Late Pleistocene (~0.4 - 0.1 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo erectus",
+        "discovery_locality": "Sambungmacan Canal Cut, Sragen, Central Java",
+        "fossil_material": "Sm 1, Sm 3, Sm 4 crania, postcranial elements",
+        "paleoenvironment": "Dynamic river channel cut and alluvial terrace",
+        "evidence_type": "Fossil",
+        "evidence_description": "Multiple well-preserved Homo erectus calvaria recovered during canal excavations through fluvial gravels of the ancient Solo River.",
+        "evidence_significance": "Intermediate cranial capacity and cranial vault contour demonstrate progressive morphological transition between classic Sangiran and Ngandong hominins.",
+        "why_it_matters": "Fills a key morphological and chronological gap in Javanese human evolution, linking early Pleistocene Homo erectus to late Pleistocene forms.",
+        "data_status": "demo",
+        "source": "Tier 3: Delson et al. (2001) Anat Rec / Baba et al. (2003) Science / BRIN Arkeologi",
+        "source_url": "https://doi.org/10.1002/ar.1057",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Coordinates anchored to the Sambungmacan canal cutoff excavation site along the Bengawan Solo meander in Sragen Regency.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates anchored to the Sambungmacan canal cutoff excavation site along the Bengawan Solo meander in Sragen Regency."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_ngawi_selopuro",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.4428,
+          -7.4042
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_ngawi_selopuro",
+        "name": "Ngawi (Selopuro) Hominin Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Bengawan Solo riverbank site at Selopuro, Ngawi, where an exceptionally complete Homo erectus cranium (Ngawi 1) was discovered in 1987.",
+        "geological_process": "Fluvial & Terrace Sedimentation",
+        "geological_age": "Late Pleistocene (~0.15 - 0.10 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo erectus (Ngawi 1)",
+        "discovery_locality": "Selopuro gravel bend, Pitu, Ngawi, East Java",
+        "fossil_material": "Ngawi 1 complete adult calvaria",
+        "paleoenvironment": "Meandering river terrace gravel bar and floodplain",
+        "evidence_type": "Fossil",
+        "evidence_description": "Intact Homo erectus skull specimen (Ngawi 1) recovered from basal gravels of the lower Bengawan Solo terrace system.",
+        "evidence_significance": "Undeformed cranial base and vault geometry provide precise metric data on late Javanese Homo erectus cranial architecture.",
+        "why_it_matters": "One of the best-preserved adult Homo erectus crania discovered in Java, showing affinities with the late Ngandong morphotype.",
+        "data_status": "demo",
+        "source": "Tier 3: Sartono (1991) / Widianto & Zeitoun (2003) C. R. Palevol 2:163",
+        "source_url": "https://doi.org/10.1016/S1631-0683(03)00007-8",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Coordinates tied directly to the Selopuro river bend gravel deposits in Pitu District, Ngawi Regency.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates tied directly to the Selopuro river bend gravel deposits in Pitu District, Ngawi Regency."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_kedungbrubus",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.6603,
+          -7.5211
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_kedungbrubus",
+        "name": "Kedungbrubus Dubois Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Historical 1890 Eugène Dubois excavation locality in the Kendeng Zone where the very first hominin fragment in Java (a juvenile mandible) was found.",
+        "geological_process": "Fluvial & Volcaniclastic Sedimentation",
+        "geological_age": "Middle Pleistocene (~0.8 - 0.7 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo erectus / Kedungbrubus Fauna",
+        "discovery_locality": "Kedungbrubus Valley, Pilangkenceng, Madiun, East Java",
+        "fossil_material": "Kedungbrubus 1 mandible fragment, Stegodon, Tapirus, and Hexaprotodon fossils",
+        "paleoenvironment": "Kendeng intermontane river valley & open savanna",
+        "evidence_type": "Fossil",
+        "evidence_description": "Juvenile mandibular fragment (Kedungbrubus 1) and rich vertebrate faunal assemblage collected from Kendeng sandstones.",
+        "evidence_significance": "Historical evidence marking the very first recognition of fossil hominin remains in Indonesia by Dubois in 1890.",
+        "why_it_matters": "Historic foundational site for Indonesian paleoanthropology, establishing the type locality for the classic Middle Pleistocene Kedungbrubus Faunal Stage.",
+        "data_status": "demo",
+        "source": "Tier 3: Dubois (1891) / van den Bergh (1999) Scripta Geologica / Naturalis Museum",
+        "source_url": "https://repository.naturalis.nl/pub/219808",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "partially_verified",
+        "geometry_status": "partially_verified",
+        "geometry_notes": "General Kedungbrubus reservoir valley location is well documented, but exact 1890 Dubois excavation pit retains minor field coordinate uncertainty (~500m radius).",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "General Kedungbrubus reservoir valley location is well documented, but exact 1890 Dubois excavation pit retains minor field coordinate uncertainty (~500m radius)."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_wajak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.8381,
+          -8.195
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_wajak",
+        "name": "Wajak Cave Hominin Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Karst cave site in the Southern Mountains near Tulungagung where B.D. van Rietschoten and Eugène Dubois discovered Early Modern Human skulls (Homo wajakensis) in 1888–1889.",
+        "geological_process": "Karst Cave Sedimentation",
+        "geological_age": "Late Pleistocene to Early Holocene (~37,000 - 28,000 BP)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo sapiens (Homo wajakensis)",
+        "discovery_locality": "Gua Wajak, Campurdarat, Tulungagung, East Java",
+        "fossil_material": "Wajak 1 and Wajak 2 crania, maxilla, and associated mammalian fauna",
+        "paleoenvironment": "Karst cave shelter and tropical woodland",
+        "evidence_type": "Fossil",
+        "evidence_description": "Fossilized human skulls showing anatomically modern cranial traits with robust Australomelanesian morphological affinities.",
+        "evidence_significance": "Direct fossil evidence for Early Modern Human (Homo sapiens) occupation of the Sunda Peninsula during the Late Pleistocene.",
+        "why_it_matters": "Wajak is Indonesia's first scientifically described modern human fossil site, essential for understanding late Quaternary human dispersal into Wallacea and Sahul.",
+        "data_status": "demo",
+        "source": "Tier 3: Storm et al. (2013) Journal of Human Evolution 64:356 / BRIN Arkeologi",
+        "source_url": "https://doi.org/10.1016/j.jhevol.2012.09.002",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Gua Wajak cave entrance coordinates confirmed via BRIN archaeological survey reports and East Java cultural heritage registry.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Gua Wajak cave entrance coordinates confirmed via BRIN archaeological survey reports and East Java cultural heritage registry."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_patiayam",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.9389,
+          -6.8125
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_patiayam",
+        "name": "Patiayam Muria Palaeo-Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Extensive Pleistocene volcanic-fluvial dome deposit on the slopes of Mount Muria containing thousands of Stegodon fossils, megafauna, and hominin teeth.",
+        "geological_process": "Volcaniclastic & Lacustrine Sedimentation",
+        "geological_age": "Early to Middle Pleistocene (~1.5 - 0.7 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Stegodon trigonocephalus / Homo erectus",
+        "discovery_locality": "Patiayam Dome, Jekulo, Kudus, Central Java",
+        "fossil_material": "Over 8,000 vertebrate fossils: Stegodon tusks/molars, Elephas, Rhinoceros, hominin teeth",
+        "paleoenvironment": "Volcanic piedmont lake basin, swamps, and savanna grasslands",
+        "evidence_type": "Fossil",
+        "evidence_description": "Massive accumulation of stratified Pleistocene megafauna bones and isolated hominin premolar/molar fossils in tuffaceous sandstones.",
+        "evidence_significance": "Demonstrates rich insular mammal biodiversity and co-occurring hominin presence around the isolated Muria volcanic island.",
+        "why_it_matters": "Patiayam preserves one of Java's richest vertebrate fossil assemblages, providing crucial evidence on island biogeography and ancient megafaunal ecology.",
+        "data_status": "demo",
+        "source": "Tier 3: Zaim et al. (2012) ITB Journal of Science / Situs Museum Patiayam / Balai Arkeologi Yogyakarta",
+        "source_url": "https://journal.itb.ac.id/index.php/jts",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Coordinates anchor to the core Patiayam Museum & primary excavation ridge in Terban, Jekulo, Kudus.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates anchor to the core Patiayam Museum & primary excavation ridge in Terban, Jekulo, Kudus."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_punung",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.0022,
+          -8.1275
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_punung",
+        "name": "Punung Pacitan Karst Caves",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Gunung Sewu karst cave system (Song Terus & Song Gupuh) near Punung, yield rich Late Pleistocene humid rainforest fauna and early modern human remains.",
+        "geological_process": "Karst Cave Sedimentation & Speleothem Formation",
+        "geological_age": "Late Pleistocene to Holocene (~128,000 - 7,000 BP)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Pongo pygmaeus / Early Homo sapiens",
+        "discovery_locality": "Song Terus & Song Gupuh Caves, Punung, Pacitan, East Java",
+        "fossil_material": "Orangutan (Pongo), gibbon, sun bear fossils, and early human burials",
+        "paleoenvironment": "Humid tropical evergreen rainforest and rugged karst valleys",
+        "evidence_type": "Fossil",
+        "evidence_description": "Fossil teeth of rainforest mammals (Pongo, Helarctos) and stratified modern human skeletal remains recovered from deep cave breccia.",
+        "evidence_significance": "Documents the environmental transition from open woodland to humid rainforest, marking the appearance of rainforest-adapted Homo sapiens in Java.",
+        "why_it_matters": "Punung is the type locality of the Late Pleistocene rainforest Punung Fauna (~128 ka), establishing a crucial ecological boundary in Southeast Asian prehistory.",
+        "data_status": "demo",
+        "source": "Tier 3: Simanjuntak et al. (2004) / Sémah et al. (2004) Courier Forschungsinstitut Senckenberg / BRIN",
+        "source_url": "https://berkalaarkeologi.kemdikbud.go.id",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Coordinates verified from Song Terus cave entrance benchmark in Punung District, Pacitan Regency.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates verified from Song Terus cave entrance benchmark in Punung District, Pacitan Regency."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_semedo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.2817,
+          -6.9631
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_semedo",
+        "name": "Semedo Hominin & Megafauna Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Multi-category Early-Middle Pleistocene site in Tegal containing hominin fossils, 1,331 vertebrate fossil pieces, and 207 marine invertebrate fossils in one combined outcrop.",
+        "geological_process": "Marine-to-Terrestrial Transitional Sedimentation",
+        "geological_age": "Early to Middle Pleistocene (~1.8 - 0.7 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo erectus / Semedo Megafauna Assemblage",
+        "discovery_locality": "Semedo Hills, Kedungbanteng, Tegal, Central Java",
+        "fossil_material": "Homo erectus calvaria/mandible, 1,331 vertebrate fossils (Stegodon, Hippopotamus, Gigantopithecus), 207 invertebrate fossils",
+        "paleoenvironment": "Regressive coastal delta transitioning into savanna river plains",
+        "evidence_type": "Fossil",
+        "evidence_description": "Extensive stratigraphic exposure preserving marine mollusks in lower beds and abundant land megafauna with hominin remains in upper beds.",
+        "evidence_significance": "Dual significance: records a complete ecological turnover from shallow marine bay to terrestrial woodland hosting early hominins and giant primates.",
+        "why_it_matters": "Semedo is a uniquely comprehensive site in western Central Java, bridging marine micropaleontology, Pleistocene megafauna evolution, and early human dispersal.",
+        "data_status": "demo",
+        "source": "Tier 3: Balai Arkeologi Yogyakarta / Widianto et al. (2015) Berkala Arkeologi / BRIN",
+        "source_url": "https://berkalaarkeologi.kemdikbud.go.id",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Coordinates anchor to the Semedo Site Museum and core discovery outcrop ridge in Kedungbanteng, Tegal Regency.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates anchor to the Semedo Site Museum and core discovery outcrop ridge in Kedungbanteng, Tegal Regency."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_soa_mata_menge",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.0925,
+          -8.7056
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_soa_mata_menge",
+        "name": "Soa Basin (Mata Menge) Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Representative discovery point within the 35x22 km Soa Basin, Flores, famous for ~700,000-year-old dwarf Stegodon, Komodo dragon, giant rat, and early hominin fossils.",
+        "geological_process": "Fluvio-Lacustrine & Volcaniclastic Sedimentation",
+        "geological_age": "Early to Middle Pleistocene (~0.84 - 0.70 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Homo sp. (Flores hominin ancestor) / Stegodon florensis",
+        "discovery_locality": "Mata Menge, Soa Basin, Ngada / Flores Tengah, NTT",
+        "fossil_material": "Hominin mandible and teeth, dwarf Stegodon skeletons, Varanus komodoensis, Hooijeromys",
+        "paleoenvironment": "Volcano-tectonic lake basin, seasonal wetlands, and open grasslands",
+        "evidence_type": "Fossil",
+        "evidence_description": "Fossilized hominin dental and mandibular remains alongside insular dwarfed megafauna and stone tools beneath 700-ka volcanic ash fall layers.",
+        "evidence_significance": "Proves early hominin oceanic island colonization and extreme rapid body size reduction east of Wallace's Line prior to 700,000 BP.",
+        "why_it_matters": "Mata Menge reveals the direct ancestral lineage of Homo floresiensis, resolving long-standing evolutionary debates regarding hominin arrival on Flores.",
+        "data_status": "demo",
+        "source": "Tier 3: Brumm et al. (2016) Nature 534:249 / van den Bergh et al. (2016) Nature 534:245 / Amerta (BRIN)",
+        "source_url": "https://doi.org/10.1038/nature17663",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Point represents the internationally documented Mata Menge excavation grid as the representative focal site within the broad 35x22 km Soa lacustrine basin.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Point represents the internationally documented Mata Menge excavation grid as the representative focal site within the broad 35x22 km Soa lacustrine basin."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_cabenge_soppeng",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.9214,
+          -4.4533
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_cabenge_soppeng",
+        "name": "Cabenge (Soppeng) Megafauna Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Late Pliocene to Early Pleistocene river terrace locality in Soppeng, South Sulawesi, yielding endemic insular vertebrate fauna of the Walanae Formation.",
+        "geological_process": "Fluvial Terrace Sedimentation",
+        "geological_age": "Late Pliocene to Early Pleistocene (~2.5 - 1.5 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Stegodon sompoensis / Celebochoerus heekereni",
+        "discovery_locality": "Cabenge, Walanae Depression, Soppeng, South Sulawesi",
+        "fossil_material": "Dwarf Stegodon teeth/limbs, giant suid tusks (Celebochoerus), giant tortoise shells (Colossochelys)",
+        "paleoenvironment": "Ancient Wallacean island river channel and flood basin",
+        "evidence_type": "Fossil",
+        "evidence_description": "Dense accumulations of endemic vertebrate fossils recovered from fluviatile conglomerate and sandstone terraces of the Walanae Formation.",
+        "evidence_significance": "Provides primary empirical evidence for deep-time insular endemic faunal evolution and early island isolation across Wallacea.",
+        "why_it_matters": "Cabenge is the type locality for Sulawesi's archaic vertebrate fauna, essential for understanding island endemism and sweepstakes dispersal across deep oceanic trenches.",
+        "data_status": "demo",
+        "source": "Tier 3: van Heekeren (1958) / van den Bergh et al. (2009) Quaternary Science Reviews / Jurnal Walennae",
+        "source_url": "https://walennae.kemdikbud.go.id",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Coordinates pinned to the classic Cabenge river terrace outcrop along the Walanae river system in Soppeng Regency.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates pinned to the classic Cabenge river terrace outcrop along the Walanae river system in Soppeng Regency."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_sumedang_stegodon",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.1361,
+          -6.7725
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_sumedang_stegodon",
+        "name": "Sumedang (Tomo) Stegodon Site",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Early Pleistocene volcaniclastic terrace in Cihonje, Tomo, Sumedang, where ITB geologists uncovered a remarkably intact 3.3-meter Stegodon tusk in 2018.",
+        "geological_process": "Volcaniclastic Lahar & Terrace Sedimentation",
+        "geological_age": "Early Pleistocene (~1.5 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Stegodon trigonocephalus",
+        "discovery_locality": "Cihonje Stream, Tomo, Sumedang, West Java",
+        "fossil_material": "Pair of 3.3-meter complete Stegodon tusks, pelvic girdle elements, molars",
+        "paleoenvironment": "Volcanic foot-slope river channel and flood deposit",
+        "evidence_type": "Fossil",
+        "evidence_description": "Exceptionally preserved 3.3-meter Stegodon tusks embedded in tuffaceous sandstone layers of the Citalang Formation.",
+        "evidence_significance": "Confirms the presence of large-bodied proboscideans in western Java during Early Pleistocene volcanic arc expansion.",
+        "why_it_matters": "Provides tangible evidence of the western Java terrestrial migration corridor for Pleistocene megafauna dispersing across the Sunda Shelf.",
+        "data_status": "demo",
+        "source": "Tier 3: Paleontology Laboratory ITB / Geological Engineering ITB Field Expedition (2018)",
+        "source_url": "https://www.itb.ac.id/berita/detail/56908",
+        "source_type": "institutional_record",
+        "source_verification_status": "partially_verified",
+        "geometry_status": "partially_verified",
+        "geometry_notes": "Coordinates anchored to Cihonje stream bed excavation zone in Tomo District; precise excavation datum carries minor field tolerance.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates anchored to Cihonje stream bed excavation zone in Tomo District; precise excavation datum carries minor field tolerance."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_blora_stegodon",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.2389,
+          -7.1528
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_blora_stegodon",
+        "name": "Blora (Banjarejo) Fossil Locality",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Kendeng alluvial deposit locality in Banjarejo, Blora, reported in academic literature for isolated Stegodon and Elephas fossil tooth discoveries.",
+        "geological_process": "Fluvial Alluvial Sedimentation",
+        "geological_age": "Middle to Late Pleistocene (~0.7 - 0.1 Ma)",
+        "geological_period": "Quaternary",
+        "taxon_name": "Stegodon trigonocephalus / Elephas sp.",
+        "discovery_locality": "Banjarejo / Sunggun, Gabus, Blora, Central Java",
+        "fossil_material": "Isolated proboscidean molars, tusk fragments, and limb bones",
+        "paleoenvironment": "Ancient Kendeng floodplain and river channel",
+        "evidence_type": "Fossil",
+        "evidence_description": "Surface and shallow-pit proboscidean dental and skeletal fragments catalogued in local community museum repositories.",
+        "evidence_significance": "Indicates continuous megafauna habitation across the northern Kendeng-Randublatung depression during the Middle-Late Pleistocene.",
+        "why_it_matters": "Represents an emerging secondary fossil locality within the Bengawan Solo basin, requiring further systematic stratigraphic excavation.",
+        "data_status": "demo",
+        "source": "Tier 3: Academic literature brief mentions / Regional Geological Survey notes",
+        "source_url": "https://geologi.esdm.go.id",
+        "source_type": "institutional_record",
+        "source_verification_status": "needs_review",
+        "geometry_status": "needs_review",
+        "geometry_notes": "Coordinates placed at Banjarejo village center as a candidate placeholder; precise stratigraphic pit coordinates remain unconfirmed in peer-reviewed primary literature.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates placed at Banjarejo village center as a candidate placeholder; precise stratigraphic pit coordinates remain unconfirmed in peer-reviewed primary literature."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_timor_triassic_marine",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.7742,
+          -10.3114
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_timor_triassic_marine",
+        "name": "Timor Triassic Marine Fossil Beds",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Representative point for the world-famous Triassic Hallstatt limestone marine fossil beds in West Timor (Baun/Bitauni area), studied by international palaeontologists since 1892.",
+        "geological_process": "Deep-Marine Pelagic Carbonate Sedimentation",
+        "geological_age": "Triassic (~250 - 201 Ma)",
+        "geological_period": "Triassic",
+        "taxon_name": "Arcestes / Monophyllites / Halobia / Halorella",
+        "discovery_locality": "Baun / Bitauni / Noil Bihati, West Timor, NTT",
+        "fossil_material": "Pelagic Ammonites (Arcestes, Joannites), Brachiopods (Halorella), Bivalves (Daonella, Halobia)",
+        "paleoenvironment": "Tethyan deep pelagic carbonate seamount & open ocean basin",
+        "evidence_type": "Fossil",
+        "evidence_description": "Pristinely preserved pelagic ammonites, brachiopods, and thin-shelled bivalves embedded in red and grey cephalopod-bearing Hallstatt-type limestones.",
+        "evidence_significance": "Provides globally critical biostratigraphic index fossils correlating Gondwana margin Tethyan marine sequences across the Southern Hemisphere.",
+        "why_it_matters": "Timor possesses one of the world's richest and most complete Triassic pelagic marine invertebrate fossil records, documented in classic paleontological literature since 1892.",
+        "data_status": "demo",
+        "source": "Tier 1: Jurnal Geologi Indonesia (Pusat Survei Geologi / ESDM) & Wanner (1911, 1932)",
+        "source_url": "https://ijog.geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_notes": "Point serves as a representative area marker for the Baun-Noil Bihati Triassic limestone formation outcrop belt, not a single individual shell discovery point.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Point serves as a representative area marker for the Baun-Noil Bihati Triassic limestone formation outcrop belt, not a single individual shell discovery point."
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_misool_triassic_marine",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.125,
+          -1.8922
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_misool_triassic_marine",
+        "name": "Misool Triassic Marine Fossil Beds",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "description": "Middle Triassic marine macrofossil locality on Misool Island (Raja Ampat) yielding Anisian ammonites and bivalves in shale-limestone formations.",
+        "geological_process": "Open-Marine Shelf Sedimentation",
+        "geological_age": "Middle Triassic (Anisian, ~247 - 242 Ma)",
+        "geological_period": "Triassic",
+        "taxon_name": "Beyrichites / Daonella",
+        "discovery_locality": "Keskain Outcrop, Southern Misool Island, Raja Ampat, West Papua",
+        "fossil_material": "Beyrichites ammonites, Daonella bivalves, belemnite fragments",
+        "paleoenvironment": "Open marine continental shelf and slope mudflat",
+        "evidence_type": "Fossil",
+        "evidence_description": "Fossilized ammonoids (Beyrichites) and planktic bivalves (Daonella) preserved in dark grey mudstones and interbedded limestones.",
+        "evidence_significance": "Establishes Middle Triassic (Anisian) marine sedimentation on Gondwana-derived microcontinental blocks in eastern Indonesia.",
+        "why_it_matters": "Misool provides the most continuous and undisturbed Mesozoic marine sedimentary sequence in the Australasian region, essential for Pacific-Tethys correlation.",
+        "data_status": "demo",
+        "source": "Tier 1: Hasibuan (2012) Bulletin of Geological Survey / ESDM Jurnal Geologi Indonesia",
+        "source_url": "https://ijog.geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "partially_verified",
+        "geometry_status": "partially_verified",
+        "geometry_notes": "Coordinates anchored to Keskain Formation coastal outcrop sector in Southern Misool; specific fossil bedding plane coordinates retain minor spatial range.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15",
+        "geometry_note": "Coordinates anchored to Keskain Formation coastal outcrop sector in Southern Misool; specific fossil bedding plane coordinates retain minor spatial range."
       }
     }
   ]

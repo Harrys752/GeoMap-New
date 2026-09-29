@@ -52,7 +52,7 @@ runTest("Test 2: candidates.demo.geojson Collection Passes Schema Validation", (
   const rawData = JSON.parse(fs.readFileSync(new URL("../data/geology/candidates.demo.geojson", import.meta.url), "utf8"));
   const res = validateDataset(rawData);
   assert.strictEqual(res.isCollectionValid, true, "Candidate collection structure must be valid");
-  assert.strictEqual(res.validFeatures.length, 18, "Must contain exactly 18 valid candidate features");
+  assert.strictEqual(res.validFeatures.length, 33, "Must contain exactly 33 valid candidate features");
   assert.strictEqual(res.rejectedFeatures.length, 0, "Zero candidate features should be rejected");
 
   const lem = res.validFeatures.find(f => f.properties.id === "geo_fault_lembang");

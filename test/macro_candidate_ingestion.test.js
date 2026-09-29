@@ -99,7 +99,7 @@ it("Test 4: All candidate records have complete provenance, source URLs, and geo
     assert.ok(p.why_it_matters, `${p.id}: why_it_matters is required`);
   });
 
-  console.log("[PASS] Test 4: Provenance Metadata & Geometry Notes Complete across All 18 Candidate Records");
+  console.log("[PASS] Test 4: Provenance Metadata & Geometry Notes Complete across All 33 Candidate Records");
 });
 
 // Test 5: Full Schema Validation across All Candidate Features
@@ -112,7 +112,7 @@ it("Test 5: All candidate features pass validateFeature schema checks", () => {
     assert.ok(ALLOWED_GEOMETRY_TYPES.includes(f.geometry.type), `Invalid geometry type: ${f.geometry.type}`);
   });
 
-  console.log("[PASS] Test 5: Full GeoJSON Schema Validation Passed (18/18 Candidate Features)");
+  console.log("[PASS] Test 5: Full GeoJSON Schema Validation Passed (33/33 Candidate Features)");
 });
 
 // Test 6: Adapter View Model Formatting for New Feature & Structure Types
