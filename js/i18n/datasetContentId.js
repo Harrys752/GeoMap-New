@@ -4,8 +4,8 @@
 
 export const DATASET_PROSE_ID = {
   "geo_cand_misool_triassic_marine": {
-    "name": "Lapisan Fosil Laut Trias Misool",
-    "description": "Lokasi makrofosil laut Trias Tengah di Pulau Misool (Raja Ampat) yang menghasilkan ammonit dan bivalvia Anisian dalam formasi serpih-batu gamping.",
+    "name": "Lapisan Amonoid & Bivalvia Laut Trias Tengah Misool",
+    "description": "Lokasi makrofosil laut Trias Tengah (Anisian) di Pulau Misool (Raja Ampat) yang menghasilkan ammonit Beyrichites dan bivalvia Daonella dalam formasi serpih-batu gamping Keskain.",
     "geological_process": "Sedimentasi Paparan Laut Terbuka",
     "geological_age": "Trias Tengah (Anisian, ~247 - 242 Ma)",
     "taxon_name": "Beyrichites / Daonella",
@@ -17,8 +17,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Misool menyediakan sekuens sedimentasi laut Mesozoikum paling kontinu dan tidak terganggu di kawasan Australasia, esensial untuk korelasi Pasifik-Tethys."
 },
   "geo_cand_timor_triassic_marine": {
-    "name": "Lapisan Fosil Laut Trias Timor",
-    "description": "Titik representatif untuk lapisan fosil laut batu gamping Hallstatt Trias yang terkenal di Timor Barat (area Baun/Bitauni), diteliti oleh paleontolog internasional sejak 1892.",
+    "name": "Lapisan Fosil Sefalopoda & Invertebrata Laut Trias Timor",
+    "description": "Titik representatif untuk lapisan fosil sefalopoda dan invertebrata laut batu gamping Hallstatt Trias yang terkenal di Timor Barat (area Baun/Bitauni), diteliti oleh paleontolog internasional sejak 1892.",
     "geological_process": "Sedimentasi Karbonat Pelagik Laut Dalam",
     "geological_age": "Trias (~250 - 201 Ma)",
     "taxon_name": "Arcestes / Monophyllites / Halobia / Halorella",
@@ -30,8 +30,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Timor memiliki salah satu rekaman fosil invertebrata laut pelagik Trias terkaya dan terlengkap di dunia, didokumentasikan dalam literatur paleontologi klasik sejak 1892."
 },
   "geo_cand_blora_stegodon": {
-    "name": "Lokasi Fosil Blora (Banjarejo)",
-    "description": "Lokasi endapan aluvial Kendeng di Banjarejo, Blora, yang dilaporkan dalam literatur akademik atas penemuan gigi fosil Stegodon dan Elephas.",
+    "name": "Lokasi Megafauna Kendeng Blora (Banjarejo)",
+    "description": "Lokasi endapan aluvial Kendeng di Banjarejo, Blora, yang dilaporkan dalam literatur akademik atas penemuan gigi fosil proboscidea Stegodon dan Elephas.",
     "geological_process": "Sedimentasi Aluvial Fluvial",
     "geological_age": "Plestosen Tengah hingga Akhir (~0,7 - 0,1 Ma)",
     "taxon_name": "Stegodon trigonocephalus / Elephas sp.",
@@ -43,8 +43,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Mewakili lokasi fosil sekunder yang sedang berkembang di dalam cekungan Bengawan Solo, memerlukan ekskavasi stratigrafi sistematis lebih lanjut."
 },
   "geo_cand_sumedang_stegodon": {
-    "name": "Situs Stegodon Sumedang (Tomo)",
-    "description": "Teras vulkaniklastik Plestosen Awal di Cihonje, Tomo, Sumedang, tempat tim geologi ITB menemukan gading Stegodon utuh sepanjang 3,3 meter pada tahun 2018.",
+    "name": "Situs Temuan Gading Stegodon Sumedang (Tomo)",
+    "description": "Teras vulkaniklastik Plestosen Awal di Cihonje, Tomo, Sumedang, tempat tim geologi ITB menemukan sepasang gading Stegodon utuh sepanjang 3,3 meter pada tahun 2018.",
     "geological_process": "Sedimentasi Lahar Vulkaniklastik & Teras",
     "geological_age": "Plestosen Awal (~1,5 Ma)",
     "taxon_name": "Stegodon trigonocephalus",
@@ -56,8 +56,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Memberikan bukti nyata koridor migrasi darat Jawa barat bagi persebaran megafauna Plestosen melintasi Paparan Sunda."
 },
   "geo_cand_cabenge_soppeng": {
-    "name": "Situs Megafauna Cabenge (Soppeng)",
-    "description": "Lokasi teras sungai Pliosen Akhir hingga Plestosen Awal di Soppeng, Sulawesi Selatan, yang menghasilkan fauna vertebrata endemik Formasi Walanae.",
+    "name": "Situs Stegodon Kerdil & Suid Endemik Cabenge (Soppeng)",
+    "description": "Lokasi teras sungai Pliosen Akhir hingga Plestosen Awal di Soppeng, Sulawesi Selatan, yang menghasilkan fauna vertebrata endemik kepulauan (Stegodon kerdil, babi raksasa Celebochoerus) Formasi Walanae.",
     "geological_process": "Sedimentasi Teras Sungai",
     "geological_age": "Pliosen Akhir hingga Plestosen Awal (~2,5 - 1,5 Ma)",
     "taxon_name": "Stegodon sompoensis / Celebochoerus heekereni",
@@ -69,8 +69,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Cabenge adalah lokasi tipe fauna vertebrata purba Sulawesi, esensial untuk memahami endemisme kepulauan dan persebaran sweepstakes melintasi palung laut dalam."
 },
   "geo_cand_soa_mata_menge": {
-    "name": "Situs Cekungan Soa (Mata Menge)",
-    "description": "Titik penemuan representatif di Cekungan Soa seluas 35x22 km, Flores, yang terkenal dengan fosil Stegodon kerdil, Komodo, tikus raksasa, dan hominin berusia ~700.000 tahun.",
+    "name": "Situs Cekungan Soa (Mata Menge) Leluhur Hominin & Stegodon Kerdil",
+    "description": "Titik penemuan representatif di Cekungan Soa seluas 35x22 km, Flores, yang terkenal dengan fosil hominin leluhur Flores berusia ~700.000 tahun, Stegodon kerdil, Komodo, dan tikus raksasa.",
     "geological_process": "Sedimentasi Fluvio-Lakustrin & Vulkaniklastik",
     "geological_age": "Plestosen Awal hingga Tengah (~0,84 - 0,70 Ma)",
     "taxon_name": "Homo sp. (Leluhur hominin Flores) / Stegodon florensis",
@@ -82,8 +82,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Mata Menge mengungkap garis keturunan langsung leluhur Homo floresiensis, menjawab perdebatan evolusioner panjang mengenai kedatangan hominin di Flores."
 },
   "geo_cand_semedo": {
-    "name": "Situs Hominin & Megafauna Semedo",
-    "description": "Situs Plestosen Awal-Tengah multikategori di Tegal yang memuat fosil hominin, 1.331 spesimen fosil vertebrata, dan 207 fosil invertebrata laut dalam satu singkapan terpadu.",
+    "name": "Singkapan Homo erectus & Megafauna Semedo",
+    "description": "Situs Plestosen Awal-Tengah multikategori di Tegal yang memuat fosil Homo erectus, 1.331 spesimen fosil vertebrata darat (Stegodon, Gigantopithecus), dan 207 fosil invertebrata laut dalam satu singkapan terpadu.",
     "geological_process": "Sedimentasi Transisi Laut ke Darat",
     "geological_age": "Plestosen Awal hingga Tengah (~1,8 - 0,7 Ma)",
     "taxon_name": "Homo erectus / Kumpulan Megafauna Semedo",
@@ -95,8 +95,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Semedo adalah situs komprehensif unik di Jawa Tengah barat, menjembatani mikropaleontologi laut, evolusi megafauna Plestosen, dan persebaran manusia awal."
 },
   "geo_cand_punung": {
-    "name": "Gua Karst Punung Pacitan",
-    "description": "Sistem gua karst Gunung Sewu (Song Terus & Song Gupuh) dekat Punung, menghasilkan fauna hutan hujan tropis Plestosen Akhir dan sisa manusia modern awal.",
+    "name": "Gua Karst Fauna Hutan Hujan & Homo sapiens Punung",
+    "description": "Sistem gua karst Gunung Sewu (Song Terus & Song Gupuh) dekat Punung, menghasilkan fauna tipe hutan hujan tropis Plestosen Akhir (Fauna Punung) dan sisa manusia modern awal.",
     "geological_process": "Sedimentasi Gua Karst & Pembentukan Speleothem",
     "geological_age": "Plestosen Akhir hingga Holosen (~128.000 - 7.000 BP)",
     "taxon_name": "Pongo pygmaeus / Homo sapiens Awal",
@@ -108,11 +108,11 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Punung adalah lokasi tipe Fauna Punung hutan hujan Plestosen Akhir (~128 ka), menetapkan batas ekologis krusial dalam prasejarah Asia Tenggara."
 },
   "geo_cand_patiayam": {
-    "name": "Situs Palaeo Patiayam Muria",
-    "description": "Endapan kubah vulkanik-fluvial Plestosen yang luas di lereng Gunung Muria yang mengandung ribuan fosil Stegodon, megafauna, dan gigi hominin.",
+    "name": "Situs Stegodon & Megafauna Muria Patiayam",
+    "description": "Endapan kubah vulkanik-fluvial Plestosen yang luas di lereng Gunung Muria yang mengandung ribuan fosil Stegodon, megafauna proboscidea, dan gigi hominin.",
     "geological_process": "Sedimentasi Vulkaniklastik & Lakustrin",
     "geological_age": "Plestosen Awal hingga Tengah (~1,5 - 0,7 Ma)",
-    "taxon_name": "Stegodon trigonocephalus / Homo erectus",
+    "taxon_name": "Stegodon trigonocephalus / Elephas / Homo erectus",
     "discovery_locality": "Kubah Patiayam, Jekulo, Kudus, Jawa Tengah",
     "fossil_material": "Lebih dari 8.000 fosil vertebrata: gading/geraham Stegodon, Elephas, Rhinoceros, gigi hominin",
     "paleoenvironment": "Cekungan danau kaki vulkanik, rawa, dan padang rumput sabana",
@@ -121,8 +121,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Patiayam mengawetkan salah satu kumpulan fosil vertebrata terkaya di Jawa, memberikan bukti krusial mengenai biogeografi pulau dan ekologi megafauna purba."
 },
   "geo_cand_wajak": {
-    "name": "Situs Hominin Gua Wajak",
-    "description": "Situs gua karst di Pegunungan Selatan dekat Tulungagung tempat B.D. van Rietschoten dan Eugene Dubois menemukan tengkorak Manusia Modern Awal (Homo wajakensis) pada 1888–1889.",
+    "name": "Situs Manusia Modern Awal (Homo sapiens) Gua Wajak",
+    "description": "Situs gua karst di Pegunungan Selatan dekat Tulungagung tempat B.D. van Rietschoten dan Eugène Dubois menemukan tengkorak Manusia Modern Awal (Homo sapiens / Homo wajakensis) pada 1888–1889.",
     "geological_process": "Sedimentasi Gua Karst",
     "geological_age": "Plestosen Akhir hingga Holosen Awal (~37.000 - 28.000 BP)",
     "taxon_name": "Homo sapiens (Homo wajakensis)",
@@ -134,11 +134,11 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Wajak adalah situs fosil manusia modern pertama yang dideskripsikan secara ilmiah di Indonesia, esensial untuk memahami migrasi manusia Kuarter akhir ke Wallacea dan Sahul."
 },
   "geo_cand_kedungbrubus": {
-    "name": "Situs Dubois Kedungbrubus",
-    "description": "Lokasi ekskavasi bersejarah Eugene Dubois tahun 1890 di Zona Kendeng tempat fragmen hominin pertama di Jawa (rahang bawah anak) ditemukan.",
+    "name": "Situs Mandibula Dubois & Tipe Fauna Kedungbrubus",
+    "description": "Lokasi ekskavasi bersejarah Eugène Dubois tahun 1890 di Zona Kendeng tempat fragmen hominin pertama di Jawa (rahang bawah anak) ditemukan bersama fauna mamalia Kedungbrubus klasik.",
     "geological_process": "Sedimentasi Fluvial & Vulkaniklastik",
     "geological_age": "Plestosen Tengah (~0,8 - 0,7 Ma)",
-    "taxon_name": "Homo erectus / Fauna Kedungbrubus",
+    "taxon_name": "Homo erectus / Kumpulan Tipe Fauna Kedungbrubus",
     "discovery_locality": "Lembah Kedungbrubus, Pilangkenceng, Madiun, Jawa Timur",
     "fossil_material": "Fragmen mandibula Kedungbrubus 1, fosil Stegodon, Tapirus, dan Hexaprotodon",
     "paleoenvironment": "Lembah sungai antargunung Kendeng & sabana terbuka",
@@ -147,8 +147,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Situs fondasi bersejarah bagi paleoantropologi Indonesia, menjadi lokasi tipe bagi Tingkat Fauna Kedungbrubus Plestosen Tengah klasik."
 },
   "geo_cand_ngawi_selopuro": {
-    "name": "Situs Hominin Ngawi (Selopuro)",
-    "description": "Situs tepi sungai Bengawan Solo di Selopuro, Ngawi, tempat ditemukannya tengkorak Homo erectus dewasa yang sangat utuh (Ngawi 1) pada tahun 1987.",
+    "name": "Situs Tengkorak Homo erectus Ngawi (Selopuro)",
+    "description": "Situs tepi sungai Bengawan Solo di Selopuro, Ngawi, tempat ditemukannya tengkorak dewasa utuh tanpa deformasi dari Homo erectus (Ngawi 1) pada tahun 1987.",
     "geological_process": "Sedimentasi Sungai & Teras",
     "geological_age": "Plestosen Akhir (~0,15 - 0,10 Ma)",
     "taxon_name": "Homo erectus (Ngawi 1)",
@@ -160,11 +160,11 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Salah satu tengkorak Homo erectus dewasa paling terawetkan yang ditemukan di Jawa, menunjukkan kedekatan morfotipe dengan bentuk Ngandong akhir."
 },
   "geo_cand_sambungmacan": {
-    "name": "Situs Hominin Sambungmacan",
+    "name": "Situs Homo erectus Progresif Sambungmacan",
     "description": "Lokasi sodetan sungai Bengawan Solo di Sragen tempat ditemukannya tengkorak Homo erectus tipe progresif secara morfologis (Sm 1, Sm 3, Sm 4).",
     "geological_process": "Sedimentasi Saluran Sungai",
     "geological_age": "Plestosen Tengah hingga Akhir (~0,4 - 0,1 Ma)",
-    "taxon_name": "Homo erectus",
+    "taxon_name": "Homo erectus (Morfotipe Progresif)",
     "discovery_locality": "Sodetan Saluran Sambungmacan, Sragen, Jawa Tengah",
     "fossil_material": "Tengkorak Sm 1, Sm 3, Sm 4, elemen pascakranial",
     "paleoenvironment": "Potongan saluran sungai dinamis dan teras aluvial",
@@ -173,8 +173,8 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Mengisi celah morfologis dan kronologis penting dalam evolusi manusia Jawa, menghubungkan Homo erectus Plestosen awal dengan bentuk Plestosen akhir."
 },
   "geo_cand_perning_mojokerto": {
-    "name": "Situs Hominin Perning (Mojokerto)",
-    "description": "Situs vulkanik-aluvial Plestosen Awal di Jetis, Mojokerto, terkenal dengan penemuan tengkorak anak Pithecanthropus mojokertensis (Anak Mojokerto) pada tahun 1936.",
+    "name": "Situs Fosil Anak Homo erectus Perning (Mojokerto)",
+    "description": "Situs vulkanik-aluvial Plestosen Awal di Jetis, Mojokerto, terkenal dengan penemuan tengkorak anak Pithecanthropus mojokertensis (Homo erectus / Anak Mojokerto) pada tahun 1936.",
     "geological_process": "Sedimentasi Fluvial & Delta",
     "geological_age": "Plestosen Awal (~1,81 - 1,49 Ma)",
     "taxon_name": "Pithecanthropus mojokertensis (Homo erectus)",
@@ -186,7 +186,7 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Salah satu spesimen hominin tertua di Asia Tenggara (~1,8 Ma), menunjukkan adaptabilitas awal hominin di lingkungan delta vulkanik tropis."
 },
   "geo_cand_ngandong": {
-    "name": "Situs Ngandong Soloensis",
+    "name": "Situs Homo erectus (Manusia Solo) Ngandong",
     "description": "Lokasi teras aluvial Plestosen Akhir di sepanjang Sungai Bengawan Solo tempat ditemukannya 14 atap tengkorak dan tulang kering Homo erectus (Manusia Solo) antara tahun 1931 dan 1933.",
     "geological_process": "Sedimentasi Teras & Sungai",
     "geological_age": "Plestosen Akhir (~117.000 - 108.000 BP)",

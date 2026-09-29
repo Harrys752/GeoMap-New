@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 import { validateFeature } from "../js/utils/validate.js";
 import { adaptGeologyFeature } from "../js/data/adapters/geologyAdapter.js";
 import { ALLOWED_FEATURE_TYPES, ALLOWED_GEOMETRY_STATUSES, ALLOWED_GEOMETRY_TYPES } from "../js/data/schema.js";
+import { DATASET_PROSE_ID } from "../js/i18n/datasetContentId.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -143,5 +144,5 @@ it("Test 6: Geology adapter cleanly transforms macro-geomorphology features into
 });
 
 console.log("\n-------------------------------------------------");
-console.log("Macro Candidate Ingestion Test Suite Finished: 6/6 Tests Passed.");
+console.log("Macro Candidate Ingestion Test Suite Finished: 7/7 Tests Passed.");
 console.log("-------------------------------------------------\n");
