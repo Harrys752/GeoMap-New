@@ -1,199 +1,139 @@
 /**
- * Search Bar UI Component
- * Provides live text search filtering by entry name and feature-type label,
- * with live autocomplete suggestions and direct marker navigation.
+ * Search Bar Component with Autocomplete Suggestions & Marker Selection Focus
+ * Supports full bilingual display (English & Bahasa Indonesia).
  */
 
-const FEATURE_TYPE_LABELS = {
-  volcano: "Volcano",
-  paleontology_site: "Paleontology",
-  site: "Geology Site",
-  historical_event: "Historical Hazard",
-  tectonic_structure: "Tectonic Structure",
-  geological_complex: "Geological Complex",
-  volcanic_complex: "Volcanic Complex",
-  mountain_system: "Mountain System",
-  basin: "Basin",
-  regional_karst: "Regional Karst",
-  volcanic_arc: "Volcanic Arc"
-};
+import { formatFeatureTypeLabel } from "../data/adapters/geologyAdapter.js";
+import { getLanguage, t, getLocalizedFeature } from "../i18n/i18n.js";
 
 /**
- * Initializes search bar listener and autocomplete suggestions.
- * @param {string} inputId - DOM ID for search input element
- * @param {string} clearBtnId - DOM ID for clear button element
- * @param {function} onSearchChange - Callback function triggered on search query update
- * @param {function} [getFeatures] - Optional provider function returning all feature records for autocomplete
- * @param {function} [onSelectFeature] - Optional callback triggered when a suggestion is selected to focus map/marker
+ * Initializes the Search Input component with live query callback and dropdown suggestions.
+ * @param {string} inputId - DOM ID for text input
+ * @param {string} clearBtnId - DOM ID for clear button
+ * @param {function} onSearchChange - Callback invoked with search query string
+ * @param {function} getAllFeatures - Function returning the complete active array of dataset features
+ * @param {function} onSelectFeature - Callback when user clicks/selects an autocomplete suggestion
  */
-export function initSearchBar(inputId = "search-input", clearBtnId = "search-clear", onSearchChange, getFeatures, onSelectFeature) {
-  const inputEl = document.getElementById(inputId);
+export function initSearchBar(inputId = "search-input", clearBtnId = "search-clear", onSearchChange, getAllFeatures, onSelectFeature) {
+  const input = document.getElementById(inputId);
   const clearBtn = document.getElementById(clearBtnId);
+  if (!input) return null;
 
-  if (!inputEl) return;
+  let currentLang = getLanguage();
 
-  const wrapper = inputEl.closest(".search-input-wrapper") || inputEl.parentElement;
-
-  // Create suggestions dropdown container if not present
-  let dropdownEl = wrapper.querySelector(".search-suggestions-dropdown");
-  if (!dropdownEl) {
-    dropdownEl = document.createElement("div");
-    dropdownEl.className = "search-suggestions-dropdown hidden";
-    dropdownEl.id = "search-suggestions-dropdown";
-    wrapper.appendChild(dropdownEl);
+  // Create suggestions dropdown container
+  const wrapper = input.parentElement;
+  let suggestionsBox = wrapper.querySelector(".search-suggestions-box");
+  if (!suggestionsBox) {
+    suggestionsBox = document.createElement("div");
+    suggestionsBox.className = "search-suggestions-box";
+    suggestionsBox.style.display = "none";
+    wrapper.appendChild(suggestionsBox);
   }
-
-  let selectedIndex = -1;
-  let activeSuggestions = [];
 
   function updateClearButtonVisibility() {
     if (clearBtn) {
-      clearBtn.style.display = inputEl.value.trim().length > 0 ? "block" : "none";
+      clearBtn.style.display = input.value.trim().length > 0 ? "block" : "none";
     }
   }
 
   function hideSuggestions() {
-    dropdownEl.classList.add("hidden");
-    dropdownEl.innerHTML = "";
-    selectedIndex = -1;
-    activeSuggestions = [];
+    suggestionsBox.style.display = "none";
+    suggestionsBox.innerHTML = "";
   }
 
-  function renderSuggestions(query) {
-    if (!query || typeof getFeatures !== "function") {
-      hideSuggestions();
+  function renderSuggestions(matches) {
+    if (!matches || matches.length === 0) {
+      suggestionsBox.innerHTML = `<div class="suggestion-item no-match">${escapeHtml(t("search_no_suggestions", {}, currentLang))}</div>`;
+      suggestionsBox.style.display = "block";
       return;
     }
 
-    const allFeats = getFeatures() || [];
-    const q = query.trim().toLowerCase();
-    if (!q) {
-      hideSuggestions();
-      return;
-    }
-
-    // Filter features matching query against name, feature_type, process, province, rock_type
-    activeSuggestions = allFeats.filter(f => {
-      const props = f.properties || {};
-      const name = (props.name || "").toLowerCase();
-      const type = (props.feature_type || "").replace(/_/g, " ").toLowerCase();
-      const proc = (props.geological_process || "").toLowerCase();
-      const prov = (props.location_province || "").toLowerCase();
-
-      return name.includes(q) || type.includes(q) || proc.includes(q) || prov.includes(q);
-    }).slice(0, 6); // Top 6 matches
-
-    if (activeSuggestions.length === 0) {
-      hideSuggestions();
-      return;
-    }
-
-    selectedIndex = -1;
-    dropdownEl.innerHTML = activeSuggestions.map((feat, idx) => {
-      const props = feat.properties || {};
-      const name = props.name || "Unnamed Feature";
-      const typeKey = props.feature_type || "site";
-      const typeLabel = FEATURE_TYPE_LABELS[typeKey] || typeKey;
-      const subLocation = props.location_province || props.geological_process || "Indonesia";
+    suggestionsBox.innerHTML = matches.map(feature => {
+      const locFeat = getLocalizedFeature(feature, currentLang);
+      const props = locFeat.properties || {};
+      const name = props.name || "Unnamed";
+      const type = formatFeatureTypeLabel(props.feature_type, currentLang);
+      const province = props.location_province ? ` • ${props.location_province}` : "";
+      const domainClass = props.domain === "hazard" ? "suggestion-domain-hazard" : "suggestion-domain-geology";
 
       return `
-        <div class="suggestion-item" data-index="${idx}">
-          <div class="suggestion-info">
-            <span class="suggestion-name">${escapeHtml(name)}</span>
-            <span class="suggestion-sub">${escapeHtml(subLocation)}</span>
-          </div>
-          <span class="suggestion-badge">${escapeHtml(typeLabel)}</span>
+        <div class="suggestion-item" data-feature-id="${escapeHtml(props.id)}">
+          <div class="suggestion-title">${escapeHtml(name)}</div>
+          <div class="suggestion-meta ${domainClass}">${escapeHtml(type)}${escapeHtml(province)}</div>
         </div>
       `;
     }).join("");
 
-    dropdownEl.classList.remove("hidden");
+    suggestionsBox.style.display = "block";
 
-    // Add click listeners to suggestion items
-    dropdownEl.querySelectorAll(".suggestion-item").forEach(item => {
-      item.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const idx = parseInt(item.getAttribute("data-index"), 10);
-        const selectedFeat = activeSuggestions[idx];
-        if (selectedFeat) {
-          selectSuggestion(selectedFeat);
+    // Attach click listeners to suggestions
+    const items = suggestionsBox.querySelectorAll(".suggestion-item[data-feature-id]");
+    items.forEach(item => {
+      item.addEventListener("click", () => {
+        const featureId = item.getAttribute("data-feature-id");
+        hideSuggestions();
+
+        const allFeats = typeof getAllFeatures === "function" ? getAllFeatures() : [];
+        const found = allFeats.find(f => f.properties && f.properties.id === featureId);
+
+        if (found) {
+          const locFound = getLocalizedFeature(found, currentLang);
+          input.value = locFound.properties.name || "";
+          updateClearButtonVisibility();
+          if (typeof onSearchChange === "function") {
+            onSearchChange(locFound.properties.name || "");
+          }
+          if (typeof onSelectFeature === "function") {
+            onSelectFeature(found);
+          }
         }
       });
     });
   }
 
-  function selectSuggestion(feature) {
-    const props = feature.properties || {};
-    const name = props.name || "";
-    inputEl.value = name;
+  function handleInputQuery() {
+    const rawQuery = input.value;
+    const q = rawQuery.trim().toLowerCase();
     updateClearButtonVisibility();
-    hideSuggestions();
 
     if (typeof onSearchChange === "function") {
-      onSearchChange(name.toLowerCase());
+      onSearchChange(rawQuery);
     }
 
-    if (typeof onSelectFeature === "function") {
-      onSelectFeature(feature);
-    }
-  }
-
-  inputEl.addEventListener("input", () => {
-    const q = inputEl.value;
-    updateClearButtonVisibility();
-    if (typeof onSearchChange === "function") {
-      onSearchChange(q.trim().toLowerCase());
-    }
-    renderSuggestions(q);
-  });
-
-  inputEl.addEventListener("keydown", (e) => {
-    if (dropdownEl.classList.contains("hidden") || activeSuggestions.length === 0) {
-      if (e.key === "Enter" && inputEl.value.trim()) {
-        hideSuggestions();
-      }
+    if (q.length < 1) {
+      hideSuggestions();
       return;
     }
 
-    const items = dropdownEl.querySelectorAll(".suggestion-item");
+    const allFeats = typeof getAllFeatures === "function" ? getAllFeatures() : [];
+    const matches = allFeats.filter(f => {
+      const locFeat = getLocalizedFeature(f, currentLang);
+      const props = locFeat.properties || {};
+      const nameStr = (props.name || "").toLowerCase();
+      const typeStr = (props.feature_type || "").replace(/_/g, " ").toLowerCase();
+      const descStr = (props.description || "").toLowerCase();
+      const provStr = (props.location_province || "").toLowerCase();
 
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      selectedIndex = (selectedIndex + 1) % activeSuggestions.length;
-      updateKeyboardSelection(items);
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      selectedIndex = (selectedIndex - 1 + activeSuggestions.length) % activeSuggestions.length;
-      updateKeyboardSelection(items);
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      if (selectedIndex >= 0 && selectedIndex < activeSuggestions.length) {
-        selectSuggestion(activeSuggestions[selectedIndex]);
-      } else if (activeSuggestions.length > 0) {
-        selectSuggestion(activeSuggestions[0]);
-      }
-    } else if (e.key === "Escape") {
-      hideSuggestions();
+      return nameStr.includes(q) || typeStr.includes(q) || descStr.includes(q) || provStr.includes(q);
+    }).slice(0, 7);
+
+    renderSuggestions(matches);
+  }
+
+  input.addEventListener("input", handleInputQuery);
+
+  input.addEventListener("focus", () => {
+    if (input.value.trim().length >= 1) {
+      handleInputQuery();
     }
   });
 
-  function updateKeyboardSelection(items) {
-    items.forEach((item, idx) => {
-      if (idx === selectedIndex) {
-        item.classList.add("selected");
-        item.scrollIntoView({ block: "nearest" });
-      } else {
-        item.classList.remove("selected");
-      }
-    });
-  }
-
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
-      inputEl.value = "";
+      input.value = "";
       updateClearButtonVisibility();
       hideSuggestions();
-      inputEl.focus();
       if (typeof onSearchChange === "function") {
         onSearchChange("");
       }
@@ -207,22 +147,49 @@ export function initSearchBar(inputId = "search-input", clearBtnId = "search-cle
     }
   });
 
+  function updateLanguage(newLang) {
+    currentLang = newLang;
+    input.setAttribute("placeholder", t("search_placeholder", {}, currentLang));
+    input.setAttribute("aria-label", t("search_input_aria", {}, currentLang));
+    if (clearBtn) {
+      clearBtn.setAttribute("aria-label", t("search_clear_aria", {}, currentLang));
+    }
+    const searchSectionLabel = document.querySelector(".search-section .section-label");
+    if (searchSectionLabel) {
+      searchSectionLabel.textContent = t("search_label", {}, currentLang);
+    }
+
+    // Re-render suggestions if currently visible
+    if (suggestionsBox.style.display !== "none" && input.value.trim().length >= 1) {
+      handleInputQuery();
+    }
+  }
+
+  // Set initial placeholders
+  updateLanguage(currentLang);
   updateClearButtonVisibility();
+
+  return {
+    updateLanguage
+  };
 }
 
 /**
  * Filters feature records by query string against name, feature_type, and description.
  * @param {object[]} features - Array of feature records
  * @param {string} query - Lowercase search query string
+ * @param {string} [lang=null] - Target language
  * @returns {object[]} Filtered features
  */
-export function filterBySearchQuery(features, query) {
+export function filterBySearchQuery(features, query, lang = null) {
   if (!query) return features;
   const q = String(query).trim().toLowerCase();
   if (!q) return features;
+  const activeLang = lang || getLanguage();
 
   return features.filter(f => {
-    const props = f.properties || {};
+    const locFeat = getLocalizedFeature(f, activeLang);
+    const props = locFeat.properties || {};
     const nameStr = (props.name || "").toLowerCase();
     const typeStr = (props.feature_type || "").replace(/_/g, " ").toLowerCase();
     const descStr = (props.description || "").toLowerCase();

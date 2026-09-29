@@ -7,8 +7,9 @@
 
   <meta name="description" content="An independent educational platform connecting Indonesian geological locations, geological time, paleontology, and historical geohazards.">
 
-  <!-- OpenLayers CSS (CDN) -->
+  <!-- OpenLayers CSS & JS (CDN) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v9.2.4/ol.css">
+  <script src="https://cdn.jsdelivr.net/npm/ol@v9.2.4/dist/ol.js"></script>
 
   <!-- Application Stylesheets -->
   <link rel="stylesheet" href="css/base.css">
@@ -21,16 +22,25 @@
   <header class="app-header" id="app-header">
     <div class="header-main">
       <div class="header-brand">
-        <h1 class="app-title">GeoMap Indonesia 2.0</h1>
-        <span class="app-tagline">Educational Geological & Geohazard Explorer</span>
+        <div class="brand-titles">
+          <h1 class="app-title">GeoMap Indonesia 2.0</h1>
+          <span class="app-tagline" id="app-tagline">Educational Geological & Geohazard Explorer</span>
+        </div>
+        <!-- Language Switcher Toggle Button -->
+        <div class="header-lang-wrapper">
+          <button type="button" class="btn-lang-toggle" id="btn-lang-toggle" aria-label="Switch language to Bahasa Indonesia" title="Switch language / Ganti bahasa">
+            <span class="lang-code-active" id="lang-code-badge">ID</span>
+            <span class="lang-text-label" id="lang-text-label">Bahasa Indonesia</span>
+          </button>
+        </div>
       </div>
       
       <!-- Prominent Scope & Disclaimer Banner -->
       <div class="scope-statement-banner" role="alert">
         <span class="scope-icon">&#9888;</span>
-        <div class="scope-content">
-          <strong>EDUCATIONAL SCOPE DISCLOSURE:</strong>
-          This platform is an independent educational tool. It does <strong>NOT</strong> provide live monitoring, emergency alerts, or official warnings. Refer to official government channels (PVMBG / BMKG / BNPB) for disaster response.
+        <div class="scope-content" id="scope-content">
+          <strong id="scope-banner-strong">EDUCATIONAL SCOPE DISCLOSURE:</strong>
+          <span id="scope-banner-body">This platform is an independent educational tool. It does <strong>NOT</strong> provide live monitoring, emergency alerts, or official warnings. Refer to official government channels (PVMBG / BMKG / BNPB) for disaster response.</span>
         </div>
         <button type="button" class="scope-toggle-btn" id="scope-toggle-btn" aria-expanded="false" aria-label="Toggle full disclaimer">Full Info &#9662;</button>
       </div>
@@ -74,11 +84,11 @@
 
         <div class="candidate-layer-box">
           <label class="candidate-toggle-label">
-            <input type="checkbox" id="sidebar-candidates-toggle" name="sidebar-candidates-toggle" autocomplete="off">
-            <span>Show Tectonic Structures (Candidate Layer)</span>
+            <input type="checkbox" id="sidebar-candidates-toggle" name="sidebar-candidates-toggle" checked autocomplete="off">
+            <span>Show Candidate Layer (Tectonic Structures & Geomorphology)</span>
           </label>
           <div class="candidate-toggle-hint">
-            Renders active fault lines (Sesar Lembang, Cimandiri, Baribis, Opak, Semangko, Sorong), Sunda-Java Trench, & Ciletuh/Karangsambung Mélanges.
+            Renders active fault lines, subduction trenches, mountain ranges, sedimentary basins, karst systems, & geological complexes.
           </div>
         </div>
       </section>
@@ -127,31 +137,31 @@
 
       <!-- Map Symbol Legend Component -->
       <section class="control-section legend-section">
-        <span class="section-label">Map Symbol Legend</span>
+        <span class="section-label" id="legend-section-title">Map Symbol Legend</span>
         <div class="legend-grid">
           <div class="legend-item">
             <div class="legend-symbol symbol-geology symbol-volcano">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
             </div>
-            <span class="legend-text">Volcano / Volcanic Complex</span>
+            <span class="legend-text" id="legend-label-volcano">Volcano / Volcanic Complex</span>
           </div>
           <div class="legend-item">
             <div class="legend-symbol symbol-geology symbol-paleo">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.5 2.5 0 0 1 2.5 2.5c0 .9-.5 1.7-1.2 2.1l-10 10A2.5 2.5 0 1 1 5 14l10-10c.4-.7 1.2-1 2-1z"/></svg>
             </div>
-            <span class="legend-text">Paleontology Locality</span>
+            <span class="legend-text" id="legend-label-paleo">Paleontology Locality</span>
           </div>
           <div class="legend-item">
             <div class="legend-symbol symbol-geology symbol-site">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 10-9 10-9-10 9-10z"/></svg>
             </div>
-            <span class="legend-text">Geological Site / Formation</span>
+            <span class="legend-text" id="legend-label-site">Geological Site / Formation</span>
           </div>
           <div class="legend-item">
             <div class="legend-symbol symbol-hazard symbol-event">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
             </div>
-            <span class="legend-text">Historical Geohazard Event</span>
+            <span class="legend-text" id="legend-label-hazard">Historical Geohazard Event</span>
           </div>
         </div>
       </section>
@@ -159,9 +169,9 @@
       <!-- Sidebar Footer with About & Mission Trigger -->
       <footer class="sidebar-footer">
         <button type="button" id="btn-open-about" class="btn-about-trigger">
-          <span>&#9432;</span> About & Educational Mission
+          <span>&#9432;</span> <span id="btn-about-text">About & Educational Mission</span>
         </button>
-        <p class="footer-disclaimer">
+        <p class="footer-disclaimer" id="footer-disclaimer-text">
           Independent Educational Platform. Not affiliated with MAGMA Indonesia, PVMBG, ESDM, BMKG, or BNPB.
         </p>
       </footer>
@@ -192,20 +202,20 @@
         <h3 id="about-modal-title" class="about-modal-title">About GeoMap Indonesia 2.0</h3>
         <button type="button" id="about-modal-close" class="about-modal-close" aria-label="Close modal">&times;</button>
       </header>
-      <div class="about-modal-body">
+      <div class="about-modal-body" id="about-modal-body">
         <section class="about-section">
-          <h4>Mission</h4>
-          <p>GeoMap Indonesia 2.0 is an educational platform for exploring Indonesia's geological history, geological processes, paleontological heritage, and historical geohazards through an interactive map.</p>
+          <h4 id="about-mission-heading">Mission</h4>
+          <p id="about-mission-desc">GeoMap Indonesia 2.0 is an educational platform for exploring Indonesia's geological history, geological processes, paleontological heritage, and historical geohazards through an interactive map.</p>
         </section>
 
         <section class="about-section">
-          <h4>Vision</h4>
-          <p>Making Indonesia's geological and paleontological heritage more accessible, understandable, and connected to spatial and environmental context.</p>
+          <h4 id="about-vision-heading">Vision</h4>
+          <p id="about-vision-desc">Making Indonesia's geological and paleontological heritage more accessible, understandable, and connected to spatial and environmental context.</p>
         </section>
 
         <section class="about-section">
-          <h4>Educational Goals</h4>
-          <ul class="about-list">
+          <h4 id="about-goals-heading">Educational Goals</h4>
+          <ul class="about-list" id="about-goals-list">
             <li>Introduce the diversity of Indonesia's geology.</li>
             <li>Connect locations to the processes that formed them.</li>
             <li>Introduce Indonesia's paleontological heritage.</li>
@@ -215,16 +225,16 @@
         </section>
 
         <section class="about-section section-transparency">
-          <h4>Data Confidence & Transparency Summary</h4>
-          <p class="about-transparency-lead">Scientific source verification for GeoMap dataset entries is an active, transparent process. Statuses reflect internal audit verification stages rather than third-party agency certifications.</p>
+          <h4 id="about-transparency-heading">Data Confidence & Transparency Summary</h4>
+          <p class="about-transparency-lead" id="about-transparency-lead">Scientific source verification for GeoMap dataset entries is an active, transparent process. Statuses reflect internal audit verification stages rather than third-party agency certifications.</p>
           <div id="transparency-summary-container" class="transparency-summary-container">
             <!-- Dynamically populated at render time -->
           </div>
         </section>
 
         <section class="about-section">
-          <h4>Project Scope & Methodological Limitations</h4>
-          <ul class="about-list">
+          <h4 id="about-limitations-heading">Project Scope & Methodological Limitations</h4>
+          <ul class="about-list" id="about-limitations-list">
             <li><strong>No Live Feeds:</strong> Not a live seismic or volcanic monitoring system.</li>
             <li><strong>No Warning Alerts:</strong> Not a disaster warning system or emergency dispatch tool.</li>
             <li><strong>Non-Official:</strong> Not a replacement for official government channels (PVMBG / BMKG / BNPB).</li>
@@ -240,12 +250,9 @@
   <div id="loading-overlay" class="loading-overlay">
     <div class="loading-card">
       <div class="spinner"></div>
-      <p class="loading-text">Loading Geological & Hazard Datasets...</p>
+      <p class="loading-text" id="loading-text">Loading Geological & Hazard Datasets...</p>
     </div>
   </div>
-
-  <!-- OpenLayers Library (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/ol@v9.2.4/dist/ol.js"></script>
 
   <!-- ES Module Entry Script -->
   <script type="module" src="js/main.js"></script>

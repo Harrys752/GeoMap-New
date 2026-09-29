@@ -1,11 +1,12 @@
 /**
- * OpenLayers Map Initialization & Basemap Management Module
- * Configures Esri World Imagery (Satellite), Esri World Boundaries & Places (Place Labels overlay),
- * OpenStreetMap (Street Map), and OpenTopoMap (Terrain) with layer controls and robust fallback handling.
+ * OpenLayers Map Initialization Module with Multi-Basemap & Fallback Handling
+ * Supports full bilingual display (English & Bahasa Indonesia).
  */
 
+import { getLanguage, t } from "../i18n/i18n.js";
+
 /**
- * Non-blocking Toast Notification Helper
+ * Displays a toast notification in the bottom right corner of the viewport.
  * @param {string} message - Message to display
  */
 function showToastNotification(message) {
@@ -38,6 +39,8 @@ export function initMap(elementId = "map") {
   if (!mapElement) {
     throw new Error(`Map container element #${elementId} not found.`);
   }
+
+  let currentLang = getLanguage();
 
   // Center coordinates for Indonesia ([118.0 lng, -2.5 lat] in EPSG:3857)
   const defaultCenter = ol.proj.fromLonLat([118.0, -2.5]);
@@ -123,7 +126,7 @@ export function initMap(elementId = "map") {
       failedProviders.add(providerName);
       if (!hasNotified) {
         hasNotified = true;
-        showToastNotification(`Basemap "${providerName}" unavailable. Switched to Street Map fallback.`);
+        showToastNotification(t("toast_basemap_fallback", { provider: providerName }, currentLang));
         console.warn(`[GeoMap Basemap] ${providerName} tile error. Falling back to OpenStreetMap standard.`);
       }
 
@@ -144,7 +147,7 @@ export function initMap(elementId = "map") {
       failedProviders.add(overlayName);
       if (!hasNotified) {
         hasNotified = true;
-        showToastNotification(`Overlay "${overlayName}" unavailable. Place labels disabled.`);
+        showToastNotification(t("toast_overlay_fallback", { overlay: overlayName }, currentLang));
         console.warn(`[GeoMap Basemap] Overlay ${overlayName} tile error.`);
       }
 
@@ -166,37 +169,74 @@ export function initMap(elementId = "map") {
   const toggleBtn = document.createElement("button");
   toggleBtn.type = "button";
   toggleBtn.className = "ol-layers-toggle-btn";
-  toggleBtn.setAttribute("aria-label", "Toggle basemap layer switcher");
+  toggleBtn.setAttribute("aria-label", t("layers_toggle_aria", {}, currentLang));
   toggleBtn.title = "Layers";
   toggleBtn.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`;
 
   const panel = document.createElement("div");
   panel.className = "ol-layers-panel hidden";
-  panel.innerHTML = `
-    <div class="ol-layers-title">Base Layers</div>
-    <label class="ol-layer-radio">
-      <input type="radio" name="ol-base-layer" value="Satellite" checked>
-      <span>Satellite</span>
-    </label>
-    <label class="ol-layer-radio">
-      <input type="radio" name="ol-base-layer" value="Street Map">
-      <span>Street Map</span>
-    </label>
-    <label class="ol-layer-radio">
-      <input type="radio" name="ol-base-layer" value="Terrain">
-      <span>Terrain</span>
-    </label>
-    <div class="ol-layers-separator"></div>
-    <div class="ol-layers-title">Overlays</div>
-    <label class="ol-layer-checkbox">
-      <input type="checkbox" name="ol-labels-toggle" checked>
-      <span>Place Labels</span>
-    </label>
-    <label class="ol-layer-checkbox">
-      <input type="checkbox" name="ol-candidates-toggle" autocomplete="off">
-      <span>Candidate Structures</span>
-    </label>
-  `;
+  
+  function renderLayerSwitcherContent() {
+    // Preserve checked states
+    const checkedBaseRadio = panel.querySelector('input[name="ol-base-layer"]:checked');
+    const baseVal = checkedBaseRadio ? checkedBaseRadio.value : "Satellite";
+    const labelsChecked = panel.querySelector('input[name="ol-labels-toggle"]') ? panel.querySelector('input[name="ol-labels-toggle"]').checked : true;
+    const candidatesChecked = panel.querySelector('input[name="ol-candidates-toggle"]') ? panel.querySelector('input[name="ol-candidates-toggle"]').checked : true;
+
+    panel.innerHTML = `
+      <div class="ol-layers-title">${escapeHtml(t("layers_title_base", {}, currentLang))}</div>
+      <label class="ol-layer-radio">
+        <input type="radio" name="ol-base-layer" value="Satellite"${baseVal === "Satellite" ? " checked" : ""}>
+        <span>${escapeHtml(t("layer_satellite", {}, currentLang))}</span>
+      </label>
+      <label class="ol-layer-radio">
+        <input type="radio" name="ol-base-layer" value="Street Map"${baseVal === "Street Map" ? " checked" : ""}>
+        <span>${escapeHtml(t("layer_street_map", {}, currentLang))}</span>
+      </label>
+      <label class="ol-layer-radio">
+        <input type="radio" name="ol-base-layer" value="Terrain"${baseVal === "Terrain" ? " checked" : ""}>
+        <span>${escapeHtml(t("layer_terrain", {}, currentLang))}</span>
+      </label>
+      <div class="ol-layers-separator"></div>
+      <div class="ol-layers-title">${escapeHtml(t("layers_title_overlays", {}, currentLang))}</div>
+      <label class="ol-layer-checkbox">
+        <input type="checkbox" name="ol-labels-toggle"${labelsChecked ? " checked" : ""}>
+        <span>${escapeHtml(t("layer_place_labels", {}, currentLang))}</span>
+      </label>
+      <label class="ol-layer-checkbox">
+        <input type="checkbox" name="ol-candidates-toggle" autocomplete="off"${candidatesChecked ? " checked" : ""}>
+        <span>${escapeHtml(t("layer_candidate_structures", {}, currentLang))}</span>
+      </label>
+    `;
+
+    // Reattach listeners
+    const baseRadios = panel.querySelectorAll('input[name="ol-base-layer"]');
+    baseRadios.forEach(radio => {
+      radio.addEventListener("change", (e) => {
+        const val = e.target.value;
+        satelliteLayer.setVisible(val === "Satellite");
+        streetMapLayer.setVisible(val === "Street Map");
+        terrainLayer.setVisible(val === "Terrain");
+
+        if (val === "Satellite") {
+          if (!failedProviders.has("Place Labels")) {
+            labelsLayer.setVisible(true);
+            const chk = panel.querySelector('input[name="ol-labels-toggle"]');
+            if (chk) chk.checked = true;
+          }
+        }
+      });
+    });
+
+    const labelsCheckbox = panel.querySelector('input[name="ol-labels-toggle"]');
+    if (labelsCheckbox) {
+      labelsCheckbox.addEventListener("change", (e) => {
+        labelsLayer.setVisible(e.target.checked);
+      });
+    }
+  }
+
+  renderLayerSwitcherContent();
 
   switcherContainer.appendChild(toggleBtn);
   switcherContainer.appendChild(panel);
@@ -213,33 +253,12 @@ export function initMap(elementId = "map") {
     }
   });
 
-  // Handle Base Layer Switch
-  const baseRadios = panel.querySelectorAll('input[name="ol-base-layer"]');
-  baseRadios.forEach(radio => {
-    radio.addEventListener("change", (e) => {
-      const val = e.target.value;
-      satelliteLayer.setVisible(val === "Satellite");
-      streetMapLayer.setVisible(val === "Street Map");
-      terrainLayer.setVisible(val === "Terrain");
-
-      // Auto-enable Place Labels when user switches to Satellite if not failed
-      if (val === "Satellite") {
-        if (!failedProviders.has("Place Labels")) {
-          labelsLayer.setVisible(true);
-          const chk = panel.querySelector('input[name="ol-labels-toggle"]');
-          if (chk) chk.checked = true;
-        }
-      }
-    });
-  });
-
-  // Handle Place Labels Overlay Toggle
-  const labelsCheckbox = panel.querySelector('input[name="ol-labels-toggle"]');
-  if (labelsCheckbox) {
-    labelsCheckbox.addEventListener("change", (e) => {
-      labelsLayer.setVisible(e.target.checked);
-    });
-  }
+  // Attach layer switcher language update method
+  map.updateLayerSwitcherLanguage = (newLang) => {
+    currentLang = newLang;
+    toggleBtn.setAttribute("aria-label", t("layers_toggle_aria", {}, currentLang));
+    renderLayerSwitcherContent();
+  };
 
   // 5. Window resize listener to automatically update size
   window.addEventListener("resize", () => {
@@ -247,4 +266,12 @@ export function initMap(elementId = "map") {
   });
 
   return map;
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }

@@ -1,10 +1,12 @@
 /**
  * Geological Time & Earth History Timeline Component
  * Phase 3 — Lightweight, interactive geological time bar connecting periods to dataset evidence and map locations.
+ * Supports full bilingual display (English & Bahasa Indonesia).
  */
 
 import { PERIOD_CONTEXT_DATA } from "../data/periodContextData.js";
 import { isHistoricalHazard } from "../data/queryHelper.js";
+import { getLanguage, t, getLocalizedPeriodData, getLocalizedFeature } from "../i18n/i18n.js";
 
 /**
  * Initializes the Geological Timeline component.
@@ -17,6 +19,7 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
   if (!containerEl) return null;
 
   let activePeriodKey = null;
+  let currentLang = getLanguage();
 
   // Build feature ID lookup map
   const featureMap = new Map();
@@ -26,32 +29,34 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
     }
   }
 
-  // Define relative period sequence (oldest → newest + historical track)
-  const periodSequence = [
-    { key: "Triassic", label: "Triassic", sub: "~252 – 201 Ma", type: "geo" },
-    { key: "Cretaceous", label: "Cretaceous", sub: "~145 – 66 Ma", type: "geo" },
-    { key: "Neogene", label: "Neogene", sub: "~23 – 2.58 Ma", type: "geo" },
-    { key: "Quaternary", label: "Quaternary", sub: "~2.58 Ma – Present", type: "geo" },
-    { key: "Historical", label: "Historical Hazards", sub: "1883 – 2018 CE", type: "hazard" }
-  ];
+  function getPeriodSequence() {
+    return [
+      { key: "Triassic", label: t("period_Triassic", {}, currentLang), sub: "~252 – 201 Ma", type: "geo" },
+      { key: "Cretaceous", label: t("period_Cretaceous", {}, currentLang), sub: "~145 – 66 Ma", type: "geo" },
+      { key: "Neogene", label: t("period_Neogene", {}, currentLang), sub: "~23 – 2.58 Ma", type: "geo" },
+      { key: "Quaternary", label: t("period_Quaternary", {}, currentLang), sub: "~2.58 Ma – Present", type: "geo" },
+      { key: "Historical", label: t("period_Historical", {}, currentLang), sub: "1883 – 2021 CE", type: "hazard" }
+    ];
+  }
 
   function renderTimelineBar() {
+    const periodSequence = getPeriodSequence();
     containerEl.innerHTML = `
       <div class="timeline-wrapper">
         <header class="timeline-header">
           <div class="timeline-title-row">
             <span class="timeline-icon">&#9201;</span>
-            <h3 class="timeline-title">Geological Time & Earth History</h3>
+            <h3 class="timeline-title">${escapeHtml(t("timeline_title", {}, currentLang))}</h3>
           </div>
           <p class="timeline-disclaimer">
-            Note: Timeline reflects selected educational dataset evidence in GeoMap 2.0, not the exhaustive geological history of Indonesia.
+            ${escapeHtml(t("timeline_disclaimer", {}, currentLang))}
           </p>
         </header>
 
         <!-- Relative Time Sequence Nodes -->
         <div class="timeline-sequence-bar" role="tablist" aria-label="Geological time period sequence">
           ${periodSequence.map(p => `
-            <button type="button" class="timeline-node node-${p.type}" data-period="${p.key}" role="tab" aria-selected="false">
+            <button type="button" class="timeline-node node-${p.type}${activePeriodKey === p.key ? " active" : ""}" data-period="${p.key}" role="tab" aria-selected="${activePeriodKey === p.key ? "true" : "false"}">
               <span class="node-label">${escapeHtml(p.label)}</span>
               <span class="node-sub">${escapeHtml(p.sub)}</span>
             </button>
@@ -59,7 +64,7 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
         </div>
 
         <!-- Period Educational Details Card Container -->
-        <div id="timeline-period-card" class="timeline-period-card" style="display: none;"></div>
+        <div id="timeline-period-card" class="timeline-period-card" style="${activePeriodKey ? "display: block;" : "display: none;"}"></div>
       </div>
     `;
 
@@ -81,25 +86,22 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
         }
       });
     });
+
+    if (activePeriodKey) {
+      renderPeriodCard(activePeriodKey);
+    }
   }
 
-  function selectPeriod(periodKey) {
-    activePeriodKey = periodKey;
+  function renderPeriodCard(periodKey) {
     const cardEl = document.getElementById("timeline-period-card");
-    const nodes = containerEl.querySelectorAll(".timeline-node");
-
-    nodes.forEach(n => {
-      const match = n.getAttribute("data-period") === periodKey;
-      n.classList.toggle("active", match);
-      n.setAttribute("aria-selected", match ? "true" : "false");
-    });
-
     if (!cardEl || !PERIOD_CONTEXT_DATA[periodKey]) {
       if (cardEl) cardEl.style.display = "none";
       return;
     }
 
-    const data = PERIOD_CONTEXT_DATA[periodKey];
+    const baseData = PERIOD_CONTEXT_DATA[periodKey];
+    const data = getLocalizedPeriodData(periodKey, baseData, currentLang);
+
     cardEl.style.display = "block";
     cardEl.innerHTML = `
       <div class="period-card-content">
@@ -112,19 +114,24 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
         </div>
 
         <div class="period-card-section">
-          <strong>General Period Significance:</strong>
+          <strong>${escapeHtml(t("timeline_period_significance", {}, currentLang))}</strong>
           <p>${escapeHtml(data.generalInfo)}</p>
         </div>
 
         <div class="period-card-section">
-          <strong>Dataset Evidence (${data.datasetEvidence.length} entries):</strong>
+          <strong>${escapeHtml(t("timeline_dataset_evidence", { count: data.datasetEvidence.length }, currentLang))}</strong>
           <div class="evidence-chip-list">
-            ${data.datasetEvidence.map(item => `
-              <button type="button" class="evidence-chip" data-feature-id="${item.id}" title="Click to view on map">
-                <span class="chip-name">${escapeHtml(item.name)}</span>
-                <span class="chip-detail">${escapeHtml(item.detail || item.age)}</span>
-              </button>
-            `).join("")}
+            ${data.datasetEvidence.map(item => {
+              const rawFeat = featureMap.get(item.id);
+              const locFeat = rawFeat ? getLocalizedFeature(rawFeat, currentLang) : null;
+              const displayName = locFeat ? locFeat.properties.name : item.name;
+              return `
+                <button type="button" class="evidence-chip" data-feature-id="${item.id}" title="${escapeHtml(t("timeline_chip_tooltip", {}, currentLang))}">
+                  <span class="chip-name">${escapeHtml(displayName)}</span>
+                  <span class="chip-detail">${escapeHtml(item.detail || item.age)}</span>
+                </button>
+              `;
+            }).join("")}
           </div>
         </div>
       </div>
@@ -140,6 +147,19 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
         }
       });
     });
+  }
+
+  function selectPeriod(periodKey) {
+    activePeriodKey = periodKey;
+    const nodes = containerEl.querySelectorAll(".timeline-node");
+
+    nodes.forEach(n => {
+      const match = n.getAttribute("data-period") === periodKey;
+      n.classList.toggle("active", match);
+      n.setAttribute("aria-selected", match ? "true" : "false");
+    });
+
+    renderPeriodCard(periodKey);
   }
 
   function deselectPeriod() {
@@ -184,12 +204,22 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
     }
   }
 
+  /**
+   * Updates timeline language in-memory.
+   * @param {string} newLang - "en" | "id"
+   */
+  function updateLanguage(newLang) {
+    currentLang = newLang;
+    renderTimelineBar();
+  }
+
   renderTimelineBar();
 
   return {
     selectPeriod,
     deselectPeriod,
-    syncTimelineWithFeature
+    syncTimelineWithFeature,
+    updateLanguage
   };
 }
 

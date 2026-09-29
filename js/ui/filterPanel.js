@@ -1,183 +1,252 @@
 /**
- * Filter Panel & Geological Process/Period Explorer UI Component
- * Phase 2 — Handles Domain Toggles, Feature Types, Process Explorer, Period Explorer, and Process Cards.
- * Phase 6 — Synchronized via queryHelper.js canonical data model.
+ * Shared Feature Type & Domain Filter Controller Component
+ * Phase 1 — Dynamically generates feature-type filters based on active domain.
+ * Supports full bilingual display (English & Bahasa Indonesia).
+ *
+ * UX Paradigm:
+ * - All available feature types for active domain are CHECKED by default ([x]).
+ * - Unchecking a checkbox hides features of that type.
+ * - Re-checking a checkbox restores features of that type.
+ * - Candidate Layer Master Toggle (Orange Area) controls all 6 candidate feature types:
+ *   * When Orange toggle is CHECKED: all 6 candidate checkboxes are checked ([x]), markers shown.
+ *   * When Orange toggle is UNCHECKED: all 6 candidate checkboxes are unchecked ([ ]), markers hidden.
+ *   * Crucially: Unchecking the Orange toggle does NOT hide or remove the 6 candidate checkboxes from the UI list!
+ *   * Checking/unchecking individual candidate checkboxes updates visibility and syncs Orange toggle state.
  */
 
-import { domains } from "../core/domainRegistry.js";
+import { computeCanonicalDatasetCounts, matchesCanonicalFilter, matchesEvidenceCategory, isGeologicalPeriod, sanitizeFilterStateForDomain } from "../data/queryHelper.js";
 import { PROCESS_CARDS } from "../data/processCardsData.js";
-import {
-  computeCanonicalDatasetCounts,
-  matchesCanonicalFilter,
-  sanitizeFilterStateForDomain,
-  matchesEvidenceCategory,
-  matchesConfidenceStatus,
-  isGeologicalPeriod,
-  isHistoricalHazard
-} from "../data/queryHelper.js";
 import { getConfidenceMetadata } from "./confidenceLabels.js";
+import { formatFeatureTypeLabel } from "../data/adapters/geologyAdapter.js";
+import { getLanguage, t, getLocalizedProcessCard } from "../i18n/i18n.js";
 
-const FEATURE_TYPE_LABELS = {
-  volcano: "Volcanoes",
-  paleontology_site: "Paleontology Sites",
-  site: "Geological Sites",
-  historical_event: "Historical Hazard Events",
-  tectonic_structure: "Tectonic Structures (Faults & Trenches)",
-  geological_complex: "Geological Complexes & Mélanges",
-  volcanic_complex: "Volcanic Complexes"
-};
+export const CANDIDATE_FEATURE_TYPES = new Set([
+  "mountain_system",
+  "basin",
+  "regional_karst",
+  "tectonic_structure",
+  "volcanic_arc",
+  "geological_complex"
+]);
 
 /**
- * Initializes filter controls and process/period explorers.
- * @param {object[]} allFeatures - Array of validated GeoJSON features
- * @param {function} onFilterChange - Callback function triggered on filter state update
+ * Initializes the unified Domain & Feature-Type filter UI.
+ * @param {object[]} allFeatures - Validated dataset features (geology + hazard)
+ * @param {function} onFilterChange - Callback invoked with new filter state { domain, featureTypes, process, period, evidenceType, confidenceStatus }
  */
 export function initFilterPanel(allFeatures, onFilterChange) {
   const domainButtonsContainer = document.getElementById("domain-filter-group");
-  const featureTypeContainer = document.getElementById("feature-type-filter-group");
+  const featureGroupContainer = document.getElementById("feature-type-filter-group");
+  const activeCountBadge = document.getElementById("active-count-badge");
   const processSelectContainer = document.getElementById("process-filter-select");
+  const processCardContainer = document.getElementById("process-card-display");
   const periodSelectContainer = document.getElementById("period-filter-select");
   const evidenceSelectContainer = document.getElementById("evidence-filter-select");
   const confidenceSelectContainer = document.getElementById("confidence-filter-select");
-  const activeCountBadge = document.getElementById("active-count-badge");
-  const processCardContainer = document.getElementById("process-card-display");
 
-  let activeDomain = "all";
-  const selectedFeatureTypes = new Set();
+  let currentFeaturesList = allFeatures || [];
+  let datasetCounts = computeCanonicalDatasetCounts(currentFeaturesList);
+
+  let activeDomain = "all"; // 'all' | 'geology' | 'hazard'
+
+  function getAvailableTypesForDomain(domainKey, counts = datasetCounts) {
+    let available = [];
+    if (domainKey === "all") {
+      available = Object.keys(counts.featureType);
+    } else if (domainKey === "geology") {
+      available = Object.keys(counts.featureType).filter(type => type !== "historical_event");
+    } else if (domainKey === "hazard") {
+      available = ["historical_event"];
+    }
+    return available.filter(type => (counts.featureType[type] || 0) > 0);
+  }
+
+  // ALL AVAILABLE TYPES CHECKED BY DEFAULT
+  let selectedFeatureTypes = new Set(getAvailableTypesForDomain(activeDomain, datasetCounts));
   let selectedProcess = "all";
   let selectedPeriod = "all";
   let selectedEvidenceType = "all";
   let selectedConfidenceStatus = "all";
+  let currentLang = getLanguage();
 
-  // Compute canonical dataset counts using centralized helper module
-  const datasetCounts = computeCanonicalDatasetCounts(allFeatures);
+  function syncCandidateToggleUI() {
+    const sideChk = document.getElementById("sidebar-candidates-toggle");
+    const mapChk = document.querySelector('input[name="ol-candidates-toggle"]');
 
-  // 1. Render Domain Filter Buttons
-  if (domainButtonsContainer) {
-    domainButtonsContainer.innerHTML = `
-      <button type="button" class="filter-btn active" data-domain="all">
-        All Domains (${datasetCounts.domain.all})
-      </button>
-      <button type="button" class="filter-btn" data-domain="geology" style="--domain-color: ${domains.geology.color}">
-        ${domains.geology.label} (${datasetCounts.domain.geology})
-      </button>
-      <button type="button" class="filter-btn" data-domain="hazard" style="--domain-color: ${domains.hazard.color}">
-        ${domains.hazard.label} (${datasetCounts.domain.hazard})
-      </button>
-    `;
+    const availableTypes = getAvailableTypesForDomain(activeDomain, datasetCounts);
+    const candidateTypesInDomain = availableTypes.filter(t => CANDIDATE_FEATURE_TYPES.has(t));
 
-    domainButtonsContainer.addEventListener("click", (e) => {
-      const btn = e.target.closest("button[data-domain]");
-      if (!btn) return;
-
-      domainButtonsContainer.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const targetDomain = btn.getAttribute("data-domain");
-
-      // Sanitize filter state when switching domains to prevent stale incompatible filters
-      const { sanitizedState } = sanitizeFilterStateForDomain(
-        {
-          domain: targetDomain,
-          featureTypes: new Set(selectedFeatureTypes),
-          process: selectedProcess,
-          period: selectedPeriod,
-          evidenceType: selectedEvidenceType
-        },
-        targetDomain,
-        allFeatures
-      );
-
-      activeDomain = sanitizedState.domain;
-      selectedProcess = sanitizedState.process;
-      selectedPeriod = sanitizedState.period;
-      selectedEvidenceType = sanitizedState.evidenceType;
-
-      // Update UI dropdown values to reflect sanitized selections
-      if (processSelectContainer) processSelectContainer.value = selectedProcess;
-      if (periodSelectContainer) periodSelectContainer.value = selectedPeriod;
-      if (evidenceSelectContainer) evidenceSelectContainer.value = selectedEvidenceType;
-
-      renderProcessCard(selectedProcess);
-      renderFeatureTypeCheckboxes();
-      triggerChange();
-    });
-  }
-
-  // Track feature types that have been rendered to preserve user checkbox state
-  const previouslyKnownTypes = new Set();
-
-  // 2. Render Dynamic Feature-Type Checkboxes (only types with > 0 valid records)
-  function renderFeatureTypeCheckboxes(currentCounts = datasetCounts) {
-    if (!featureTypeContainer) return;
-
-    featureTypeContainer.innerHTML = "";
-
-    let allowedTypes = [];
-    if (activeDomain === "geology") {
-      allowedTypes = domains.geology.featureTypes;
-    } else if (activeDomain === "hazard") {
-      allowedTypes = domains.hazard.featureTypes;
-    } else {
-      allowedTypes = [...domains.geology.featureTypes, ...domains.hazard.featureTypes];
-    }
-
-    const validAvailableTypes = allowedTypes.filter(type => (currentCounts.featureType[type] || 0) > 0);
-
-    if (validAvailableTypes.length === 0) {
-      featureTypeContainer.innerHTML = `<p class="filter-empty-text">No feature types available for selection.</p>`;
+    if (candidateTypesInDomain.length === 0) {
+      if (sideChk) { sideChk.checked = false; sideChk.indeterminate = false; }
+      if (mapChk) { mapChk.checked = false; mapChk.indeterminate = false; }
       return;
     }
 
-    // Default newly discovered available types to checked while preserving user unchecks
-    if (selectedFeatureTypes.size === 0) {
-      validAvailableTypes.forEach(t => selectedFeatureTypes.add(t));
+    const checkedCount = candidateTypesInDomain.filter(t => selectedFeatureTypes.has(t)).length;
+    const isAllChecked = checkedCount === candidateTypesInDomain.length;
+    const isSomeChecked = checkedCount > 0 && checkedCount < candidateTypesInDomain.length;
+
+    if (sideChk) {
+      sideChk.checked = isAllChecked || isSomeChecked;
+      sideChk.indeterminate = isSomeChecked;
+    }
+    if (mapChk) {
+      mapChk.checked = isAllChecked || isSomeChecked;
+      mapChk.indeterminate = isSomeChecked;
+    }
+  }
+
+  // Master Toggle Handler for Candidate Feature Types (Orange Area)
+  function toggleCandidateFeatureTypes(explicitState) {
+    const availableTypes = getAvailableTypesForDomain(activeDomain, datasetCounts);
+    const candidateTypesInDomain = availableTypes.filter(t => CANDIDATE_FEATURE_TYPES.has(t));
+
+    let shouldCheck;
+    if (typeof explicitState === "boolean") {
+      shouldCheck = explicitState;
     } else {
-      validAvailableTypes.forEach(t => {
-        if (!previouslyKnownTypes.has(t)) {
-          selectedFeatureTypes.add(t);
-        }
-      });
+      const allChecked = candidateTypesInDomain.length > 0 && candidateTypesInDomain.every(t => selectedFeatureTypes.has(t));
+      shouldCheck = !allChecked;
     }
 
-    validAvailableTypes.forEach(t => previouslyKnownTypes.add(t));
+    if (shouldCheck) {
+      candidateTypesInDomain.forEach(t => selectedFeatureTypes.add(t));
+    } else {
+      candidateTypesInDomain.forEach(t => selectedFeatureTypes.delete(t));
+    }
 
-    validAvailableTypes.forEach(type => {
-      const isChecked = selectedFeatureTypes.has(type);
-      const labelText = FEATURE_TYPE_LABELS[type] || type;
-      const count = currentCounts.featureType[type] || 0;
+    renderFeatureTypeCheckboxes();
+    syncCandidateToggleUI();
+    triggerChange();
+  }
 
-      const wrapper = document.createElement("label");
-      wrapper.className = "checkbox-item";
-      wrapper.innerHTML = `
-        <input type="checkbox" value="${type}" ${isChecked ? 'checked' : ''} autocomplete="off" />
-        <span class="checkbox-label">${escapeHtml(labelText)}</span>
-        <span class="type-count-badge">${count}</span>
-      `;
+  // 1. Render Domain Explorer Buttons
+  function renderDomainButtons() {
+    if (!domainButtonsContainer) return;
+    domainButtonsContainer.innerHTML = "";
 
-      wrapper.querySelector("input").addEventListener("change", (e) => {
+    const allBtn = createDomainButton("all", t("domain_all", { count: datasetCounts.domain.all }, currentLang), activeDomain === "all");
+    const geologyBtn = createDomainButton("geology", t("domain_geology", { count: datasetCounts.domain.geology }, currentLang), activeDomain === "geology");
+    const hazardBtn = createDomainButton("hazard", t("domain_hazard", { count: datasetCounts.domain.hazard }, currentLang), activeDomain === "hazard");
+
+    domainButtonsContainer.appendChild(allBtn);
+    domainButtonsContainer.appendChild(geologyBtn);
+    domainButtonsContainer.appendChild(hazardBtn);
+  }
+
+  function createDomainButton(domainKey, label, isActive) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = `filter-btn ${isActive ? "active" : ""}`;
+    btn.setAttribute("data-domain", domainKey);
+    btn.textContent = label;
+
+    btn.addEventListener("click", () => {
+      if (activeDomain === domainKey) return;
+
+      activeDomain = domainKey;
+      const availableInNewDomain = getAvailableTypesForDomain(domainKey, datasetCounts);
+      // Select all available types for the newly active domain by default
+      selectedFeatureTypes = new Set(availableInNewDomain);
+
+      const currentFilterState = {
+        domain: domainKey,
+        featureTypes: selectedFeatureTypes,
+        process: selectedProcess,
+        period: selectedPeriod,
+        evidenceType: selectedEvidenceType,
+        confidenceStatus: selectedConfidenceStatus
+      };
+
+      const { sanitizedState } = sanitizeFilterStateForDomain(currentFilterState, domainKey, currentFeaturesList);
+
+      selectedProcess = sanitizedState.process || "all";
+      selectedPeriod = sanitizedState.period || "all";
+      selectedEvidenceType = sanitizedState.evidenceType || "all";
+      selectedConfidenceStatus = sanitizedState.confidenceStatus || "all";
+
+      // Update button active classes
+      domainButtonsContainer.querySelectorAll(".filter-btn").forEach(b => {
+        b.classList.toggle("active", b.getAttribute("data-domain") === domainKey);
+      });
+
+      // Synchronize dropdown values in DOM
+      if (processSelectContainer) processSelectContainer.value = selectedProcess;
+      if (periodSelectContainer) periodSelectContainer.value = selectedPeriod;
+      if (evidenceSelectContainer) evidenceSelectContainer.value = selectedEvidenceType;
+      if (confidenceSelectContainer) confidenceSelectContainer.value = selectedConfidenceStatus;
+
+      renderProcessCard(selectedProcess);
+      renderFeatureTypeCheckboxes();
+      syncCandidateToggleUI();
+      triggerChange();
+    });
+
+    return btn;
+  }
+
+  // 2. Render Feature Type Checkboxes based on Active Domain
+  function renderFeatureTypeCheckboxes(counts = datasetCounts) {
+    if (!featureGroupContainer) return;
+    featureGroupContainer.innerHTML = "";
+
+    const availableTypes = getAvailableTypesForDomain(activeDomain, counts);
+
+    if (availableTypes.length === 0) {
+      featureGroupContainer.innerHTML = `<p class="no-filter-types-msg">${escapeHtml(t("empty_state_message", {}, currentLang))}</p>`;
+      return;
+    }
+
+    availableTypes.forEach(type => {
+      const count = counts.featureType[type] || 0;
+      const labelText = formatFeatureTypeLabel(type, currentLang);
+
+      const labelEl = document.createElement("label");
+      labelEl.className = "checkbox-item";
+
+      const inputEl = document.createElement("input");
+      inputEl.type = "checkbox";
+      inputEl.value = type;
+      inputEl.checked = selectedFeatureTypes.has(type);
+
+      inputEl.addEventListener("change", (e) => {
         if (e.target.checked) {
           selectedFeatureTypes.add(type);
         } else {
           selectedFeatureTypes.delete(type);
         }
+        syncCandidateToggleUI();
         triggerChange();
       });
 
-      featureTypeContainer.appendChild(wrapper);
+      const spanEl = document.createElement("span");
+      spanEl.className = "checkbox-text";
+      spanEl.textContent = `${labelText} (${count})`;
+
+      labelEl.appendChild(inputEl);
+      labelEl.appendChild(spanEl);
+      featureGroupContainer.appendChild(labelEl);
     });
   }
 
-  // 3. Render Geological Process Explorer Dropdown (only processes with > 0 dataset entries)
-  if (processSelectContainer) {
-    const processes = Object.keys(datasetCounts.process).sort();
-    
+  // 3. Render Geological Process Explorer Dropdown
+  function renderProcessDropdown() {
+    if (!processSelectContainer) return;
+    const processes = Object.keys(datasetCounts.process).filter(proc => datasetCounts.process[proc] > 0);
+
     processSelectContainer.innerHTML = `
-      <option value="all">All Geological Processes (${processes.length})</option>
-      ${processes.map(proc => `
-        <option value="${escapeHtml(proc)}">${escapeHtml(proc)} (${datasetCounts.process[proc]})</option>
-      `).join("")}
+      <option value="all">${escapeHtml(t("process_all_option", { count: processes.length }, currentLang))}</option>
+      ${processes.map(proc => {
+        const localizedCard = getLocalizedProcessCard(proc, PROCESS_CARDS[proc], currentLang);
+        const displayName = localizedCard ? localizedCard.name : proc;
+        return `<option value="${escapeHtml(proc)}"${selectedProcess === proc ? " selected" : ""}>${escapeHtml(displayName)} (${datasetCounts.process[proc]})</option>`;
+      }).join("")}
     `;
 
+    processSelectContainer.value = selectedProcess;
+  }
+
+  if (processSelectContainer) {
     processSelectContainer.addEventListener("change", (e) => {
       selectedProcess = e.target.value;
       renderProcessCard(selectedProcess);
@@ -185,69 +254,72 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     });
   }
 
-  // 4. Render Geological Age / Period Explorer Dropdown (only periods with > 0 dataset entries)
-  if (periodSelectContainer) {
-    const periodOrder = ["Triassic", "Cretaceous", "Neogene", "Quaternary", "Historical"];
-    const periodLabels = {
-      Triassic: "Triassic",
-      Cretaceous: "Cretaceous",
-      Neogene: "Neogene",
-      Quaternary: "Quaternary",
-      Historical: "Historical Hazards"
-    };
-
-    const presentPeriods = periodOrder.filter(per => (datasetCounts.period[per] || 0) > 0);
-    Object.keys(datasetCounts.period).forEach(per => {
-      if (!presentPeriods.includes(per) && datasetCounts.period[per] > 0) {
-        presentPeriods.push(per);
-      }
-    });
+  // 4. Render Geological Period Explorer Dropdown
+  function renderPeriodDropdown() {
+    if (!periodSelectContainer) return;
+    const periods = Object.keys(datasetCounts.period).filter(p => datasetCounts.period[p] > 0);
 
     periodSelectContainer.innerHTML = `
-      <option value="all">All Geological Periods (${presentPeriods.length})</option>
-      ${presentPeriods.map(per => `
-        <option value="${escapeHtml(per)}">${escapeHtml(periodLabels[per] || per)} (${datasetCounts.period[per]})</option>
-      `).join("")}
+      <option value="all">${escapeHtml(t("period_all_option", { count: periods.length }, currentLang))}</option>
+      ${periods.map(p => {
+        const periodKey = `period_${p.toLowerCase()}`;
+        const label = t(periodKey, {}, currentLang) || p;
+        return `<option value="${escapeHtml(p)}"${selectedPeriod === p ? " selected" : ""}>${escapeHtml(label)} (${datasetCounts.period[p]})</option>`;
+      }).join("")}
     `;
 
+    periodSelectContainer.value = selectedPeriod;
+  }
+
+  if (periodSelectContainer) {
     periodSelectContainer.addEventListener("change", (e) => {
       selectedPeriod = e.target.value;
       triggerChange();
     });
   }
 
-  // 5. Render Geological Evidence Type Explorer Dropdown (only evidence types present in dataset)
-  if (evidenceSelectContainer) {
-    const presentEvidenceTypes = Object.keys(datasetCounts.evidenceType)
-      .filter(ev => datasetCounts.evidenceType[ev] > 0)
-      .sort();
+  // 5. Render Evidence Type Explorer Dropdown
+  function renderEvidenceDropdown() {
+    if (!evidenceSelectContainer) return;
+    const evidenceCategories = Object.keys(datasetCounts.evidenceType).filter(cat => datasetCounts.evidenceType[cat] > 0);
 
     evidenceSelectContainer.innerHTML = `
-      <option value="all">All Evidence Categories (${presentEvidenceTypes.length})</option>
-      ${presentEvidenceTypes.map(ev => `
-        <option value="${escapeHtml(ev)}">${escapeHtml(ev)} (${datasetCounts.evidenceType[ev]})</option>
-      `).join("")}
+      <option value="all">${escapeHtml(t("evidence_all_option", { count: evidenceCategories.length }, currentLang))}</option>
+      ${evidenceCategories.map(cat => {
+        const catKey = `evidence_cat_${cat.toLowerCase().replace(/\s+/g, "_")}`;
+        const label = t(catKey, {}, currentLang) || cat;
+        return `<option value="${escapeHtml(cat)}"${selectedEvidenceType === cat ? " selected" : ""}>${escapeHtml(label)} (${datasetCounts.evidenceType[cat]})</option>`;
+      }).join("")}
     `;
 
+    evidenceSelectContainer.value = selectedEvidenceType;
+  }
+
+  if (evidenceSelectContainer) {
     evidenceSelectContainer.addEventListener("change", (e) => {
       selectedEvidenceType = e.target.value;
       triggerChange();
     });
   }
 
-  // 6. Render Data Confidence Status Explorer Dropdown (only statuses present in dataset)
-  if (confidenceSelectContainer) {
+  // 6. Render Data Confidence Status Explorer Dropdown
+  function renderConfidenceDropdown() {
+    if (!confidenceSelectContainer) return;
     const presentStatuses = Object.keys(datasetCounts.confidenceStatus)
       .filter(st => datasetCounts.confidenceStatus[st] > 0);
 
     confidenceSelectContainer.innerHTML = `
-      <option value="all">All Confidence Levels (${presentStatuses.length})</option>
+      <option value="all">${escapeHtml(t("confidence_all_option", { count: presentStatuses.length }, currentLang))}</option>
       ${presentStatuses.map(st => {
-        const meta = getConfidenceMetadata(st);
-        return `<option value="${escapeHtml(st)}">${escapeHtml(meta.label)} (${datasetCounts.confidenceStatus[st]})</option>`;
+        const meta = getConfidenceMetadata(st, currentLang);
+        return `<option value="${escapeHtml(st)}"${selectedConfidenceStatus === st ? " selected" : ""}>${escapeHtml(meta.label)} (${datasetCounts.confidenceStatus[st]})</option>`;
       }).join("")}
     `;
 
+    confidenceSelectContainer.value = selectedConfidenceStatus;
+  }
+
+  if (confidenceSelectContainer) {
     confidenceSelectContainer.addEventListener("change", (e) => {
       selectedConfidenceStatus = e.target.value;
       triggerChange();
@@ -264,29 +336,29 @@ export function initFilterPanel(allFeatures, onFilterChange) {
       return;
     }
 
-    const card = PROCESS_CARDS[processName];
+    const card = getLocalizedProcessCard(processName, PROCESS_CARDS[processName], currentLang);
     processCardContainer.style.display = "block";
     processCardContainer.innerHTML = `
       <div class="process-card">
         <div class="process-card-header">
-          <span class="process-card-tag">Process Insight</span>
+          <span class="process-card-tag">${escapeHtml(t("process_card_tag", {}, currentLang))}</span>
           <h4 class="process-card-title">${escapeHtml(card.name)}</h4>
         </div>
         <div class="process-card-body">
           <div class="process-card-section">
-            <strong>What is it?</strong>
+            <strong>${escapeHtml(t("process_card_what_is_it", {}, currentLang))}</strong>
             <p>${escapeHtml(card.whatIsIt)}</p>
           </div>
           <div class="process-card-section">
-            <strong>How does it work?</strong>
+            <strong>${escapeHtml(t("process_card_how_it_works", {}, currentLang))}</strong>
             <p>${escapeHtml(card.howItWorks)}</p>
           </div>
           <div class="process-card-section">
-            <strong>Indonesian Examples in Dataset:</strong>
+            <strong>${escapeHtml(t("process_card_indonesian_examples", {}, currentLang))}</strong>
             <p class="process-card-examples">${escapeHtml(card.indonesianExamples.join(", "))}</p>
           </div>
           <div class="process-card-section">
-            <strong>What can we learn?</strong>
+            <strong>${escapeHtml(t("process_card_what_can_we_learn", {}, currentLang))}</strong>
             <p>${escapeHtml(card.whatCanWeLearn)}</p>
           </div>
         </div>
@@ -309,7 +381,8 @@ export function initFilterPanel(allFeatures, onFilterChange) {
 
   function updateResultBadgeCount(visibleCount) {
     if (activeCountBadge) {
-      activeCountBadge.textContent = `${visibleCount} ${visibleCount === 1 ? 'entry' : 'entries'} visible`;
+      const templateKey = visibleCount === 1 ? "count_badge_singular" : "count_badge_plural";
+      activeCountBadge.textContent = t(templateKey, { count: visibleCount }, currentLang);
     }
   }
 
@@ -319,6 +392,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
     selectedPeriod = "all";
     selectedEvidenceType = "all";
     selectedConfidenceStatus = "all";
+    selectedFeatureTypes = new Set(getAvailableTypesForDomain("all", datasetCounts));
 
     if (domainButtonsContainer) {
       domainButtonsContainer.querySelectorAll(".filter-btn").forEach(b => {
@@ -333,32 +407,117 @@ export function initFilterPanel(allFeatures, onFilterChange) {
 
     renderProcessCard("all");
     renderFeatureTypeCheckboxes();
+    syncCandidateToggleUI();
     triggerChange();
   }
 
+  /**
+   * Updates all UI labels when language changes without resetting active filter state.
+   * @param {string} newLang - "en" | "id"
+   */
+  function updateLanguage(newLang) {
+    currentLang = newLang;
+    renderDomainButtons();
+    renderFeatureTypeCheckboxes();
+    renderProcessDropdown();
+    renderPeriodDropdown();
+    renderEvidenceDropdown();
+    renderConfidenceDropdown();
+    renderProcessCard(selectedProcess);
+    syncCandidateToggleUI();
+
+    // Update static labels in sidebar
+    const candidateToggleTitle = document.querySelector(".candidate-toggle-label span");
+    if (candidateToggleTitle) candidateToggleTitle.textContent = t("candidate_toggle_title", {}, currentLang);
+
+    const candidateHint = document.querySelector(".candidate-toggle-hint");
+    if (candidateHint) candidateHint.textContent = t("candidate_toggle_hint", {}, currentLang);
+
+    const domainSectionLabel = document.querySelector(".domain-filter-section .section-label");
+    if (domainSectionLabel) domainSectionLabel.textContent = t("domain_label", {}, currentLang);
+
+    const featureSectionLabel = document.querySelector(".feature-filter-section .section-label");
+    if (featureSectionLabel) featureSectionLabel.textContent = t("feature_type_label", {}, currentLang);
+
+    const processSectionLabel = document.querySelector(".process-filter-section .section-label");
+    if (processSectionLabel) processSectionLabel.textContent = t("process_filter_label", {}, currentLang);
+
+    const periodSectionLabel = document.querySelector(".period-filter-section .section-label");
+    if (periodSectionLabel) periodSectionLabel.textContent = t("period_filter_label", {}, currentLang);
+
+    const evidenceSectionLabel = document.querySelector(".evidence-filter-section .section-label");
+    if (evidenceSectionLabel) evidenceSectionLabel.textContent = t("evidence_filter_label", {}, currentLang);
+
+    const confidenceSectionLabel = document.querySelector(".confidence-filter-section .section-label");
+    if (confidenceSectionLabel) confidenceSectionLabel.textContent = t("confidence_filter_label", {}, currentLang);
+  }
+
+  function syncPeriodSelection(periodKey) {
+    selectedPeriod = periodKey || "all";
+    if (periodSelectContainer) {
+      periodSelectContainer.value = selectedPeriod;
+    }
+  }
+
+  // Initial renders
+  renderDomainButtons();
   renderFeatureTypeCheckboxes();
+  renderProcessDropdown();
+  renderPeriodDropdown();
+  renderEvidenceDropdown();
+  renderConfidenceDropdown();
+  syncCandidateToggleUI();
+  triggerChange();
 
   return {
     updateResultBadgeCount,
     resetAllFiltersUI,
+    updateLanguage,
+    syncPeriodSelection,
+    toggleCandidateFeatureTypes,
     updateDataset: (newAllFeatures) => {
-      const newCounts = computeCanonicalDatasetCounts(newAllFeatures);
-      
-      // Update Domain Buttons text
-      if (domainButtonsContainer) {
-        const geologyBtn = domainButtonsContainer.querySelector('button[data-domain="geology"]');
-        const hazardBtn = domainButtonsContainer.querySelector('button[data-domain="hazard"]');
-        const allBtn = domainButtonsContainer.querySelector('button[data-domain="all"]');
+      currentFeaturesList = newAllFeatures || [];
+      datasetCounts = computeCanonicalDatasetCounts(currentFeaturesList);
 
-        if (allBtn) allBtn.textContent = `All Domains (${newCounts.domain.all})`;
-        if (geologyBtn) geologyBtn.textContent = `${domains.geology.label} (${newCounts.domain.geology})`;
-        if (hazardBtn) hazardBtn.textContent = `${domains.hazard.label} (${newCounts.domain.hazard})`;
+      const availableForDomain = getAvailableTypesForDomain(activeDomain, datasetCounts);
+
+      // Retain valid selected types
+      const validSelected = Array.from(selectedFeatureTypes).filter(t => availableForDomain.includes(t));
+      if (validSelected.length === 0) {
+        selectedFeatureTypes = new Set(availableForDomain);
+      } else {
+        selectedFeatureTypes = new Set(validSelected);
       }
 
-      // Re-render feature type checkboxes with updated counts
-      renderFeatureTypeCheckboxes(newCounts);
+      const currentFilterState = {
+        domain: activeDomain,
+        featureTypes: selectedFeatureTypes,
+        process: selectedProcess,
+        period: selectedPeriod,
+        evidenceType: selectedEvidenceType,
+        confidenceStatus: selectedConfidenceStatus
+      };
 
-      // Trigger change callback so currentFilterState gets updated fresh
+      const { sanitizedState } = sanitizeFilterStateForDomain(currentFilterState, activeDomain, currentFeaturesList);
+
+      selectedProcess = sanitizedState.process || "all";
+      selectedPeriod = sanitizedState.period || "all";
+      selectedEvidenceType = sanitizedState.evidenceType || "all";
+      selectedConfidenceStatus = sanitizedState.confidenceStatus || "all";
+
+      if (processSelectContainer) processSelectContainer.value = selectedProcess;
+      if (periodSelectContainer) periodSelectContainer.value = selectedPeriod;
+      if (evidenceSelectContainer) evidenceSelectContainer.value = selectedEvidenceType;
+      if (confidenceSelectContainer) confidenceSelectContainer.value = selectedConfidenceStatus;
+
+      renderDomainButtons();
+      renderFeatureTypeCheckboxes(datasetCounts);
+      renderProcessDropdown();
+      renderPeriodDropdown();
+      renderEvidenceDropdown();
+      renderConfidenceDropdown();
+      renderProcessCard(selectedProcess);
+      syncCandidateToggleUI();
       triggerChange();
     }
   };
@@ -397,4 +556,3 @@ function escapeHtml(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 }
-

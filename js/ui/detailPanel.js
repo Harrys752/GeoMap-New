@@ -1,12 +1,14 @@
 /**
  * Shared Domain-Aware Detail Panel Drawer Component
  * Phase 1 Structured Educational View Layout with strict conditional rendering.
+ * Supports full bilingual display (English & Bahasa Indonesia).
  */
 
 import { adaptGeologyFeature } from "../data/adapters/geologyAdapter.js";
 import { adaptHazardFeature } from "../data/adapters/hazardAdapter.js";
 import { EVIDENCE_EDUCATIONAL_GUIDE } from "../data/evidenceGuideData.js";
 import { getConfidenceMetadata } from "./confidenceLabels.js";
+import { getLanguage, t } from "../i18n/i18n.js";
 
 /**
  * Initializes the detail panel drawer.
@@ -18,6 +20,8 @@ export function initDetailPanel(panelId = "detail-panel", closeBtnId = "detail-c
   const closeBtn = document.getElementById(closeBtnId);
   const contentEl = document.getElementById("detail-panel-content");
 
+  let currentFeature = null;
+
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
       closeDetailPanel();
@@ -25,6 +29,7 @@ export function initDetailPanel(panelId = "detail-panel", closeBtnId = "detail-c
   }
 
   function closeDetailPanel() {
+    currentFeature = null;
     if (panelEl) {
       panelEl.classList.remove("open");
       panelEl.setAttribute("aria-hidden", "true");
@@ -38,9 +43,13 @@ export function initDetailPanel(panelId = "detail-panel", closeBtnId = "detail-c
   /**
    * Opens detail panel and populates content based on feature domain.
    * @param {object} feature - GeoJSON feature object
+   * @param {string} [lang=null] - Target language code
    */
-  function openDetailPanel(feature) {
+  function openDetailPanel(feature, lang = null) {
     if (!panelEl || !contentEl || !feature) return;
+    currentFeature = feature;
+
+    const activeLang = lang || getLanguage();
 
     const layerSwitcher = document.querySelector(".ol-control-layers");
     if (layerSwitcher) {
@@ -49,46 +58,69 @@ export function initDetailPanel(panelId = "detail-panel", closeBtnId = "detail-c
       if (switcherPanel) switcherPanel.classList.add("hidden");
     }
 
-    const domain = feature.properties.domain;
+    const domain = feature.properties ? feature.properties.domain : null;
     let data = null;
 
     if (domain === "geology") {
-      data = adaptGeologyFeature(feature);
+      data = adaptGeologyFeature(feature, activeLang);
     } else if (domain === "hazard") {
-      data = adaptHazardFeature(feature);
+      data = adaptHazardFeature(feature, activeLang);
     } else {
       console.warn(`[Detail Panel] Unknown domain '${domain}'`);
       return;
     }
 
-    contentEl.innerHTML = renderDetailContent(data);
+    contentEl.innerHTML = renderDetailContent(data, activeLang);
     panelEl.classList.add("open");
     panelEl.setAttribute("aria-hidden", "false");
     panelEl.scrollTop = 0;
   }
 
+  /**
+   * Refreshes the currently displayed feature with a new language if panel is currently open.
+   * @param {string} lang - Target language code
+   */
+  function updateLanguage(lang) {
+    if (panelEl && panelEl.classList.contains("open") && currentFeature) {
+      openDetailPanel(currentFeature, lang);
+    }
+  }
+
+  function getCurrentFeature() {
+    return currentFeature;
+  }
+
+  function isOpen() {
+    return panelEl ? panelEl.classList.contains("open") : false;
+  }
+
   return {
     openDetailPanel,
-    closeDetailPanel
+    closeDetailPanel,
+    updateLanguage,
+    getCurrentFeature,
+    isOpen
   };
 }
 
 /**
  * Builds HTML string for detail panel content adhering to Section 6.1 specification.
  * @param {object} data - Normalized adapter data object
+ * @param {string} [lang=null] - Target language code
  * @returns {string} HTML markup
  */
-export function renderDetailContent(data) {
+export function renderDetailContent(data, lang = null) {
+  const activeLang = lang || data.activeLang || getLanguage();
   const domainClass = data.domain === "geology" ? "domain-geology" : "domain-hazard";
   const statusBadgeClass = `badge-status badge-${data.dataStatus}`;
   const isIllustrative = data.sourceType === "illustrative" || data.dataStatus === "illustrative";
 
   // Determine Source Claim Label
-  let sourceClaimLabel = "Source-Supported Claim";
+  let sourceClaimLabel = t("source_claim_direct", {}, activeLang);
   if (data.sourceType === "educational_interpretation") {
-    sourceClaimLabel = "Educational Interpretation Based on Source";
+    sourceClaimLabel = t("source_claim_interpretation", {}, activeLang);
   } else if (isIllustrative) {
-    sourceClaimLabel = "Illustrative Interpretation";
+    sourceClaimLabel = t("source_claim_illustrative", {}, activeLang);
   }
 
   // 1. Quick Facts Section (Conditional)
@@ -96,7 +128,7 @@ export function renderDetailContent(data) {
   if (data.quickFacts && Object.keys(data.quickFacts).length > 0) {
     quickFactsBlock = `
       <section class="detail-section section-quick-facts">
-        <h3 class="section-title">Quick Facts</h3>
+        <h3 class="section-title">${escapeHtml(t("detail_quick_facts_title", {}, activeLang))}</h3>
         <dl class="quick-facts-grid">
           ${Object.entries(data.quickFacts).map(([label, val]) => `
             <div class="quick-fact-item">
@@ -114,7 +146,7 @@ export function renderDetailContent(data) {
   if (data.domain === "geology" && data.geologicalContext) {
     geologicalContextBlock = `
       <section class="detail-section section-geo-context">
-        <h3 class="section-title">Geological Context</h3>
+        <h3 class="section-title">${escapeHtml(t("detail_geo_context_title", {}, activeLang))}</h3>
         <p class="section-paragraph">${escapeHtml(data.geologicalContext)}</p>
       </section>
     `;
@@ -125,7 +157,7 @@ export function renderDetailContent(data) {
   if (data.featureType === "paleontology_site" && data.paleontologicalRecord) {
     paleontologyBlock = `
       <section class="detail-section section-paleo">
-        <h3 class="section-title">Paleontological Record</h3>
+        <h3 class="section-title">${escapeHtml(t("detail_paleo_title", {}, activeLang))}</h3>
         <dl class="field-list">
           ${Object.entries(data.paleontologicalRecord).map(([label, val]) => `
             <div class="field-item">
@@ -143,7 +175,7 @@ export function renderDetailContent(data) {
   if (data.domain === "hazard" && data.geohazardContext) {
     geohazardContextBlock = `
       <section class="detail-section section-hazard">
-        <h3 class="section-title">Geohazard Context</h3>
+        <h3 class="section-title">${escapeHtml(t("detail_hazard_context_title", {}, activeLang))}</h3>
         <p class="section-paragraph">${escapeHtml(data.geohazardContext)}</p>
       </section>
     `;
@@ -156,27 +188,31 @@ export function renderDetailContent(data) {
   if (hasEvidence) {
     const guideEntry = EVIDENCE_EDUCATIONAL_GUIDE[data.evidenceType];
     const generalClaimText = guideEntry ? guideEntry.generalClaim : null;
+    const claim1Title = t("evidence_claim_1_title", { evidenceType: data.evidenceType }, activeLang);
+    const claim2Title = t("evidence_claim_2_title", {}, activeLang);
+    const claim3Title = t("evidence_claim_3_title", { sourceClaimLabel }, activeLang);
+
     const generalClaimHtml = generalClaimText ? `
       <div class="evidence-subclaim general-claim">
-        <strong>1. General Educational Claim (${escapeHtml(data.evidenceType)} Evidence):</strong>
+        <strong>${escapeHtml(claim1Title)}</strong>
         <p>${escapeHtml(generalClaimText)}</p>
       </div>
     ` : "";
 
     evidenceBlock = `
       <section class="detail-section section-evidence">
-        <h3 class="section-title">Geological Evidence & Data Credibility</h3>
+        <h3 class="section-title">${escapeHtml(t("detail_evidence_title", {}, activeLang))}</h3>
         <div class="evidence-card">
           ${generalClaimHtml}
           <div class="evidence-subclaim location-claim">
-            <strong>2. Location-Specific Empirical Evidence:</strong>
+            <strong>${escapeHtml(claim2Title)}</strong>
             <div class="evidence-badge-row">
               <span class="evidence-type-badge">${escapeHtml(data.evidenceType)}</span>
             </div>
             <p>${escapeHtml(data.evidenceDescription)}</p>
           </div>
           <div class="evidence-subclaim source-claim">
-            <strong>3. ${escapeHtml(sourceClaimLabel)}:</strong>
+            <strong>${escapeHtml(claim3Title)}</strong>
             <p>${escapeHtml(data.evidenceSignificance)}</p>
           </div>
         </div>
@@ -189,7 +225,7 @@ export function renderDetailContent(data) {
   if (data.whyItMatters) {
     whyItMattersBlock = `
       <section class="detail-section section-why-matters">
-        <h3 class="section-title">Why It Matters</h3>
+        <h3 class="section-title">${escapeHtml(t("detail_why_matters_title", {}, activeLang))}</h3>
         <div class="why-matters-card">
           <span class="why-icon">&#128161;</span>
           <p class="why-text">${escapeHtml(data.whyItMatters)}</p>
@@ -202,27 +238,27 @@ export function renderDetailContent(data) {
   const isValidUrl = data.sourceUrl && (data.sourceUrl.startsWith("http://") || data.sourceUrl.startsWith("https://"));
   const sourceUrlHtml = isValidUrl ? `
     <div class="field-item field-full">
-      <dt>Primary Source Link</dt>
+      <dt>${escapeHtml(t("meta_primary_source_link", {}, activeLang))}</dt>
       <dd>
         <a href="${escapeHtml(data.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="source-link">
-          Open Source Publication / Catalog Entry &rarr;
+          ${t("meta_open_source_publication", {}, activeLang)}
         </a>
       </dd>
     </div>
   ` : "";
 
-  const sourceTypeLabel = formatSourceTypeLabel(data.sourceType);
+  const sourceTypeLabel = formatSourceTypeLabel(data.sourceType, activeLang);
   const sourceTypeBadge = `
     <div class="field-item">
-      <dt>Source Classification</dt>
+      <dt>${escapeHtml(t("meta_source_classification", {}, activeLang))}</dt>
       <dd>${escapeHtml(sourceTypeLabel)}</dd>
     </div>
   `;
 
-  const confidenceMeta = getConfidenceMetadata(data.sourceVerificationStatus);
+  const confidenceMeta = getConfidenceMetadata(data.sourceVerificationStatus, activeLang);
   const verifStatusBadge = `
     <div class="field-item field-full confidence-card-wrap">
-      <dt>Data Confidence Status</dt>
+      <dt>${escapeHtml(t("meta_data_confidence_status", {}, activeLang))}</dt>
       <dd>
         <div class="confidence-badge-box ${escapeHtml(confidenceMeta.badgeClass)}">
           <span class="confidence-badge-icon" aria-hidden="true">${escapeHtml(confidenceMeta.icon)}</span>
@@ -232,7 +268,7 @@ export function renderDetailContent(data) {
         <p class="confidence-disclaimer">${escapeHtml(confidenceMeta.disclaimer)}</p>
         <div class="confidence-audit-link-wrap">
           <a href="docs/phase6-record-level-source-audit.md" target="_blank" rel="noopener noreferrer" class="confidence-audit-link">
-            View Record-Level Source Audit Document &rarr;
+            ${t("meta_view_audit_document", {}, activeLang)}
           </a>
         </div>
       </dd>
@@ -246,48 +282,48 @@ export function renderDetailContent(data) {
     if (data.eventEndDate) {
       eventDateText += ` – ${data.eventEndDate}`;
       if (data.eventDatePrecision === "multi_year_range") {
-        eventDateText += " (Multi-Year Eruptive Range)";
+        eventDateText += ` ${t("meta_multi_year_range", {}, activeLang)}`;
       }
     }
     datesBlock = `
       <div class="field-item">
-        <dt>Event Occurrence Date</dt>
+        <dt>${escapeHtml(t("meta_event_date", {}, activeLang))}</dt>
         <dd><strong>${escapeHtml(eventDateText)}</strong></dd>
       </div>
       <div class="field-item">
-        <dt>Record Compilation Date</dt>
+        <dt>${escapeHtml(t("meta_record_compilation_date", {}, activeLang))}</dt>
         <dd>${escapeHtml(data.recordCompilationDate || data.lastUpdated)}</dd>
       </div>
     `;
   } else {
     datesBlock = `
       <div class="field-item">
-        <dt>Record Compilation Date</dt>
+        <dt>${escapeHtml(t("meta_record_compilation_date", {}, activeLang))}</dt>
         <dd>${escapeHtml(data.recordCompilationDate || data.lastUpdated)}</dd>
       </div>
     `;
   }
 
   const illustrativeBadgeHtml = isIllustrative ? `
-    <span class="badge-status badge-illustrative">ILLUSTRATIVE / DEMO DATA</span>
+    <span class="badge-status badge-illustrative">${escapeHtml(t("status_illustrative", {}, activeLang))}</span>
   ` : "";
 
   let geomStatusBadge = "";
   if (data.geometryStatus) {
     const geomLabel = data.geometryStatus === "verified"
-      ? "VERIFIED GEOMETRY TRACE"
-      : (data.geometryStatus === "partially_verified" ? "PARTIALLY VERIFIED GEOMETRY" : "GEOMETRY NEEDS REVIEW");
+      ? t("geom_status_verified", {}, activeLang)
+      : (data.geometryStatus === "partially_verified" ? t("geom_status_partially_verified", {}, activeLang) : t("geom_status_needs_review", {}, activeLang));
     const geomBadgeClass = data.geometryStatus === "verified"
       ? "badge-confidence-verified"
       : (data.geometryStatus === "partially_verified" ? "badge-confidence-partially-verified" : "badge-confidence-needs-review");
 
     geomStatusBadge = `
       <div class="field-item">
-        <dt>Spatial Trace Status</dt>
+        <dt>${escapeHtml(t("meta_spatial_trace_status", {}, activeLang))}</dt>
         <dd>
           <span class="badge-confidence ${geomBadgeClass}">${escapeHtml(geomLabel)}</span>
           <span style="display:block; font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">
-            Interface visual representation — not official cartographic trace.
+            ${escapeHtml(t("meta_spatial_disclaimer", {}, activeLang))}
           </span>
         </dd>
       </div>
@@ -301,11 +337,13 @@ export function renderDetailContent(data) {
     </div>
   ` : "";
 
+  const dataStatusLabel = t("status_" + data.dataStatus, {}, activeLang) || (data.dataStatus ? data.dataStatus.toUpperCase() : "");
+
   return `
     <header class="detail-header ${domainClass}">
       <div class="header-badges">
         <span class="badge-domain">${escapeHtml(data.domainLabel)}</span>
-        <span class="${statusBadgeClass}">${escapeHtml(data.dataStatus.toUpperCase())}</span>
+        <span class="${statusBadgeClass}">${escapeHtml(dataStatusLabel)}</span>
         ${illustrativeBadgeHtml}
       </div>
       <h2 class="detail-title">${escapeHtml(data.name)}</h2>
@@ -322,18 +360,18 @@ export function renderDetailContent(data) {
       ${whyItMattersBlock}
 
       <section class="detail-section section-metadata">
-        <h3 class="section-title">Source & Data Status</h3>
+        <h3 class="section-title">${escapeHtml(t("detail_source_metadata_title", {}, activeLang))}</h3>
         <dl class="field-list">
           <div class="field-item">
-            <dt>Attribution Source</dt>
+            <dt>${escapeHtml(t("meta_attribution_source", {}, activeLang))}</dt>
             <dd>${escapeHtml(data.source || "Unspecified Source")}</dd>
           </div>
           ${sourceTypeBadge}
           ${verifStatusBadge}
           ${geomStatusBadge}
           <div class="field-item">
-            <dt>Data Status</dt>
-            <dd><span class="${statusBadgeClass}">${escapeHtml(data.dataStatus.toUpperCase())}</span></dd>
+            <dt>${escapeHtml(t("meta_data_status", {}, activeLang))}</dt>
+            <dd><span class="${statusBadgeClass}">${escapeHtml(dataStatusLabel)}</span></dd>
           </div>
           ${datesBlock}
           ${sourceUrlHtml}
@@ -343,24 +381,24 @@ export function renderDetailContent(data) {
   `;
 }
 
-function formatSourceTypeLabel(type) {
+export function formatSourceTypeLabel(type, lang = "en") {
   switch (type) {
-    case "peer-reviewed_publication": return "Peer-Reviewed Publication";
-    case "government_survey": return "Government Survey";
-    case "institutional_record": return "Institutional Record";
-    case "educational_interpretation": return "Educational Interpretation";
-    case "illustrative": return "Illustrative / Demo Data";
-    default: return type || "Unspecified";
+    case "peer-reviewed_publication": return t("source_type_peer_reviewed", {}, lang);
+    case "government_survey": return t("source_type_government_survey", {}, lang);
+    case "institutional_record": return t("source_type_institutional", {}, lang);
+    case "educational_interpretation": return t("source_type_educational", {}, lang);
+    case "illustrative": return t("source_type_illustrative", {}, lang);
+    default: return type || t("source_type_unspecified", {}, lang);
   }
 }
 
-function formatVerificationStatusLabel(status) {
+export function formatVerificationStatusLabel(status, lang = "en") {
   switch (status) {
-    case "verified": return "VERIFIED SOURCE";
-    case "partially_verified": return "PARTIALLY VERIFIED";
-    case "needs_review": return "NEEDS REVIEW";
-    case "invalid": return "INVALID SOURCE";
-    case "missing": return "MISSING SOURCE";
+    case "verified": return t("status_verified", {}, lang);
+    case "partially_verified": return t("status_partially_verified", {}, lang);
+    case "needs_review": return t("status_needs_review", {}, lang);
+    case "invalid": return t("status_invalid", {}, lang);
+    case "missing": return t("status_missing", {}, lang);
     default: return (status || "NEEDS REVIEW").toUpperCase();
   }
 }

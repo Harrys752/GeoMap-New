@@ -5,6 +5,9 @@
  * to visual badge classes, icons, human-readable labels, plain-language explanations,
  * and non-official disclaimers.
  * 
+ * Bilingual UI Support (English & Bahasa Indonesia):
+ * Single source of truth for confidence presentation metadata.
+ * 
  * Guardrail Enforcement:
  * - Fail-safe status resolution: ONLY exact "verified" resolves to Verified Source.
  *   Null, undefined, empty string, whitespace, or unknown status strings map to "needs_review" / "unknown".
@@ -12,7 +15,10 @@
  *   and explicitly state that status is NOT an official external certification by UNESCO, ESDM, or USGS.
  */
 
+import { getLanguage } from "../i18n/i18n.js";
+
 export const NON_OFFICIAL_DISCLAIMER = "GeoMap internal dataset verification status — not an official external certification by UNESCO, ESDM, PVMBG, or USGS.";
+export const NON_OFFICIAL_DISCLAIMER_ID = "Status verifikasi dataset internal GeoMap — bukan sertifikasi resmi eksternal oleh UNESCO, ESDM, PVMBG, atau USGS.";
 
 export const CONFIDENCE_METADATA_MAP = {
   verified: {
@@ -65,30 +71,87 @@ export const CONFIDENCE_METADATA_MAP = {
   }
 };
 
+export const CONFIDENCE_METADATA_MAP_ID = {
+  verified: {
+    statusKey: "verified",
+    label: "Sumber Terverifikasi",
+    badgeClass: "badge-confidence-verified",
+    icon: "✓",
+    symbol: "[Terverifikasi]",
+    explanation: "Konten sumber secara langsung mendukung klaim lokasi, peristiwa, dan geologi yang ditampilkan."
+  },
+  partially_verified: {
+    statusKey: "partially_verified",
+    label: "Terverifikasi Sebagian",
+    badgeClass: "badge-confidence-partially-verified",
+    icon: "◐",
+    symbol: "[Sebagian]",
+    explanation: "Lokasi utama dan proses didukung oleh sumber; rincian sekunder atau verifikasi ilmiah penuh masih berlangsung."
+  },
+  needs_review: {
+    statusKey: "needs_review",
+    label: "Perlu Ditinjau",
+    badgeClass: "badge-confidence-needs-review",
+    icon: "⚠",
+    symbol: "[Perlu Ditinjau]",
+    explanation: "URL sumber mengarah ke portal umum, beranda, atau tautan yang memerlukan peninjauan lebih lanjut."
+  },
+  invalid: {
+    statusKey: "invalid",
+    label: "Sumber Tidak Valid",
+    badgeClass: "badge-confidence-invalid",
+    icon: "✖",
+    symbol: "[Tidak Valid]",
+    explanation: "URL sumber mati atau belum terkonfirmasi; rekaman disimpan untuk audit tanpa verifikasi."
+  },
+  missing: {
+    statusKey: "missing",
+    label: "Sumber Belum Lengkap",
+    badgeClass: "badge-confidence-missing",
+    icon: "?",
+    symbol: "[Belum Lengkap]",
+    explanation: "Rekaman saat ini belum memiliki URL sumber dalam dataset."
+  },
+  unknown: {
+    statusKey: "unknown",
+    label: "Status Tidak Diketahui",
+    badgeClass: "badge-confidence-unknown",
+    icon: "?",
+    symbol: "[Tidak Diketahui]",
+    explanation: "Status verifikasi tidak dikenali atau belum terklasifikasi; diperlakukan secara fail-safe untuk peninjauan."
+  }
+};
+
 /**
- * Resolves a raw status string to fail-safe presentation metadata.
+ * Resolves a raw status string to fail-safe presentation metadata with bilingual support.
  * @param {string} rawStatus - Raw source_verification_status property value from feature
+ * @param {string} [lang=null] - Language code ('en' | 'id'). If omitted or null, uses active language or defaults to English.
  * @returns {object} Confidence metadata object
  */
-export function getConfidenceMetadata(rawStatus) {
+export function getConfidenceMetadata(rawStatus, lang = null) {
+  const activeLang = lang || (typeof getLanguage === "function" ? getLanguage() : "en");
+  const isId = activeLang === "id";
+  const metaMap = isId ? CONFIDENCE_METADATA_MAP_ID : CONFIDENCE_METADATA_MAP;
+  const disclaimer = isId ? NON_OFFICIAL_DISCLAIMER_ID : NON_OFFICIAL_DISCLAIMER;
+
   if (!rawStatus || typeof rawStatus !== "string") {
-    return { ...CONFIDENCE_METADATA_MAP.needs_review, disclaimer: NON_OFFICIAL_DISCLAIMER };
+    return { ...metaMap.needs_review, disclaimer };
   }
 
   const normalized = rawStatus.trim().toLowerCase();
 
   switch (normalized) {
     case "verified":
-      return { ...CONFIDENCE_METADATA_MAP.verified, disclaimer: NON_OFFICIAL_DISCLAIMER };
+      return { ...metaMap.verified, disclaimer };
     case "partially_verified":
-      return { ...CONFIDENCE_METADATA_MAP.partially_verified, disclaimer: NON_OFFICIAL_DISCLAIMER };
+      return { ...metaMap.partially_verified, disclaimer };
     case "needs_review":
-      return { ...CONFIDENCE_METADATA_MAP.needs_review, disclaimer: NON_OFFICIAL_DISCLAIMER };
+      return { ...metaMap.needs_review, disclaimer };
     case "invalid":
-      return { ...CONFIDENCE_METADATA_MAP.invalid, disclaimer: NON_OFFICIAL_DISCLAIMER };
+      return { ...metaMap.invalid, disclaimer };
     case "missing":
-      return { ...CONFIDENCE_METADATA_MAP.missing, disclaimer: NON_OFFICIAL_DISCLAIMER };
+      return { ...metaMap.missing, disclaimer };
     default:
-      return { ...CONFIDENCE_METADATA_MAP.unknown, disclaimer: NON_OFFICIAL_DISCLAIMER };
+      return { ...metaMap.unknown, disclaimer };
   }
 }

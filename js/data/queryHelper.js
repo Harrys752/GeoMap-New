@@ -280,9 +280,17 @@ export function matchesCanonicalFilter(feature, filterState) {
     if (domain === "geology" && isHistoricalHazard(feature)) return false;
   }
 
-  // 2. Feature Type Check
-  if (featureTypes && featureTypes.size > 0 && !featureTypes.has(props.feature_type)) {
-    return false;
+  // 2. Feature Type Check (Whitelist of enabled/checked feature types)
+  if (featureTypes !== undefined && featureTypes !== null) {
+    if (featureTypes instanceof Set) {
+      if (!featureTypes.has(props.feature_type)) {
+        return false;
+      }
+    } else if (Array.isArray(featureTypes)) {
+      if (!featureTypes.includes(props.feature_type)) {
+        return false;
+      }
+    }
   }
 
   // 3. Geological Process Check
@@ -317,38 +325,34 @@ export function matchesCanonicalFilter(feature, filterState) {
  * @param {object[]} allFeatures - Complete dataset
  * @returns {{ sanitizedState: object, resetFields: string[] }}
  */
-export function sanitizeFilterStateForDomain(currentFilterState, targetDomain, allFeatures) {
+export function sanitizeFilterStateForDomain(currentFilterState, targetDomain, allFeatures = []) {
   const sanitizedState = {
     ...currentFilterState,
     domain: targetDomain
   };
   const resetFields = [];
 
-  if (targetDomain === "all") {
-    return { sanitizedState, resetFields };
-  }
-
-  // Get features belonging to the target domain
+  // Features belonging to the target domain (or entire dataset if targetDomain === 'all')
   const domainFeatures = allFeatures.filter(f => {
     if (targetDomain === "hazard") return isHistoricalHazard(f);
     if (targetDomain === "geology") return !isHistoricalHazard(f);
     return true;
   });
 
-  // Check Feature Types set
-  let allowedDomainTypes = [];
-  if (targetDomain === "hazard") {
-    allowedDomainTypes = ["historical_event"];
-  } else if (targetDomain === "geology") {
-    allowedDomainTypes = ["site", "volcano", "paleontology_site"];
-  }
+  // Dynamically extract allowed feature types present in domain features
+  const allowedDomainTypes = [...new Set(domainFeatures.map(f => f.properties?.feature_type).filter(Boolean))];
 
-  if (allowedDomainTypes.length > 0 && sanitizedState.featureTypes && sanitizedState.featureTypes.size > 0) {
-    const hasAnyAllowed = Array.from(sanitizedState.featureTypes).some(t => allowedDomainTypes.includes(t));
-    if (!hasAnyAllowed) {
+  if (sanitizedState.featureTypes && sanitizedState.featureTypes.size > 0) {
+    const currentTypes = Array.from(sanitizedState.featureTypes);
+    const validSelected = currentTypes.filter(t => allowedDomainTypes.includes(t));
+    if (validSelected.length === 0) {
       sanitizedState.featureTypes = new Set(allowedDomainTypes);
       resetFields.push("Feature Types");
+    } else if (validSelected.length !== currentTypes.length) {
+      sanitizedState.featureTypes = new Set(validSelected);
     }
+  } else if (allowedDomainTypes.length > 0) {
+    sanitizedState.featureTypes = new Set(allowedDomainTypes);
   }
 
   // Check Process filter

@@ -49,7 +49,7 @@ runTest("Test 1: Adapter Formats structure_type and geometry_status Correctly", 
 
 // Test 2: Candidate Dataset Collection Validation
 runTest("Test 2: candidates.demo.geojson Collection Passes Schema Validation", () => {
-  const rawData = JSON.parse(fs.readFileSync("data/geology/candidates.demo.geojson", "utf8"));
+  const rawData = JSON.parse(fs.readFileSync(new URL("../data/geology/candidates.demo.geojson", import.meta.url), "utf8"));
   const res = validateDataset(rawData);
   assert.strictEqual(res.isCollectionValid, true, "Candidate collection structure must be valid");
   assert.strictEqual(res.validFeatures.length, 18, "Must contain exactly 18 valid candidate features");
