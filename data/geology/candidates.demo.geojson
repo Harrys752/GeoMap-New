@@ -2116,6 +2116,326 @@
         "last_updated": "2026-09-15",
         "record_compilation_date": "2026-09-15"
       }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_formasi_nanggulan",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.2078,
+          -7.7472
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_formasi_nanggulan",
+        "name": "Nanggulan Formation Eocene Marine Fossil Beds",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "geological_period": "Paleogene",
+        "geological_age": "Middle Eocene to Late Oligocene (~45 - 28 Ma)",
+        "geological_process": "Transgressive Coastal to Shallow-Marine Clastic Sedimentation",
+        "description": "The basal Eocene marine sedimentary unit of the Kulon Progo Mountains dome sequence, famously exposed along Kali Songgo and Kalipururu. Contains one of Southeast Asia's most exceptionally preserved and diverse Eocene molluscan faunas and index foraminifera, forming the foundational stratigraphic base overlain by the Old Andesite Formation and younger Miocene Jonggrangan and Sentolo carbonates.",
+        "taxon_name": "Nummulites / Discocyclina / Turritella / Conus",
+        "discovery_locality": "Kali Songgo & Kalipururu, Nanggulan / Kalibawang, Kulon Progo, DIY",
+        "fossil_material": "Larger foraminifera (Nummulites, Discocyclina), diverse mollusks (Turritella, Conus, Voluta, Cardita, Nucula), solitary corals (Trochocyathus), decapod crabs",
+        "paleoenvironment": "Tropical shallow-marine littoral to inner-shelf embayment",
+        "location_province": "D.I. Yogyakarta",
+        "data_status": "demo",
+        "verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_note": "Point precisely anchored to the classic Kali Songgo type section near Watupuru/Kembang in Nanggulan, Kulon Progo, based on P3G/Badan Geologi sheet mapping and paleontological type literature.",
+        "source": "Tier 1: Siregar et al. (JGSM / Badan Geologi ESDM); Rahardjo et al. (1995) Peta Geologi Lembar Yogyakarta; Martin (1914-1915)",
+        "source_url": "https://jgsm.geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "evidence_type": "Fossil",
+        "evidence_description": "Pristinely preserved aragonitic mollusk shells, larger foraminifera tests, and solitary corals weathering out of quartz sandstones and lignite-bearing silty claystones along river banks.",
+        "evidence_significance": "International paleontological benchmark for Eocene-Oligocene macro-invertebrate and foraminiferal biostratigraphy across the Indo-Pacific realm.",
+        "why_it_matters": "Represents the oldest sedimentary basement of the Kulon Progo dome; demonstrates initial Cenozoic marine transgression across Sundaland before major volcanic arc development.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_formasi_baturaja",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.1685,
+          -4.135
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_formasi_baturaja",
+        "name": "Baturaja Formation Miocene Carbonate Reef Beds",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "geological_period": "Neogene",
+        "geological_age": "Early to Middle Miocene (~20 - 15 Ma)",
+        "geological_process": "Tropical Shallow-Water Carbonate Platform & Pinnacle Reef Development",
+        "description": "Extensive Early-Middle Miocene platform carbonate and coral reef complex in the South Sumatra Basin, prominently cropping out around Baturaja, Bukit Telunjuk, and Gua Putri. Highly fossiliferous limestone sequence containing abundant larger benthic foraminifera, colonial corals, bryozoans, and mollusks, serving as Indonesia's classic reference for Cenozoic carbonate reservoir geology.",
+        "taxon_name": "Lepidocyclina / Miogypsina / Spiroclypeus / Porites",
+        "discovery_locality": "Baturaja Quarry Belt & Gua Putri / Padang Bindu, Ogan Komering Ulu, South Sumatra",
+        "fossil_material": "Larger benthic foraminifera (Lepidocyclina, Miogypsina, Spiroclypeus), hermatypic corals (Porites, Favites, Acropora), coralline red algae (Lithothamnium), bryozoans, mollusks",
+        "paleoenvironment": "Tropical shallow-water carbonate platform, reef crest, and lagoonal shelf",
+        "location_province": "South Sumatra",
+        "data_status": "demo",
+        "verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_note": "Point anchored to the primary Baturaja type outcrop and karst quarry area in Ogan Komering Ulu, based on Gafoer et al. (1993) P3G/Badan Geologi mapping.",
+        "source": "Tier 1: Gafoer et al. (1993) Peta Geologi Lembar Baturaja (Pusat Penelitian dan Pengembangan Geologi / ESDM); Jurnal Geologi dan Sumberdaya Mineral (Badan Geologi)",
+        "source_url": "https://jgsm.geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "evidence_type": "Fossil",
+        "evidence_description": "Massive skeletal packstones, boundstones, and wackestones rich in larger foraminiferal tests, branching coral colonies, and coralline algal crusts forming distinctive karst topography.",
+        "evidence_significance": "Key biostratigraphic marker for the Early Miocene marine transgressive climax across the back-arc basins of western Indonesia.",
+        "why_it_matters": "Provides crucial paleoclimate and paleoecological records of the Miocene Climatic Optimum and forms the primary productive carbonate reservoir rock in South Sumatra.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_karangbolong_limestone",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.435,
+          -7.712
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_karangbolong_limestone",
+        "name": "Karangbolong Coastal Reef Carbonate Formation",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "geological_period": "Neogene",
+        "geological_age": "Late Oligocene to Middle Miocene (~24 - 12 Ma)",
+        "geological_process": "Coastal Carbonate Reef Accretion & Volcaniclastic Interbedding",
+        "description": "Spectacular karstified coastal limestone and volcaniclastic succession in the Karangbolong Mountains of southern Kebumen. Forms steep marine cliffs and caves rich in larger benthic foraminifera, coral heads, and coralline algae, situated immediately south of the Karangsambung accretionary complex and recording Neogene island-arc shallow-marine sedimentation.",
+        "taxon_name": "Lepidocyclina / Miogypsina / Cycloclypeus / Amphistegina",
+        "discovery_locality": "Karangbolong Mountain Range, Buayan / Ayah, Kebumen, Central Java",
+        "fossil_material": "Larger benthic foraminifera (Lepidocyclina, Miogypsina, Cycloclypeus, Amphistegina), massive reef-building corals, red coralline algae, molluscan shell beds",
+        "paleoenvironment": "High-energy coastal reef barrier and shallow carbonate shelf",
+        "location_province": "Central Java",
+        "data_status": "demo",
+        "verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_note": "Point located at the primary Karangbolong limestone cliff and karst ridge in southern Kebumen, based on Asikin et al. (1992) P3G/Badan Geologi geological mapping.",
+        "source": "Tier 1: Asikin et al. (1992) Peta Geologi Lembar Kebumen (Pusat Penelitian dan Pengembangan Geologi / ESDM); Pusat Survei Geologi",
+        "source_url": "https://jgsm.geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "evidence_type": "Fossil",
+        "evidence_description": "Well-bedded to massive bioclast-rich limestones and reefal floatstones exposed along sea cliffs and karst towers containing dense concentrations of discoidal foraminifera and coral fragments.",
+        "evidence_significance": "Documents the transition from Paleogene deep-subduction mélangé (Karangsambung) to Neogene shallow-water arc carbonate deposition in Central Java.",
+        "why_it_matters": "Provides key structural and paleontological links between Java's subduction basement and overlying Neogene volcanic-carbonate cover sequences.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_formasi_rajamandala",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4365,
+          -6.834
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_formasi_rajamandala",
+        "name": "Rajamandala Formation Oligo-Miocene Coral & Foram Reef",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "geological_period": "Paleogene",
+        "geological_age": "Late Oligocene to Early Miocene (~28 - 20 Ma)",
+        "geological_process": "Barrier Reef & Carbonate Platform Accretion along Active Basin Margin",
+        "description": "A prominent ~50 km long limestone karst ridge extending from Padalarang (Gunung Masigit, Guha Pawon) to Sukabumi in West Java. Represents a world-renowned Oligo-Miocene barrier reef complex densely populated by giant larger foraminifera (Lepidocyclina eulepidina, Spiroclypeus), branching and head corals, rhodoliths, and calcareous algae.",
+        "taxon_name": "Lepidocyclina (Eulepidina) dilatata / Spiroclypeus leupoldi / Favites",
+        "discovery_locality": "Gunung Masigit & Gunung Pawon Ridge, Padalarang, West Bandung, West Java",
+        "fossil_material": "Giant larger foraminifera (Eulepidina dilatata, Nephrolepidina, Spiroclypeus, Miogypsinoides), colonial corals (Favites, Goniopora, Porites), coralline red algae (Lithoporella), mollusks",
+        "paleoenvironment": "High-energy barrier reef tract, forereef talus, and back-reef carbonate platform",
+        "location_province": "West Java",
+        "data_status": "demo",
+        "verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_note": "Point precisely positioned on the type reef limestone ridge at Gunung Masigit / Guha Pawon, Padalarang, based on Sudjatmiko (2003) Badan Geologi mapping and UNPAD stratigraphic research.",
+        "source": "Sudjatmiko (1972/2003) Peta Geologi Lembar Cianjur (Badan Geologi ESDM); Maryunani et al. (2012) Universitas Padjadjaran; Siregar (2005) Jurnal Geologi Indonesia",
+        "source_url": "https://ijog.geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "evidence_type": "Fossil",
+        "evidence_description": "Tower karst cliffs composed of recrystallized boundstones and grainstones densely packed with coin-sized Lepidocyclina tests and preserved coral frameworks.",
+        "evidence_significance": "The definitive stratotype for Late Oligocene to Early Miocene (Letter Stage Te1-4) larger foraminiferal zonation in Sundaland.",
+        "why_it_matters": "Exemplifies classic tropical reef development in an active volcanic-tectonic basin; prominent geoheritage site and vital source of paleotectonic data for western Java.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_formasi_jonggrangan",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.138,
+          -7.765
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_formasi_jonggrangan",
+        "name": "Jonggrangan Formation Miocene Carbonate Platform",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "geological_period": "Neogene",
+        "geological_age": "Early to Middle Miocene (~18 - 14 Ma)",
+        "geological_process": "Bioherm Reef & Carbonate Platform Capping Volcanic Dome",
+        "description": "The middle carbonate unit of the Kulon Progo Mountains stratigraphic dome sequence, directly overlying the eroded volcanic core of the Old Andesite Formation (OAF) in the central highlands (Jonggrangan plateau, Goa Kiskendo). Rich in massive reef corals, larger foraminifera, and mollusks, representing shallow-water carbonate platform growth while deeper marls of the coeval Sentolo Formation accumulated on the eastern flanks.",
+        "taxon_name": "Lepidocyclina / Miogypsina / Cycloclypeus / Porites",
+        "discovery_locality": "Jonggrangan Plateau & Goa Kiskendo, Girimulyo / Kokap, Kulon Progo, DIY",
+        "fossil_material": "Biohermal corals (Porites, Acropora), larger foraminifera (Lepidocyclina, Miogypsina, Cycloclypeus, Marginopora), red algae (Lithothamnium), molluscan casts, echinoids",
+        "paleoenvironment": "Tropical shallow-water reef crest, bioherm buildup, and plateau platform",
+        "location_province": "D.I. Yogyakarta",
+        "data_status": "demo",
+        "verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_note": "Point located at the type Jonggrangan limestone plateau near Goa Kiskendo in Girimulyo, Kulon Progo, based on Rahardjo et al. (1995) P3G/Badan Geologi mapping.",
+        "source": "Rahardjo et al. (1995) Peta Geologi Lembar Yogyakarta (P3G / ESDM); Harsono (2014) Jurnal RISET Geologi dan Pertambangan (LIPI/BRIN); Van Bemmelen (1949)",
+        "source_url": "https://jrisetgeotam.brin.go.id",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "evidence_type": "Fossil",
+        "evidence_description": "Massive reefal limestones, calcarenites, and bedded biomicrites forming high karst plateaus and cave systems with abundant embedded coral molds and foraminifera.",
+        "evidence_significance": "Crucial member of the tripartite Kulon Progo succession (Nanggulan -> Jonggrangan -> Sentolo), documenting early Middle Miocene volcanic quiescence and shallow-sea carbonate colonization.",
+        "why_it_matters": "Demonstrates how tropical coral reef platforms colonize extinct volcanic island edifices, forming spectacular cave karst landscapes in Java.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_formasi_sentolo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.228,
+          -7.832
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_formasi_sentolo",
+        "name": "Sentolo Formation Mio-Pliocene Foraminiferal Marl Beds",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "geological_period": "Neogene",
+        "geological_age": "Middle Miocene to Early Pliocene (~15 - 4 Ma)",
+        "geological_process": "Open-Marine Shelf, Slope, and Basinal Pelagic-Calcareous Deposition",
+        "description": "The youngest marine sedimentary formation of the Kulon Progo Mountains dome sequence, forming the eastern and southern flanks along Sentolo and Kali Pengasih. Interfingers with and stratigraphically succeeds the Jonggrangan reef complex, consisting of tuffaceous marls, bedded calcarenites, and calcareous sandstones packed with continuous planktic foraminifera biozones and calcareous nannofossils.",
+        "taxon_name": "Globigerinoides / Globorotalia menardii / Orbulina universa / Amphistegina",
+        "discovery_locality": "Kali Pengasih & Sentolo Hills along Progo River, Sentolo, Kulon Progo, DIY",
+        "fossil_material": "Abundant planktic foraminifera (Globorotalia menardii, Globigerinoides, Orbulina universa, Neogloboquadrina), benthic foraminifera (Amphistegina, Bolivina, Uvigerina), calcareous nannoplankton",
+        "paleoenvironment": "Open-marine outer neritic to upper bathyal shelf and slope",
+        "location_province": "D.I. Yogyakarta",
+        "data_status": "demo",
+        "verification_status": "verified",
+        "geometry_status": "verified",
+        "geometry_note": "Point positioned along Kali Pengasih and the Sentolo type outcrop area in eastern Kulon Progo, based on Rahardjo et al. (1995) P3G/Badan Geologi mapping and Pringgoprawiro (1985).",
+        "source": "Rahardjo et al. (1995) Peta Geologi Lembar Yogyakarta (Badan Geologi ESDM); Pringgoprawiro (1985); Kadar (1986); Van Bemmelen (1949)",
+        "source_url": "https://jgsm.geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "verified",
+        "evidence_type": "Fossil",
+        "evidence_description": "Thick sequence of yellowish-white stratified marls and calcarenites yielding dense microfossil assemblages of planktic and benthic foraminifera tests.",
+        "evidence_significance": "Provides an unbroken high-resolution biochronological record spanning Middle Miocene to Early Pliocene (N9 to N19/N20) across Central Java.",
+        "why_it_matters": "Completes the classical Kulon Progo Cenozoic sedimentary dome cycle (Nanggulan -> Jonggrangan -> Sentolo), documenting the gradual regional drowning and basin-margin sedimentation.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_formasi_cibodas",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.525,
+          -7.265
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_formasi_cibodas",
+        "name": "Cibodas Formation Miocene Carbonate Shelf Outcrop",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "geological_period": "Neogene",
+        "geological_age": "Middle to Late Miocene (~14 - 8 Ma)",
+        "geological_process": "Shallow-Marine Mixed Carbonate-Siliciclastic Shelf Deposition",
+        "description": "Middle to Late Miocene marine carbonate and clastic formation exposed in the Jampang / Ciracap sector of southern Sukabumi. Contains fossiliferous limestone lenses bearing larger benthic foraminifera, red algae, and molluscan bioclasts deposited in a shallow shelf setting.",
+        "taxon_name": "Lepidocyclina / Cycloclypeus / Amphistegina",
+        "discovery_locality": "Ciracap & Cibodas area, Ciemas / Surade, Sukabumi, West Java",
+        "fossil_material": "Larger benthic foraminifera (Lepidocyclina, Cycloclypeus, Amphistegina), molluscan bioclasts, coralline red algae fragments",
+        "paleoenvironment": "Shallow marine continental shelf with localized carbonate buildups",
+        "location_province": "West Java",
+        "data_status": "demo",
+        "verification_status": "partially_verified",
+        "geometry_status": "needs_review",
+        "geometry_note": "Representative point for the Ciracap-Cibodas limestone outcrop sector based on Sukamto (1975) Jampang sheet mapping and UNPAD geological field surveys; exact type section boundary retains spatial variance.",
+        "source": "Sukamto (1975) Peta Geologi Lembar Jampang dan Balekambang (Badan Geologi); Universitas Padjadjaran geological survey literature",
+        "source_url": "https://geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "partially_verified",
+        "evidence_type": "Fossil",
+        "evidence_description": "Bedded calcarenites, sandy limestones, and bioclast-rich marls containing larger foraminiferal tests and fragmented marine shells.",
+        "evidence_significance": "Documents Middle-Late Miocene shallow-marine carbonate sedimentation in the Southern Mountains of West Java.",
+        "why_it_matters": "Provides insights into post-volcanic shelf evolution in southern Sukabumi; maintained in Candidate/Review pending detailed type-section delineation.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "geo_cand_formasi_gumai",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.085,
+          -4.515
+        ]
+      },
+      "properties": {
+        "id": "geo_cand_formasi_gumai",
+        "name": "Gumai Formation Marine Transgressive Microfossil Beds",
+        "domain": "geology",
+        "feature_type": "paleontology_site",
+        "geological_period": "Neogene",
+        "geological_age": "Early to Middle Miocene (~18 - 14 Ma)",
+        "geological_process": "Regional Maximum Marine Transgression Deep-Shale Sedimentation",
+        "description": "The principal deep-marine shale and marl formation of the South Sumatra Basin, deposited during the maximum regional marine transgression (Early to Middle Miocene). Locally exposed along river valleys near Muaradua in OKU Selatan, yielding rich planktic and bathyal benthic foraminiferal microfossil assemblages.",
+        "taxon_name": "Globigerinoides sicanus / Praeorbulina glomerosa / Globorotalia peripheroronda",
+        "discovery_locality": "Komering River Section, Muaradua, Ogan Komering Ulu Selatan, South Sumatra",
+        "fossil_material": "Planktic foraminifera index microfossils (Globigerinoides sicanus, Praeorbulina, Globorotalia), deep-shelf to bathyal benthic foraminifera (Bathysiphon, Cyclammina), micro-mollusks",
+        "paleoenvironment": "Outer neritic to bathyal open-marine basin and deep shelf",
+        "location_province": "South Sumatra",
+        "data_status": "demo",
+        "verification_status": "partially_verified",
+        "geometry_status": "needs_review",
+        "geometry_note": "Representative point for the Gumai shale river-cut exposures in the Muaradua area based on Gafoer et al. (1993) mapping; regional shale distribution is widespread across South Sumatra.",
+        "source": "Gafoer et al. (1993) Peta Geologi Lembar Baturaja/Muaradua (P3G / Badan Geologi ESDM); Barber et al. (2005) Sumatra Geology (Geol. Soc. London)",
+        "source_url": "https://geologi.esdm.go.id",
+        "source_type": "government_survey",
+        "source_verification_status": "partially_verified",
+        "evidence_type": "Fossil",
+        "evidence_description": "Dark grey to black fossiliferous calcareous shales and marls with abundant microscopic planktic foraminifera tests.",
+        "evidence_significance": "Defines the peak Cenozoic marine inundation and regional seal rock across the South Sumatra hydrocarbon province.",
+        "why_it_matters": "Crucial regional microfossil marker for petroleum source and seal rock studies; maintained in Candidate/Review due to diffuse regional outcrop extent.",
+        "record_compilation_date": "2026-09-15",
+        "last_updated": "2026-09-15"
+      }
     }
   ]
 }

@@ -100,7 +100,7 @@ it("Test 4: All candidate records have complete provenance, source URLs, and geo
     assert.ok(p.why_it_matters, `${p.id}: why_it_matters is required`);
   });
 
-  console.log("[PASS] Test 4: Provenance Metadata & Geometry Notes Complete across All 39 Candidate Records");
+  console.log("[PASS] Test 4: Provenance Metadata & Geometry Notes Complete across All 47 Candidate Records");
 });
 
 // Test 5: Full Schema Validation across All Candidate Features
@@ -113,7 +113,7 @@ it("Test 5: All candidate features pass validateFeature schema checks", () => {
     assert.ok(ALLOWED_GEOMETRY_TYPES.includes(f.geometry.type), `Invalid geometry type: ${f.geometry.type}`);
   });
 
-  console.log("[PASS] Test 5: Full GeoJSON Schema Validation Passed (39/39 Candidate Features)");
+  console.log("[PASS] Test 5: Full GeoJSON Schema Validation Passed (47/47 Candidate Features)");
 });
 
 // Test 6: Adapter View Model Formatting for New Feature & Structure Types
@@ -144,5 +144,5 @@ it("Test 6: Geology adapter cleanly transforms macro-geomorphology features into
 });
 
 console.log("\n-------------------------------------------------");
-console.log("Macro Candidate Ingestion Test Suite Finished: 8/8 Tests Passed.");
+console.log("Macro Candidate Ingestion Test Suite Finished: 9/9 Tests Passed.");
 console.log("-------------------------------------------------\n");

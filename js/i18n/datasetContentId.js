@@ -584,6 +584,56 @@ export const DATASET_PROSE_ID = {
     geological_process: "Pensesaran geser mengiri (sinistral) yang mengakomodasi rotasi blok tektonik cepat dan ekstrusi Sulawesi Tengah/Utara ke utara terhadap blok Sunda.",
     why_it_matters: "Ancaman seismik dan bahaya geologi langsung bagi Kota Palu dan Sulawesi Tengah; terhubung dengan rekaman peristiwa bahaya historis haz_palu_2018."
   }
+,
+  // Invertebrate & Marine Carbonate Fossil Formations
+  geo_cand_formasi_nanggulan: {
+    name: "Lapisan Fosil Laut Eosen Formasi Nanggulan",
+    description: "Unit batuan sedimen laut Eosen dasar dari rangkaian kubah Pegunungan Kulon Progo, tersingkap sangat terkenal di sepanjang Kali Songgo dan Kalipururu. Memuat salah satu fauna moluska Eosen dan foraminifera indeks paling beragam serta terawetkan luar biasa di Asia Tenggara, menjadi fondasi stratigrafi dasar yang tertindih oleh Formasi Andesit Tua serta lapisan karbonat Miosen Jonggrangan dan Sentolo.",
+    geological_process: "Pengendapan klastika laut dangkal hingga pesisir transgresif",
+    why_it_matters: "Merupakan batuan dasar sedimen tertua di kubah Kulon Progo; membuktikan transgresi laut awal Kenozoikum di atas Paparan Sunda sebelum pembentukan busur vulkanik utama."
+  },
+  geo_cand_formasi_baturaja: {
+    name: "Lapisan Terumbu Karbonat Miosen Formasi Baturaja",
+    description: "Kompleks terumbu karang dan platform karbonat Miosen Awal-Tengah yang luas di Cekungan Sumatra Selatan, tersingkap terkemuka di sekitar Baturaja, Bukit Telunjuk, dan Gua Putri. Rangkaian batu gamping sangat kaya fosil yang memuat foraminifera bentik besar, koloni karang, bryozoa, dan moluska, menjadi acuan geologi reservoar karbonat Kenozoikum di Indonesia.",
+    geological_process: "Perkembangan platform karbonat dan terumbu puncak air dangkal tropis",
+    why_it_matters: "Menyediakan rekaman paleoklimat dan paleoekologi penting Optimum Iklim Miosen serta membentuk batuan reservoar karbonat produktif utama di Sumatra Selatan."
+  },
+  geo_cand_karangbolong_limestone: {
+    name: "Formasi Karbonat Terumbu Karangbolong",
+    description: "Rangkaian batu gamping karst pesisir dan vulkaniklastik Oligo-Miosen yang spektakuler di Pegunungan Karangbolong, Kebumen selatan. Membentuk tebing laut dan gua karst yang kaya akan foraminifera bentik besar, kepala karang, dan alga koralin, terletak persis di selatan kompleks akresi Karangsambung dan merekam sedimentasi laut dangkal busur kepulauan Neogen.",
+    geological_process: "Akresi terumbu karbonat pesisir dan perselingan vulkaniklastik",
+    why_it_matters: "Menyediakan hubungan struktural dan paleontologis kunci antara batuan dasar subduksi Jawa dan lapisan penutup vulkanik-karbonat Neogen di atasnya."
+  },
+  geo_cand_formasi_rajamandala: {
+    name: "Terumbu Karang & Foraminifera Oligo-Miosen Formasi Rajamandala",
+    description: "Pematang karst batu gamping sepanjang 50 km membentang dari Padalarang (Gunung Masigit, Guha Pawon) hingga Sukabumi di Jawa Barat. Merupakan kompleks terumbu penghalang Oligo-Miosen terkenal di dunia yang padat oleh fosil foraminifera besar raksasa (Lepidocyclina eulepidina, Spiroclypeus), karang bercabang dan bongkah, rodolit, serta alga gampingan.",
+    geological_process: "Akresi terumbu penghalang dan platform karbonat di sepanjang batas cekungan aktif",
+    why_it_matters: "Menjadi stratotipe definitif zonasi foraminifera besar Oligosen Akhir hingga Miosen Awal di Sundaland serta kawasan warisan geologi terkemuka di Jawa Barat."
+  },
+  geo_cand_formasi_jonggrangan: {
+    name: "Platform Karbonat Miosen Formasi Jonggrangan",
+    description: "Unit karbonat tengah dari rangkaian stratigrafi kubah Pegunungan Kulon Progo, menindih langsung batuan vulkanik Formasi Andesit Tua (OAF) yang tererosi di dataran tinggi tengah (plato Jonggrangan, Goa Kiskendo). Kaya akan karang terumbu masif, foraminifera besar, dan moluska, merekam pertumbuhan terumbu air dangkal saat napal Formasi Sentolo yang sebaya terendapkan di lereng timur.",
+    geological_process: "Pembentukan terumbu bioherm dan platform karbonat penudung kubah vulkanik",
+    why_it_matters: "Anggota penting dalam siklus stratigrafi Kulon Progo (Nanggulan -> Jonggrangan -> Sentolo), membuktikan ketenangan vulkanik dan kolonisasi karbonat laut dangkal pada Miosen Awal-Tengah."
+  },
+  geo_cand_formasi_sentolo: {
+    name: "Lapisan Napal & Foraminifera Mio-Pliosen Formasi Sentolo",
+    description: "Formasi sedimen laut termuda dari rangkaian kubah Pegunungan Kulon Progo, membentuk lereng timur dan selatan di sepanjang Sentolo dan Kali Pengasih. Mengisi dan menjari dengan kompleks terumbu Jonggrangan, tersusun atas napal tufaan, kalkarenit berlapis, dan batu pasir gampingan yang sarat akan zonasi foraminifera planktik dan nanofosil gampingan.",
+    geological_process: "Pengendapan pelagik-karbonat paparan terbuka, lereng, dan cekungan laut",
+    why_it_matters: "Melengkapi siklus kubah sedimen Kenozoikum klasik Kulon Progo (Nanggulan -> Jonggrangan -> Sentolo), merekam penenggelaman regional dan sedimentasi tepi cekungan tanpa terputus."
+  },
+  geo_cand_formasi_cibodas: {
+    name: "Singkapan Karbonat Paparan Miosen Formasi Cibodas",
+    description: "Formasi karbonat dan klastika laut Miosen Tengah hingga Akhir yang tersingkap di kawasan Jampang / Ciracap di Sukabumi selatan. Memuat lensa-lensa batu gamping kaya foraminifera bentik besar, alga merah, dan bioklas moluska yang diendapkan pada lingkungan paparan dangkal.",
+    geological_process: "Sedimentasi paparan karbonat-silisiklastika campuran laut dangkal",
+    why_it_matters: "Memberikan wawasan mengenai evolusi paparan pasca-vulkanik di Sukabumi selatan; dipertahankan dalam status Kandidat/Review menunggu delimitasi tipe seksion lebih terperinci."
+  },
+  geo_cand_formasi_gumai: {
+    name: "Lapisan Mikrofosil Transgresi Laut Formasi Gumai",
+    description: "Formasi serpih dan napal laut dalam utama di Cekungan Sumatra Selatan, diendapkan saat puncak transgresi laut regional (Miosen Awal hingga Tengah). Tersingkap secara lokal di lembah sungai sekitar Muaradua di OKU Selatan, menghasilkan kumpulan mikrofosil foraminifera planktik dan bentik batial yang melimpah.",
+    geological_process: "Sedimentasi serpih laut dalam transgresi maksimum regional",
+    why_it_matters: "Penanda mikrofosil regional penting untuk batuan induk dan tudung hidrokarbon; dipertahankan dalam status Kandidat/Review karena persebaran singkapan regional yang luas."
+  }
 };
 
 export const PERIOD_CONTEXT_DATA_ID = {
