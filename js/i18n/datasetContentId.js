@@ -546,6 +546,44 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Menunjukkan jejak metamorfisme derajat tinggi subduksi lempeng samudera pada kedalaman lebih dari 30 km yang terangkat kembali ke permukaan.",
     "significance": "Laboratorium geologi struktur dan petrologi batuan metamorf terkemuka di Indonesia."
   }
+,
+  // Northern Indonesia Macro-Geomorphology Candidates
+  geo_cand_molucca_collision_zone: {
+    name: "Zona Tabrakan Subduksi Ganda Laut Maluku",
+    description: "Zona Tabrakan Laut Maluku adalah contoh aktif terkemuka di dunia mengenai tabrakan busur kepulauan yang didorong oleh subduksi ganda yang saling berlawanan. Lempeng Laut Maluku adalah lempeng samudera berbentuk huruf U terbalik yang sedang disubduksi secara bersamaan ke arah barat di bawah Busur Sangihe dan ke arah timur di bawah Busur Halmahera. Kompleks tabrakan tengah tersingkap di Kepulauan Talaud, Pulau Mayu, dan Pulau Tifore.",
+    geological_process: "Subduksi ganda lempeng Laut Maluku ke arah barat di bawah Busur Sangihe dan ke arah timur di bawah Busur Halmahera, dengan Punggungan Talaud-Mayu di bagian tengah membentuk kompleks tabrakan ofiolit dan melange yang terangkat.",
+    why_it_matters: "Menunjukkan proses penutupan total cekungan samudera secara langsung dalam waktu nyata, serta mengilustrasikan pembentukan kerak benua melalui akresi tektonik dan tabrakan busur kepulauan."
+  },
+  geo_cand_sangihe_volcanic_arc: {
+    name: "Sumbu Depan Busur Vulkanik Sangihe",
+    description: "Busur Vulkanik Sangihe membentuk jalur gunung api aktif di bagian barat sistem tabrakan Laut Maluku. Busur ini membentang sekitar 500 km dari pusat vulkanik Sulawesi Utara (Lokon, Mahawu, Soputan) ke arah utara melintasi kepulauan Sangihe (termasuk gunung api sangat aktif Ruang, Karangetang, dan Awu) menuju Mindanao.",
+    geological_process: "Magmatisme yang dihasilkan oleh subduksi lempeng samudera Laut Maluku ke arah barat di bawah blok kerak benua Sundaland-Sulawesi.",
+    why_it_matters: "Memuat beberapa gunung api paling aktif dan berbahaya di Indonesia (seperti Karangetang dan Ruang) dengan risiko tsunami vulkanik dan abu letusan bagi populasi kepulauan pesisir."
+  },
+  geo_cand_halmahera_volcanic_arc: {
+    name: "Sumbu Depan Busur Vulkanik Halmahera",
+    description: "Busur Vulkanik Halmahera merupakan busur vulkanik aktif bagian timur dari zona tabrakan Laut Maluku. Busur ini membentuk jajaran pulau gunung api sepanjang 250 km di lengan barat Pulau Halmahera, memuat pusat-pusat aktif terkemuka seperti Gamalama (Ternate), Tidore, Makian, Ibu, dan Dukono.",
+    geological_process: "Subduksi lempeng Laut Maluku ke arah timur di bawah tepi barat lempeng mikro Halmahera (Lempeng Laut Filipina).",
+    why_it_matters: "Gunung api aktif eksplosif (Ibu, Dukono, Gamalama) memerlukan pemantauan bahaya berkelanjutan untuk keselamatan pusat populasi Maluku Utara dan rute penerbangan."
+  },
+  geo_cand_banggai_sula_microcontinent: {
+    name: "Platform Mikrokontinen Banggai-Sula",
+    description: "Mikrokontinen Banggai-Sula adalah fragmen benua alokton yang terpisah dari tepi pasif Australia pada Jura Akhir-Kapur. Fragmen ini bergeser ke barat sepanjang sistem Sesar Sorong dan bertabrakan dengan Sulawesi Timur pada Miosen Tengah hingga Pliosen Awal (~15-5 Ma), memicu obduksi besar Ofiolit Sulawesi Timur.",
+    geological_process: "Pemisahan benua dari batas Gondwana Australia pada Mesozoikum, pergeseran mendatar melalui Sesar Sorong, dan tabrakan tektonik dengan lengan timur Sulawesi pada Miosen Tengah.",
+    why_it_matters: "Menyediakan kerangka geologi utama bagi eksplorasi migas di Cekungan Banggai serta memahami evolusi struktur pegunungan Sulawesi."
+  },
+  geo_cand_cyclops_ophiolite_complex: {
+    name: "Kompleks Ofiolit Obduksi Pegunungan Cyclops",
+    description: "Pegunungan Cyclops di pesisir utara Papua dekat Jayapura menyingkapkan urutan ofiolit lengkap yang terawat baik, terdiri dari harzburgit mantel, dunit, serpentinit, gabro, dan lava basal yang terobduksi saat tabrakan busur kepulauan intra-samudera Pasifik/Caroline dengan Papua bagian utara.",
+    geological_process: "Obduksi ofiolit zona supra-subduksi ke tepi benua Australia utara selama tabrakan busur-benua Miosen awal, diikuti pengangkatan morfotektonik yang cepat.",
+    why_it_matters: "Membentuk daerah tangkapan air lingkungan yang sangat penting bagi kawasan Jayapura-Sentani sekaligus menimbulkan bahaya longsor dan banjir bandang pada lereng terjal."
+  },
+  geo_fault_palu_koro: {
+    name: "Sesar Geser Mengiri Palu-Koro",
+    description: "Sesar Palu-Koro adalah salah satu sesar geser paling aktif dan bergerak paling cepat di Asia Tenggara, dengan laju pergeseran ~35-45 mm/tahun. Sesar ini memotong langsung Teluk Palu dan Lembah Palu hingga ke Sulawesi Tengah. Pada 28 September 2018, sesar ini pecah dalam gempa bumi supershear Mw 7.5 yang memicu tsunami katastropik dan likuifaksi tanah parah.",
+    geological_process: "Pensesaran geser mengiri (sinistral) yang mengakomodasi rotasi blok tektonik cepat dan ekstrusi Sulawesi Tengah/Utara ke utara terhadap blok Sunda.",
+    why_it_matters: "Ancaman seismik dan bahaya geologi langsung bagi Kota Palu dan Sulawesi Tengah; terhubung dengan rekaman peristiwa bahaya historis haz_palu_2018."
+  }
 };
 
 export const PERIOD_CONTEXT_DATA_ID = {

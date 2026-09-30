@@ -95,8 +95,8 @@ test('Test 2: Complete Translation Coverage for All 31 Production Features', (tT
   console.log('[PASS] Test 2: Complete Translation Coverage for All 31 Production Features');
 });
 
-test('Test 3: Complete Translation Coverage for All 33 Candidate Features', (tTest) => {
-  assert.strictEqual(candidateData.features.length, 33, 'Candidate dataset must have 33 features');
+test('Test 3: Complete Translation Coverage for All 39 Candidate Features', (tTest) => {
+  assert.strictEqual(candidateData.features.length, 39, 'Candidate dataset must have 39 features');
   
   for (const feat of candidateData.features) {
     const id = feat.properties.id;
@@ -106,7 +106,7 @@ test('Test 3: Complete Translation Coverage for All 33 Candidate Features', (tTe
     assert.ok(trans.description, `Candidate translation for ${id} must have a localized 'description'`);
   }
   
-  console.log('[PASS] Test 3: Complete Translation Coverage for All 33 Candidate Features');
+  console.log('[PASS] Test 3: Complete Translation Coverage for All 39 Candidate Features');
 });
 
 test('Test 4: Process Cards and Timeline Period Indonesian Translations', (tTest) => {

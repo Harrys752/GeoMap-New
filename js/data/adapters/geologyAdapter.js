@@ -111,6 +111,9 @@ export function formatStructureTypeLabel(type, lang = "en") {
     case "sedimentary_basin": return lang === "id" ? "Cekungan Sedimen" : "Sedimentary Basin";
     case "tropical_kegelkarst": return lang === "id" ? "Sistem Karst Tropis (Kegelkarst)" : "Tropical Kegelkarst System";
     case "volcanic_arc_axis": return lang === "id" ? "Sumbu Depan Vulkanik (Representatif)" : "Volcanic Front Axis (Representative)";
+    case "arc_arc_collision_zone": return lang === "id" ? "Zona Tabrakan Busur-Busur Subduksi Ganda" : "Double Subduction Arc-Arc Collision Zone";
+    case "microcontinent": return lang === "id" ? "Fragmen Kontinen / Mikrokontinen Rifting" : "Rifted Continental Fragment / Microcontinent";
+    case "obducted_ophiolite_complex": return lang === "id" ? "Kompleks Ofiolit Obduksi Supra-Subduksi" : "Obducted Supra-Subduction Ophiolite Complex";
     default: return type || null;
   }
 }

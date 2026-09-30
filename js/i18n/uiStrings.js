@@ -187,6 +187,9 @@ export const UI_STRINGS = {
     st_sedimentary_basin: "Sedimentary Basin",
     st_tropical_kegelkarst: "Tropical Kegelkarst System",
     st_volcanic_arc_axis: "Volcanic Front Axis (Representative)",
+    st_arc_arc_collision_zone: "Double Subduction Arc-Arc Collision Zone",
+    st_microcontinent: "Rifted Continental Fragment / Microcontinent",
+    st_obducted_ophiolite_complex: "Obducted Supra-Subduction Ophiolite Complex",
 
     // Hazard Type Display Names
     ht_volcanic: "Volcanic Event",
@@ -418,6 +421,9 @@ export const UI_STRINGS = {
     st_sedimentary_basin: "Cekungan Sedimen",
     st_tropical_kegelkarst: "Sistem Karst Tropis (Kegelkarst)",
     st_volcanic_arc_axis: "Sumbu Depan Vulkanik (Representatif)",
+    st_arc_arc_collision_zone: "Zona Tabrakan Busur-Busur Subduksi Ganda",
+    st_microcontinent: "Fragmen Kontinen / Mikrokontinen Rifting",
+    st_obducted_ophiolite_complex: "Kompleks Ofiolit Obduksi Supra-Subduksi",
 
     // Hazard Type Display Names
     ht_volcanic: "Peristiwa Vulkanik",
