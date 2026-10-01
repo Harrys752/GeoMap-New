@@ -238,8 +238,11 @@ export function initFilterPanel(allFeatures, onFilterChange) {
       <option value="all">${escapeHtml(t("process_all_option", { count: processes.length }, currentLang))}</option>
       ${processes.map(proc => {
         const localizedCard = getLocalizedProcessCard(proc, PROCESS_CARDS[proc], currentLang);
-        const displayName = localizedCard ? localizedCard.name : proc;
-        return `<option value="${escapeHtml(proc)}"${selectedProcess === proc ? " selected" : ""}>${escapeHtml(displayName)} (${datasetCounts.process[proc]})</option>`;
+        let displayName = (localizedCard && (localizedCard.name || localizedCard.title)) ? (localizedCard.name || localizedCard.title) : proc;
+        if (displayName && displayName.length > 55) {
+          displayName = displayName.substring(0, 52) + "...";
+        }
+        return `<option value="${escapeHtml(proc)}"${selectedProcess === proc ? " selected" : ""} title="${escapeHtml(proc)}">${escapeHtml(displayName)} (${datasetCounts.process[proc]})</option>`;
       }).join("")}
     `;
 
@@ -263,7 +266,7 @@ export function initFilterPanel(allFeatures, onFilterChange) {
       <option value="all">${escapeHtml(t("period_all_option", { count: periods.length }, currentLang))}</option>
       ${periods.map(p => {
         const periodKey = `period_${p.toLowerCase()}`;
-        const label = t(periodKey, {}, currentLang) || p;
+        const label = t(periodKey, {}, currentLang) || t(`period_${p}`, {}, currentLang) || p;
         return `<option value="${escapeHtml(p)}"${selectedPeriod === p ? " selected" : ""}>${escapeHtml(label)} (${datasetCounts.period[p]})</option>`;
       }).join("")}
     `;

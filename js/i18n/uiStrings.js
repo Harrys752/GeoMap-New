@@ -65,11 +65,24 @@ export const UI_STRINGS = {
     period_Neogene: "Neogene",
     period_Quaternary: "Quaternary",
     period_Historical: "Historical Hazards",
+    period_Paleogene: "Paleogene",
+    period_triassic: "Triassic",
+    period_cretaceous: "Cretaceous",
+    period_paleogene: "Paleogene",
+    period_neogene: "Neogene",
+    period_quaternary: "Quaternary",
+    period_historical: "Historical Hazards",
 
     // Geological Evidence Type Filter
     evidence_filter_label: "Geological Evidence Type",
     evidence_select_aria: "Filter dataset by geological evidence type",
     evidence_all_option: "All Evidence Categories ({count})",
+    evidence_cat_rock: "Rock",
+    evidence_cat_fossil: "Fossil",
+    evidence_cat_landform: "Landform",
+    evidence_cat_geological_structure: "Geological Structure",
+    evidence_cat_historical_record: "Historical Record",
+    evidence_cat_uncategorized: "Uncategorized",
 
     // Data Confidence Level Filter
     confidence_filter_label: "Data Confidence Level",
@@ -299,11 +312,24 @@ export const UI_STRINGS = {
     period_Neogene: "Neogen",
     period_Quaternary: "Kuarter",
     period_Historical: "Bahaya Geologi Historis",
+    period_Paleogene: "Paleogen",
+    period_triassic: "Trias",
+    period_cretaceous: "Kapur",
+    period_paleogene: "Paleogen",
+    period_neogene: "Neogen",
+    period_quaternary: "Kuarter",
+    period_historical: "Bahaya Geologi Historis",
 
     // Geological Evidence Type Filter
     evidence_filter_label: "Jenis Bukti Geologi",
     evidence_select_aria: "Filter dataset berdasarkan jenis bukti geologi",
     evidence_all_option: "Semua Kategori Bukti ({count})",
+    evidence_cat_rock: "Batuan",
+    evidence_cat_fossil: "Fosil",
+    evidence_cat_landform: "Bentang Alam",
+    evidence_cat_geological_structure: "Struktur Geologi",
+    evidence_cat_historical_record: "Catatan Historis",
+    evidence_cat_uncategorized: "Tidak Terkategori",
 
     // Data Confidence Level Filter
     confidence_filter_label: "Tingkat Keyakinan Data",

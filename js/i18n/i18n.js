@@ -160,7 +160,7 @@ export function getLocalizedFeature(feature, lang = currentLang) {
  * @returns {object} Localized process card
  */
 export function getLocalizedProcessCard(processKey, baseCardOrLang, lang = currentLang) {
-  let baseCard = {};
+  let baseCard = null;
   let targetLang = currentLang;
 
   if (typeof baseCardOrLang === "string") {
@@ -172,13 +172,41 @@ export function getLocalizedProcessCard(processKey, baseCardOrLang, lang = curre
     }
   }
 
-  if (targetLang !== "id" || !PROCESS_CARDS_ID[processKey]) {
-    return baseCard && Object.keys(baseCard).length > 0 ? baseCard : (PROCESS_CARDS_ID[processKey] || baseCard);
+  const idCard = PROCESS_CARDS_ID[processKey];
+
+  if (targetLang !== "id" || !idCard) {
+    if (baseCard && Object.keys(baseCard).length > 0) {
+      return baseCard;
+    }
+    return idCard || null;
+  }
+
+  // If targetLang is 'id' and idCard exists, normalize fields for compatibility
+  const normalizedIdCard = { ...idCard };
+  if (!normalizedIdCard.name && normalizedIdCard.title) {
+    normalizedIdCard.name = normalizedIdCard.title;
+  }
+  if (!normalizedIdCard.title && normalizedIdCard.name) {
+    normalizedIdCard.title = normalizedIdCard.name;
+  }
+  if (!normalizedIdCard.whatIsIt && normalizedIdCard.what_is_it) {
+    normalizedIdCard.whatIsIt = normalizedIdCard.what_is_it;
+  }
+  if (!normalizedIdCard.howItWorks && normalizedIdCard.mechanism) {
+    normalizedIdCard.howItWorks = normalizedIdCard.mechanism;
+  }
+  if (!normalizedIdCard.indonesianExamples && normalizedIdCard.indonesian_examples) {
+    normalizedIdCard.indonesianExamples = Array.isArray(normalizedIdCard.indonesian_examples) 
+      ? normalizedIdCard.indonesian_examples 
+      : [normalizedIdCard.indonesian_examples];
+  }
+  if (!normalizedIdCard.whatCanWeLearn && normalizedIdCard.what_can_we_learn) {
+    normalizedIdCard.whatCanWeLearn = normalizedIdCard.what_can_we_learn;
   }
 
   return {
-    ...baseCard,
-    ...PROCESS_CARDS_ID[processKey]
+    ...(baseCard || {}),
+    ...normalizedIdCard
   };
 }
 
