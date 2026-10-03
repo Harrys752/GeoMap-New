@@ -17,18 +17,18 @@ export const DATASET_PROSE_ID = {
     "why_it_matters": "Misool menyediakan sekuens sedimentasi laut Mesozoikum paling kontinu dan tidak terganggu di kawasan Australasia, esensial untuk korelasi Pasifik-Tethys."
 },
   "geo_cand_timor_triassic_marine": {
-    "name": "Lapisan Fosil Sefalopoda & Invertebrata Laut Trias Timor",
-    "description": "Titik representatif untuk lapisan fosil sefalopoda dan invertebrata laut batu gamping Hallstatt Trias yang terkenal di Timor Barat (area Baun/Bitauni), diteliti oleh paleontolog internasional sejak 1892.",
+    "name": "Lapisan Fosil Sefalopoda & Reptil Laut Trias Timor ('Globidens timorensis')",
+    "description": "Lokasi singkapan fosil laut Mesozoikum Trias di Timor Barat (area Baun/Bitauni/Noil Bihati) yang terkenal secara internasional karena menghasilkan fauna sefalopoda batu gamping Hallstatt dan teka-teki paleontologi bersejarah 'Globidens timorensis'—gigi reptil laut pemakan cangkang keras (durofag) yang awalnya dideskripsikan von Huene (1935) sebagai mosasaurus, namun kini terbukti merupakan iktiosaurus Trias (Mulder & Jagt, 2019).",
     "geological_process": "Sedimentasi Karbonat Pelagik Laut Dalam",
     "geological_age": "Trias (~250 - 201 Ma)",
-    "taxon_name": "Arcestes / Monophyllites / Halobia / Halorella",
+    "taxon_name": "Arcestes / Monophyllites / Halobia / 'Globidens timorensis' (Ichthyosauria)",
     "discovery_locality": "Baun / Bitauni / Noil Bihati, Timor Barat, NTT",
-    "fossil_material": "Ammonit pelagik (Arcestes, Joannites), Brachiopoda (Halorella), Bivalvia (Daonella, Halobia)",
+    "fossil_material": "Ammonit pelagik (Arcestes, Joannites), Brakiopoda (Halorella), Bivalvia (Daonella, Halobia), serta mahkota gigi reptil laut durofag ('Globidens timorensis' / iktiosaurus Trias)",
     "paleoenvironment": "Gunung laut karbonat pelagik dalam Tethys & cekungan samudera terbuka",
-    "evidence_description": "Ammonit pelagik, brakiopoda, dan bivalvia bercangkang tipis yang terawetkan murni dalam batu gamping tipe Hallstatt merah dan abu-abu pembawa sefalopoda.",
-    "evidence_significance": "Menyediakan fosil indeks biostratigrafi penting secara global yang mengorelasikan sekuens laut Tethys margin Gondwana di Belahan Bumi Selatan.",
-    "why_it_matters": "Timor memiliki salah satu rekaman fosil invertebrata laut pelagik Trias terkaya dan terlengkap di dunia, didokumentasikan dalam literatur paleontologi klasik sejak 1892."
-},
+    "evidence_description": "Ammonit pelagik, brakiopoda, dan bivalvia bercangkang tipis yang terawetkan murni dalam batu gamping tipe Hallstatt merah dan abu-abu, bersama fosil gigi reptil laut pemakan cangkang yang memecahkan teka-teki biostratigrafi fauna laut Tethys.",
+    "evidence_significance": "Menyediakan fosil indeks biostratigrafi penting secara global untuk korelasi sekuens laut Tethys margin Gondwana, sekaligus mengklarifikasi rekaman fosil reptil laut pemakan cangkang era Trias di Asia Tenggara.",
+    "why_it_matters": "Timor Barat memiliki salah satu rekaman fosil fauna laut pelagik Trias terkaya di dunia, sekaligus menjadi lokasi studi kasus historis evolusi reptil laut Mesozoikum melalui reinterpretasi modern fosil Globidens timorensis oleh Mulder & Jagt (2019)."
+  },
   "geo_cand_blora_stegodon": {
     "name": "Lokasi Megafauna Kendeng Blora (Banjarejo)",
     "description": "Lokasi endapan aluvial Kendeng di Banjarejo, Blora, yang dilaporkan dalam literatur akademik atas penemuan gigi fosil proboscidea Stegodon dan Elephas.",

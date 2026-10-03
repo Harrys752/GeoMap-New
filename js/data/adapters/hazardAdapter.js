@@ -43,6 +43,7 @@ export function adaptHazardFeature(rawFeature, lang = null) {
     sourceUrl: p.source_url || null,
     sourceType: p.source_type || null,
     sourceVerificationStatus: p.source_verification_status || "needs_review",
+    sources: Array.isArray(p.sources) ? p.sources : null,
     recordCompilationDate: p.record_compilation_date || p.last_updated || null,
     eventDate: p.event_date || null,
     eventEndDate: p.event_end_date || null,

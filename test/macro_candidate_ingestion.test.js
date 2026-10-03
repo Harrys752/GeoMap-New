@@ -87,7 +87,11 @@ it("Test 4: All candidate records have complete provenance, source URLs, and geo
   candidateFeatures.forEach(f => {
     const p = f.properties;
     assert.ok(p.source && p.source.trim().length > 0, `${p.id}: source is required`);
-    assert.ok(p.source_url && p.source_url.startsWith("http"), `${p.id}: valid source_url is required`);
+    if (p.source_url && p.source_url.trim().length > 0) {
+      assert.ok(p.source_url.startsWith("http"), `${p.id}: valid source_url is required`);
+    } else {
+      assert.ok(["partially_verified", "needs_review"].includes(p.source_verification_status), `${p.id}: text-only citation must be marked partially_verified or needs_review`);
+    }
     assert.ok(p.source_type, `${p.id}: source_type is required`);
     assert.ok(ALLOWED_GEOMETRY_STATUSES.includes(p.geometry_status), `${p.id}: valid geometry_status required`);
     assert.ok(p.geometry_note && p.geometry_note.trim().length > 10, `${p.id}: explanatory geometry_note is required`);

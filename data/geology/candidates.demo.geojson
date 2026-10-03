@@ -84,15 +84,18 @@
         "why_it_matters": "The Barisan Mountains host major active geothermal systems, mineralized plutonic complexes, and active tectonic fault grabens across Sumatra.",
         "location_province": "Sumatra (Aceh to Lampung)",
         "data_status": "demo",
-        "source": "Barber, Crow & Milsom (2005) 'Sumatra: Geology, Resources and Tectonic Evolution' (Geol. Soc. London Memoir 31) & Van Bemmelen (1949)",
-        "source_url": "https://www.geolsoc.org.uk",
+        "source": "Barber, A.J., Crow, M.J., & Milsom, J.S. (2005) Sumatra: Geology, Resources and Tectonic Evolution, Geological Society of London Memoir 31; Van Bemmelen, R.W. (1949) The Geology of Indonesia.",
+        "source_url": "https://doi.org/10.1144/GSL.MEM.2005.031",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "needs_review",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon envelope represents generalized macro-physiographic mountain province (interface visual convention, not official cadastral survey vector).",
-        "geometry_notes": "Polygon envelope represents generalized macro-physiographic mountain province (interface visual convention, not official cadastral survey vector)."
+        "geometry_notes": "Polygon envelope represents generalized macro-physiographic mountain province (interface visual convention, not official cadastral survey vector).",
+        "source_citation": "Barber, A.J., Crow, M.J., & Milsom, J.S. (2005) Sumatra: Geology, Resources and Tectonic Evolution, Geological Society of London Memoir 31; Van Bemmelen, R.W. (1949) The Geology of Indonesia.",
+        "primary_source_url": "https://doi.org/10.1144/GSL.MEM.2005.031",
+        "doi": "10.1144/GSL.MEM.2005.031"
       }
     },
     {
@@ -149,15 +152,18 @@
         "why_it_matters": "Exposes Earth mantle rocks and paleo-subduction mélange in Kalimantan, fundamental for SE Asian paleogeographic reconstructions.",
         "location_province": "Kalimantan Selatan",
         "data_status": "demo",
-        "source": "Sikumbang (1986) 'Geology and Tectonic History of the Meratus Complex' & Wakita et al. (1998)",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Wakita, K., Miyazaki, K., Zulkarnain, I., Sopaheluwakan, J., & Sanyoto, P. (1998) 'Tectonic implications of new age data for the Meratus Complex of south Kalimantan, Indonesia', The Island Arc, 7(1–2): 202–222; Sikumbang (1986).",
+        "source_url": "https://doi.org/10.1111/j.1440-1738.1998.tb00072.x",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon boundary derived from regional geological sheet mapping of Meratus ultramafic outcrop footprint.",
-        "geometry_notes": "Polygon boundary derived from regional geological sheet mapping of Meratus ultramafic outcrop footprint."
+        "geometry_notes": "Polygon boundary derived from regional geological sheet mapping of Meratus ultramafic outcrop footprint.",
+        "source_citation": "Wakita, K., Miyazaki, K., Zulkarnain, I., Sopaheluwakan, J., & Sanyoto, P. (1998) 'Tectonic implications of new age data for the Meratus Complex of south Kalimantan, Indonesia', The Island Arc, 7(1–2): 202–222; Sikumbang (1986).",
+        "primary_source_url": "https://doi.org/10.1111/j.1440-1738.1998.tb00072.x",
+        "doi": "10.1111/j.1440-1738.1998.tb00072.x"
       }
     },
     {
@@ -230,7 +236,7 @@
         "why_it_matters": "Provides key stratigraphical record of the transition from ancient volcanic arc activity to extensive carbonate platform deposition.",
         "location_province": "Jawa (Jawa Barat, DIY, Jawa Tengah, Jawa Timur)",
         "data_status": "demo",
-        "source": "Van Bemmelen (1949) 'The Geology of Indonesia' & Smyth et al. (2008) Geol. Soc. London Spec. Publ. 311",
+        "source": "Smyth, H.R., Hall, R., & Nichols, G.J. (2008) 'Cenozoic volcanic arc history of East Java, Indonesia', Geological Society of London Special Publications, 311: 199–222; Van Bemmelen, R.W. (1949).",
         "source_url": "https://doi.org/10.1144/SP311.6",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
@@ -238,7 +244,10 @@
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon boundary represents Van Bemmelen (1949) Southern Mountains Zone regional physiographic envelope.",
-        "geometry_notes": "Polygon boundary represents Van Bemmelen (1949) Southern Mountains Zone regional physiographic envelope."
+        "geometry_notes": "Polygon boundary represents Van Bemmelen (1949) Southern Mountains Zone regional physiographic envelope.",
+        "source_citation": "Smyth, H.R., Hall, R., & Nichols, G.J. (2008) 'Cenozoic volcanic arc history of East Java, Indonesia', Geological Society of London Special Publications, 311: 199–222; Van Bemmelen, R.W. (1949).",
+        "primary_source_url": "https://doi.org/10.1144/SP311.6",
+        "doi": "10.1144/SP311.6"
       }
     },
     {
@@ -295,15 +304,17 @@
         "why_it_matters": "The Kendeng Zone hosts significant onshore petroleum potential and active blind thrust seismic hazard sources in Java.",
         "location_province": "Jawa Tengah & Jawa Timur",
         "data_status": "demo",
-        "source": "Van Bemmelen (1949) & de Genevraye and Samuel (1972) Indonesian Petroleum Association",
-        "source_url": "https://www.ipa.or.id",
+        "source": "de Genevraye, P., & Samuel, L. (1972) 'Geology of the Kendeng Zone (Central & East Java)', Proceedings Indonesian Petroleum Association (IPA) 1st Annual Convention, pp. 17–30; Van Bemmelen, R.W. (1949).",
+        "source_url": "",
         "source_type": "peer-reviewed_publication",
-        "source_verification_status": "verified",
+        "source_verification_status": "partially_verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon boundary reflects the structural anticlinorium footprint between the Randublatung depression and Central volcanic depression.",
-        "geometry_notes": "Polygon boundary reflects the structural anticlinorium footprint between the Randublatung depression and Central volcanic depression."
+        "geometry_notes": "Polygon boundary reflects the structural anticlinorium footprint between the Randublatung depression and Central volcanic depression.",
+        "source_citation": "de Genevraye, P., & Samuel, L. (1972) 'Geology of the Kendeng Zone (Central & East Java)', Proceedings Indonesian Petroleum Association (IPA) 1st Annual Convention, pp. 17–30; Van Bemmelen, R.W. (1949).",
+        "primary_source_url": ""
       }
     },
     {
@@ -372,15 +383,18 @@
           "Pegunungan Jayawijaya (Jayawijaya Range)"
         ],
         "data_status": "demo",
-        "source": "Dow et al. (1988) 'Geology of the Irian Jaya Region' (Pusat Penelitian dan Pengembangan Geologi) & Cloos et al. (2005)",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Cloos, M., Sapiie, B., Quarles van Ufford, A., Weiland, R.J., Warren, P.Q., & McMahon, T.P. (2005) Collisional delamination in New Guinea: The geotectonics of subducting slab breakoff, Geological Society of America Special Paper 400; Dow et al. (1988).",
+        "source_url": "https://doi.org/10.1130/2005.2400",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon boundary represents parent Central Cordillera mountain belt; Barisan Sudirman (west) and Jayawijaya (east) are documented constituent sub-ranges.",
-        "geometry_notes": "Polygon boundary represents parent Central Cordillera mountain belt; Barisan Sudirman (west) and Jayawijaya (east) are documented constituent sub-ranges."
+        "geometry_notes": "Polygon boundary represents parent Central Cordillera mountain belt; Barisan Sudirman (west) and Jayawijaya (east) are documented constituent sub-ranges.",
+        "source_citation": "Cloos, M., Sapiie, B., Quarles van Ufford, A., Weiland, R.J., Warren, P.Q., & McMahon, T.P. (2005) Collisional delamination in New Guinea: The geotectonics of subducting slab breakoff, Geological Society of America Special Paper 400; Dow et al. (1988).",
+        "primary_source_url": "https://doi.org/10.1130/2005.2400",
+        "doi": "10.1130/2005.2400"
       }
     },
     {
@@ -437,15 +451,18 @@
         "why_it_matters": "Provides paleoenvironmental archive of prehistoric Java and critical geological context for seismic and hydrogeological risk in Bandung Raya.",
         "location_province": "Jawa Barat",
         "data_status": "demo",
-        "source": "Dam et al. (1996) 'The Late Quaternary Evolution of the Bandung Basin' & Silitonga (1973/2003) Badan Geologi",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Dam, M.A.C., Suparan, P., Nossin, J.J., & Voskuil, R.P.G.A. (1996) 'A chronology for geomorphological developments in the greater Bandung area, West-Java, Indonesia', Journal of Southeast Asian Earth Sciences, 14(1–2): 101–115.",
+        "source_url": "https://doi.org/10.1016/S0743-9547(96)00069-4",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon boundary strictly delineates the Quaternary lacustrine and volcano-tectonic depression fill, distinct from administrative groundwater (CAT) boundaries.",
-        "geometry_notes": "Polygon boundary strictly delineates the Quaternary lacustrine and volcano-tectonic depression fill, distinct from administrative groundwater (CAT) boundaries."
+        "geometry_notes": "Polygon boundary strictly delineates the Quaternary lacustrine and volcano-tectonic depression fill, distinct from administrative groundwater (CAT) boundaries.",
+        "source_citation": "Dam, M.A.C., Suparan, P., Nossin, J.J., & Voskuil, R.P.G.A. (1996) 'A chronology for geomorphological developments in the greater Bandung area, West-Java, Indonesia', Journal of Southeast Asian Earth Sciences, 14(1–2): 101–115.",
+        "primary_source_url": "https://doi.org/10.1016/S0743-9547(96)00069-4",
+        "doi": "10.1016/S0743-9547(96)00069-4"
       }
     },
     {
@@ -502,15 +519,18 @@
         "why_it_matters": "One of Indonesia's most thoroughly studied sedimentary basins, hosting significant energy resources and thick coal seams.",
         "location_province": "Kalimantan Selatan & Kalimantan Tengah",
         "data_status": "demo",
-        "source": "Witts et al. (2012) 'The Barito Basin, SE Kalimantan' & Satyana et al. (1999) IPA",
-        "source_url": "https://www.ipa.or.id",
+        "source": "Witts, D., Hall, R., Nichols, G., & Morley, R.J. (2012) 'A new depositional and provenance model for the Tanjung Formation, Barito Basin, SE Kalimantan, Indonesia', Journal of Asian Earth Sciences, 56: 77–104.",
+        "source_url": "https://doi.org/10.1016/j.jseaes.2012.04.022",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon boundary is based on geological stratigraphic pinch-out and basement structural hinge lines, not commercial oil concession blocks.",
-        "geometry_notes": "Polygon boundary is based on geological stratigraphic pinch-out and basement structural hinge lines, not commercial oil concession blocks."
+        "geometry_notes": "Polygon boundary is based on geological stratigraphic pinch-out and basement structural hinge lines, not commercial oil concession blocks.",
+        "source_citation": "Witts, D., Hall, R., Nichols, G., & Morley, R.J. (2012) 'A new depositional and provenance model for the Tanjung Formation, Barito Basin, SE Kalimantan, Indonesia', Journal of Asian Earth Sciences, 56: 77–104.",
+        "primary_source_url": "https://doi.org/10.1016/j.jseaes.2012.04.022",
+        "doi": "10.1016/j.jseaes.2012.04.022"
       }
     },
     {
@@ -563,15 +583,17 @@
         "why_it_matters": "Designated a UNESCO Global Geopark in 2015, Gunung Sewu is a global benchmark for tropical speleology, hydrogeology, and geoheritage.",
         "location_province": "DIY (Gunungkidul), Jawa Tengah (Wonogiri), Jawa Timur (Pacitan)",
         "data_status": "demo",
-        "source": "Haryono & Day (2004) 'Landform differentiation within Gunung Sewu kegelkarst' & UNESCO Global Geopark Dossier (2015)",
-        "source_url": "https://www.unesco.org/en/iggp/gunung-sewu-unesco-global-geopark",
-        "source_type": "government_survey",
+        "source": "Haryono, E., & Day, M. (2004) 'Landform differentiation within the Gunung Kidul Kegelkarst, Java, Indonesia', Journal of Cave and Karst Studies, 66(2): 62–69; UNESCO Global Geoparks Network Dossier (2015).",
+        "source_url": "https://en.unesco.org/global-geoparks/gunung-sewu",
+        "source_type": "institutional_record",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon boundary matches the contiguous Wonosari Formation limestone plateau and UNESCO Global Geopark boundary.",
-        "geometry_notes": "Polygon boundary matches the contiguous Wonosari Formation limestone plateau and UNESCO Global Geopark boundary."
+        "geometry_notes": "Polygon boundary matches the contiguous Wonosari Formation limestone plateau and UNESCO Global Geopark boundary.",
+        "source_citation": "Haryono, E., & Day, M. (2004) 'Landform differentiation within the Gunung Kidul Kegelkarst, Java, Indonesia', Journal of Cave and Karst Studies, 66(2): 62–69; UNESCO Global Geoparks Network Dossier (2015).",
+        "primary_source_url": "https://en.unesco.org/global-geoparks/gunung-sewu"
       }
     },
     {
@@ -634,15 +656,18 @@
         "why_it_matters": "The Sunda-Java Trench is one of Earth's most active convergent margins, driving regional plate tectonics and geohazards.",
         "location_province": "Offshore Indian Ocean (Sumatra, Java, Bali, Nusa Tenggara)",
         "data_status": "demo",
-        "source": "Bird (2003) 'An updated digital model of plate boundaries' & USGS Slab2 (Hayes et al., 2018)",
-        "source_url": "https://earthquake.usgs.gov/data/slab/",
+        "source": "Bird, P. (2003) 'An updated digital model of plate boundaries', Geochemistry, Geophysics, Geosystems, 4(3): 1027; Hayes, G.P., et al. (2018) 'Slab2, a comprehensive subduction zone geometry model', Science, 362: 58-61.",
+        "source_url": "https://doi.org/10.1029/2001GC000252",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "LineString trace digitized from authoritative global bathymetric trench axis data (Bird 2003 PB2002 dataset).",
-        "geometry_notes": "LineString trace digitized from authoritative global bathymetric trench axis data (Bird 2003 PB2002 dataset)."
+        "geometry_notes": "LineString trace digitized from authoritative global bathymetric trench axis data (Bird 2003 PB2002 dataset).",
+        "source_citation": "Bird, P. (2003) 'An updated digital model of plate boundaries', Geochemistry, Geophysics, Geosystems, 4(3): 1027; Hayes, G.P., et al. (2018) 'Slab2, a comprehensive subduction zone geometry model', Science, 362: 58-61.",
+        "primary_source_url": "https://doi.org/10.1029/2001GC000252",
+        "doi": "10.1029/2001GC000252"
       }
     },
     {
@@ -713,15 +738,18 @@
         "why_it_matters": "Forms the volcanic backbone of Western Indonesia, generating fertile soils, geothermal energy, and active volcanic hazards.",
         "location_province": "Sumatra, Java, Bali, NTB, NTT",
         "data_status": "demo",
-        "source": "Hamilton (1979) 'Tectonics of the Indonesian Region' (USGS Prof. Paper 1078) & Hall (2002)",
-        "source_url": "https://pubs.usgs.gov/pp/1078/",
-        "source_type": "peer-reviewed_publication",
+        "source": "Hamilton, W. (1979) Tectonics of the Indonesian Region, U.S. Geological Survey Professional Paper 1078, 345 p.",
+        "source_url": "https://pubs.er.usgs.gov/publication/pp1078",
+        "source_type": "government_survey",
         "source_verification_status": "verified",
         "geometry_status": "needs_review",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Representative volcanic front axis (interpretive cartographic convention connecting active volcanic centers, not an individual physical fault line).",
-        "geometry_notes": "Representative volcanic front axis (interpretive cartographic convention connecting active volcanic centers, not an individual physical fault line)."
+        "geometry_notes": "Representative volcanic front axis (interpretive cartographic convention connecting active volcanic centers, not an individual physical fault line).",
+        "source_citation": "Hamilton, W. (1979) Tectonics of the Indonesian Region, U.S. Geological Survey Professional Paper 1078, 345 p.",
+        "primary_source_url": "https://pubs.er.usgs.gov/publication/pp1078",
+        "doi": "10.3133/pp1078"
       }
     },
     {
@@ -764,15 +792,18 @@
         "why_it_matters": "Key active onshore fault in West Java with well-documented morphotectonic fault scarps.",
         "location_province": "Jawa Barat",
         "data_status": "demo",
-        "source": "Badan Geologi ESDM & Daryono et al. (2019)",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Daryono, M.R., Natawidjaja, D.H., Sapiie, B., & Cummins, P. (2019) 'Earthquake Geology of the Lembang Fault, West Java, Indonesia', Tectonophysics, 751: 180–191.",
+        "source_url": "https://doi.org/10.1016/j.tecto.2018.12.014",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "LineString representation of fault trace (interface visual convention).",
-        "geometry_notes": "LineString representation of fault trace (interface visual convention)."
+        "geometry_notes": "LineString representation of fault trace (interface visual convention).",
+        "source_citation": "Daryono, M.R., Natawidjaja, D.H., Sapiie, B., & Cummins, P. (2019) 'Earthquake Geology of the Lembang Fault, West Java, Indonesia', Tectonophysics, 751: 180–191.",
+        "primary_source_url": "https://doi.org/10.1016/j.tecto.2018.12.014",
+        "doi": "10.1016/j.tecto.2018.12.014"
       }
     },
     {
@@ -811,15 +842,18 @@
         "why_it_matters": "Active fault zone responsible for periodic destructive shallow earthquakes in West Java.",
         "location_province": "Jawa Barat",
         "data_status": "demo",
-        "source": "Badan Geologi ESDM",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Marliyani, G.I., Arrowsmith, J.R., & Helmi, H. (2016) 'Characterization of slow slip rate faults in humid areas: Cimandiri fault zone, Indonesia', Journal of Geophysical Research: Earth Surface, 121(12): 2287–2308.",
+        "source_url": "https://doi.org/10.1002/2016JF003846",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "LineString representation of fault zone (interface visual convention).",
-        "geometry_notes": "LineString representation of fault zone (interface visual convention)."
+        "geometry_notes": "LineString representation of fault zone (interface visual convention).",
+        "source_citation": "Marliyani, G.I., Arrowsmith, J.R., & Helmi, H. (2016) 'Characterization of slow slip rate faults in humid areas: Cimandiri fault zone, Indonesia', Journal of Geophysical Research: Earth Surface, 121(12): 2287–2308.",
+        "primary_source_url": "https://doi.org/10.1002/2016JF003846",
+        "doi": "10.1002/2016JF003846"
       }
     },
     {
@@ -858,15 +892,18 @@
         "why_it_matters": "Critical active tectonic structure representing back-arc seismic hazard in northern Java.",
         "location_province": "Jawa Barat",
         "data_status": "demo",
-        "source": "Badan Geologi ESDM & Koulali et al. (2017)",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Koulali, A., McClusky, S., Susilo, S., Leonard, Y., et al. (2017) 'The kinematics of crustal deformation in Java from GPS observations: Implications for fault slip partitioning', Earth and Planetary Science Letters, 458: 69–79.",
+        "source_url": "https://doi.org/10.1016/j.epsl.2016.10.039",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "LineString representation of thrust zone (interface visual convention).",
-        "geometry_notes": "LineString representation of thrust zone (interface visual convention)."
+        "geometry_notes": "LineString representation of thrust zone (interface visual convention).",
+        "source_citation": "Koulali, A., McClusky, S., Susilo, S., Leonard, Y., et al. (2017) 'The kinematics of crustal deformation in Java from GPS observations: Implications for fault slip partitioning', Earth and Planetary Science Letters, 458: 69–79.",
+        "primary_source_url": "https://doi.org/10.1016/j.epsl.2016.10.039",
+        "doi": "10.1016/j.epsl.2016.10.039"
       }
     },
     {
@@ -905,15 +942,18 @@
         "why_it_matters": "Site of the devastating 2006 Mw 6.3 Yogyakarta earthquake.",
         "location_province": "DIY (Yogyakarta)",
         "data_status": "demo",
-        "source": "PVMBG ESDM & USGS",
-        "source_url": "https://vsi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Walter, T.R., Wang, R., Luehr, B.-G., et al. (2008) 'The 26 May 2006 magnitude 6.4 Yogyakarta earthquake south of Mt. Merapi volcano: Did lahar deposits amplify ground shaking and thus lead to the disaster?', Geochemistry, Geophysics, Geosystems, 9(5): Q05010.",
+        "source_url": "https://doi.org/10.1029/2007GC001810",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "LineString representation of fault trace (interface visual convention).",
-        "geometry_notes": "LineString representation of fault trace (interface visual convention)."
+        "geometry_notes": "LineString representation of fault trace (interface visual convention).",
+        "source_citation": "Walter, T.R., Wang, R., Luehr, B.-G., et al. (2008) 'The 26 May 2006 magnitude 6.4 Yogyakarta earthquake south of Mt. Merapi volcano: Did lahar deposits amplify ground shaking and thus lead to the disaster?', Geochemistry, Geophysics, Geosystems, 9(5): Q05010.",
+        "primary_source_url": "https://doi.org/10.1029/2007GC001810",
+        "doi": "10.1029/2007GC001810"
       }
     },
     {
@@ -952,15 +992,18 @@
         "why_it_matters": "Demonstrates trench-parallel slip partitioning in oblique convergent margins.",
         "location_province": "Lampung",
         "data_status": "demo",
-        "source": "Badan Geologi ESDM & Sieh and Natawidjaja (2000)",
-        "source_url": "https://geologi.esdm.go.id",
+        "source": "Sieh, K., & Natawidjaja, D. (2000) 'Neotectonics of the Sumatran fault, Indonesia', Journal of Geophysical Research: Solid Earth, 105(B12): 28295–28326.",
+        "source_url": "https://doi.org/10.1029/2000JB900120",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "LineString representation of fault segment (interface visual convention).",
-        "geometry_notes": "LineString representation of fault segment (interface visual convention)."
+        "geometry_notes": "LineString representation of fault segment (interface visual convention).",
+        "source_citation": "Sieh, K., & Natawidjaja, D. (2000) 'Neotectonics of the Sumatran fault, Indonesia', Journal of Geophysical Research: Solid Earth, 105(B12): 28295–28326.",
+        "primary_source_url": "https://doi.org/10.1029/2000JB900120",
+        "doi": "10.1029/2000JB900120"
       }
     },
     {
@@ -999,15 +1042,18 @@
         "why_it_matters": "Demonstrates rapid strike-slip terrane transport shaping Eastern Indonesia's complex tectonic mosaic.",
         "location_province": "Papua Barat Daya & Maluku",
         "data_status": "demo",
-        "source": "Badan Geologi ESDM & USGS",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Dow, D.B., & Sukamto, R. (1984) 'Late Tertiary to Quaternary tectonics of Irian Jaya', Episodes, 7(4): 3–9.",
+        "source_url": "https://doi.org/10.18814/epiiugs/1984/v7i4/001",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "LineString representation of fault system (interface visual convention).",
-        "geometry_notes": "LineString representation of fault system (interface visual convention)."
+        "geometry_notes": "LineString representation of fault system (interface visual convention).",
+        "source_citation": "Dow, D.B., & Sukamto, R. (1984) 'Late Tertiary to Quaternary tectonics of Irian Jaya', Episodes, 7(4): 3–9.",
+        "primary_source_url": "https://doi.org/10.18814/epiiugs/1984/v7i4/001",
+        "doi": "10.18814/epiiugs/1984/v7i4/001"
       }
     },
     {
@@ -1056,15 +1102,17 @@
         "why_it_matters": "Ciletuh exposes Java's oldest basement rocks, allowing geoscientists to reconstruct Cretaceous plate subduction history.",
         "location_province": "Jawa Barat",
         "data_status": "demo",
-        "source": "UNESCO Ciletuh-Palabuhanratu Geopark & Badan Geologi ESDM",
-        "source_url": "https://www.unesco.org/en/iggp/ciletuh-palabuhanratu-unesco-global-geopark",
-        "source_type": "peer-reviewed_publication",
+        "source": "UNESCO Global Geoparks Network (2018) 'Ciletuh-Palabuhanratu UNESCO Global Geopark Dossier'; Sukamto, R. (1975) P3G Bandung.",
+        "source_url": "https://en.unesco.org/global-geoparks/ciletuh-palabuhanratu",
+        "source_type": "institutional_record",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon representation of complex boundary (interface visual convention).",
-        "geometry_notes": "Polygon representation of complex boundary (interface visual convention)."
+        "geometry_notes": "Polygon representation of complex boundary (interface visual convention).",
+        "source_citation": "UNESCO Global Geoparks Network (2018) 'Ciletuh-Palabuhanratu UNESCO Global Geopark Dossier'; Sukamto, R. (1975) P3G Bandung.",
+        "primary_source_url": "https://en.unesco.org/global-geoparks/ciletuh-palabuhanratu"
       }
     },
     {
@@ -1113,15 +1161,18 @@
         "why_it_matters": "Karangsambung serves as Indonesia's open-air geological laboratory for studying subduction zone dynamics and ophiolite emplacement.",
         "location_province": "Jawa Tengah",
         "data_status": "demo",
-        "source": "Balai Informasi Geologi Karangsambung & Badan Geologi ESDM",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Wakita, K. (2000) 'Cretaceous accretionary–collision complexes in central Indonesia', Journal of Asian Earth Sciences, 18(6): 739–749; Asikin, S. (1974) Disertasi Doktor ITB.",
+        "source_url": "https://doi.org/10.1016/S1367-9120(00)00028-1",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
         "geometry_note": "Polygon representation of complex boundary (interface visual convention).",
-        "geometry_notes": "Polygon representation of complex boundary (interface visual convention)."
+        "geometry_notes": "Polygon representation of complex boundary (interface visual convention).",
+        "source_citation": "Wakita, K. (2000) 'Cretaceous accretionary–collision complexes in central Indonesia', Journal of Asian Earth Sciences, 18(6): 739–749; Asikin, S. (1974) Disertasi Doktor ITB.",
+        "primary_source_url": "https://doi.org/10.1016/S1367-9120(00)00028-1",
+        "doi": "10.1016/S1367-9120(00)00028-1"
       }
     },
     {
@@ -1152,7 +1203,7 @@
         "evidence_significance": "Stratified cranial elements confirm the survival of late Homo erectus in Java until the late Middle-to-Late Pleistocene transition.",
         "why_it_matters": "Ngandong represents the youngest globally documented population of Homo erectus, providing critical chronological constraints on hominin survival in Southeast Asia.",
         "data_status": "demo",
-        "source": "Tier 3: Widianto (2006, 2024), Berkala Arkeologi / BRIN / Rizal et al. (2020) Nature 577:381",
+        "source": "Rizal, Y., Westaway, K.E., Zaim, Y., van den Bergh, G.D., et al. (2020) 'Last appearance of Homo erectus at Ngandong, Java, 117,000–108,000 years ago', Nature, 577: 381–385.",
         "source_url": "https://doi.org/10.1038/s41586-019-1863-2",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
@@ -1160,7 +1211,10 @@
         "geometry_notes": "Coordinates verified from BRIN archaeological benchmark maps for the Ngandong Bengawan Solo high terrace excavation pit (7.2185° S, 111.4319° E).",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates verified from BRIN archaeological benchmark maps for the Ngandong Bengawan Solo high terrace excavation pit (7.2185° S, 111.4319° E)."
+        "geometry_note": "Coordinates verified from BRIN archaeological benchmark maps for the Ngandong Bengawan Solo high terrace excavation pit (7.2185° S, 111.4319° E).",
+        "source_citation": "Rizal, Y., Westaway, K.E., Zaim, Y., van den Bergh, G.D., et al. (2020) 'Last appearance of Homo erectus at Ngandong, Java, 117,000–108,000 years ago', Nature, 577: 381–385.",
+        "primary_source_url": "https://doi.org/10.1038/s41586-019-1863-2",
+        "doi": "10.1038/s41586-019-1863-2"
       }
     },
     {
@@ -1191,7 +1245,7 @@
         "evidence_significance": "Provides direct fossil evidence for the earliest hominin colonization of Sundaland during the Early Pleistocene.",
         "why_it_matters": "One of the oldest hominin specimens in Southeast Asia (~1.8 Ma), demonstrating early hominin adaptability across tropical volcanic delta environments.",
         "data_status": "demo",
-        "source": "Tier 3: Huffman et al. (2006) Journal of Human Evolution / Swisher et al. (1994) Science",
+        "source": "Huffman, O.F., Zaim, Y., Kappelman, J., Ruez, D.R., de Vos, J., & Rizal, Y. (2006) 'Relocation of the 1936 Mojokerto skull discovery site near Perning, East Java', Journal of Human Evolution, 50(4): 431–451.",
         "source_url": "https://doi.org/10.1016/j.jhevol.2005.11.002",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
@@ -1199,7 +1253,10 @@
         "geometry_notes": "Discovery locality verified via historical Geological Survey of Indonesia benchmarks and published stratigraphy in Sumberrame/Perning.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Discovery locality verified via historical Geological Survey of Indonesia benchmarks and published stratigraphy in Sumberrame/Perning."
+        "geometry_note": "Discovery locality verified via historical Geological Survey of Indonesia benchmarks and published stratigraphy in Sumberrame/Perning.",
+        "source_citation": "Huffman, O.F., Zaim, Y., Kappelman, J., Ruez, D.R., de Vos, J., & Rizal, Y. (2006) 'Relocation of the 1936 Mojokerto skull discovery site near Perning, East Java', Journal of Human Evolution, 50(4): 431–451.",
+        "primary_source_url": "https://doi.org/10.1016/j.jhevol.2005.11.002",
+        "doi": "10.1016/j.jhevol.2005.11.002"
       }
     },
     {
@@ -1230,15 +1287,18 @@
         "evidence_significance": "Intermediate cranial capacity and cranial vault contour demonstrate progressive morphological transition between classic Sangiran and Ngandong hominins.",
         "why_it_matters": "Fills a key morphological and chronological gap in Javanese human evolution, linking early Pleistocene Homo erectus to late Pleistocene forms.",
         "data_status": "demo",
-        "source": "Tier 3: Delson et al. (2001) Anat Rec / Baba et al. (2003) Science / BRIN Arkeologi",
-        "source_url": "https://doi.org/10.1002/ar.1057",
+        "source": "Baba, H., Aziz, F., Kaifu, Y., Suwa, G., Kono, R.T., & Jacob, T. (2003) 'Homo erectus Calvarium from the Pleistocene of Java', Science, 299(5611): 1384–1387; Delson et al. (2001) Anat. Rec. 262: 380-397.",
+        "source_url": "https://doi.org/10.1126/science.1079365",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "verified",
         "geometry_notes": "Coordinates anchored to the Sambungmacan canal cutoff excavation site along the Bengawan Solo meander in Sragen Regency.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates anchored to the Sambungmacan canal cutoff excavation site along the Bengawan Solo meander in Sragen Regency."
+        "geometry_note": "Coordinates anchored to the Sambungmacan canal cutoff excavation site along the Bengawan Solo meander in Sragen Regency.",
+        "source_citation": "Baba, H., Aziz, F., Kaifu, Y., Suwa, G., Kono, R.T., & Jacob, T. (2003) 'Homo erectus Calvarium from the Pleistocene of Java', Science, 299(5611): 1384–1387; Delson et al. (2001) Anat. Rec. 262: 380-397.",
+        "primary_source_url": "https://doi.org/10.1126/science.1079365",
+        "doi": "10.1126/science.1079365"
       }
     },
     {
@@ -1269,7 +1329,7 @@
         "evidence_significance": "Undeformed cranial base and vault geometry provide precise metric data on late Javanese Homo erectus cranial architecture.",
         "why_it_matters": "One of the best-preserved adult Homo erectus crania discovered in Java, showing affinities with the late Ngandong morphotype.",
         "data_status": "demo",
-        "source": "Tier 3: Sartono (1991) / Widianto & Zeitoun (2003) C. R. Palevol 2:163",
+        "source": "Widianto, H., & Zeitoun, V. (2003) 'Morphological description of the human skull cap of Ngawi', Comptes Rendus Palevol, 2(2): 163–176.",
         "source_url": "https://doi.org/10.1016/S1631-0683(03)00007-8",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
@@ -1277,7 +1337,10 @@
         "geometry_notes": "Coordinates tied directly to the Selopuro river bend gravel deposits in Pitu District, Ngawi Regency.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates tied directly to the Selopuro river bend gravel deposits in Pitu District, Ngawi Regency."
+        "geometry_note": "Coordinates tied directly to the Selopuro river bend gravel deposits in Pitu District, Ngawi Regency.",
+        "source_citation": "Widianto, H., & Zeitoun, V. (2003) 'Morphological description of the human skull cap of Ngawi', Comptes Rendus Palevol, 2(2): 163–176.",
+        "primary_source_url": "https://doi.org/10.1016/S1631-0683(03)00007-8",
+        "doi": "10.1016/S1631-0683(03)00007-8"
       }
     },
     {
@@ -1308,15 +1371,17 @@
         "evidence_significance": "Historical evidence marking the very first recognition of fossil hominin remains in Indonesia by Dubois in 1890.",
         "why_it_matters": "Historic foundational site for Indonesian paleoanthropology, establishing the type locality for the classic Middle Pleistocene Kedungbrubus Faunal Stage.",
         "data_status": "demo",
-        "source": "Tier 3: Dubois (1891) / van den Bergh (1999) Scripta Geologica / Naturalis Museum",
-        "source_url": "https://repository.naturalis.nl/pub/219808",
+        "source": "van den Bergh, G.D. (1999) 'The Late Neogene elephantoid-bearing faunas of Indonesia and their palaeozoogeographical implications', Scripta Geologica, 117: 1–419; Dubois, E. (1891).",
+        "source_url": "https://repository.naturalis.nl/record/218998",
         "source_type": "peer-reviewed_publication",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "geometry_notes": "General Kedungbrubus reservoir valley location is well documented, but exact 1890 Dubois excavation pit retains minor field coordinate uncertainty (~500m radius).",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "General Kedungbrubus reservoir valley location is well documented, but exact 1890 Dubois excavation pit retains minor field coordinate uncertainty (~500m radius)."
+        "geometry_note": "General Kedungbrubus reservoir valley location is well documented, but exact 1890 Dubois excavation pit retains minor field coordinate uncertainty (~500m radius).",
+        "source_citation": "van den Bergh, G.D. (1999) 'The Late Neogene elephantoid-bearing faunas of Indonesia and their palaeozoogeographical implications', Scripta Geologica, 117: 1–419; Dubois, E. (1891).",
+        "primary_source_url": "https://repository.naturalis.nl/record/218998"
       }
     },
     {
@@ -1347,7 +1412,7 @@
         "evidence_significance": "Direct fossil evidence for Early Modern Human (Homo sapiens) occupation of the Sunda Peninsula during the Late Pleistocene.",
         "why_it_matters": "Wajak is Indonesia's first scientifically described modern human fossil site, essential for understanding late Quaternary human dispersal into Wallacea and Sahul.",
         "data_status": "demo",
-        "source": "Tier 3: Storm et al. (2013) Journal of Human Evolution 64:356 / BRIN Arkeologi",
+        "source": "Storm, P., Wood, R., Stringer, C., Bartsiokas, A., de Vos, J., Aubert, M., Kinsley, L., & Grün, R. (2013) 'U-series and AMS 14C dating of Wadjak and Flores hominids', Journal of Human Evolution, 64(5): 356–365.",
         "source_url": "https://doi.org/10.1016/j.jhevol.2012.09.002",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
@@ -1355,7 +1420,10 @@
         "geometry_notes": "Gua Wajak cave entrance coordinates confirmed via BRIN archaeological survey reports and East Java cultural heritage registry.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Gua Wajak cave entrance coordinates confirmed via BRIN archaeological survey reports and East Java cultural heritage registry."
+        "geometry_note": "Gua Wajak cave entrance coordinates confirmed via BRIN archaeological survey reports and East Java cultural heritage registry.",
+        "source_citation": "Storm, P., Wood, R., Stringer, C., Bartsiokas, A., de Vos, J., Aubert, M., Kinsley, L., & Grün, R. (2013) 'U-series and AMS 14C dating of Wadjak and Flores hominids', Journal of Human Evolution, 64(5): 356–365.",
+        "primary_source_url": "https://doi.org/10.1016/j.jhevol.2012.09.002",
+        "doi": "10.1016/j.jhevol.2012.09.002"
       }
     },
     {
@@ -1386,15 +1454,17 @@
         "evidence_significance": "Demonstrates rich insular mammal biodiversity and co-occurring hominin presence around the isolated Muria volcanic island.",
         "why_it_matters": "Patiayam preserves one of Java's richest vertebrate fossil assemblages, providing crucial evidence on island biogeography and ancient megafaunal ecology.",
         "data_status": "demo",
-        "source": "Tier 3: Zaim et al. (2012) ITB Journal of Science / Situs Museum Patiayam / Balai Arkeologi Yogyakarta",
-        "source_url": "https://journal.itb.ac.id/index.php/jts",
+        "source": "Zaim, Y., Rizal, Y., Aswan, Ciochon, R.L., et al. (2011) 'Geological and paleontological investigations at Patiayam, Central Java', ITB Journal of Science; van den Bergh (1999) Scripta Geologica 117.",
+        "source_url": "",
         "source_type": "peer-reviewed_publication",
-        "source_verification_status": "verified",
+        "source_verification_status": "partially_verified",
         "geometry_status": "verified",
         "geometry_notes": "Coordinates anchor to the core Patiayam Museum & primary excavation ridge in Terban, Jekulo, Kudus.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates anchor to the core Patiayam Museum & primary excavation ridge in Terban, Jekulo, Kudus."
+        "geometry_note": "Coordinates anchor to the core Patiayam Museum & primary excavation ridge in Terban, Jekulo, Kudus.",
+        "source_citation": "Zaim, Y., Rizal, Y., Aswan, Ciochon, R.L., et al. (2011) 'Geological and paleontological investigations at Patiayam, Central Java', ITB Journal of Science; van den Bergh (1999) Scripta Geologica 117.",
+        "primary_source_url": ""
       }
     },
     {
@@ -1425,15 +1495,17 @@
         "evidence_significance": "Documents the environmental transition from open woodland to humid rainforest, marking the appearance of rainforest-adapted Homo sapiens in Java.",
         "why_it_matters": "Punung is the type locality of the Late Pleistocene rainforest Punung Fauna (~128 ka), establishing a crucial ecological boundary in Southeast Asian prehistory.",
         "data_status": "demo",
-        "source": "Tier 3: Simanjuntak et al. (2004) / Sémah et al. (2004) Courier Forschungsinstitut Senckenberg / BRIN",
-        "source_url": "https://berkalaarkeologi.kemdikbud.go.id",
+        "source": "Sémah, A.M., Sémah, F., Djubiantono, T., & Simanjuntak, T. (2004) 'Stegodons and humans in the karst of Gunung Sewu', Courier Forschungsinstitut Senckenberg, 250: 175–190.",
+        "source_url": "",
         "source_type": "peer-reviewed_publication",
-        "source_verification_status": "verified",
+        "source_verification_status": "partially_verified",
         "geometry_status": "verified",
         "geometry_notes": "Coordinates verified from Song Terus cave entrance benchmark in Punung District, Pacitan Regency.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates verified from Song Terus cave entrance benchmark in Punung District, Pacitan Regency."
+        "geometry_note": "Coordinates verified from Song Terus cave entrance benchmark in Punung District, Pacitan Regency.",
+        "source_citation": "Sémah, A.M., Sémah, F., Djubiantono, T., & Simanjuntak, T. (2004) 'Stegodons and humans in the karst of Gunung Sewu', Courier Forschungsinstitut Senckenberg, 250: 175–190.",
+        "primary_source_url": ""
       }
     },
     {
@@ -1464,15 +1536,18 @@
         "evidence_significance": "Dual significance: records a complete ecological turnover from shallow marine bay to terrestrial woodland hosting early hominins and giant primates.",
         "why_it_matters": "Semedo is a uniquely comprehensive site in western Central Java, bridging marine micropaleontology, Pleistocene megafauna evolution, and early human dispersal.",
         "data_status": "demo",
-        "source": "Tier 3: Balai Arkeologi Yogyakarta / Widianto et al. (2015) Berkala Arkeologi / BRIN",
-        "source_url": "https://berkalaarkeologi.kemdikbud.go.id",
+        "source": "Widianto, H., Hidayat, M., & Siswanto (2015) 'Situs Semedo: Kronologi Plio-Pleistosen dan Jejak Kehadiran Manusia Purba di Jawa', Berkala Arkeologi, 35(1): 1–16.",
+        "source_url": "https://doi.org/10.30883/jba.v35i1.47",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "verified",
         "geometry_notes": "Coordinates anchor to the Semedo Site Museum and core discovery outcrop ridge in Kedungbanteng, Tegal Regency.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates anchor to the Semedo Site Museum and core discovery outcrop ridge in Kedungbanteng, Tegal Regency."
+        "geometry_note": "Coordinates anchor to the Semedo Site Museum and core discovery outcrop ridge in Kedungbanteng, Tegal Regency.",
+        "source_citation": "Widianto, H., Hidayat, M., & Siswanto (2015) 'Situs Semedo: Kronologi Plio-Pleistosen dan Jejak Kehadiran Manusia Purba di Jawa', Berkala Arkeologi, 35(1): 1–16.",
+        "primary_source_url": "https://doi.org/10.30883/jba.v35i1.47",
+        "doi": "10.30883/jba.v35i1.47"
       }
     },
     {
@@ -1503,7 +1578,7 @@
         "evidence_significance": "Proves early hominin oceanic island colonization and extreme rapid body size reduction east of Wallace's Line prior to 700,000 BP.",
         "why_it_matters": "Mata Menge reveals the direct ancestral lineage of Homo floresiensis, resolving long-standing evolutionary debates regarding hominin arrival on Flores.",
         "data_status": "demo",
-        "source": "Tier 3: Brumm et al. (2016) Nature 534:249 / van den Bergh et al. (2016) Nature 534:245 / Amerta (BRIN)",
+        "source": "Brumm, A., van den Bergh, G.D., Storey, M., Kurniawan, I., et al. (2016) 'Age and context of the oldest known hominin fossils from Flores', Nature, 534: 249–253.",
         "source_url": "https://doi.org/10.1038/nature17663",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
@@ -1511,7 +1586,10 @@
         "geometry_notes": "Point represents the internationally documented Mata Menge excavation grid as the representative focal site within the broad 35x22 km Soa lacustrine basin.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Point represents the internationally documented Mata Menge excavation grid as the representative focal site within the broad 35x22 km Soa lacustrine basin."
+        "geometry_note": "Point represents the internationally documented Mata Menge excavation grid as the representative focal site within the broad 35x22 km Soa lacustrine basin.",
+        "source_citation": "Brumm, A., van den Bergh, G.D., Storey, M., Kurniawan, I., et al. (2016) 'Age and context of the oldest known hominin fossils from Flores', Nature, 534: 249–253.",
+        "primary_source_url": "https://doi.org/10.1038/nature17663",
+        "doi": "10.1038/nature17663"
       }
     },
     {
@@ -1542,15 +1620,18 @@
         "evidence_significance": "Provides primary empirical evidence for deep-time insular endemic faunal evolution and early island isolation across Wallacea.",
         "why_it_matters": "Cabenge is the type locality for Sulawesi's archaic vertebrate fauna, essential for understanding island endemism and sweepstakes dispersal across deep oceanic trenches.",
         "data_status": "demo",
-        "source": "Tier 3: van Heekeren (1958) / van den Bergh et al. (2009) Quaternary Science Reviews / Jurnal Walennae",
-        "source_url": "https://walennae.kemdikbud.go.id",
+        "source": "van den Bergh, G.D., Li, B., Brumm, A., Grün, R., et al. (2016) 'Earliest hominin occupation of Sulawesi, Indonesia', Nature, 529: 208–211; van den Bergh (1999) Scripta Geologica 117: 27-128.",
+        "source_url": "https://doi.org/10.1038/nature16448",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "verified",
         "geometry_notes": "Coordinates pinned to the classic Cabenge river terrace outcrop along the Walanae river system in Soppeng Regency.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates pinned to the classic Cabenge river terrace outcrop along the Walanae river system in Soppeng Regency."
+        "geometry_note": "Coordinates pinned to the classic Cabenge river terrace outcrop along the Walanae river system in Soppeng Regency.",
+        "source_citation": "van den Bergh, G.D., Li, B., Brumm, A., Grün, R., et al. (2016) 'Earliest hominin occupation of Sulawesi, Indonesia', Nature, 529: 208–211; van den Bergh (1999) Scripta Geologica 117: 27-128.",
+        "primary_source_url": "https://doi.org/10.1038/nature16448",
+        "doi": "10.1038/nature16448"
       }
     },
     {
@@ -1581,15 +1662,17 @@
         "evidence_significance": "Confirms the presence of large-bodied proboscideans in western Java during Early Pleistocene volcanic arc expansion.",
         "why_it_matters": "Provides tangible evidence of the western Java terrestrial migration corridor for Pleistocene megafauna dispersing across the Sunda Shelf.",
         "data_status": "demo",
-        "source": "Tier 3: Paleontology Laboratory ITB / Geological Engineering ITB Field Expedition (2018)",
-        "source_url": "https://www.itb.ac.id/berita/detail/56908",
+        "source": "Laboratorium Paleontologi, Program Studi Teknik Geologi ITB & Museum Geologi Bandung (2018), Laporan Ekskavasi dan Rekonstruksi Fosil Gading Stegodon Desa Jembarwangi, Kecamatan Tomo, Sumedang.",
+        "source_url": "",
         "source_type": "institutional_record",
         "source_verification_status": "partially_verified",
         "geometry_status": "partially_verified",
         "geometry_notes": "Coordinates anchored to Cihonje stream bed excavation zone in Tomo District; precise excavation datum carries minor field tolerance.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates anchored to Cihonje stream bed excavation zone in Tomo District; precise excavation datum carries minor field tolerance."
+        "geometry_note": "Coordinates anchored to Cihonje stream bed excavation zone in Tomo District; precise excavation datum carries minor field tolerance.",
+        "source_citation": "Laboratorium Paleontologi, Program Studi Teknik Geologi ITB & Museum Geologi Bandung (2018), Laporan Ekskavasi dan Rekonstruksi Fosil Gading Stegodon Desa Jembarwangi, Kecamatan Tomo, Sumedang.",
+        "primary_source_url": ""
       }
     },
     {
@@ -1620,15 +1703,17 @@
         "evidence_significance": "Indicates continuous megafauna habitation across the northern Kendeng-Randublatung depression during the Middle-Late Pleistocene.",
         "why_it_matters": "Represents an emerging secondary fossil locality within the Bengawan Solo basin, requiring further systematic stratigraphic excavation.",
         "data_status": "demo",
-        "source": "Tier 3: Academic literature brief mentions / Regional Geological Survey notes",
-        "source_url": "https://geologi.esdm.go.id",
+        "source": "Museum Geologi Bandung & Balai Pelestarian Situs Manusia Purba (BPSMP) Sangiran (2009/2017), Laporan Penyelamatan dan Rekonstruksi Fosil Vertebrata Teras Bengawan Solo, Sunggun (Blora) & Banjarejo (Grobogan).",
+        "source_url": "",
         "source_type": "institutional_record",
-        "source_verification_status": "needs_review",
+        "source_verification_status": "partially_verified",
         "geometry_status": "needs_review",
         "geometry_notes": "Coordinates placed at Banjarejo village center as a candidate placeholder; precise stratigraphic pit coordinates remain unconfirmed in peer-reviewed primary literature.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates placed at Banjarejo village center as a candidate placeholder; precise stratigraphic pit coordinates remain unconfirmed in peer-reviewed primary literature."
+        "geometry_note": "Coordinates placed at Banjarejo village center as a candidate placeholder; precise stratigraphic pit coordinates remain unconfirmed in peer-reviewed primary literature.",
+        "source_citation": "Museum Geologi Bandung & Balai Pelestarian Situs Manusia Purba (BPSMP) Sangiran (2009/2017), Laporan Penyelamatan dan Rekonstruksi Fosil Vertebrata Teras Bengawan Solo, Sunggun (Blora) & Banjarejo (Grobogan).",
+        "primary_source_url": ""
       }
     },
     {
@@ -1643,31 +1728,57 @@
       },
       "properties": {
         "id": "geo_cand_timor_triassic_marine",
-        "name": "Timor Triassic Cephalopod & Marine Invertebrate Beds",
+        "name": "Timor Triassic Cephalopod & Marine Reptile Beds ('Globidens timorensis')",
         "domain": "geology",
         "feature_type": "paleontology_site",
-        "description": "Representative point for the world-famous Triassic Hallstatt limestone pelagic cephalopod and marine invertebrate fossil beds in West Timor (Baun/Bitauni area), studied internationally since 1892.",
+        "description": "Representative locality for the world-famous Triassic Hallstatt limestone pelagic cephalopod beds in West Timor (Baun/Bitauni/Noil Bihati area), famously including the historical paleontological enigma of 'Globidens timorensis'—bulbous durophagous marine reptile teeth originally described by von Huene (1935) as a mosasaur, but conclusively reidentified as an enigmatic Triassic ichthyosaur (Mulder & Jagt, 2019).",
         "geological_process": "Deep-Marine Pelagic Carbonate Sedimentation",
         "geological_age": "Triassic (~250 - 201 Ma)",
         "geological_period": "Triassic",
-        "taxon_name": "Arcestes / Monophyllites / Halobia / Halorella",
+        "taxon_name": "Arcestes / Monophyllites / Halobia / 'Globidens timorensis' (Ichthyosauria)",
         "discovery_locality": "Baun / Bitauni / Noil Bihati, West Timor, NTT",
-        "fossil_material": "Pelagic Ammonites (Arcestes, Joannites), Brachiopods (Halorella), Bivalves (Daonella, Halobia)",
+        "fossil_material": "Pelagic Ammonites (Arcestes, Joannites), Bivalves (Daonella, Halobia), Brachiopods (Halorella), and durophagous marine reptile tooth crowns ('Globidens timorensis' / Triassic ichthyosaur)",
         "paleoenvironment": "Tethyan deep pelagic carbonate seamount & open ocean basin",
         "evidence_type": "Fossil",
-        "evidence_description": "Pristinely preserved pelagic ammonites, brachiopods, and thin-shelled bivalves embedded in red and grey cephalopod-bearing Hallstatt-type limestones.",
-        "evidence_significance": "Provides globally critical biostratigraphic index fossils correlating Gondwana margin Tethyan marine sequences across the Southern Hemisphere.",
-        "why_it_matters": "Timor possesses one of the world's richest and most complete Triassic pelagic marine invertebrate fossil records, documented in classic paleontological literature since 1892.",
+        "evidence_description": "Pristinely preserved pelagic ammonites, brachiopods, and thin-shelled bivalves embedded in red and grey cephalopod-bearing Hallstatt-type limestones, alongside durophagous marine reptile dental fossils resolving historical Tethyan marine reptile biostratigraphy.",
+        "evidence_significance": "Provides globally critical biostratigraphic index fossils correlating Gondwana margin Tethyan marine sequences, and clarifies the Triassic durophagous reptile fossil record in Southeast Asia.",
+        "why_it_matters": "West Timor holds one of the world's richest Triassic Tethyan marine biotas, famous both for global pelagic biostratigraphy and for resolving historical paleontological puzzles like 'Globidens timorensis' (Huene 1935; Mulder & Jagt 2019).",
         "data_status": "demo",
-        "source": "Tier 1: Jurnal Geologi Indonesia (Pusat Survei Geologi / ESDM) & Wanner (1911, 1932)",
-        "source_url": "https://ijog.geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Mulder, E.W.A. & Jagt, J.W.M. (2019) N. Jb. Geol. Paläont. Abh. 293(1): 107–116; Charlton, T.R. (2001) J. Asian Earth Sci. 19(5): 595–617; Haig, D.W. et al. (2021) Palaeogeogr. Palaeoclimatol. Palaeoecol. 571: 110362; Wanner, J. (1911) Triascephalopoden von Timor und Rotti.",
+        "source_url": "https://doi.org/10.1127/njgpa/2019/0835",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "geometry_status": "verified",
         "geometry_notes": "Point serves as a representative area marker for the Baun-Noil Bihati Triassic limestone formation outcrop belt, not a single individual shell discovery point.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Point serves as a representative area marker for the Baun-Noil Bihati Triassic limestone formation outcrop belt, not a single individual shell discovery point."
+        "geometry_note": "Point serves as a representative area marker for the Baun-Noil Bihati Triassic limestone formation outcrop belt, not a single individual shell discovery point.",
+        "source_citation": "Mulder, E.W.A. & Jagt, J.W.M. (2019) N. Jb. Geol. Paläont. Abh. 293(1): 107–116; Charlton, T.R. (2001) J. Asian Earth Sci. 19(5): 595–617; Haig, D.W. et al. (2021) Palaeogeogr. Palaeoclimatol. Palaeoecol. 571: 110362; Wanner, J. (1911) Triascephalopoden von Timor und Rotti.",
+        "primary_source_url": "https://doi.org/10.1127/njgpa/2019/0835",
+        "doi": "10.1127/njgpa/2019/0835",
+        "sources": [
+          {
+            "title": "Globidens(?) timorensis E. von Huene, 1935: not a durophagous mosasaur, but an enigmatic Triassic ichthyosaur",
+            "citation": "Mulder, E.W.A. & Jagt, J.W.M. (2019). Neues Jahrbuch für Geologie und Paläontologie - Abhandlungen, 293(1): 107–116.",
+            "url": "https://doi.org/10.1127/njgpa/2019/0835",
+            "type": "peer-reviewed_publication",
+            "topic": "Marine Reptile Dental Morphology & Biostratigraphy"
+          },
+          {
+            "title": "Permo-Triassic evolution of Gondwanan eastern Indonesia, and the final Mesozoic separation of SE Asia from Australia",
+            "citation": "Charlton, T.R. (2001). Journal of Asian Earth Sciences, 19(5): 595–617.",
+            "url": "https://doi.org/10.1016/S1367-9120(00)00054-7",
+            "type": "peer-reviewed_publication",
+            "topic": "Regional Stratigraphy & Triassic Marine Basins"
+          },
+          {
+            "title": "Upper Triassic carbonate-platform facies, Timor: Foraminiferal indices and tectonostratigraphic association",
+            "citation": "Haig, D.W., McCartain, E., Backhouse, J., et al. (2021). Palaeogeography, Palaeoclimatology, Palaeoecology, 571: 110362.",
+            "url": "https://doi.org/10.1016/j.palaeo.2021.110362",
+            "type": "peer-reviewed_publication",
+            "topic": "Triassic Carbonate Facies & Pelagic Biostratigraphy"
+          }
+        ]
       }
     },
     {
@@ -1698,15 +1809,18 @@
         "evidence_significance": "Establishes Middle Triassic (Anisian) marine sedimentation on Gondwana-derived microcontinental blocks in eastern Indonesia.",
         "why_it_matters": "Misool provides the most continuous and undisturbed Mesozoic marine sedimentary sequence in the Australasian region, essential for Pacific-Tethys correlation.",
         "data_status": "demo",
-        "source": "Tier 1: Hasibuan (2012) Bulletin of Geological Survey / ESDM Jurnal Geologi Indonesia",
-        "source_url": "https://ijog.geologi.esdm.go.id",
-        "source_type": "government_survey",
-        "source_verification_status": "partially_verified",
+        "source": "Hasibuan, F. (2010) 'The Triassic Marine Biota of Eastern Indonesia and its Interregional and Global Correlation: A Review', Indonesian Journal on Geoscience, 5(1): 31-47; Hasibuan, F. (2012) Bulletin of Geological Survey.",
+        "source_url": "https://doi.org/10.17014/ijog.5.1.31-47",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
         "geometry_status": "partially_verified",
         "geometry_notes": "Coordinates anchored to Keskain Formation coastal outcrop sector in Southern Misool; specific fossil bedding plane coordinates retain minor spatial range.",
         "record_compilation_date": "2026-09-15",
         "last_updated": "2026-09-15",
-        "geometry_note": "Coordinates anchored to Keskain Formation coastal outcrop sector in Southern Misool; specific fossil bedding plane coordinates retain minor spatial range."
+        "geometry_note": "Coordinates anchored to Keskain Formation coastal outcrop sector in Southern Misool; specific fossil bedding plane coordinates retain minor spatial range.",
+        "source_citation": "Hasibuan, F. (2010) 'The Triassic Marine Biota of Eastern Indonesia and its Interregional and Global Correlation: A Review', Indonesian Journal on Geoscience, 5(1): 31-47; Hasibuan, F. (2012) Bulletin of Geological Survey.",
+        "primary_source_url": "https://doi.org/10.17014/ijog.5.1.31-47",
+        "doi": "10.17014/ijog.5.1.31-47"
       }
     },
     {
@@ -1774,16 +1888,19 @@
         "verification_status": "partially_verified",
         "geometry_status": "needs_review",
         "geometry_note": "Representative regional boundary polygon enclosing the Molucca Sea collision complex and Talaud-Mayu deformation zone between the opposing Sangihe and Halmahera forearcs, based on Silver & Moore (1978) and Rachman et al. (2022). Official cartographic symbology is a UI convention, not official geological symbology.",
-        "source": "Silver & Moore (1978), Journal of Geophysical Research; Rachman et al. (2022), Applied Sciences; Widiyantoro (2003), ITB Journal of Engineering and Technological Sciences",
+        "source": "Silver, E.A., & Moore, J.C. (1978) 'The Molucca Sea Collision Zone, Indonesia', Journal of Geophysical Research: Solid Earth, 83(B4): 1681–1691.",
         "source_url": "https://doi.org/10.1029/JB083iB04p01681",
         "source_type": "peer-reviewed_publication",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "verified",
         "evidence_type": "Geological Structure",
         "evidence_description": "Inverted U-shaped seismicity Benioff zones dipping both westward and eastward beneath Sangihe and Halmahera, combined with thick central melange and ophiolitic crust exposed on Mayu, Tifore, and the Talaud Islands.",
         "evidence_significance": "Provides the definitive modern analog for ancient arc-arc collision sutures preserved in orogenic belts worldwide.",
         "why_it_matters": "Demonstrates the complete closure of an oceanic basin in real-time, illustrating how continental crust grows through tectonic accretion and arc collision.",
         "last_updated": "2026-09-15",
-        "record_compilation_date": "2026-09-15"
+        "record_compilation_date": "2026-09-15",
+        "source_citation": "Silver, E.A., & Moore, J.C. (1978) 'The Molucca Sea Collision Zone, Indonesia', Journal of Geophysical Research: Solid Earth, 83(B4): 1681–1691.",
+        "primary_source_url": "https://doi.org/10.1029/JB083iB04p01681",
+        "doi": "10.1029/JB083iB04p01681"
       }
     },
     {
@@ -1841,16 +1958,19 @@
         "verification_status": "partially_verified",
         "geometry_status": "needs_review",
         "geometry_note": "Representative LineString connecting primary active volcanic centers along the Sangihe arc volcanic front (Lokon, Ruang, Karangetang, Awu) to Mindanao border, based on PVMBG active volcano catalogs and Morrice et al. (1983). Official cartographic symbology is a UI convention, not official geological symbology.",
-        "source": "Morrice et al. (1983), Journal of Volcanology and Geothermal Research; Hall & Smyth (2008), GSA Special Papers; Pusat Vulkanologi dan Mitigasi Bencana Geologi (PVMBG)",
-        "source_url": "https://doi.org/10.1016/0377-0273(83)90008-0",
+        "source": "Morrice, M.G., Jezek, P.A., Gill, J.B., Whitford, D.J., & Monoarfa, M. (1983) 'An introduction to the Sangihe arc: Volcanism accompanying arc–arc collision in the Molucca Sea, Indonesia', Journal of Volcanology and Geothermal Research, 19(1-2): 135-165.",
+        "source_url": "https://doi.org/10.1016/0377-0273(83)90129-4",
         "source_type": "peer-reviewed_publication",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "verified",
         "evidence_type": "Landform",
         "evidence_description": "Continuous chain of active calc-alkaline to high-K stratovolcanoes and subaerial volcanic islands with deep Wadati-Benioff seismic zone dipping west to depths >600 km.",
         "evidence_significance": "Key volcanic arc system recording subduction-driven magma generation and volcanic hazard evolution in Northern Indonesia.",
         "why_it_matters": "Hosts several of Indonesia's most frequently active hazardous volcanoes (e.g., Karangetang and Ruang) with direct tsunami and ashfall risks to coastal island populations.",
         "last_updated": "2026-09-15",
-        "record_compilation_date": "2026-09-15"
+        "record_compilation_date": "2026-09-15",
+        "source_citation": "Morrice, M.G., Jezek, P.A., Gill, J.B., Whitford, D.J., & Monoarfa, M. (1983) 'An introduction to the Sangihe arc: Volcanism accompanying arc–arc collision in the Molucca Sea, Indonesia', Journal of Volcanology and Geothermal Research, 19(1-2): 135-165.",
+        "primary_source_url": "https://doi.org/10.1016/0377-0273(83)90129-4",
+        "doi": "10.1016/0377-0273(83)90129-4"
       }
     },
     {
@@ -1904,16 +2024,19 @@
         "verification_status": "partially_verified",
         "geometry_status": "needs_review",
         "geometry_note": "Representative LineString connecting the active Quaternary volcanic vents along western Halmahera from Makian to Dukono based on Hakim & Hall (1991), Macpherson & Hall (2002), and PVMBG records. Official cartographic symbology is a UI convention, not official geological symbology.",
-        "source": "Hakim & Hall (1991), Journal of Southeast Asian Earth Sciences; Macpherson & Hall (2002), Island Arc; PVMBG Active Volcano Database",
-        "source_url": "https://doi.org/10.1016/0743-9547(91)90074-S",
+        "source": "Hakim, A.S., & Hall, R. (1991) 'Tertiary volcanic rocks from the Halmahera arc, eastern Indonesia', Journal of Southeast Asian Earth Sciences, 6(3/4): 271–287.",
+        "source_url": "https://doi.org/10.1016/0743-9547(91)90069-9",
         "source_type": "peer-reviewed_publication",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "verified",
         "evidence_type": "Landform",
         "evidence_description": "Active basaltic-andesite to dacitic stratovolcanoes and caldera islands with an eastward-dipping seismic Wadati-Benioff zone reaching depths of ~200-250 km.",
         "evidence_significance": "Demonstrates the young, active eastern branch of the Molucca Sea collision zone and illustrates rapid arc magmatism development in island setting.",
         "why_it_matters": "Active explosive volcanoes (Ibu, Dukono, Gamalama) require continuous hazard monitoring for North Maluku's provincial population centers and air routes.",
         "last_updated": "2026-09-15",
-        "record_compilation_date": "2026-09-15"
+        "record_compilation_date": "2026-09-15",
+        "source_citation": "Hakim, A.S., & Hall, R. (1991) 'Tertiary volcanic rocks from the Halmahera arc, eastern Indonesia', Journal of Southeast Asian Earth Sciences, 6(3/4): 271–287.",
+        "primary_source_url": "https://doi.org/10.1016/0743-9547(91)90069-9",
+        "doi": "10.1016/0743-9547(91)90069-9"
       }
     },
     {
@@ -1977,16 +2100,19 @@
         "verification_status": "verified",
         "geometry_status": "needs_review",
         "geometry_note": "Representative terrane boundary polygon enclosing the Peleng, Banggai, Taliabu, Mangole, and Sanana continental platform, based on ESDM Marine Geological Institute surveys (Usman & Panuju 2013) and Garrard et al. (IPA 1988). Official cartographic symbology is a UI convention, not official geological symbology.",
-        "source": "Usman & Panuju (2013), Bulletin of the Marine Geology (ESDM); Garrard et al. (1988), Proceedings Indonesian Petroleum Association (IPA); Pigram et al. (1985), Geology",
-        "source_url": "https://ejournal.mgi.esdm.go.id/index.php/bmg/article/view/174",
-        "source_type": "government_survey",
+        "source": "Pigram, C.J., Surono, & Supandjono, J.B. (1985) 'Origin of the Sula Platform, eastern Indonesia', Geology, 13(4): 246–248; Usman & Panuju (2013) Bulletin of the Marine Geology 28(2): 51-60.",
+        "source_url": "https://doi.org/10.1130/0091-7613(1985)13<246:OOTSPE>2.0.CO;2",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "evidence_type": "Rock",
         "evidence_description": "Paleozoic granitic-metamorphic continental basement unconformably overlain by Mesozoic continental-to-marine strata and Tertiary platform carbonates.",
         "evidence_significance": "Crucial evidence for continental collision mechanics and the origin of exotic terranes in the complex tectonic junction of Eastern Indonesia.",
         "why_it_matters": "Provides key geological framework for petroleum exploration in the Banggai Basin and understanding Sulawesi's mountainous structural evolution.",
         "last_updated": "2026-09-15",
-        "record_compilation_date": "2026-09-15"
+        "record_compilation_date": "2026-09-15",
+        "source_citation": "Pigram, C.J., Surono, & Supandjono, J.B. (1985) 'Origin of the Sula Platform, eastern Indonesia', Geology, 13(4): 246–248; Usman & Panuju (2013) Bulletin of the Marine Geology 28(2): 51-60.",
+        "primary_source_url": "https://doi.org/10.1130/0091-7613(1985)13<246:OOTSPE>2.0.CO;2",
+        "doi": "10.1130/0091-7613(1985)13<246:OOTSPE>2.0.CO;2"
       }
     },
     {
@@ -2042,16 +2168,19 @@
         "verification_status": "partially_verified",
         "geometry_status": "needs_review",
         "geometry_note": "Representative boundary polygon outlining the steep Cyclops mountain massif and ophiolite outcrop north of Lake Sentani based on Monnier et al. (1999) and Salahuddin et al. (2018). Official cartographic symbology is a UI convention, not official geological symbology.",
-        "source": "Monnier et al. (1999), Ofioliti; Salahuddin et al. (2018), Journal of Applied Geology (UGM); Fadlin et al. (2017), Joint Convention Malang (HAGI-IAGI)",
-        "source_url": "https://www.researchgate.net/publication/285317079_Petrological_and_geochemical_constraints_on_the_origin_of_the_Cyclops_ophiolite_Irian_Jaya_Indonesia",
+        "source": "Monnier, C., Girardeau, J., Pubellier, M., Polvé, M., Permana, H., & Bellon, H. (1999) 'Petrology and geochemistry of the Cyclops ophiolites (Irian Jaya, East Indonesia): consequences for the Cenozoic evolution of the north Australian margin', Mineralogy and Petrology, 65(1): 1–28.",
+        "source_url": "https://doi.org/10.1007/BF01161574",
         "source_type": "peer-reviewed_publication",
-        "source_verification_status": "partially_verified",
+        "source_verification_status": "verified",
         "evidence_type": "Rock",
         "evidence_description": "Exposed sequence of ultramafic peridotites, pyroxenites, layered gabbros, and amphibolites with high-grade metamorphic sole rock at base of obduction thrust.",
         "evidence_significance": "Documents the major Cenozoic arc-continent accretionary event that shaped the northern margin of the New Guinea landmass.",
         "why_it_matters": "Forms a critical environmental watershed for the Jayapura-Sentani metropolitan basin while presenting steep landslide and debris-flow hazards during torrential rains.",
         "last_updated": "2026-09-15",
-        "record_compilation_date": "2026-09-15"
+        "record_compilation_date": "2026-09-15",
+        "source_citation": "Monnier, C., Girardeau, J., Pubellier, M., Polvé, M., Permana, H., & Bellon, H. (1999) 'Petrology and geochemistry of the Cyclops ophiolites (Irian Jaya, East Indonesia): consequences for the Cenozoic evolution of the north Australian margin', Mineralogy and Petrology, 65(1): 1–28.",
+        "primary_source_url": "https://doi.org/10.1007/BF01161574",
+        "doi": "10.1007/BF01161574"
       }
     },
     {
@@ -2105,16 +2234,19 @@
         "verification_status": "verified",
         "geometry_status": "needs_review",
         "geometry_note": "Representative LineString tracing the active Palu-Koro fault trace through Palu Bay and the intermontane pull-apart valley, based on PuSGeN / ESDM Active Fault Map (2017) and Bao et al. (Nature Geoscience 2019). Official cartographic symbology is a UI convention, not official geological symbology.",
-        "source": "Pusat Studi Gempa Nasional (PuSGeN) / Badan Geologi ESDM (2017); Bao et al. (2019), Nature Geoscience; Socquet et al. (2006), JGR Solid Earth",
+        "source": "Bao, H., Ampuero, J.-P., Meng, L., Fielding, E.J., Liang, C., Milliner, C.W.D., Feng, T., & Huang, H. (2019) 'Early and persistent supershear rupture of the 2018 Mw 7.5 Palu earthquake', Nature Geoscience, 12: 200–205.",
         "source_url": "https://doi.org/10.1038/s41561-018-0297-z",
-        "source_type": "government_survey",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "evidence_type": "Geological Structure",
         "evidence_description": "Prominent geomorphic fault scarps, offset river channels, linear pull-apart graben valley, and well-documented 2018 surface rupture offsets exceeding 5 meters.",
         "evidence_significance": "A globally benchmarked strike-slip fault illustrating persistent supershear earthquake rupture dynamics, submarine landsliding, and major soil liquefaction.",
         "why_it_matters": "Direct seismic and geohazard threat to Palu City and Central Sulawesi; cross-referenced with historical hazard event haz_palu_2018.",
         "last_updated": "2026-09-15",
-        "record_compilation_date": "2026-09-15"
+        "record_compilation_date": "2026-09-15",
+        "source_citation": "Bao, H., Ampuero, J.-P., Meng, L., Fielding, E.J., Liang, C., Milliner, C.W.D., Feng, T., & Huang, H. (2019) 'Early and persistent supershear rupture of the 2018 Mw 7.5 Palu earthquake', Nature Geoscience, 12: 200–205.",
+        "primary_source_url": "https://doi.org/10.1038/s41561-018-0297-z",
+        "doi": "10.1038/s41561-018-0297-z"
       }
     },
     {
@@ -2145,16 +2277,18 @@
         "verification_status": "verified",
         "geometry_status": "verified",
         "geometry_note": "Point precisely anchored to the classic Kali Songgo type section near Watupuru/Kembang in Nanggulan, Kulon Progo, based on P3G/Badan Geologi sheet mapping and paleontological type literature.",
-        "source": "Tier 1: Siregar et al. (JGSM / Badan Geologi ESDM); Rahardjo et al. (1995) Peta Geologi Lembar Yogyakarta; Martin (1914-1915)",
-        "source_url": "https://jgsm.geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Martin, K. (1914–1915) 'Die Fauna des Obereocäns von Nanggulan, auf Java', Sammlungen des Geologischen Reichs-Museums in Leiden, Neue Folge, Bd. II, Heft IV-V, pp. 107-222; Rahardjo et al. (1995) Peta Geologi Lembar Yogyakarta (P3G Bandung).",
+        "source_url": "https://repository.naturalis.nl/pub/509568",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "evidence_type": "Fossil",
         "evidence_description": "Pristinely preserved aragonitic mollusk shells, larger foraminifera tests, and solitary corals weathering out of quartz sandstones and lignite-bearing silty claystones along river banks.",
         "evidence_significance": "International paleontological benchmark for Eocene-Oligocene macro-invertebrate and foraminiferal biostratigraphy across the Indo-Pacific realm.",
         "why_it_matters": "Represents the oldest sedimentary basement of the Kulon Progo dome; demonstrates initial Cenozoic marine transgression across Sundaland before major volcanic arc development.",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-15"
+        "last_updated": "2026-09-15",
+        "source_citation": "Martin, K. (1914–1915) 'Die Fauna des Obereocäns von Nanggulan, auf Java', Sammlungen des Geologischen Reichs-Museums in Leiden, Neue Folge, Bd. II, Heft IV-V, pp. 107-222; Rahardjo et al. (1995) Peta Geologi Lembar Yogyakarta (P3G Bandung).",
+        "primary_source_url": "https://repository.naturalis.nl/pub/509568"
       }
     },
     {
@@ -2185,16 +2319,18 @@
         "verification_status": "verified",
         "geometry_status": "verified",
         "geometry_note": "Point anchored to the primary Baturaja type outcrop and karst quarry area in Ogan Komering Ulu, based on Gafoer et al. (1993) P3G/Badan Geologi mapping.",
-        "source": "Tier 1: Gafoer et al. (1993) Peta Geologi Lembar Baturaja (Pusat Penelitian dan Pengembangan Geologi / ESDM); Jurnal Geologi dan Sumberdaya Mineral (Badan Geologi)",
-        "source_url": "https://jgsm.geologi.esdm.go.id",
+        "source": "Gafoer, S., Amin, T.C., & Pardede, R. (1993) Peta Geologi Lembar Baturaja, Sumatera Selatan (Skala 1:250.000), Pusat Penelitian dan Pengembangan Geologi (P3G), Bandung; Basuki & McElroy (1973) Proc. IPA 2nd Ann. Conv., pp. 97–112.",
+        "source_url": "",
         "source_type": "government_survey",
-        "source_verification_status": "verified",
+        "source_verification_status": "partially_verified",
         "evidence_type": "Fossil",
         "evidence_description": "Massive skeletal packstones, boundstones, and wackestones rich in larger foraminiferal tests, branching coral colonies, and coralline algal crusts forming distinctive karst topography.",
         "evidence_significance": "Key biostratigraphic marker for the Early Miocene marine transgressive climax across the back-arc basins of western Indonesia.",
         "why_it_matters": "Provides crucial paleoclimate and paleoecological records of the Miocene Climatic Optimum and forms the primary productive carbonate reservoir rock in South Sumatra.",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-15"
+        "last_updated": "2026-09-15",
+        "source_citation": "Gafoer, S., Amin, T.C., & Pardede, R. (1993) Peta Geologi Lembar Baturaja, Sumatera Selatan (Skala 1:250.000), Pusat Penelitian dan Pengembangan Geologi (P3G), Bandung; Basuki & McElroy (1973) Proc. IPA 2nd Ann. Conv., pp. 97–112.",
+        "primary_source_url": ""
       }
     },
     {
@@ -2225,16 +2361,18 @@
         "verification_status": "verified",
         "geometry_status": "verified",
         "geometry_note": "Point located at the primary Karangbolong limestone cliff and karst ridge in southern Kebumen, based on Asikin et al. (1992) P3G/Badan Geologi geological mapping.",
-        "source": "Tier 1: Asikin et al. (1992) Peta Geologi Lembar Kebumen (Pusat Penelitian dan Pengembangan Geologi / ESDM); Pusat Survei Geologi",
-        "source_url": "https://jgsm.geologi.esdm.go.id",
+        "source": "Asikin, S., Handoyo, A., Busono, H., & Gafoer, S. (1992) Peta Geologi Lembar Kebumen, Jawa (Skala 1:100.000), Pusat Penelitian dan Pengembangan Geologi (P3G), Bandung.",
+        "source_url": "",
         "source_type": "government_survey",
-        "source_verification_status": "verified",
+        "source_verification_status": "partially_verified",
         "evidence_type": "Fossil",
         "evidence_description": "Well-bedded to massive bioclast-rich limestones and reefal floatstones exposed along sea cliffs and karst towers containing dense concentrations of discoidal foraminifera and coral fragments.",
         "evidence_significance": "Documents the transition from Paleogene deep-subduction mélangé (Karangsambung) to Neogene shallow-water arc carbonate deposition in Central Java.",
         "why_it_matters": "Provides key structural and paleontological links between Java's subduction basement and overlying Neogene volcanic-carbonate cover sequences.",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-15"
+        "last_updated": "2026-09-15",
+        "source_citation": "Asikin, S., Handoyo, A., Busono, H., & Gafoer, S. (1992) Peta Geologi Lembar Kebumen, Jawa (Skala 1:100.000), Pusat Penelitian dan Pengembangan Geologi (P3G), Bandung.",
+        "primary_source_url": ""
       }
     },
     {
@@ -2265,16 +2403,19 @@
         "verification_status": "verified",
         "geometry_status": "verified",
         "geometry_note": "Point precisely positioned on the type reef limestone ridge at Gunung Masigit / Guha Pawon, Padalarang, based on Sudjatmiko (2003) Badan Geologi mapping and UNPAD stratigraphic research.",
-        "source": "Sudjatmiko (1972/2003) Peta Geologi Lembar Cianjur (Badan Geologi ESDM); Maryunani et al. (2012) Universitas Padjadjaran; Siregar (2005) Jurnal Geologi Indonesia",
-        "source_url": "https://ijog.geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Maryanto, S. (2009) 'Pendolomitan Batugamping Formasi Rajamandala di Lintasan Gua Pawon, Bandung Barat', Indonesian Journal on Geoscience (IJOG), 4(3): 203-213.",
+        "source_url": "https://doi.org/10.17014/ijog.4.3.203-213",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "evidence_type": "Fossil",
         "evidence_description": "Tower karst cliffs composed of recrystallized boundstones and grainstones densely packed with coin-sized Lepidocyclina tests and preserved coral frameworks.",
         "evidence_significance": "The definitive stratotype for Late Oligocene to Early Miocene (Letter Stage Te1-4) larger foraminiferal zonation in Sundaland.",
         "why_it_matters": "Exemplifies classic tropical reef development in an active volcanic-tectonic basin; prominent geoheritage site and vital source of paleotectonic data for western Java.",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-15"
+        "last_updated": "2026-09-15",
+        "source_citation": "Maryanto, S. (2009) 'Pendolomitan Batugamping Formasi Rajamandala di Lintasan Gua Pawon, Bandung Barat', Indonesian Journal on Geoscience (IJOG), 4(3): 203-213.",
+        "primary_source_url": "https://doi.org/10.17014/ijog.4.3.203-213",
+        "doi": "10.17014/ijog.4.3.203-213"
       }
     },
     {
@@ -2305,8 +2446,8 @@
         "verification_status": "verified",
         "geometry_status": "verified",
         "geometry_note": "Point located at the type Jonggrangan limestone plateau near Goa Kiskendo in Girimulyo, Kulon Progo, based on Rahardjo et al. (1995) P3G/Badan Geologi mapping.",
-        "source": "Rahardjo et al. (1995) Peta Geologi Lembar Yogyakarta (P3G / ESDM); Harsono (2014) Jurnal RISET Geologi dan Pertambangan (LIPI/BRIN); Van Bemmelen (1949)",
-        "source_url": "https://jrisetgeotam.brin.go.id",
+        "source": "Kusuma, H.D., Ramadhani, H., Novian, M.I., Furqon, M.A., Arimawan, Y., & Citra, I.A. (2019) 'Fasies dan Lingkungan Pengendapan Formasi Jonggrangan pada Jalur Lintasan Sentul-Gunung Jonggol, Pegunungan Kulon Progo Bagian Timur', Jurnal Riset Geologi dan Pertambangan, 29(2): 141-152.",
+        "source_url": "https://doi.org/10.14203/risetgeotam2019.v29.1002",
         "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "evidence_type": "Fossil",
@@ -2314,7 +2455,10 @@
         "evidence_significance": "Crucial member of the tripartite Kulon Progo succession (Nanggulan -> Jonggrangan -> Sentolo), documenting early Middle Miocene volcanic quiescence and shallow-sea carbonate colonization.",
         "why_it_matters": "Demonstrates how tropical coral reef platforms colonize extinct volcanic island edifices, forming spectacular cave karst landscapes in Java.",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-15"
+        "last_updated": "2026-09-15",
+        "source_citation": "Kusuma, H.D., Ramadhani, H., Novian, M.I., Furqon, M.A., Arimawan, Y., & Citra, I.A. (2019) 'Fasies dan Lingkungan Pengendapan Formasi Jonggrangan pada Jalur Lintasan Sentul-Gunung Jonggol, Pegunungan Kulon Progo Bagian Timur', Jurnal Riset Geologi dan Pertambangan, 29(2): 141-152.",
+        "primary_source_url": "https://doi.org/10.14203/risetgeotam2019.v29.1002",
+        "doi": "10.14203/risetgeotam2019.v29.1002"
       }
     },
     {
@@ -2345,16 +2489,19 @@
         "verification_status": "verified",
         "geometry_status": "verified",
         "geometry_note": "Point positioned along Kali Pengasih and the Sentolo type outcrop area in eastern Kulon Progo, based on Rahardjo et al. (1995) P3G/Badan Geologi mapping and Pringgoprawiro (1985).",
-        "source": "Rahardjo et al. (1995) Peta Geologi Lembar Yogyakarta (Badan Geologi ESDM); Pringgoprawiro (1985); Kadar (1986); Van Bemmelen (1949)",
-        "source_url": "https://jgsm.geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Saputra, A., & Novian, M.I. (2022) 'Pola Perubahan Iklim Purba pada Umur Pliosen dengan Proksi Foraminifera: Studi Kasus Formasi Sentolo, Yogyakarta', Jurnal Geologi dan Sumberdaya Mineral (JGSM), 23(3): 145-156.",
+        "source_url": "https://doi.org/10.33332/jgsm.geologi.v23i3.703",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "verified",
         "evidence_type": "Fossil",
         "evidence_description": "Thick sequence of yellowish-white stratified marls and calcarenites yielding dense microfossil assemblages of planktic and benthic foraminifera tests.",
         "evidence_significance": "Provides an unbroken high-resolution biochronological record spanning Middle Miocene to Early Pliocene (N9 to N19/N20) across Central Java.",
         "why_it_matters": "Completes the classical Kulon Progo Cenozoic sedimentary dome cycle (Nanggulan -> Jonggrangan -> Sentolo), documenting the gradual regional drowning and basin-margin sedimentation.",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-15"
+        "last_updated": "2026-09-15",
+        "source_citation": "Saputra, A., & Novian, M.I. (2022) 'Pola Perubahan Iklim Purba pada Umur Pliosen dengan Proksi Foraminifera: Studi Kasus Formasi Sentolo, Yogyakarta', Jurnal Geologi dan Sumberdaya Mineral (JGSM), 23(3): 145-156.",
+        "primary_source_url": "https://doi.org/10.33332/jgsm.geologi.v23i3.703",
+        "doi": "10.33332/jgsm.geologi.v23i3.703"
       }
     },
     {
@@ -2385,8 +2532,8 @@
         "verification_status": "partially_verified",
         "geometry_status": "needs_review",
         "geometry_note": "Representative point for the Ciracap-Cibodas limestone outcrop sector based on Sukamto (1975) Jampang sheet mapping and UNPAD geological field surveys; exact type section boundary retains spatial variance.",
-        "source": "Sukamto (1975) Peta Geologi Lembar Jampang dan Balekambang (Badan Geologi); Universitas Padjadjaran geological survey literature",
-        "source_url": "https://geologi.esdm.go.id",
+        "source": "Sukamto, R. (1975) Peta Geologi Lembar Jampang dan Balekambang, Jawa (Skala 1:100.000), Pusat Penelitian dan Pengembangan Geologi (P3G), Direktorat Jenderal Pertambangan Umum, Bandung.",
+        "source_url": "",
         "source_type": "government_survey",
         "source_verification_status": "partially_verified",
         "evidence_type": "Fossil",
@@ -2394,7 +2541,9 @@
         "evidence_significance": "Documents Middle-Late Miocene shallow-marine carbonate sedimentation in the Southern Mountains of West Java.",
         "why_it_matters": "Provides insights into post-volcanic shelf evolution in southern Sukabumi; maintained in Candidate/Review pending detailed type-section delineation.",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-15"
+        "last_updated": "2026-09-15",
+        "source_citation": "Sukamto, R. (1975) Peta Geologi Lembar Jampang dan Balekambang, Jawa (Skala 1:100.000), Pusat Penelitian dan Pengembangan Geologi (P3G), Direktorat Jenderal Pertambangan Umum, Bandung.",
+        "primary_source_url": ""
       }
     },
     {
@@ -2425,16 +2574,18 @@
         "verification_status": "partially_verified",
         "geometry_status": "needs_review",
         "geometry_note": "Representative point for the Gumai shale river-cut exposures in the Muaradua area based on Gafoer et al. (1993) mapping; regional shale distribution is widespread across South Sumatra.",
-        "source": "Gafoer et al. (1993) Peta Geologi Lembar Baturaja/Muaradua (P3G / Badan Geologi ESDM); Barber et al. (2005) Sumatra Geology (Geol. Soc. London)",
-        "source_url": "https://geologi.esdm.go.id",
-        "source_type": "government_survey",
+        "source": "Barber, A.J., Crow, M.J., & Milsom, J.S. (2005) Sumatra: Geology, Resources and Tectonic Evolution, Geological Society of London Memoir 31; de Coster, G.L. (1974) Proc. IPA 3rd Ann. Conv., pp. 77–110.",
+        "source_url": "",
+        "source_type": "peer-reviewed_publication",
         "source_verification_status": "partially_verified",
         "evidence_type": "Fossil",
         "evidence_description": "Dark grey to black fossiliferous calcareous shales and marls with abundant microscopic planktic foraminifera tests.",
         "evidence_significance": "Defines the peak Cenozoic marine inundation and regional seal rock across the South Sumatra hydrocarbon province.",
         "why_it_matters": "Crucial regional microfossil marker for petroleum source and seal rock studies; maintained in Candidate/Review due to diffuse regional outcrop extent.",
         "record_compilation_date": "2026-09-15",
-        "last_updated": "2026-09-15"
+        "last_updated": "2026-09-15",
+        "source_citation": "Barber, A.J., Crow, M.J., & Milsom, J.S. (2005) Sumatra: Geology, Resources and Tectonic Evolution, Geological Society of London Memoir 31; de Coster, G.L. (1974) Proc. IPA 3rd Ann. Conv., pp. 77–110.",
+        "primary_source_url": ""
       }
     }
   ]

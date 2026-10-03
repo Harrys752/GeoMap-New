@@ -1,3 +1,8 @@
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 /**
  * Native Node.js Test Suite for GeoMap Indonesia 2.0 Validation Logic
  * Run using: node test/validate.test.js
@@ -168,6 +173,48 @@ runTest("Historical Hazards Timeline Selection Filter Test", () => {
   assert.strictEqual(filtered.length, 2, "Should return the 2 historical hazard features");
   assert.strictEqual(filtered.every(f => f.properties.domain === "hazard"), true, "All filtered features must be hazard domain");
   assert.strictEqual(sampleFeatures[0].properties.geological_period, "Quaternary", "geological_period schema must remain Quaternary");
+});
+
+// 8. Candidate Dataset Source URL Quality & Anti-Bare-Homepage Check
+runTest("Candidate Dataset Source URL Quality & Anti-Bare-Homepage Validation", () => {
+  const root = path.resolve(__dirname, "..");
+  const candFile = path.join(root, "data/geology/candidates.demo.geojson");
+
+  const BARE_HOMEPAGES = [
+    "https://esdm.go.id",
+    "https://geologi.esdm.go.id",
+    "https://badangeologi.esdm.go.id",
+    "https://jgsm.geologi.esdm.go.id",
+    "https://ijog.geologi.esdm.go.id",
+    "https://vsi.esdm.go.id",
+    "https://www.geolsoc.org.uk",
+    "https://www.ipa.or.id",
+    "https://walennae.kemdikbud.go.id",
+    "https://berkalaarkeologi.kemdikbud.go.id",
+    "https://journal.itb.ac.id/index.php/jts",
+    "https://jrisetgeotam.brin.go.id"
+  ];
+
+  const candData = JSON.parse(fs.readFileSync(candFile, "utf8"));
+  candData.features.forEach(feat => {
+    const p = feat.properties;
+    const url = p.source_url || (p.source && p.source.url) || p.primary_source_url || "";
+    if (url) {
+      const trimmed = url.replace(/\/$/, "");
+      assert.strictEqual(
+        BARE_HOMEPAGES.includes(trimmed),
+        false,
+        `Candidate ${p.id} has forbidden bare homepage source_url: ${url}`
+      );
+      if (url.startsWith("http://") || url.startsWith("https://")) {
+        const parsed = new URL(url);
+        assert.ok(
+          parsed.pathname.length > 1 || parsed.search.length > 0 || parsed.hash.length > 0,
+          `Candidate ${p.id} must have a specific document path/DOI, not bare origin: ${url}`
+        );
+      }
+    }
+  });
 });
 
 console.log("\n-------------------------------------------------");

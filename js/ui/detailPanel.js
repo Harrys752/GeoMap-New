@@ -236,16 +236,51 @@ export function renderDetailContent(data, lang = null) {
 
   // 7. Source & Data Status Section
   const isValidUrl = data.sourceUrl && (data.sourceUrl.startsWith("http://") || data.sourceUrl.startsWith("https://"));
-  const sourceUrlHtml = isValidUrl ? `
-    <div class="field-item field-full">
-      <dt>${escapeHtml(t("meta_primary_source_link", {}, activeLang))}</dt>
-      <dd>
-        <a href="${escapeHtml(data.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="source-link">
-          ${t("meta_open_source_publication", {}, activeLang)}
-        </a>
-      </dd>
-    </div>
-  ` : "";
+  let sourceUrlHtml = "";
+
+  if (Array.isArray(data.sources) && data.sources.length > 0) {
+    const linksHtml = data.sources.map(src => {
+      const srcTitle = src.title ? `<strong class="multi-source-title" style="display:block;margin-bottom:2px;color:var(--text-primary);font-size:0.92em;">${escapeHtml(src.title)}</strong>` : "";
+      const srcCit = src.citation ? `<span class="multi-source-citation" style="display:block;font-size:0.83em;color:var(--text-secondary);margin-bottom:4px;line-height:1.4;">${escapeHtml(src.citation)}</span>` : "";
+      const srcTopic = src.topic ? `<span class="multi-source-topic" style="display:inline-block;font-size:0.75em;padding:1px 6px;border-radius:4px;background:rgba(255,255,255,0.06);color:var(--text-muted);margin-bottom:4px;margin-right:6px;">${escapeHtml(src.topic)}</span>` : "";
+      const isSrcUrlValid = src.url && (src.url.startsWith("http://") || src.url.startsWith("https://"));
+      const srcLink = isSrcUrlValid
+        ? `<a href="${escapeHtml(src.url)}" target="_blank" rel="noopener noreferrer" class="source-link" style="display:inline-flex;align-items:center;gap:4px;font-size:0.85em;">
+             ${escapeHtml(src.url.includes("doi.org") ? "DOI: " + src.url.replace(/^https?:\/\/(dx\.)?doi\.org\//, "") : t("meta_open_source_publication", {}, activeLang))} &rarr;
+           </a>`
+        : "";
+      return `<li class="multi-source-item" style="margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border-subtle, rgba(255,255,255,0.08));">
+        ${srcTitle}
+        ${srcCit}
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
+          ${srcTopic}
+          ${srcLink}
+        </div>
+      </li>`;
+    }).join("");
+
+    sourceUrlHtml = `
+      <div class="field-item field-full">
+        <dt>${escapeHtml(t("meta_verified_source_links", {}, activeLang) || (activeLang === "id" ? "Tautan Publikasi Sumber Ilmiah Terverifikasi" : "Verified Scientific Source Publications"))}</dt>
+        <dd>
+          <ul class="source-links-list" style="list-style:none;padding-left:0;margin:6px 0 0 0;">
+            ${linksHtml}
+          </ul>
+        </dd>
+      </div>
+    `;
+  } else if (isValidUrl) {
+    sourceUrlHtml = `
+      <div class="field-item field-full">
+        <dt>${escapeHtml(t("meta_primary_source_link", {}, activeLang))}</dt>
+        <dd>
+          <a href="${escapeHtml(data.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="source-link">
+            ${t("meta_open_source_publication", {}, activeLang)}
+          </a>
+        </dd>
+      </div>
+    `;
+  }
 
   const sourceTypeLabel = formatSourceTypeLabel(data.sourceType, activeLang);
   const sourceTypeBadge = `
