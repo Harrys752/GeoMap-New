@@ -8,7 +8,7 @@ import { readFileSync } from "node:fs";
 import { validateFeature, isValidCalendarDate } from "../js/utils/validate.js";
 import { filterByDomainAndType } from "../js/ui/filterPanel.js";
 import { filterBySearchQuery } from "../js/ui/searchBar.js";
-import { PERIOD_CONTEXT_DATA } from "../js/data/periodContextData.js";
+import { PERIOD_CONTEXT_DATA, deriveDatasetEvidence } from "../js/data/periodContextData.js";
 import { adaptHazardFeature } from "../js/data/adapters/hazardAdapter.js";
 import { adaptGeologyFeature } from "../js/data/adapters/geologyAdapter.js";
 import { ALLOWED_VERIFICATION_STATUSES } from "../js/data/schema.js";
@@ -91,7 +91,7 @@ runTest("Flores 1992 Source Link Regression Check (Non-Nanning URL)", () => {
 
 // 5. UI Timeline Hazards Backing Dataset Mapping
 runTest("UI Timeline Historical Evidence Backs Dataset Records", () => {
-  const histTimelineEvidence = PERIOD_CONTEXT_DATA["Historical"].datasetEvidence;
+  const histTimelineEvidence = deriveDatasetEvidence(allFeatures, "Historical");
   assert.strictEqual(histTimelineEvidence.length, 11, "Timeline should list all 11 historical hazards");
 
   for (const item of histTimelineEvidence) {

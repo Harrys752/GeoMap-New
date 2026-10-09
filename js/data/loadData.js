@@ -52,7 +52,9 @@ export async function loadAllDatasets(paths = [
 
       allValidFeatures.push(...validationResult.validFeatures);
     } catch (err) {
-      const errorMsg = `Error loading dataset '${path}': ${err.message}`;
+      const isFileProtocol = typeof window !== "undefined" && window.location && window.location.protocol === "file:";
+      const hint = isFileProtocol ? " (Notice: Opening directly via file:// protocol is blocked by browser CORS policy. Please serve via local web server e.g. VS Code Live Server or 'npx serve' or 'python -m http.server 8000')" : "";
+      const errorMsg = `Error loading dataset '${path}': ${err.message}${hint}`;
       console.error(`[GeoMap Loader] ${errorMsg}`, err);
       errorsLog.push(errorMsg);
     }

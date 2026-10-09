@@ -7,7 +7,7 @@ import assert from "node:assert";
 import { readFileSync } from "node:fs";
 import { filterByDomainAndType } from "../js/ui/filterPanel.js";
 import { filterBySearchQuery } from "../js/ui/searchBar.js";
-import { PERIOD_CONTEXT_DATA } from "../js/data/periodContextData.js";
+import { PERIOD_CONTEXT_DATA, deriveDatasetEvidence } from "../js/data/periodContextData.js";
 
 console.log("=================================================");
 console.log("Running Historical Hazards Fix Verification Test");
@@ -70,13 +70,15 @@ runTest("Empty State Trigger Condition Validation", () => {
   assert.strictEqual(showEmptyState, false, "Empty state overlay MUST NOT be shown for period='Historical' with empty search");
 });
 
-// Test 4: Verify PERIOD_CONTEXT_DATA entries match dataset evidence
+// Test 4: Verify derived dataset evidence matches GeoJSON hazard IDs
 runTest("Period Context Data Evidence ID Alignment", () => {
   const historicalContext = PERIOD_CONTEXT_DATA["Historical"];
   assert.ok(historicalContext, "PERIOD_CONTEXT_DATA['Historical'] must exist");
-  assert.strictEqual(historicalContext.datasetEvidence.length, 11, "Context card must list 11 evidence entries");
 
-  const evidenceIds = historicalContext.datasetEvidence.map(e => e.id);
+  const historicalEvidence = deriveDatasetEvidence(allFeatures, "Historical");
+  assert.strictEqual(historicalEvidence.length, 11, "Derived context must list 11 evidence entries");
+
+  const evidenceIds = historicalEvidence.map(e => e.id);
   const hazIds = hazEvents.features.map(f => f.properties.id);
   assert.deepStrictEqual(evidenceIds.sort(), hazIds.sort(), "Evidence IDs in context card must exactly match GeoJSON hazard IDs");
 });

@@ -45,6 +45,7 @@ export const UI_STRINGS = {
     timeline_period_significance: "General Period Significance:",
     timeline_dataset_evidence: "Dataset Evidence ({count} entries):",
     timeline_chip_tooltip: "Click to view on map",
+    badge_candidate: "Candidate",
 
     // Geological Process Explorer
     process_filter_label: "Geological Process Explorer",
@@ -293,6 +294,7 @@ export const UI_STRINGS = {
     timeline_period_significance: "Signifikansi Periode Secara Umum:",
     timeline_dataset_evidence: "Bukti Dataset ({count} entri):",
     timeline_chip_tooltip: "Klik untuk melihat di peta",
+    badge_candidate: "Kandidat",
 
     // Geological Process Explorer
     process_filter_label: "Penjelajah Proses Geologi",

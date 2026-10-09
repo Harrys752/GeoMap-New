@@ -40,6 +40,12 @@ export function initMap(elementId = "map") {
     throw new Error(`Map container element #${elementId} not found.`);
   }
 
+  if (typeof ol === "undefined") {
+    const errMsg = "OpenLayers library (ol) is not loaded. Please check your internet connection or CDN availability.";
+    console.error("[GeoMap] " + errMsg);
+    throw new Error(errMsg);
+  }
+
   let currentLang = getLanguage();
 
   // Center coordinates for Indonesia ([118.0 lng, -2.5 lat] in EPSG:3857)

@@ -639,38 +639,62 @@ export const DATASET_PROSE_ID = {
 export const PERIOD_CONTEXT_DATA_ID = {
   "Quaternary": {
     "name": "Kuarter",
+    "period": "Zaman Kuarter",
+    "era": "Era Kenozoikum",
     "range": "2,58 Juta Tahun Lalu — Sekarang",
+    "timeRange": "2,58 Juta Tahun Lalu — Sekarang",
     "desc": "Zaman geologi termuda yang dicirikan oleh siklus glasial berulang, evolusi dan persebaran manusia purba (Homo erectus dan Homo sapiens), serta pembentukan gunung api aktif modern di Indonesia.",
+    "generalInfo": "Zaman geologi termuda yang dicirikan oleh siklus glasial berulang, evolusi dan persebaran manusia purba (Homo erectus dan Homo sapiens), serta pembentukan gunung api aktif modern di Indonesia.",
     "context": "Meliputi sebagian besar stratovulkan aktif, situs paleontologi Sangiran-Trinil-Liang Bua, kaldera Toba dan Krakatau, serta seluruh catatan bencana sejarah."
   },
   "Neogene": {
     "name": "Neogen",
+    "period": "Zaman Neogen",
+    "era": "Era Kenozoikum",
     "range": "23,03 — 2,58 Juta Tahun Lalu",
+    "timeRange": "23,03 — 2,58 Juta Tahun Lalu",
     "desc": "Zaman pembentukan paparan karbonat terumbu karang masif, pengangkatan perbukitan karst Maros dan Jawa Selatan, serta pembentukan jalur patahan tektonik modern.",
+    "generalInfo": "Zaman pembentukan paparan karbonat terumbu karang masif, pengangkatan perbukitan karst Maros dan Jawa Selatan, serta pembentukan jalur patahan tektonik modern.",
     "context": "Mencakup pembentukan formasi batugamping karst Maros-Pangkep dan terangkatnya cekungan hidrokarbon sedimen Indonesia."
   },
   "Paleogene": {
     "name": "Paleogen",
+    "period": "Zaman Paleogen",
+    "era": "Era Kenozoikum",
     "range": "66,0 — 23,03 Juta Tahun Lalu",
+    "timeRange": "66,0 — 23,03 Juta Tahun Lalu",
     "desc": "Zaman awal era Kenozoikum pasca-kepunahan dinosaurus, ditandai dengan pembentukan cekungan sedimen rifting Paleogen dan aktivitas magmatisme busur awal di Sundaland.",
+    "generalInfo": "Zaman awal era Kenozoikum pasca-kepunahan dinosaurus, ditandai dengan pembentukan cekungan sedimen rifting Paleogen dan aktivitas magmatisme busur awal di Sundaland.",
     "context": "Mencakup pembentukan batuan sedimen tertua Ciletuh dan fase awal rifting cekungan minyak bumi Sumatra dan Jawa."
   },
   "Cretaceous": {
     "name": "Kapur",
+    "period": "Zaman Kapur",
+    "era": "Era Mesozoikum",
     "range": "145,0 — 66,0 Juta Tahun Lalu",
+    "timeRange": "145,0 — 66,0 Juta Tahun Lalu",
     "desc": "Zaman pembentukan prisma akresi mélange subduksi di sepanjang batas selatan-tenggara Paparan Sunda, menyingkap batuan ofiolit lantai samudera dan metamorfik bertekanan tinggi.",
+    "generalInfo": "Zaman pembentukan prisma akresi mélange subduksi di sepanjang batas selatan-tenggara Paparan Sunda, menyingkap batuan ofiolit lantai samudera dan metamorfik bertekanan tinggi.",
     "context": "Mencakup pembentukan kompleks mélange Ciletuh, Karangsambung, dan sutur ofiolit Pegunungan Meratus."
   },
   "Triassic": {
     "name": "Trias",
+    "period": "Zaman Trias",
+    "era": "Era Mesozoikum",
     "range": "251,9 — 201,4 Juta Tahun Lalu",
+    "timeRange": "251,9 — 201,4 Juta Tahun Lalu",
     "desc": "Zaman pembentukan batolit granit Sabuk Timah Asia Tenggara akibat kolisi mikrokontinen pada Orogeni Indosinian.",
+    "generalInfo": "Zaman pembentukan batolit granit Sabuk Timah Asia Tenggara akibat kolisi mikrokontinen pada Orogeni Indosinian, serta sedimentasi laut pelagis di kawasan peri-Gondwana timur.",
     "context": "Diwakili oleh singkapan batolit granit raksasa berumur 210 juta tahun di Pulau Belitung."
   },
   "Historical": {
     "name": "Historis",
-    "range": "Catatan Sejarah Tertulis Manusia",
+    "period": "Rekaman Bencana Geologi Historis",
+    "era": "Sejarah Manusia",
+    "range": "1815 — 2021 Masehi (Rekaman Instrumen & Sejarah Modern)",
+    "timeRange": "1815 — 2021 Masehi (Rekaman Instrumen & Sejarah Modern)",
     "desc": "Periode waktu manusia tertulis yang mencakup peristiwa bencana geologi (letusan gunung api, gempa bumi megathrust, tsunami) dengan arsip catatan terverifikasi.",
+    "generalInfo": "Periode waktu manusia tertulis yang mencakup peristiwa bencana geologi (letusan gunung api, gempa bumi megathrust, tsunami) dengan arsip catatan terverifikasi.",
     "context": "Mencakup 11 rekaman bencana historis dari letusan Tambora 1815, Krakatau 1883, hingga bencana Palu 2018 dan Semeru 2021."
   }
 };

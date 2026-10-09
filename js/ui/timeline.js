@@ -1,12 +1,14 @@
-/**
- * Geological Time & Earth History Timeline Component
- * Phase 3 — Lightweight, interactive geological time bar connecting periods to dataset evidence and map locations.
- * Supports full bilingual display (English & Bahasa Indonesia).
+﻿/**
+ * GeoMap Indonesia 2.0 — Geological Time & Earth History Timeline Component
+ * Phase 3 Implementation: Interactive chronological sequence bar and educational context panel.
+ * 
+ * Dynamically derives Dataset Evidence entries at runtime from the loaded dataset (production + candidates),
+ * sharing identical canonical period matching logic with queryHelper.
  */
 
-import { PERIOD_CONTEXT_DATA } from "../data/periodContextData.js";
+import { PERIOD_CONTEXT_DATA, deriveDatasetEvidence } from "../data/periodContextData.js";
 import { isHistoricalHazard } from "../data/queryHelper.js";
-import { getLanguage, t, getLocalizedPeriodData, getLocalizedFeature } from "../i18n/i18n.js";
+import { getLocalizedPeriodData, getLanguage, t } from "../i18n/i18n.js";
 
 /**
  * Initializes the Geological Timeline component.
@@ -18,24 +20,18 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
   const containerEl = document.getElementById("geological-timeline-container");
   if (!containerEl) return null;
 
+  let currentFeatures = Array.isArray(allFeatures) ? allFeatures : [];
   let activePeriodKey = null;
   let currentLang = getLanguage();
 
-  // Build feature ID lookup map
-  const featureMap = new Map();
-  for (const f of allFeatures) {
-    if (f.properties && f.properties.id) {
-      featureMap.set(f.properties.id, f);
-    }
-  }
-
   function getPeriodSequence() {
     return [
-      { key: "Triassic", label: t("period_Triassic", {}, currentLang), sub: "~252 – 201 Ma", type: "geo" },
-      { key: "Cretaceous", label: t("period_Cretaceous", {}, currentLang), sub: "~145 – 66 Ma", type: "geo" },
-      { key: "Neogene", label: t("period_Neogene", {}, currentLang), sub: "~23 – 2.58 Ma", type: "geo" },
-      { key: "Quaternary", label: t("period_Quaternary", {}, currentLang), sub: "~2.58 Ma – Present", type: "geo" },
-      { key: "Historical", label: t("period_Historical", {}, currentLang), sub: "1883 – 2021 CE", type: "hazard" }
+      { key: "Triassic", label: t("period_Triassic", {}, currentLang) || "Triassic", sub: "~252 – 201 Ma", type: "geo" },
+      { key: "Cretaceous", label: t("period_Cretaceous", {}, currentLang) || "Cretaceous", sub: "~145 – 66 Ma", type: "geo" },
+      { key: "Paleogene", label: t("period_Paleogene", {}, currentLang) || "Paleogene", sub: "~66 – 23 Ma", type: "geo" },
+      { key: "Neogene", label: t("period_Neogene", {}, currentLang) || "Neogene", sub: "~23 – 2.58 Ma", type: "geo" },
+      { key: "Quaternary", label: t("period_Quaternary", {}, currentLang) || "Quaternary", sub: "~2.58 Ma – Present", type: "geo" },
+      { key: "Historical", label: t("period_Historical", {}, currentLang) || "Historical", sub: "1815 – 2021 CE", type: "hazard" }
     ];
   }
 
@@ -101,6 +97,7 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
 
     const baseData = PERIOD_CONTEXT_DATA[periodKey];
     const data = getLocalizedPeriodData(periodKey, baseData, currentLang);
+    const evidenceList = deriveDatasetEvidence(currentFeatures, periodKey, currentLang);
 
     cardEl.style.display = "block";
     cardEl.innerHTML = `
@@ -108,27 +105,29 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
         <div class="period-card-header">
           <div class="period-card-meta">
             <span class="period-era-tag">${escapeHtml(data.era)}</span>
-            <span class="period-time-range">${escapeHtml(data.timeRange)}</span>
+            <span class="period-time-range">${escapeHtml(data.timeRange || data.range)}</span>
           </div>
-          <h4 class="period-card-name">${escapeHtml(data.period)}</h4>
+          <h4 class="period-card-name">${escapeHtml(data.period || data.name)}</h4>
         </div>
 
         <div class="period-card-section">
           <strong>${escapeHtml(t("timeline_period_significance", {}, currentLang))}</strong>
-          <p>${escapeHtml(data.generalInfo)}</p>
+          <p>${escapeHtml(data.generalInfo || data.desc)}</p>
         </div>
 
         <div class="period-card-section">
-          <strong>${escapeHtml(t("timeline_dataset_evidence", { count: data.datasetEvidence.length }, currentLang))}</strong>
+          <strong>${escapeHtml(t("timeline_dataset_evidence", { count: evidenceList.length }, currentLang))}</strong>
           <div class="evidence-chip-list">
-            ${data.datasetEvidence.map(item => {
-              const rawFeat = featureMap.get(item.id);
-              const locFeat = rawFeat ? getLocalizedFeature(rawFeat, currentLang) : null;
-              const displayName = locFeat ? locFeat.properties.name : item.name;
+            ${evidenceList.map(item => {
               return `
-                <button type="button" class="evidence-chip" data-feature-id="${item.id}" title="${escapeHtml(t("timeline_chip_tooltip", {}, currentLang))}">
-                  <span class="chip-name">${escapeHtml(displayName)}</span>
-                  <span class="chip-detail">${escapeHtml(item.detail || item.age)}</span>
+                <button type="button" class="evidence-chip${item.isCandidate ? " chip-candidate" : ""}" data-feature-id="${item.id}" title="${escapeHtml(t("timeline_chip_tooltip", {}, currentLang))}">
+                  <div class="chip-title-row">
+                    <span class="chip-name">${escapeHtml(item.name)}</span>
+                    ${item.isCandidate ? `<span class="chip-badge chip-badge-candidate">${escapeHtml(t("badge_candidate", {}, currentLang) || "Candidate")}</span>` : ""}
+                  </div>
+                  <div class="chip-meta-row">
+                    <span class="chip-detail">${escapeHtml(item.detail || item.age)}</span>
+                  </div>
                 </button>
               `;
             }).join("")}
@@ -193,6 +192,8 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
       targetKey = "Triassic";
     } else if (period === "Cretaceous") {
       targetKey = "Cretaceous";
+    } else if (period === "Paleogene") {
+      targetKey = "Paleogene";
     } else if (period === "Neogene") {
       targetKey = "Neogene";
     } else if (period === "Quaternary") {
@@ -213,13 +214,25 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
     renderTimelineBar();
   }
 
+  /**
+   * Updates backing features list when dataset is modified/updated.
+   * @param {object[]} newFeatures - Updated array of GeoJSON features
+   */
+  function updateDataset(newFeatures) {
+    currentFeatures = Array.isArray(newFeatures) ? newFeatures : [];
+    if (activePeriodKey) {
+      renderPeriodCard(activePeriodKey);
+    }
+  }
+
   renderTimelineBar();
 
   return {
     selectPeriod,
     deselectPeriod,
     syncTimelineWithFeature,
-    updateLanguage
+    updateLanguage,
+    updateDataset
   };
 }
 

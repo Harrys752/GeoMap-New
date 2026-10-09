@@ -539,6 +539,39 @@
   box-shadow: 0 0 0 2px var(--border-focus);
 }
 
+.evidence-chip.chip-candidate {
+  border-left: 3px solid rgba(255, 179, 0, 0.7);
+}
+
+.chip-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.chip-meta-row {
+  width: 100%;
+}
+
+.chip-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.chip-badge.chip-badge-candidate {
+  background-color: rgba(255, 179, 0, 0.16);
+  color: #ffe082;
+  border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
 .chip-name {
   font-size: 0.78rem;
   font-weight: 600;

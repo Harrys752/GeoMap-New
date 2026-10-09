@@ -194,6 +194,7 @@ export function computeCanonicalDatasetCounts(features = []) {
     period: {
       Triassic: 0,
       Cretaceous: 0,
+      Paleogene: 0,
       Neogene: 0,
       Quaternary: 0,
       Historical: 0
