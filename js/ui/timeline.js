@@ -4,6 +4,7 @@
  * 
  * Dynamically derives Dataset Evidence entries at runtime from the loaded dataset (production + candidates),
  * sharing identical canonical period matching logic with queryHelper.
+ * Supports default 5-entry view with dynamic show all / collapse toggling per period.
  */
 
 import { PERIOD_CONTEXT_DATA, deriveDatasetEvidence } from "../data/periodContextData.js";
@@ -20,8 +21,10 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
   const containerEl = document.getElementById("geological-timeline-container");
   if (!containerEl) return null;
 
+  const INITIAL_VISIBLE_COUNT = 5;
   let currentFeatures = Array.isArray(allFeatures) ? allFeatures : [];
   let activePeriodKey = null;
+  let isEvidenceExpanded = false;
   let currentLang = getLanguage();
 
   function getPeriodSequence() {
@@ -98,6 +101,11 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
     const baseData = PERIOD_CONTEXT_DATA[periodKey];
     const data = getLocalizedPeriodData(periodKey, baseData, currentLang);
     const evidenceList = deriveDatasetEvidence(currentFeatures, periodKey, currentLang);
+    const totalCount = evidenceList.length;
+    const hasMore = totalCount > INITIAL_VISIBLE_COUNT;
+    const visibleEvidence = (isEvidenceExpanded || !hasMore)
+      ? evidenceList
+      : evidenceList.slice(0, INITIAL_VISIBLE_COUNT);
 
     cardEl.style.display = "block";
     cardEl.innerHTML = `
@@ -116,9 +124,9 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
         </div>
 
         <div class="period-card-section">
-          <strong>${escapeHtml(t("timeline_dataset_evidence", { count: evidenceList.length }, currentLang))}</strong>
+          <strong>${escapeHtml(t("timeline_dataset_evidence", { count: totalCount }, currentLang))}</strong>
           <div class="evidence-chip-list">
-            ${evidenceList.map(item => {
+            ${visibleEvidence.map(item => {
               return `
                 <button type="button" class="evidence-chip${item.isCandidate ? " chip-candidate" : ""}" data-feature-id="${item.id}" title="${escapeHtml(t("timeline_chip_tooltip", {}, currentLang))}">
                   <div class="chip-title-row">
@@ -132,6 +140,12 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
               `;
             }).join("")}
           </div>
+          ${hasMore ? `
+            <button type="button" class="timeline-toggle-btn" id="timeline-evidence-toggle-btn" aria-expanded="${isEvidenceExpanded ? "true" : "false"}" aria-label="${escapeHtml(isEvidenceExpanded ? t("timeline_show_less", {}, currentLang) : t("timeline_show_all", { count: totalCount }, currentLang))}">
+              <span class="timeline-toggle-label">${escapeHtml(isEvidenceExpanded ? t("timeline_show_less", {}, currentLang) : t("timeline_show_all", { count: totalCount }, currentLang))}</span>
+              <span class="timeline-toggle-icon" aria-hidden="true">${isEvidenceExpanded ? "&#9652;" : "&#9662;"}</span>
+            </button>
+          ` : ""}
         </div>
       </div>
     `;
@@ -146,9 +160,21 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
         }
       });
     });
+
+    // Add expand/collapse toggle listener
+    const toggleBtn = cardEl.querySelector("#timeline-evidence-toggle-btn");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        isEvidenceExpanded = !isEvidenceExpanded;
+        renderPeriodCard(periodKey);
+      });
+    }
   }
 
   function selectPeriod(periodKey) {
+    if (activePeriodKey !== periodKey) {
+      isEvidenceExpanded = false; // Reset to collapsed state when switching period
+    }
     activePeriodKey = periodKey;
     const nodes = containerEl.querySelectorAll(".timeline-node");
 
@@ -163,6 +189,7 @@ export function initTimeline(allFeatures, onTimelineSelectFeature, onTimelineSel
 
   function deselectPeriod() {
     activePeriodKey = null;
+    isEvidenceExpanded = false; // Reset state
     const cardEl = document.getElementById("timeline-period-card");
     const nodes = containerEl.querySelectorAll(".timeline-node");
 

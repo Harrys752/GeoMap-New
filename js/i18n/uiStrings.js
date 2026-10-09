@@ -46,6 +46,8 @@ export const UI_STRINGS = {
     timeline_dataset_evidence: "Dataset Evidence ({count} entries):",
     timeline_chip_tooltip: "Click to view on map",
     badge_candidate: "Candidate",
+    timeline_show_all: "Show all {count}",
+    timeline_show_less: "Show less",
 
     // Geological Process Explorer
     process_filter_label: "Geological Process Explorer",
@@ -295,6 +297,8 @@ export const UI_STRINGS = {
     timeline_dataset_evidence: "Bukti Dataset ({count} entri):",
     timeline_chip_tooltip: "Klik untuk melihat di peta",
     badge_candidate: "Kandidat",
+    timeline_show_all: "Tampilkan semua {count}",
+    timeline_show_less: "Tampilkan lebih sedikit",
 
     // Geological Process Explorer
     process_filter_label: "Penjelajah Proses Geologi",
