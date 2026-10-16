@@ -282,6 +282,56 @@ runTest("Wrong-Location Historical Mismatch Regression Suite", () => {
   assert.strictEqual(komodo.properties.source_url.includes("/list/337"), false, "Komodo must NOT point to Kaziranga India #337");
   assert.strictEqual(komodo.properties.source_url.includes("/list/592"), false, "Komodo must NOT point to Borobudur #592");
   assert.strictEqual(komodo.properties.source_url.includes("/list/609"), true, "Komodo must point to Komodo National Park #609");
+
+  // Karangsambung (Must be Luk Ulo / Karangsambung, NOT bare BRIN or Borobudur)
+  const ks = allFeatures.find(f => f.properties.id === "geo_karangsambung");
+  assert.strictEqual(ks.properties.source_url.includes("borobudur"), false, "Karangsambung must NOT point to Borobudur");
+  assert.strictEqual(ks.properties.source_url.includes("karangsambung.brin.go.id"), false, "Karangsambung must NOT point to dead bare domain");
+  assert.strictEqual(ks.properties.source_url.includes("0743-9547"), true, "Karangsambung must point to verified Wakita et al. 1994 DOI");
+});
+
+// 13. Karangsambung (geo_karangsambung) Source Verification & Anti-Bare-Homepage Regression Guard
+runTest("Karangsambung (geo_karangsambung) Source Verification & Anti-Bare-Homepage Regression Guard", () => {
+  const ks = allFeatures.find(f => f.properties.id === "geo_karangsambung");
+  assert.ok(ks, "Karangsambung feature 'geo_karangsambung' must exist in dataset");
+
+  const p = ks.properties;
+  assert.strictEqual(p.source_verification_status, "verified", "Karangsambung must be verified");
+  assert.strictEqual(p.source_type, "peer-reviewed_publication");
+
+  // Non-empty, not bare domain/homepage, host is not a generic landing portal
+  assert.ok(p.source_url && p.source_url.trim().length > 0, "source_url must be non-empty");
+  const parsedUrl = new URL(p.source_url);
+  assert.ok(parsedUrl.pathname.length > 1, "source_url must not be a bare root domain/homepage");
+  assert.strictEqual(parsedUrl.hostname !== "karangsambung.brin.go.id", true, "Must not use unresolvable bare BRIN domain");
+  assert.strictEqual(parsedUrl.hostname !== "esdm.go.id" && parsedUrl.hostname !== "brin.go.id", true, "Must not be generic ESDM/BRIN portal");
+
+  // Allowlist of verified source DOIs / URLs for Karangsambung
+  const allowedSourceUrls = [
+    "https://doi.org/10.1016/0743-9547(94)90063-9",
+    "https://gsm.org.my/wp-content/uploads/gsm_file_2/702001-100838-PDF.pdf",
+    "https://doi.org/10.3390/geosciences14110297",
+    "https://doi.org/10.1111/iar.12377",
+    "https://www.unesco.org/en/iggp/kebumen-unesco-global-geopark"
+  ];
+  assert.ok(allowedSourceUrls.includes(p.source_url), `source_url ${p.source_url} must be in allowed verified sources list`);
+
+  // Source citation mentions Karangsambung or Luk Ulo
+  const allCitationText = `${p.source} ${p.source_citation || ""} ${(p.sources || []).map(s => s.title + " " + s.citation + " " + s.topic).join(" ")}`;
+  assert.ok(allCitationText.includes("Karangsambung") || allCitationText.includes("Luk Ulo") || allCitationText.includes("Luk-Ulo"), "Sources must mention Karangsambung or Luk Ulo");
+
+  // Negative list guards against known wrong-location patterns
+  assert.strictEqual(allCitationText.includes("Borobudur"), false, "Karangsambung source must NOT point to Borobudur");
+  assert.strictEqual(allCitationText.includes("Kaziranga"), false, "Karangsambung source must NOT point to Kaziranga");
+  assert.strictEqual(allCitationText.includes("Maumere"), false, "Karangsambung source must NOT point to Maumere");
+  assert.strictEqual(allCitationText.includes("Tambora"), false, "Karangsambung source must NOT point to Tambora");
+
+  // Multi-source array integrity
+  assert.ok(Array.isArray(p.sources) && p.sources.length >= 3, "Karangsambung must include multi-source array with at least 3 verified references");
+  for (const src of p.sources) {
+    assert.ok(src.title && src.url && src.type && src.citation, "Each source in sources array must have title, url, type, citation");
+    assert.ok(allowedSourceUrls.includes(src.url), `Source item URL ${src.url} must be in allowed list`);
+  }
 });
 
 console.log("\n-------------------------------------------------");

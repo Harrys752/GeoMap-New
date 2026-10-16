@@ -408,10 +408,50 @@
         "evidence_significance": "High-pressure metamorphic schists and pillow basalts provide direct physical evidence supporting Cretaceous oceanic crust subduction and continental accretion.",
         "why_it_matters": "Karangsambung is Indonesia's premier field geology training site, providing physical proof of Cretaceous subduction and accretionary wedge deformation in Central Java.",
         "data_status": "historical",
-        "source": "BRIN / Geological Engineering ITB (Asakin 1974)",
-        "source_url": "https://karangsambung.brin.go.id",
-        "source_type": "government_survey",
-        "source_verification_status": "needs_review",
+        "source": "Wakita, Munasri & Widoyoko (1994) / Journal of Southeast Asian Earth Sciences (DOI: 10.1016/0743-9547(94)90063-9); Wakita (1999) / Geol. Soc. Malaysia Bull.",
+        "source_url": "https://doi.org/10.1016/0743-9547(94)90063-9",
+        "source_type": "peer-reviewed_publication",
+        "source_verification_status": "verified",
+        "primary_source_url": "https://doi.org/10.1016/0743-9547(94)90063-9",
+        "doi": "10.1016/0743-9547(94)90063-9",
+        "source_citation": "Wakita, K., Munasri, & Widoyoko, B. (1994). Cretaceous radiolarians from the Luk-Ulo Melange Complex in the Karangsambung area, central Java, Indonesia. Journal of Southeast Asian Earth Sciences, 9(1–2): 29–43.",
+        "sources": [
+          {
+            "title": "Cretaceous radiolarians from the Luk-Ulo Melange Complex in the Karangsambung area, central Java, Indonesia",
+            "citation": "Wakita, K., Munasri, & Widoyoko, B. (1994). Journal of Southeast Asian Earth Sciences, 9(1–2), pp. 29–43.",
+            "url": "https://doi.org/10.1016/0743-9547(94)90063-9",
+            "type": "peer-reviewed_publication",
+            "topic": "Cretaceous radiolarian biostratigraphy in chert and accretionary melange matrix"
+          },
+          {
+            "title": "Mesozoic melange formation in Indonesia – with special reference to Jurassic melanges of Japan",
+            "citation": "Wakita, K. (1999). Bulletin of the Geological Society of Malaysia, 43 (GEOSEA '98 Proceedings), pp. 19–30.",
+            "url": "https://gsm.org.my/wp-content/uploads/gsm_file_2/702001-100838-PDF.pdf",
+            "type": "peer-reviewed_publication",
+            "topic": "Glaucophane schist high-pressure metamorphism (~110–117 Ma) and Cretaceous subduction mélange"
+          },
+          {
+            "title": "Three-Dimensional Subsurface Model of Luk-Ulo Melange Complex, Karangsambung, Indonesia: Insights from Gravity Modeling",
+            "citation": "Ahmady, F.N., Santoso, D., Alawiyah, S., & Saepuloh, A. (2024). Geosciences, 14(11), 297.",
+            "url": "https://doi.org/10.3390/geosciences14110297",
+            "type": "peer-reviewed_publication",
+            "topic": "Subsurface 3D block-in-matrix gravity model of Luk-Ulo Melange Complex"
+          },
+          {
+            "title": "Determining the origin of volcanic rocks in the mélange complex of Karangsambung based on the electrical resistivity imaging",
+            "citation": "Handayani, L., Arisbaya, I., Mukti, M.M., & Sudrajat, Y. (2021). Island Arc, 30(1), e12377.",
+            "url": "https://doi.org/10.1111/iar.12377",
+            "type": "peer-reviewed_publication",
+            "topic": "Electrical resistivity imaging and origin of volcanic blocks in the Karangsambung mélange"
+          },
+          {
+            "title": "Kebumen UNESCO Global Geopark",
+            "citation": "UNESCO Global Geoparks Network (designated 2025). 116,100 ha.",
+            "url": "https://www.unesco.org/en/iggp/kebumen-unesco-global-geopark",
+            "type": "institutional_record",
+            "topic": "UNESCO Global Geopark designation and field laboratory heritage status"
+          }
+        ],
         "record_compilation_date": "2026-09-16",
         "last_updated": "2026-09-16"
       }
